@@ -7,7 +7,8 @@ namespace ProxyPattern
     {
         static void Main(string[] args)
         {
-            var loader = new DataLoader();
+            //var loader = DataLoader.Create();
+            var loader = new LazyDataLoader();
 
             if (false)
             {

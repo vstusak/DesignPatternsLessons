@@ -8,6 +8,7 @@ namespace ProxyPattern
     {
         public static IEnumerable<ExpensiveResult> GetEntities()
         {
+            Console.WriteLine("Getting data from DataSource...");
             var veryMuchExpensiveStuff = new List<ExpensiveResult>();
 
             for (int i = 1; i < 50; i++)
