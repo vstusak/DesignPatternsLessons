@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Factory.Cards;
+using FactoryPattern.Accounts;
 
 namespace Factory
 {
@@ -35,6 +36,20 @@ namespace Factory
 
             Console.WriteLine(card1);
             Console.WriteLine(card2);
+
+            /////////////
+            BankServiceFactoryFactory superFactory = new BankServiceFactoryFactory();
+            ICard card;
+            IAccount account;
+            var bankServicesFactory = superFactory.CreateBankServicesFactory(BankServiceTypes.Free);
+            card = bankServicesFactory.GetCard();
+            account = bankServicesFactory.GetAccount();
+            Console.WriteLine($"{card} {Environment.NewLine} {account}");
+
+            bankServicesFactory = superFactory.CreateBankServicesFactory(BankServiceTypes.Premium);
+            card = bankServicesFactory.GetCard();
+            account = bankServicesFactory.GetAccount();
+            Console.WriteLine($"{card} {Environment.NewLine} {account}");
 
         }
     }

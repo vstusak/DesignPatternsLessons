@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProxyPattern", "ProxyPatter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartProxyPattern", "SmartProxyPattern\SmartProxyPattern.csproj", "{AB9E9929-19D2-4CD2-AF5F-31927C8EC7DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryPattern", "Factory\FactoryPattern.csproj", "{E1E44642-7D51-428D-87C0-31074141DA96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryPattern", "Factory\FactoryPattern.csproj", "{E1E44642-7D51-428D-87C0-31074141DA96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

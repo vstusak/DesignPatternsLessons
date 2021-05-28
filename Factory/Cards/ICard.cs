@@ -11,39 +11,4 @@ namespace Factory.Cards
         string CardType { get; }
         int CreditLimit { get; }
     }
-
-    public abstract class AbstractCard : ICard
-    {
-        public abstract string CardType { get; }
-
-        public int CreditLimit { get; set; }
-
-        protected AbstractCard(int creditLimit)
-        {
-            CreditLimit = creditLimit;
-        }
-
-        public override string ToString()
-        {
-            return $"Card Type: {CardType}; Credit limit: {CreditLimit}";
-        }
-    }
-
-    public class CreditCard : AbstractCard
-    {
-        public override string CardType => "Credit card";
-
-        public CreditCard(int creditLimit) : base(creditLimit)
-        {
-        }
-    }
-
-    public class DebitCard : AbstractCard
-    {
-        public override string CardType => "Debit card";
-
-        public DebitCard(int creditLimit) : base(creditLimit)
-        {
-        }
-    }
 }
