@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
-namespace BuilderPattern
+namespace BuilderPattern.Builder
 {
     public class TextBuilder : IReportBuilder
     {
@@ -15,27 +16,31 @@ namespace BuilderPattern
             _books = books;
         }
 
-        public void SetHeader()
+        public IReportBuilder SetHeader()
         {
             _result.AppendLine("Welcome to our library, there is a list of books.");
+            return this;
         }
 
-        public void WriteLibrary()
+        public IReportBuilder WriteLibrary()
         {
             foreach (var book in _books)
             {
                 _result.AppendLine(book.ToString());
             }
+            return this;
         }
 
-        public void SetFooter()
+        public IReportBuilder SetFooter()
         {
             _result.AppendLine("Thanks for reading.");
+            return this;
         }
 
-        public void AddDateStamp()
+        public IReportBuilder AddDateStamp()
         {
-            _result.AppendLine(DateTime.UtcNow.ToString());
+            _result.AppendLine(DateTime.UtcNow.ToString(CultureInfo.InvariantCulture));
+            return this;
         }
 
         public string Build()

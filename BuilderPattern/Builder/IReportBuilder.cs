@@ -1,14 +1,14 @@
-﻿namespace BuilderPattern
+﻿namespace BuilderPattern.Builder
 {
     public interface IReportBuilder
     {
-        void SetHeader();
+        IReportBuilder SetHeader();
 
-        void WriteLibrary();
+        IReportBuilder WriteLibrary();
 
-        void SetFooter();
+        IReportBuilder SetFooter();
 
-        void AddDateStamp();
+        IReportBuilder AddDateStamp();
 
         string Build();
     }

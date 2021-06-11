@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns
+﻿namespace StrategyPattern.DressPickerStrategies
 {
     public interface IDressStrategy
     {

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns
+﻿namespace StrategyPattern
 {
     public enum WeatherTypes
     {

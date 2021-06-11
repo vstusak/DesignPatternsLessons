@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DesignPatterns
+namespace StrategyPattern
 {
     // podle typu pocasi vybrat obleceni
     // slunecno - zabky, kratasy, tricko, slunecni bryle

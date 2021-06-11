@@ -1,4 +1,4 @@
-﻿namespace BuilderPattern
+﻿namespace BuilderPattern.Builder
 {
     public class ReportDirector
     {

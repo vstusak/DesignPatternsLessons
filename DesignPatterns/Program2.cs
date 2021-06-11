@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DesignPatterns
+namespace StrategyPattern
 {
     // podle typu pocasi vybrat obleceni
     // slunecno - zabky, kratasy, tricko, slunecni bryle
@@ -14,7 +10,7 @@ namespace DesignPatterns
     public class Program2
     {
         //private static DressPicker dressPicker;
-        static void Main(string[] args)
+        public static void Main()
         {
             var dressPicker = new DressPicker();
 
@@ -30,7 +26,7 @@ namespace DesignPatterns
         }
         private static string GetInfoMessage(DressPicker dressPicker, WeatherTypes weather)
         {
-            return $"Today is '{weather.ToString()}' you need '{dressPicker.GetShoes()}', '{dressPicker.GetPants()}'";
+            return $"Today is '{weather}' you need '{dressPicker.GetShoes()}', '{dressPicker.GetPants()}'";
         }
 
     }
