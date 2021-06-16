@@ -2,10 +2,10 @@ namespace DesignPatterns
 {
     public interface IDressStrategy
     {
-        public string GetCoat();
-        public string GetHeadcover();
-        public string GetTroussers();
-        public string GetShoes();
+        string GetCoat();
+        string GetHeadcover();
+        string GetTroussers();
+        string GetShoes();
     }
 
     public class RainyDressStrategy : IDressStrategy
