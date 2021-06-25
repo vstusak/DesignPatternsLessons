@@ -17,6 +17,8 @@ namespace RepositoryPattern.Context
 
         public int Quantity { get; set; }
 
+        public DateTimeOffset LastQuantityModified { get; set; }
+
         public override string ToString()
         {
             return $"Name: {Name}, Price: {Price}, Quantity: {Quantity}";

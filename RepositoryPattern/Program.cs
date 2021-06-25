@@ -10,8 +10,9 @@ namespace RepositoryPattern
         public static async Task Main()
         {
             await InitDbAsync();
-
-            var service = new WarehouseService(new WarehouseContext());
+            var context = new WarehouseContext();
+            var service = new WarehouseService(
+                new ProductRepository(context));
 
             service.WriteProductsWithPriceOver100();
         }

@@ -6,16 +6,16 @@ namespace RepositoryPattern
 {
     public class WarehouseService
     {
-        private readonly WarehouseContext _warehouseContext;
+        private readonly IRepository<Product> _productRepository;
 
-        public WarehouseService(WarehouseContext warehouseContext)
+        public WarehouseService(IRepository<Product> productRepository)
         {
-            _warehouseContext = warehouseContext;
+            _productRepository = productRepository;
         }
 
         public void WriteProductsWithPriceOver100()
         {
-            var products = _warehouseContext.Products.Where(product => product.Price > 100);
+            var products = _productRepository.Find(product => product.Price > 100);
 
             foreach (var product in products)
             {
