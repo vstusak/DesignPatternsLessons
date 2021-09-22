@@ -8,11 +8,16 @@ namespace AbstractFactory
 {
     class Program2
     {
-        void Main(string[] args)
+        static void Main(string[] args)
         {
-            var bankServicesFactory = new FreeBankServicesFactory();
-            var card = bankServicesFactory.CreateCard();
-            var account = bankServicesFactory.CreateAccount();
+            var bankFactory = new BankFactory();
+            var bankServicesFactory = bankFactory.CreateBankServicesFactory(ServiceType.P);
+            Card card = bankServicesFactory.CreateCard();
+            Account account = bankServicesFactory.CreateAccount();
+            Insurance insurance = bankServicesFactory.CreateInsurance();
+
+            Console.WriteLine($"{account.ToString()} with {card.ToString()} created and is covered by {insurance.ToString()}.");
+            Console.ReadLine();
         }
     }
 
@@ -20,18 +25,25 @@ namespace AbstractFactory
     {
         Card CreateCard();
         Account CreateAccount();
+        
+        Insurance CreateInsurance();
     }
 
     class PremiumBankServicesFactory : IBankServicesFactory
     {
         public Card CreateCard()
         {
-            throw new NotImplementedException();
+            return new CreditCard(200);
         }
 
         public Account CreateAccount()
         {
-            throw new NotImplementedException();
+            return new SavingsAccount();
+        }
+
+        public Insurance CreateInsurance()
+        {
+            return new LifeInsurance();
         }
     }
 
@@ -39,12 +51,18 @@ namespace AbstractFactory
     {
         public Card CreateCard()
         {
-            throw new NotImplementedException();
+            return new DebitCard();
         }
 
         public Account CreateAccount()
         {
-            throw new NotImplementedException();
+            //return new
+            return new RegularAccount();
+        }
+
+        public Insurance CreateInsurance()
+        {
+            return new CarInsurance();
         }
     }
 

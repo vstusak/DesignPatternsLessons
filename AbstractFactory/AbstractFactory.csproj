@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AbstractFactory.Program2</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,9 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankFactory.cs" />
+    <Compile Include="CarInsurance.cs" />
+    <Compile Include="Insurance.cs" />
+    <Compile Include="LifeInsurance.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Program2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegularAccount.cs" />
+    <Compile Include="SavingsAccount.cs" />
+    <Compile Include="ServiceType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
