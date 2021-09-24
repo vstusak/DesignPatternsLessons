@@ -9,6 +9,7 @@ namespace Decorator
     public interface IWatcher
     {
         void EventRaised();
+        //IWatcher RemoveDecorator();
     }
 
     public class SystemWatcher : IWatcher
@@ -17,6 +18,11 @@ namespace Decorator
         {
             Console.WriteLine("System watcher event raised");
         }
+
+        //public IWatcher RemoveDecorator()
+        //{
+        //    throw new NotSupportedException("The lowest level.");
+        //}
     }
 
     public class NetworkWatcher : IWatcher
@@ -25,6 +31,10 @@ namespace Decorator
         {
             Console.WriteLine("Network watcher event raised");
         }
+        //public IWatcher RemoveDecorator()
+        //{
+        //    throw new NotSupportedException("The lowest level.");
+        //}
     }
 
     ///////////////////////////////
@@ -45,6 +55,10 @@ namespace Decorator
             //var name = this.GetType().Name;
             _decoratedWatcher.EventRaised();
         }
+        //public IWatcher RemoveDecorator()
+        //{
+        //    return _decoratedWatcher;
+        //}
     }
 
     public class TinderNotificationWatcherDecorator : IWatcher
@@ -63,6 +77,10 @@ namespace Decorator
             //var name = this.GetType().Name;
             _decoratedWatcher.EventRaised();
         }
+        //public IWatcher RemoveDecorator()
+        //{
+        //    return _decoratedWatcher;
+        //}
     }
 
 
@@ -82,5 +100,9 @@ namespace Decorator
             //var name = this.GetType().Name;
             _decoratedWatcher.EventRaised();
         }
+        //public IWatcher RemoveDecorator()
+        //{
+        //    return _decoratedWatcher;
+        //}
     }
 }
