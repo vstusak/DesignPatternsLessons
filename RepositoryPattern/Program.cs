@@ -1,5 +1,6 @@
 ﻿using RepositoryPattern.Context;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,10 +12,23 @@ namespace RepositoryPattern
         {
             await InitDbAsync();
             var context = new WarehouseContext();
-            var service = new WarehouseService(
-                new ProductRepository(context));
+            var productRepository = new ProductRepository(context);
+            var service = new WarehouseService(productRepository);
+            WriteAll(productRepository.All());
+            var selectedProducts = productRepository.All().First();
+            var commandManager = new CommandManager();
+            commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
+            //service.WriteProductsWithPriceOver100();
+            Console.WriteLine();
+            WriteAll(productRepository.All());
+        }
 
-            service.WriteProductsWithPriceOver100();
+        private static void WriteAll(IEnumerable<Product> all)
+        {
+            foreach (var product in all)
+            {
+                Console.WriteLine(product);
+            }
         }
 
         private static async Task InitDbAsync()
