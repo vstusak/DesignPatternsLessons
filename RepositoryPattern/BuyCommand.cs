@@ -1,4 +1,5 @@
 ﻿using RepositoryPattern.Context;
+using System.Collections.Generic;
 
 namespace RepositoryPattern
 {
@@ -13,10 +14,25 @@ namespace RepositoryPattern
             _productRepository = productRepository;
         }
 
+        public bool CanExecute()
+        {
+            //kontrola aktualních dat na naší straně
+            var choosenProduct = _productRepository.Get(_selectedProducts.ProductId);
+            return choosenProduct.Quantity > 0;
+        }
+
         public void Execute()
         {
-            _selectedProducts.Quantity -= 1;
-            _productRepository.Update(_selectedProducts);
+            var choosenProduct = _productRepository.Get(_selectedProducts.ProductId);
+            choosenProduct.Quantity -= 1;
+            _productRepository.Update(choosenProduct);
+        }
+
+        public void Undo()
+        {
+            var choosenProduct = _productRepository.Get(_selectedProducts.ProductId);
+            choosenProduct.Quantity += 1;
+            _productRepository.Update(choosenProduct);
         }
     }
 }

@@ -18,8 +18,13 @@ namespace RepositoryPattern
             var selectedProducts = productRepository.All().First();
             var commandManager = new CommandManager();
             commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
+            commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
+            commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
             //service.WriteProductsWithPriceOver100();
             Console.WriteLine();
+            WriteAll(productRepository.All());
+            Console.ReadLine();
+            commandManager.Undo();
             WriteAll(productRepository.All());
         }
 
