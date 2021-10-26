@@ -1,7 +1,6 @@
 ﻿using RepositoryPattern.Context;
-using System.Collections.Generic;
 
-namespace RepositoryPattern
+namespace RepositoryPattern.Commands
 {
     internal class BuyCommand : IAcademyCommand
     {

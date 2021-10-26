@@ -1,4 +1,5 @@
-﻿using RepositoryPattern.Context;
+﻿using RepositoryPattern.Commands;
+using RepositoryPattern.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +15,24 @@ namespace RepositoryPattern
             var context = new WarehouseContext();
             var productRepository = new ProductRepository(context);
             var service = new WarehouseService(productRepository);
+            var commandManager = new CommandManager();
+            var buyCommandHandler = new BuyCommandHandler(productRepository);
+            ///////////////////////////////////////////////////////////// ^ IOC container
+
             WriteAll(productRepository.All());
             var selectedProducts = productRepository.All().First();
-            var commandManager = new CommandManager();
+
             commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
             commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
             commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
+
             //service.WriteProductsWithPriceOver100();
-            Console.WriteLine();
+
             WriteAll(productRepository.All());
             Console.ReadLine();
             commandManager.Undo();
+            WriteAll(productRepository.All());
+            commandManager.Invoke(new ChangeQuantityCommand(selectedProducts, productRepository, 5));
             WriteAll(productRepository.All());
         }
 
@@ -34,6 +42,7 @@ namespace RepositoryPattern
             {
                 Console.WriteLine(product);
             }
+            Console.WriteLine();
         }
 
         private static async Task InitDbAsync()

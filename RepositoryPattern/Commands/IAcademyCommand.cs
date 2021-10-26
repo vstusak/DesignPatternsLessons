@@ -1,4 +1,4 @@
-﻿namespace RepositoryPattern
+﻿namespace RepositoryPattern.Commands
 {
     internal interface IAcademyCommand
     {

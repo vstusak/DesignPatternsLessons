@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using RepositoryPattern.Commands;
 
 namespace RepositoryPattern
 {
     internal class CommandManager
     {
-        private Stack<IAcademyCommand> _commads = new Stack<IAcademyCommand>();
+        private readonly Stack<IAcademyCommand> _commads = new();
         public CommandManager()
         {
-           
+
         }
 
         public void Invoke(IAcademyCommand command)
@@ -18,7 +18,12 @@ namespace RepositoryPattern
             {
                 command.Execute();
                 _commads.Push(command);
-            }            
+            }
+        }
+
+        public void Invoke(ICommandHandler command)
+        {
+            command.Execute();
         }
 
         internal void Undo()
