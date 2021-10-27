@@ -18,7 +18,7 @@ namespace RepositoryDesignPattern.Context
 
         public override string ToString()
         {
-            return $"Name:{Name}, Price:{Price}, Quantity:{Quantity}";
+            return $"Name:{Name}, Price:{Price}, Quantity:{Quantity}, LastQuantityModified:{LastQuantityModified}";
         }
     }
 }

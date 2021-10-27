@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RepositoryDesignPattern.Context;
 
 namespace RepositoryDesignPattern
@@ -24,6 +25,12 @@ namespace RepositoryDesignPattern
             var context = new WarehouseContext();
 
             return context.Products.Where(p => p.Price > 10);
+        }
+
+        public Product BuyProduct(Product product)
+        {
+            product.Quantity -= 1;
+            return _productRepository.Update(product);
         }
     }
 }

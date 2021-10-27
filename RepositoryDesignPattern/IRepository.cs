@@ -17,42 +17,60 @@ namespace RepositoryDesignPattern
         Task SaveChangesAsync();
     }
 
+    public class ProductRepository : GenericRepository<Product>
+    {
+        public ProductRepository(WarehouseContext context) : base(context)
+        {
+        }
+        
+        public override Product Update(Product product)
+        {
+            using var context2 = new WarehouseContext();
+            var dbProduct = context2.Products.Single(x => x.ProductId == product.ProductId);
+            if (dbProduct.Quantity != product.Quantity)
+            {
+                product.LastQuantityModified = DateTimeOffset.UtcNow;
+            }
+            return base.Update(product);
+        }
+    }
+
     public class GenericRepository<T> : IRepository<T> where T:class
     {
-        private readonly WarehouseContext _context;
+        protected readonly WarehouseContext Context;
 
         public GenericRepository(WarehouseContext context)
         {
-            _context = context;
+            Context = context;
         }
         public T Get(Guid id)
         {
-            return _context.Find<T>(id);
+            return Context.Find<T>(id);
         }
 
         public T Add(T item)
         {
-            return _context.Add(item).Entity;
+            return Context.Add(item).Entity;
         }
 
-        public T Update(T item)
+        public virtual T Update(T item)
         {
-            return _context.Update(item).Entity;
+            return Context.Update(item).Entity;
         }
 
         public T Find(Expression<Func<T, bool>> expression)
         {
-            return _context.Find<T>(expression);
+            return Context.Find<T>(expression);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return _context.Set<T>().ToList();
+            return Context.Set<T>().ToList();
         }
 
         public async Task SaveChangesAsync()
         {
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
     }
 }

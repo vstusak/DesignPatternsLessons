@@ -13,14 +13,24 @@ namespace RepositoryDesignPattern
             await InitDb();
 
             var context = new WarehouseContext();
-            var productRepository = new GenericRepository<Product>(context);
+            //var productRepository = new GenericRepository<Product>(context);
+            var productRepository = new ProductRepository(context);
             var warehouseService = new WarehouseService(productRepository);
             var products = warehouseService.GetAll();
+            
+            //foreach (var product in products)
+            //{
+            //    Console.WriteLine(product);
+            //}
 
-            foreach (var product in products)
-            {
-                Console.WriteLine( product);
-            }
+            
+            var productToBuy = products.First();
+            Console.WriteLine(productToBuy);
+            productToBuy = warehouseService.BuyProduct(productToBuy);
+            Console.WriteLine(productToBuy);
+
+
+            Console.ReadLine();
         }
 
         private static async Task InitDb()
@@ -33,7 +43,7 @@ namespace RepositoryDesignPattern
             await context.AddAsync(new Product { Name = "Square", Price = 4, Quantity = 15 });
             await context.AddAsync(new Product { Name = "Sausage", Price = 8.5, Quantity = 2 });
             await context.AddAsync(new Product { Name = "Beer", Price = 35.98, Quantity = 100 });
-            await context.AddAsync(new Product { Name = "Jagermeister", Price = 300, Quantity = 2 });
+            await context.AddAsync(new Product { Name = "Jägermeister", Price = 300, Quantity = 2 });
             await context.AddAsync(new Product { Name = "White Wine", Price = 150.50, Quantity = 6 });
 
             await context.SaveChangesAsync();
