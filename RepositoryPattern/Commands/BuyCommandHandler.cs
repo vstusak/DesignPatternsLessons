@@ -4,14 +4,18 @@ namespace RepositoryPattern.Commands
 {
     public class BuyCommandHandler : ICommandHandler
     {
+        private readonly ProductRepository _productRepository;
+
         public BuyCommandHandler(ProductRepository productRepository)
         {
-            throw new NotImplementedException();
+            _productRepository = productRepository;
         }
 
-        public void Execute()
+        public void Execute(BuyOnlyCommand command)
         {
-            throw new NotImplementedException();
+            var choosenProduct = _productRepository.Get(command.ProductId);
+            choosenProduct.Quantity -= 1;
+            _productRepository.Update(choosenProduct);
         }
     }
 }

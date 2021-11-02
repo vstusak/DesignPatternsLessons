@@ -2,6 +2,6 @@
 {
     public interface ICommandHandler
     {
-        void Execute();
+        void Execute(BuyOnlyCommand command);
     }
 }

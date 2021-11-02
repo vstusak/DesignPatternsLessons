@@ -21,10 +21,10 @@ namespace RepositoryPattern
             }
         }
 
-        public void Invoke(ICommandHandler command)
-        {
-            command.Execute();
-        }
+        //public void Invoke(ICommandHandler command)
+        //{
+        //    command.Execute();
+        //}
 
         internal void Undo()
         {

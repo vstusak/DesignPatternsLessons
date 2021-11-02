@@ -34,6 +34,13 @@ namespace RepositoryPattern
             WriteAll(productRepository.All());
             commandManager.Invoke(new ChangeQuantityCommand(selectedProducts, productRepository, 5));
             WriteAll(productRepository.All());
+
+            ///////////////////////////////////////////////////////////// CQRS
+            Console.WriteLine("CQRS starts now!");
+            var buyCommand = new BuyOnlyCommand(selectedProducts.ProductId);
+            buyCommandHandler.Execute(buyCommand);
+            WriteAll(productRepository.All());
+            Console.ReadLine();
         }
 
         private static void WriteAll(IEnumerable<Product> all)
