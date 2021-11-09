@@ -9,7 +9,7 @@ namespace CQRS
 {
     public interface ICommandHandler<TCommand>
     {
-        void Execute(TCommand command);
+        Task Execute(TCommand command);
     }
 
     public class BuyCommand
@@ -29,16 +29,26 @@ namespace CQRS
     public class BuyCommandHandler : IBuyCommandHandler
     {
         private readonly ProductRepository _productRepository;
+        private readonly IProductDetailQueryHandler _productDetailQueryHandler;
 
         public BuyCommandHandler(
-            ProductRepository productRepository)
+            ProductRepository productRepository, IProductDetailQueryHandler productDetailQueryHandler)
         {
             _productRepository = productRepository;
+            _productDetailQueryHandler = productDetailQueryHandler;
         }
 
-        public void Execute(BuyCommand command)
+        public async Task Execute(BuyCommand command)
         {
-            // implementation
+            //var product = _productRepository.Get(command.ProductId);
+            var query = new ProductDetailQuery { 
+            ProductId = command.ProductId
+            };
+            
+            var product = _productDetailQueryHandler.Execute(query);
+            product.Quantity =- 1;
+            _productRepository.Update(product);
+            await _productRepository.SaveChangesAsync();
         }
     }
 }
