@@ -10,7 +10,11 @@ namespace DecoratorPattern
 
             IWatcher watcher = new Watcher();
             watcher = new TinderNotificationForWatcher(watcher);
+            watcher = new PerformanceMeasurementForWatcher(watcher);
             watcher.EventRaised();
+
+            watcher = new Watcher();
+            watcher = new TinderNotificationForWatcher(watcher);
 
             Console.ReadLine();
         }
