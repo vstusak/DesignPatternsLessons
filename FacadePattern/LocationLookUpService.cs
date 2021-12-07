@@ -2,7 +2,8 @@
 
 namespace FacadePattern
 {
-    public class LocationLookUpService : ILocationLookUpService
+    public class LocationLookUpService
+        : ILocationLookUpService, IAutoInstall
     {
         public City GetCity(string zip)
         {

@@ -1,6 +1,7 @@
 ﻿namespace FacadePattern
 {
-    public class TemperatureConventorService : ITemperatureConventorService
+    public class TemperatureConventorService
+        : ITemperatureConventorService, IAutoInstall
     {
         public int ToCelsia(int fahrenheit)
         {
