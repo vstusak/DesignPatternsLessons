@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace PublicToilet
 {
-    class ToiletDoorResult
-    {       
+    public class ToiletDoorResult
+    {
 
-        public ToiletDoorResult(bool releaseDoor, string v, Color color)
+        public ToiletDoorResult(string v, Color color)
         {
-            //this.releaseDoor = releaseDoor;
             Message = v;
             Color = color;
         }

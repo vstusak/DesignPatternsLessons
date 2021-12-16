@@ -30,8 +30,9 @@ namespace PublicToilet
         private void InitializeComponent()
         {
             this.swipeCardButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.DisplayLabel = new System.Windows.Forms.Label();
             this.openDoor = new System.Windows.Forms.Button();
+            this.LeaveToiletButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // swipeCardButton
@@ -45,14 +46,14 @@ namespace PublicToilet
             this.swipeCardButton.UseVisualStyleBackColor = true;
             this.swipeCardButton.Click += new System.EventHandler(this.swipeCardButton_Click);
             // 
-            // label1
+            // DisplayLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(180, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.DisplayLabel.AutoSize = true;
+            this.DisplayLabel.Location = new System.Drawing.Point(180, 60);
+            this.DisplayLabel.Name = "DisplayLabel";
+            this.DisplayLabel.Size = new System.Drawing.Size(50, 20);
+            this.DisplayLabel.TabIndex = 1;
+            this.DisplayLabel.Text = "label1";
             // 
             // openDoor
             // 
@@ -64,13 +65,24 @@ namespace PublicToilet
             this.openDoor.UseVisualStyleBackColor = true;
             this.openDoor.Click += new System.EventHandler(this.openDoor_Click);
             // 
+            // LeaveToiletButton
+            // 
+            this.LeaveToiletButton.Location = new System.Drawing.Point(38, 177);
+            this.LeaveToiletButton.Name = "LeaveToiletButton";
+            this.LeaveToiletButton.Size = new System.Drawing.Size(117, 29);
+            this.LeaveToiletButton.TabIndex = 3;
+            this.LeaveToiletButton.Text = "Leave Toilet";
+            this.LeaveToiletButton.UseVisualStyleBackColor = true;
+            this.LeaveToiletButton.Click += new System.EventHandler(this.LeaveToiletButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1118, 686);
+            this.Controls.Add(this.LeaveToiletButton);
             this.Controls.Add(this.openDoor);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.DisplayLabel);
             this.Controls.Add(this.swipeCardButton);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -82,8 +94,9 @@ namespace PublicToilet
         #endregion
 
         private System.Windows.Forms.Button swipeCardButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label DisplayLabel;
         private System.Windows.Forms.Button openDoor;
+        private System.Windows.Forms.Button LeaveToiletButton;
     }
 }
 

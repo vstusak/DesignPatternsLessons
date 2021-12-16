@@ -1,44 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace PublicToilet
 {
-    class PublicToilet
+    public class PublicToilet
     {
-        public PublicToilet()
-        {
-            ReleaseDoor = false;
-        }
+        private State _toiletState = State.Locked;
 
-        public bool ReleaseDoor { get; set; }
-        public void SwipeCard()
+        public ToiletDoorResult SwipeCard()
         {
-            if (PaymentService.Pay())
+            if (_toiletState == State.Occupied)
             {
-                ReleaseDoor = true;
-            } 
-            else
-            {
-                ReleaseDoor = false;
+                return new ToiletDoorResult( "Transaction isn't done", Color.Orange);
             }
+
+            if (!PaymentService.Pay())
+            {
+                _toiletState = State.Locked;
+                return new ToiletDoorResult( "You must pay", Color.Red);
+            }
+            _toiletState = State.Unlocked;
+            return new ToiletDoorResult( "Door opened", Color.Green);
+
         }
 
         public ToiletDoorResult OpenDoor()
         {
-            ToiletDoorResult result;
-            if (ReleaseDoor)
+            if (_toiletState == State.Unlocked)
             {
-                ReleaseDoor = false;
-                result = new ToiletDoorResult(ReleaseDoor, "Door locked",Color.Red);
-                
+                _toiletState = State.Occupied;
+                return new ToiletDoorResult( "Toilet is occupied", Color.Orange);
             }
-                        
+
+            if (_toiletState == State.Occupied)
+            {
+                return new ToiletDoorResult("Toilet is still occupied!", Color.Orange);
+            }
+
+            return new ToiletDoorResult( "Door locked", Color.Red);
         }
 
-        
+        public ToiletDoorResult LeaveToilet()
+        {
+            _toiletState = State.Locked;
+
+            return new ToiletDoorResult( "Door locked", Color.Red);
+        }
     }
 }
