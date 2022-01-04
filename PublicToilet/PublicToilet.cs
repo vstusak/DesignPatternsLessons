@@ -2,7 +2,7 @@
 
 namespace PublicToilet
 {
-    public class PublicToilet
+    public class PublicToilet : IPublicToilet
     {
         private State _toiletState = State.Locked;
 
@@ -10,16 +10,17 @@ namespace PublicToilet
         {
             if (_toiletState == State.Occupied)
             {
-                return new ToiletDoorResult( "Transaction isn't done", Color.Orange);
+                return new ToiletDoorResult("Transaction isn't done", Color.Orange);
             }
 
             if (!PaymentService.Pay())
             {
-                _toiletState = State.Locked;
-                return new ToiletDoorResult( "You must pay", Color.Red);
+                _toiletState = State.PaymentFailed;
+                return new ToiletDoorResult("Payment failed", Color.Red);
             }
+
             _toiletState = State.Unlocked;
-            return new ToiletDoorResult( "Door opened", Color.Green);
+            return new ToiletDoorResult("Door opened", Color.Green);
 
         }
 
@@ -28,7 +29,7 @@ namespace PublicToilet
             if (_toiletState == State.Unlocked)
             {
                 _toiletState = State.Occupied;
-                return new ToiletDoorResult( "Toilet is occupied", Color.Orange);
+                return new ToiletDoorResult("Toilet is occupied", Color.Orange);
             }
 
             if (_toiletState == State.Occupied)
@@ -36,14 +37,14 @@ namespace PublicToilet
                 return new ToiletDoorResult("Toilet is still occupied!", Color.Orange);
             }
 
-            return new ToiletDoorResult( "Door locked", Color.Red);
+            return new ToiletDoorResult("Door locked", Color.Red);
         }
 
         public ToiletDoorResult LeaveToilet()
         {
             _toiletState = State.Locked;
 
-            return new ToiletDoorResult( "Door locked", Color.Red);
+            return new ToiletDoorResult("Door locked", Color.Red);
         }
     }
 }

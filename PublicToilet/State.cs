@@ -4,6 +4,7 @@
     {
         Locked,
         Unlocked,
-        Occupied
+        Occupied,
+        PaymentFailed
     }
 }
