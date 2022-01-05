@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using RepositoryDesignPattern.Commands;
 using RepositoryDesignPattern.Context;
 
 namespace RepositoryDesignPattern
@@ -15,6 +16,7 @@ namespace RepositoryDesignPattern
             var context = new WarehouseContext();
             //var productRepository = new GenericRepository<Product>(context);
             var productRepository = new ProductRepository(context);
+            var commandController = new CommandController();
             var warehouseService = new WarehouseService(productRepository);
             var products = warehouseService.GetAll();
             
@@ -22,14 +24,13 @@ namespace RepositoryDesignPattern
             //{
             //    Console.WriteLine(product);
             //}
-
             
             var productToBuy = products.First();
             Console.WriteLine(productToBuy);
-            productToBuy = warehouseService.BuyProduct(productToBuy);
+            var command = new BuyCommand(productRepository, productToBuy);
+            //productToBuy = warehouseService.BuyProduct(productToBuy);
+            await commandController.Invoke(command);
             Console.WriteLine(productToBuy);
-
-
             Console.ReadLine();
         }
 
