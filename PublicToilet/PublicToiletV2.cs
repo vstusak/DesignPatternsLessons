@@ -1,12 +1,18 @@
-﻿namespace PublicToilet
+﻿using System.Collections.Generic;
+
+namespace PublicToilet
 {
     public class PublicToiletV2 : IPublicToilet
     {
         private IToiletState _state;
+        private IPaymentService _paymentService;
+        private readonly IEnumerable<IToiletState> toiletStates;
 
-        public PublicToiletV2()
+        public PublicToiletV2(IPaymentService paymentService, IEnumerable<IToiletState> toiletStates)
         {
-            ChangeState(new LockedToiletState(this));
+            ChangeState(new LockedToiletState());
+            _paymentService = paymentService;
+            this.toiletStates = toiletStates;
         }
 
         public void ChangeState(IToiletState state)

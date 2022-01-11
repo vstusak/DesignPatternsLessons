@@ -2,9 +2,9 @@
 
 namespace PublicToilet
 {
-    public static class PaymentService
+    public class PaymentService : IPaymentService
     {
-        public static bool Pay()
+        public bool Pay()
         {
             Random rnd = new Random(DateTime.Now.Second);
             var result =  rnd.Next(0, 2);

@@ -5,11 +5,11 @@ namespace PublicToilet
 {
     public partial class Form1 : Form
     {
-        private readonly PublicToilet _toilet;
+        private readonly PublicToiletV2 _toilet;
         public Form1()
         {
             InitializeComponent();
-            _toilet = new PublicToilet();
+            _toilet = new PublicToiletV2();
         }
 
         private void swipeCardButton_Click(object sender, EventArgs e)

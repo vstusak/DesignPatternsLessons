@@ -16,6 +16,8 @@ namespace PublicToilet
             this.publicToiletV2 = publicToiletV2;
         }
 
+        public State NameOfState => State.Unlocked;
+
         public ToiletDoorResult LeaveToilet()
         {
             publicToiletV2.ChangeState(new LockedToiletState(publicToiletV2));

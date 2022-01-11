@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,19 +16,24 @@ namespace PublicToilet
             this.publicToiletV2 = publicToiletV2;
         }
 
+        public State NameOfState => State.Occupied;
+
         public ToiletDoorResult LeaveToilet()
         {
-            throw new NotImplementedException();
+            publicToiletV2.ChangeState(new LockedToiletState(publicToiletV2));
+            return new ToiletDoorResult("Door locked", Color.Red);
         }
 
         public ToiletDoorResult OpenDoor()
         {
-            throw new NotImplementedException();
+            publicToiletV2.ChangeState(this);
+            return new ToiletDoorResult("Toiled is occupied", Color.Red);
         }
 
         public ToiletDoorResult SwipeCard()
         {
-            throw new NotImplementedException();
+            publicToiletV2.ChangeState(this);
+            return new ToiletDoorResult("Toiled is occupied", Color.Red);
         }
     }
 }

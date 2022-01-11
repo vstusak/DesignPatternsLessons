@@ -13,7 +13,7 @@ namespace PublicToilet
                 return new ToiletDoorResult("Transaction isn't done", Color.Orange);
             }
 
-            if (!PaymentService.Pay())
+            if (true/*!PaymentService.Pay()*/)//Previous version of payment service
             {
                 _toiletState = State.PaymentFailed;
                 return new ToiletDoorResult("Payment failed", Color.Red);

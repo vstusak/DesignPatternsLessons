@@ -5,32 +5,36 @@ namespace PublicToilet
 {
     public class LockedToiletState : IToiletState
     {
-        private PublicToiletV2 publicToiletV2;
+        private PublicToiletV2 _publicToiletV2;
+        private IPaymentService _paymentService;
 
-        public LockedToiletState(PublicToiletV2 publicToiletV2)
+        public LockedToiletState(IPaymentService paymentService)
         {
-            this.publicToiletV2 = publicToiletV2;
+            this._publicToiletV2 = _publicToiletV2;
+            _paymentService = paymentService;
         }
+
+        public State NameOfState => State.Locked;
 
         public ToiletDoorResult LeaveToilet()
         {
-            publicToiletV2.ChangeState(this);
+            _publicToiletV2.ChangeState(this);
             return new ToiletDoorResult("Door locked", Color.Red);
         }
         public ToiletDoorResult OpenDoor()
         {
-            publicToiletV2.ChangeState(this);
+            _publicToiletV2.ChangeState(this);
             return new ToiletDoorResult("Door locked", Color.Red);
         }
         public ToiletDoorResult SwipeCard()
         {
-            if (!PaymentService.Pay())
+            if (_paymentService.Pay())
             {
-                publicToiletV2.ChangeState(new PaymentFailedToiletState(publicToiletV2));
+                _publicToiletV2.ChangeState(this);
                 return new ToiletDoorResult("Payment failed", Color.Red);
             }
 
-            publicToiletV2.ChangeState(new UnlockedToiletState(publicToiletV2));
+            _publicToiletV2.ChangeState(new UnlockedToiletState(_publicToiletV2));
             return new ToiletDoorResult("Door opened", Color.Green);
         }
     }
