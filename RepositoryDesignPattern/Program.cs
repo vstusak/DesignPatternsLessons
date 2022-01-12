@@ -26,10 +26,15 @@ namespace RepositoryDesignPattern
             //}
             
             var productToBuy = products.First();
+            var productIdToBuy = productToBuy.ProductId;
+
             Console.WriteLine(productToBuy);
-            var command = new BuyCommand(productRepository, productToBuy);
-            //productToBuy = warehouseService.BuyProduct(productToBuy);
-            await commandController.Invoke(command);
+            Console.WriteLine(productIdToBuy);
+            var command = new BuyCommand(productRepository, productIdToBuy);
+            commandController.Invoke(command);
+            Console.WriteLine(productToBuy);
+
+            commandController.Undo();
             Console.WriteLine(productToBuy);
             Console.ReadLine();
         }

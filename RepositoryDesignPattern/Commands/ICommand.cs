@@ -7,31 +7,42 @@ namespace RepositoryDesignPattern.Commands
     internal interface ICommand
     {
         bool CanExecute();
-        Task Execute();
+        void Execute();
+        void Undo();
     }
 
     public class BuyCommand : ICommand
     {
         private readonly IRepository<Product> _repository;
-        private readonly Product _product;
+        private readonly Guid _productId;
+        private Product _product;
 
-        public BuyCommand(IRepository<Product> repository, Product product)
+        public BuyCommand(IRepository<Product> repository, Guid productId)
         {
             _repository = repository;
-            _product = product;
+            _productId = productId;
         }
 
         public bool CanExecute()
         {
-            throw new NotImplementedException();
+            _product = _repository.Get(_productId);
+            return _product.Quantity > 0;
         }
 
-        public async Task Execute()
+        public void Execute()
         {
             Console.WriteLine("Executing the execution.");
             _product.Quantity -= 1;
             _repository.Update(_product);
-            await _repository.SaveChangesAsync();
+            _repository.SaveChanges();
+        }
+
+        public void Undo()
+        {
+            Console.WriteLine("calling Undo");
+            _product.Quantity += 1;
+            _repository.Update(_product);
+            _repository.SaveChanges();
         }
     }
 }

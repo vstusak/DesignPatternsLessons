@@ -15,6 +15,7 @@ namespace RepositoryDesignPattern
         T Find(Expression<Func<T, bool>> expression);
         IEnumerable<T> GetAll();
         Task SaveChangesAsync();
+        void SaveChanges();
     }
 
     public class ProductRepository : GenericRepository<Product>
@@ -71,6 +72,11 @@ namespace RepositoryDesignPattern
         public async Task SaveChangesAsync()
         {
             await Context.SaveChangesAsync();
+        }
+
+        public void SaveChanges()
+        {
+            Context.SaveChanges();
         }
     }
 }

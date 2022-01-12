@@ -8,16 +8,32 @@ namespace RepositoryDesignPattern
 {
     internal class CommandController
     {
-        public async Task Invoke(ICommand command)
+        private readonly Stack<ICommand> _commandStack = new Stack<ICommand>();
+
+        public void Invoke(ICommand command)
         {
             if (command.CanExecute())
             {
-                await command.Execute();
+                command.Execute();
+                _commandStack.Push(command);
             }
             else
             {
                 Console.WriteLine("Command is not executable.");
             }
+        }
+
+        public void Undo()
+        {
+            if (_commandStack.TryPop(out var command))
+            {
+                command.Undo();
+            }
+            else
+            {
+                Console.WriteLine("No undo command left!");
+            }
+            
         }
     }
 }
