@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyPattern", "DesignPatterns\StrategyPattern.csproj", "{4E3CB897-0D65-4570-8331-6041B02D5AD6}"
 EndProject
@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgePattern", "BeforeBrid
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacadePattern", "FacadePattern\FacadePattern.csproj", "{DBA989D6-6260-4CFE-AABA-53CE2FE6A54D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicToilet", "PublicToilet\PublicToilet.csproj", "{D0F770F6-1C68-4124-9EC0-6F09E7DCD25D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PublicToilet", "PublicToilet\PublicToilet.csproj", "{D0F770F6-1C68-4124-9EC0-6F09E7DCD25D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisitorPattern", "VisitorPattern\VisitorPattern.csproj", "{7EE6CC8D-7877-4CD4-B755-A54F3238752F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{D0F770F6-1C68-4124-9EC0-6F09E7DCD25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0F770F6-1C68-4124-9EC0-6F09E7DCD25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0F770F6-1C68-4124-9EC0-6F09E7DCD25D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE6CC8D-7877-4CD4-B755-A54F3238752F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE6CC8D-7877-4CD4-B755-A54F3238752F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE6CC8D-7877-4CD4-B755-A54F3238752F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE6CC8D-7877-4CD4-B755-A54F3238752F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
