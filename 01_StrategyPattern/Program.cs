@@ -10,6 +10,11 @@ namespace _01_StrategyPattern
     {
         static void Main(string[] args)
         {
+            var dressPicker = new DressPicker();
+            Console.WriteLine($"Obleceni: {dressPicker}");
+
+            dressPicker.SetStrategy(Weather.Sunny);
+            Console.WriteLine($"Obleceni: {dressPicker}");            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _01_StrategyPattern.Strategies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,88 +9,85 @@ namespace _01_StrategyPattern
 {
     public class DressPicker
     {
-        public string Head(Weather weather)
+        private IWeatherStrategy _strategy;
+
+        public DressPicker() : this(Weather.Snowy)
+        {
+        }
+        public DressPicker(Weather weather)
+        {
+            SetStrategy(weather);
+        }
+
+        public void SetStrategy(Weather weather)
         {
             switch (weather)
             {
                 case Weather.Sunny:
-                    return "Klobouk";
+                    _strategy = new SunnyStrategy();
+                    break;
                 case Weather.Windy:
-                    return "Plavecka cepice";
+                    _strategy = new WindyStrategy();
+                    break;
                 case Weather.Rainy:
-                    return "Rybarsky klobouk";
+                    _strategy = new RainyStrategy();
+                    break;
                 case Weather.Snowy:
-                    return "Kulich";
+                    _strategy = new SnowyStrategy();
+                    break;
                 case Weather.Tornado:
-                    return "Kotva";
+                    _strategy = new TornadoStrategy();
+                    break;
                 case Weather.Misty:
-                    return "Celovka";
+                    _strategy = new MistyStrategy();
+                    break;
                 default:
                     throw new NotSupportedException();
             }
         }
-
-        public string Feet(Weather weather)
+        public string Head()
         {
-            switch (weather)
-            {
-                case Weather.Sunny:
-                    return "Zabky";
-                case Weather.Windy:
-                    return "Botasky";
-                case Weather.Rainy:
-                    return "Gumaky";
-                case Weather.Snowy:
-                    return "Snehule";
-                case Weather.Tornado:
-                    return "Vezenska koule";
-                case Weather.Misty:
-                    return "Tenisky";
-                default:
-                    throw new NotSupportedException();
-            }
+            return _strategy.Head();
+
+            #region Switch (weather)
+            //    switch (weather)
+            //    {
+            //        case Weather.Sunny:
+            //            return "Klobouk";
+            //        case Weather.Windy:
+            //            return "Plavecka cepice";
+            //        case Weather.Rainy:
+            //            return "Rybarsky klobouk";
+            //        case Weather.Snowy:
+            //            return "Kulich";
+            //        case Weather.Tornado:
+            //            return "Kotva";
+            //        case Weather.Misty:
+            //            return "Celovka";
+            //        default:
+            //            throw new NotSupportedException();
+            //    }
+            #endregion Switch (weather)
         }
 
-        public string Body(Weather weather)
+        public string Feet()
         {
-            switch (weather)
-            {
-                case Weather.Sunny:
-                    return "Havajske tricko";
-                case Weather.Windy:
-                    return "Vetrovka";
-                case Weather.Rainy:
-                    return "Plastenka";
-                case Weather.Snowy:
-                    return "Svetr";
-                case Weather.Tornado:
-                    return "Chainmail";
-                case Weather.Misty:
-                    return "Reflexni vesta";
-                default:
-                    throw new NotSupportedException();
-            }
+            return _strategy.Feet();
         }
 
-        public string Legs(Weather weather)
+        public string Body()
         {
-            switch (weather)
-            {
-                case Weather.Sunny:
-                    return "Sortky";
-                case Weather.Windy:
-                    return "Sustaky";
-                case Weather.Rainy:
-                    return "Rybarske kalhoty";
-                case Weather.Snowy:
-                    return "Oteplovacky";
-                case Weather.Tornado:
-                    return "Kratasy";
-                case Weather.Misty:
-                    return "Reflexni kalhoty";
-                default:
-                    throw new NotSupportedException();
-            }
+            return _strategy.Body();
+        }
+
+        public string Legs()
+        {
+            return _strategy.Legs();
+        }
+
+        public override string ToString()
+        {
+            return $"{Head()}, {Feet()}, {Body()}, {Legs()}";
         }
     }
 }
