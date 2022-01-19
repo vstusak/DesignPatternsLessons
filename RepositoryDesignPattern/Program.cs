@@ -18,6 +18,8 @@ namespace RepositoryDesignPattern
             var productRepository = new ProductRepository(context);
             var commandController = new CommandController();
             var warehouseService = new WarehouseService(productRepository);
+            var buyCqrsCommandHandler = new BuyCqrsCommandHandler(productRepository);
+
             var products = warehouseService.GetAll();
             
             //foreach (var product in products)
@@ -36,6 +38,14 @@ namespace RepositoryDesignPattern
 
             commandController.Undo();
             Console.WriteLine(productToBuy);
+
+            //*****************************************************************
+            //CQRS
+            Console.WriteLine("CQRS Baby!");
+            var buyCqrsCommand = new BuyCqrsCommand(productIdToBuy);
+            buyCqrsCommandHandler.Execute(buyCqrsCommand);
+            Console.WriteLine(productToBuy);
+
             Console.ReadLine();
         }
 
