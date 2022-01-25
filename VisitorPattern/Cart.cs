@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VisitorPattern.Products;
+using VisitorPattern.Visitors;
 
 namespace VisitorPattern
 {
@@ -29,6 +31,14 @@ namespace VisitorPattern
             }
 
             Console.WriteLine($"    Total: {Products.Sum(item => item.Price)}");
+        }
+
+        public void ApplyVisitor(IVisitor visitor)
+        {
+            foreach (var product in Products)
+            {
+                product.Accept(visitor);
+            }
         }
     }
 }

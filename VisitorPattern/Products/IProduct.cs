@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VisitorPattern.VisitableObjects;
 
-namespace VisitorPattern
+namespace VisitorPattern.Products
 {
-    public interface IProduct
+    public interface IProduct: IVisitableObject
     {
         string Name {  get; }
         int Price {  get; }

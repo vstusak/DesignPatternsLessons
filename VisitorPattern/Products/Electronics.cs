@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VisitorPattern.VisitableObjects;
+using VisitorPattern.Visitors;
 
-namespace VisitorPattern
+namespace VisitorPattern.Products
 {
-    class Electronics : IProduct
+    public class Electronics : IProduct
     {
         public Electronics(string name, int price)
         {
@@ -16,5 +13,9 @@ namespace VisitorPattern
 
         public string Name {  get; set; }
         public int Price {  get; set; }
+        public void Accept(IVisitor visitor)
+        {
+            visitor.VisitElectronics(this);
+        }
     }
 }

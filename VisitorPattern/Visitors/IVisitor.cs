@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VisitorPattern.Products;
 
-namespace VisitorPattern
+namespace VisitorPattern.Visitors
 {
-    internal interface IVisitor
+    public interface IVisitor
     {
+        void VisitToy(Toy toy);
+        void VisitBook(Book book);
+        void VisitElectronics(Electronics electronics);
     }
 }
