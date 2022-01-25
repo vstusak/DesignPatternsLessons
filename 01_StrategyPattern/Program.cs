@@ -14,7 +14,8 @@ namespace _01_StrategyPattern
             Console.WriteLine($"Obleceni: {dressPicker}");
 
             dressPicker.SetStrategy(Weather.Sunny);
-            Console.WriteLine($"Obleceni: {dressPicker}");            
+            Console.WriteLine($"Obleceni: {dressPicker}");
+
         }
     }
 }

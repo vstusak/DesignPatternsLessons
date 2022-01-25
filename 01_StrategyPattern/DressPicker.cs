@@ -10,6 +10,8 @@ namespace _01_StrategyPattern
     public class DressPicker
     {
         private IWeatherStrategy _strategy;
+        private readonly Dictionary<Weather, IWeatherStrategy> _strategies = new Dictionary<Weather, IWeatherStrategy>();
+
 
         public DressPicker() : this(Weather.Snowy)
         {
@@ -21,29 +23,41 @@ namespace _01_StrategyPattern
 
         public void SetStrategy(Weather weather)
         {
-            switch (weather)
+
+
+
+            if (_strategies.ContainsKey(weather))
             {
-                case Weather.Sunny:
-                    _strategy = new SunnyStrategy();
-                    break;
-                case Weather.Windy:
-                    _strategy = new WindyStrategy();
-                    break;
-                case Weather.Rainy:
-                    _strategy = new RainyStrategy();
-                    break;
-                case Weather.Snowy:
-                    _strategy = new SnowyStrategy();
-                    break;
-                case Weather.Tornado:
-                    _strategy = new TornadoStrategy();
-                    break;
-                case Weather.Misty:
-                    _strategy = new MistyStrategy();
-                    break;
-                default:
-                    throw new NotSupportedException();
+                _strategy = _strategies[weather];
             }
+            else
+            {
+                switch (weather)
+                {
+                    case Weather.Sunny:
+                        _strategy = new SunnyStrategy();
+                        break;
+                    case Weather.Windy:
+                        _strategy = new WindyStrategy();
+                        break;
+                    case Weather.Rainy:
+                        _strategy = new RainyStrategy();
+                        break;
+                    case Weather.Snowy:
+                        _strategy = new SnowyStrategy();
+                        break;
+                    case Weather.Tornado:
+                        _strategy = new TornadoStrategy();
+                        break;
+                    case Weather.Misty:
+                        _strategy = new MistyStrategy();
+                        break;
+                    default:
+                        throw new NotSupportedException();
+                }
+                _strategies.Add(weather, _strategy);
+            }
+
         }
         public string Head()
         {
