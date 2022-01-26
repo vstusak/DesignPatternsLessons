@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RepositoryDesignPattern.Commands;
 using RepositoryDesignPattern.Context;
+using RepositoryDesignPattern.Queries;
 
 namespace RepositoryDesignPattern
 {
@@ -18,7 +19,8 @@ namespace RepositoryDesignPattern
             var productRepository = new ProductRepository(context);
             var commandController = new CommandController();
             var warehouseService = new WarehouseService(productRepository);
-            var buyCqrsCommandHandler = new BuyCqrsCommandHandler(productRepository);
+            var productQueryHandler = new ProductCqrsQueryHandler(productRepository);
+            var buyCqrsCommandHandler = new BuyCqrsCommandHandler(productRepository, productQueryHandler);
 
             var products = warehouseService.GetAll();
             

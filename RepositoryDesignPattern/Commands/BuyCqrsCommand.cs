@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using RepositoryDesignPattern.Context;
+using RepositoryDesignPattern.Queries;
 
 namespace RepositoryDesignPattern.Commands
 {
@@ -18,17 +19,21 @@ namespace RepositoryDesignPattern.Commands
     public class BuyCqrsCommandHandler : IBuyCqrsCommandHandler
     {
         private readonly IRepository<Product> _repository;
+        private readonly IProductCqrsQueryHandler _queryHandler;
 
-        public BuyCqrsCommandHandler(IRepository<Product> repository)
+        public BuyCqrsCommandHandler(IRepository<Product> repository, IProductCqrsQueryHandler queryHandler)
         {
             _repository = repository;
+            _queryHandler = queryHandler;
         }
 
         public void Execute(BuyCqrsCommand buyCommand)
         {
             Console.WriteLine("Executing the CQRS execution.");
 
-            var _product = _repository.Get(buyCommand.ProductId);
+            var query = new ProductQuery(buyCommand.ProductId);
+            var _product = _queryHandler.Execute(query);
+
             if (_product.Quantity > 0)
             {
                 _product.Quantity -= 1;
