@@ -8,10 +8,10 @@ namespace PublicToilet
         private PublicToiletV2 _publicToiletV2;
         private IPaymentService _paymentService;
 
-        public LockedToiletState(IPaymentService paymentService)
+        public LockedToiletState(PublicToiletV2 publicToiletV2)
         {
-            this._publicToiletV2 = _publicToiletV2;
-            _paymentService = paymentService;
+            _publicToiletV2 = publicToiletV2;
+            _paymentService = new PaymentService();
         }
 
         public State NameOfState => State.Locked;

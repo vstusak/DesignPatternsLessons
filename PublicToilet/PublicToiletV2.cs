@@ -10,7 +10,7 @@ namespace PublicToilet
 
         public PublicToiletV2(IPaymentService paymentService, IEnumerable<IToiletState> toiletStates)
         {
-            ChangeState(new LockedToiletState());
+            //ChangeState(new LockedToiletState());
             _paymentService = paymentService;
             this.toiletStates = toiletStates;
         }

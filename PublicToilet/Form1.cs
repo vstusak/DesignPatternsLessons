@@ -9,7 +9,7 @@ namespace PublicToilet
         public Form1()
         {
             InitializeComponent();
-            _toilet = new PublicToiletV2();
+            //_toilet = new PublicToiletV2();
         }
 
         private void swipeCardButton_Click(object sender, EventArgs e)
