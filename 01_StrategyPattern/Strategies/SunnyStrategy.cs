@@ -8,6 +8,8 @@ namespace _01_StrategyPattern.Strategies
 {
     class SunnyStrategy : IWeatherStrategy
     {
+        public Weather Weather => Weather.Sunny;
+
         public string Body()
         {
             return "Havajske tricko";

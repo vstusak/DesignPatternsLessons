@@ -10,7 +10,9 @@ namespace _01_StrategyPattern
     public class DressPicker
     {
         private IWeatherStrategy _strategy;
-        private readonly Dictionary<Weather, IWeatherStrategy> _strategies = new Dictionary<Weather, IWeatherStrategy>();
+        //private readonly Dictionary<Weather, IWeatherStrategy> _strategies = new Dictionary<Weather, IWeatherStrategy>();
+        private readonly List<IWeatherStrategy> _listOfStrategies = new List<IWeatherStrategy>() { new SunnyStrategy(), new WindyStrategy(),
+            new RainyStrategy(), new SnowyStrategy(), new TornadoStrategy(), new MistyStrategy() };
 
 
         public DressPicker() : this(Weather.Snowy)
@@ -23,40 +25,50 @@ namespace _01_StrategyPattern
 
         public void SetStrategy(Weather weather)
         {
-
-
-
-            if (_strategies.ContainsKey(weather))
+            foreach (var strategy in _listOfStrategies)
             {
-                _strategy = _strategies[weather];
-            }
-            else
-            {
-                switch (weather)
+                //TODO implement IsApplicable() method
+                if (strategy.IsApplicable(weather))
                 {
-                    case Weather.Sunny:
-                        _strategy = new SunnyStrategy();
-                        break;
-                    case Weather.Windy:
-                        _strategy = new WindyStrategy();
-                        break;
-                    case Weather.Rainy:
-                        _strategy = new RainyStrategy();
-                        break;
-                    case Weather.Snowy:
-                        _strategy = new SnowyStrategy();
-                        break;
-                    case Weather.Tornado:
-                        _strategy = new TornadoStrategy();
-                        break;
-                    case Weather.Misty:
-                        _strategy = new MistyStrategy();
-                        break;
-                    default:
-                        throw new NotSupportedException();
+                    _strategy = strategy;
                 }
-                _strategies.Add(weather, _strategy);
+
+                //if (strategy.Weather == weather)
+                //{
+                //    _strategy = strategy;
+                //}
             }
+            //if (_strategies.ContainsKey(weather))
+            //{
+            //    _strategy = _strategies[weather];
+            //}
+            //else
+            //{
+            //    switch (weather)
+            //    {
+            //        case Weather.Sunny:
+            //            _strategy = new SunnyStrategy();
+            //            break;
+            //        case Weather.Windy:
+            //            _strategy = new WindyStrategy();
+            //            break;
+            //        case Weather.Rainy:
+            //            _strategy = new RainyStrategy();
+            //            break;
+            //        case Weather.Snowy:
+            //            _strategy = new SnowyStrategy();
+            //            break;
+            //        case Weather.Tornado:
+            //            _strategy = new TornadoStrategy();
+            //            break;
+            //        case Weather.Misty:
+            //            _strategy = new MistyStrategy();
+            //            break;
+            //        default:
+            //            throw new NotSupportedException();
+            //    }
+            //    _strategies.Add(weather, _strategy);
+            //}
 
         }
         public string Head()

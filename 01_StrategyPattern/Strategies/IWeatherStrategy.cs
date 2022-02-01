@@ -8,9 +8,13 @@ namespace _01_StrategyPattern.Strategies
 {
     public interface IWeatherStrategy
     {
+        Weather Weather { get; }
         string Feet();
         string Body();
         string Legs();
         string Head();
+
+
+        bool IsApplicable(Weather Weather);
     }
 }

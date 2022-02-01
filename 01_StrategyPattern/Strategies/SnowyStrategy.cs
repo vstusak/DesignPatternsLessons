@@ -8,6 +8,8 @@ namespace _01_StrategyPattern.Strategies
 {
     class SnowyStrategy : IWeatherStrategy
     {
+        public Weather Weather => Weather.Snowy;
+
         public string Body()
         {
             return "Svetr";

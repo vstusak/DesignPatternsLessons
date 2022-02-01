@@ -8,6 +8,8 @@ namespace _01_StrategyPattern.Strategies
 {
     class TornadoStrategy : IWeatherStrategy
     {
+        public Weather Weather => Weather.Tornado;
+
         public string Body()
         {
             return "Chainmail";
