@@ -8,7 +8,7 @@ using RepositoryDesignPattern.Queries;
 
 namespace RepositoryDesignPattern
 {
-    class Program
+    public class Program
     {
         static async Task Main(string[] args)
         {
@@ -51,7 +51,7 @@ namespace RepositoryDesignPattern
             Console.ReadLine();
         }
 
-        private static async Task InitDb()
+        public static async Task InitDb()
         {
             var context = new WarehouseContext();
 
