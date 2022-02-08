@@ -29,5 +29,9 @@ namespace _01_StrategyPattern.Strategies
         {
             return "Sortky";
         }
+        public bool IsApplicable(Weather weather)
+        {
+            return weather == Weather;
+        }
     }
 }

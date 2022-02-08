@@ -38,6 +38,7 @@ namespace _01_StrategyPattern
                 //    _strategy = strategy;
                 //}
             }
+        
             //if (_strategies.ContainsKey(weather))
             //{
             //    _strategy = _strategies[weather];
@@ -73,6 +74,7 @@ namespace _01_StrategyPattern
         }
         public string Head()
         {
+
             return _strategy.Head();
 
             #region Switch (weather)

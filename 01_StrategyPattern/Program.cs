@@ -15,8 +15,12 @@ namespace _01_StrategyPattern
 
             dressPicker.SetStrategy(Weather.Sunny);
             Console.WriteLine($"Obleceni: {dressPicker}");
-
-
+            var input = Console.ReadLine();
+            var inputEnum = (Weather)Enum.Parse(typeof(Weather), input);
+            dressPicker.SetStrategy(inputEnum);
+            Console.WriteLine($"Obleceni: {dressPicker}");
+            Console.WriteLine(input);
+            Console.ReadLine();
         }
     }
 }

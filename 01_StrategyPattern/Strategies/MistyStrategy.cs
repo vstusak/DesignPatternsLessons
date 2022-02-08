@@ -29,5 +29,10 @@ namespace _01_StrategyPattern.Strategies
         {
             return "Reflexni kalhoty";
         }
+
+        public bool IsApplicable(Weather weather)
+        {
+            return weather == Weather;
+        }
     }
 }

@@ -15,6 +15,6 @@ namespace _01_StrategyPattern.Strategies
         string Head();
 
 
-        bool IsApplicable(Weather Weather);
+        bool IsApplicable(Weather weather);
     }
 }
