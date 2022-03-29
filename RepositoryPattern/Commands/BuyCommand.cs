@@ -2,12 +2,12 @@
 
 namespace RepositoryPattern.Commands
 {
-    internal class BuyCommand : IAcademyCommand
+    public class BuyCommand : IAcademyCommand
     {
         private readonly Product _selectedProducts;
-        private readonly ProductRepository _productRepository;
+        private readonly IRepository<Product> _productRepository;
 
-        public BuyCommand(Product selectedProducts, ProductRepository productRepository)
+        public BuyCommand(Product selectedProducts, IRepository<Product> productRepository)
         {
             _selectedProducts = selectedProducts;
             _productRepository = productRepository;

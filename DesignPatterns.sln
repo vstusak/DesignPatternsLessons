@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacadePattern", "FacadePatt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PublicToilet", "PublicToilet\PublicToilet.csproj", "{D0F770F6-1C68-4124-9EC0-6F09E7DCD25D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisitorPattern", "VisitorPattern\VisitorPattern.csproj", "{7EE6CC8D-7877-4CD4-B755-A54F3238752F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitorPattern", "VisitorPattern\VisitorPattern.csproj", "{7EE6CC8D-7877-4CD4-B755-A54F3238752F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPattern.Tests", "RepositoryPattern.Tests\RepositoryPattern.Tests.csproj", "{F323DB9B-74C9-4BF0-BB0A-78052C9E0795}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{7EE6CC8D-7877-4CD4-B755-A54F3238752F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EE6CC8D-7877-4CD4-B755-A54F3238752F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EE6CC8D-7877-4CD4-B755-A54F3238752F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F323DB9B-74C9-4BF0-BB0A-78052C9E0795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F323DB9B-74C9-4BF0-BB0A-78052C9E0795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F323DB9B-74C9-4BF0-BB0A-78052C9E0795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F323DB9B-74C9-4BF0-BB0A-78052C9E0795}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
