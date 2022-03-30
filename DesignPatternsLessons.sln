@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30503.244
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{B2822129-2EF8-4EAA-A4C9-90526B959468}"
 EndProject
@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecoratorPattern", "Decorat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingletonPattern", "SingletonPattern\SingletonPattern.csproj", "{34567841-2E25-48B1-8783-509AD4CBA0F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cqrs", "Cqrs\Cqrs.csproj", "{EED7538F-8753-4952-9E8C-D427CE21AEDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cqrs", "Cqrs\Cqrs.csproj", "{EED7538F-8753-4952-9E8C-D427CE21AEDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryDesignPatternTests", "RepositoryDesignPatternTests\RepositoryDesignPatternTests.csproj", "{805F0FDD-1930-44D1-92E2-42FCF5DABB21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{EED7538F-8753-4952-9E8C-D427CE21AEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EED7538F-8753-4952-9E8C-D427CE21AEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EED7538F-8753-4952-9E8C-D427CE21AEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805F0FDD-1930-44D1-92E2-42FCF5DABB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805F0FDD-1930-44D1-92E2-42FCF5DABB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805F0FDD-1930-44D1-92E2-42FCF5DABB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805F0FDD-1930-44D1-92E2-42FCF5DABB21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
