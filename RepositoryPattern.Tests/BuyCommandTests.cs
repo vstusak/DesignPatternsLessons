@@ -1,5 +1,4 @@
 using System;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Xunit;
 using RepositoryPattern.Commands;
 using Moq;
@@ -23,6 +22,9 @@ namespace RepositoryPattern.Tests
             };
 
             productRepositoryMock.Setup(prm => prm.Get(It.IsAny<Guid>()))
+                .Returns(product);
+            productRepositoryMock
+                .Setup(prm => prm.Update(It.IsAny<Product>()))
                 .Returns(product);
 
             var unitUnderTest = new BuyCommand(product, productRepositoryMock.Object);
