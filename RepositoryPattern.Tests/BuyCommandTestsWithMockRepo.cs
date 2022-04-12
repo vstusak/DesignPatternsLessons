@@ -21,7 +21,8 @@ namespace RepositoryPattern.Tests
         {
             //Arrange
             var product = GetProduct();
-            _productRepositoryMock.Setup(prm => prm.Get(It.IsAny<Guid>()))
+            _productRepositoryMock
+                .Setup(prm => prm.Get(It.IsAny<Guid>()))
                 .Returns(product);
             _productRepositoryMock
                 .Setup(prm => prm.Update(It.IsAny<Product>()))

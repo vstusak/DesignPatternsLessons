@@ -8,7 +8,7 @@ namespace RepositoryPattern.Tests
         public MockRepository MockRepo { get; set; }
 
         [SetUp]
-        public void Setup2()
+        public void Setup()
         {
             MockRepo = new MockRepository(MockBehavior.Strict);
         }
