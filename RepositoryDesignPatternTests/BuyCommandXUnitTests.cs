@@ -7,16 +7,21 @@ using Xunit;
 
 namespace RepositoryDesignPatternTests
 {
-    public class BuyCommandTests
+    public class BuyCommandXUnitTests
     {
+        public MockRepository mockRepository { get; set; } = new MockRepository(MockBehavior.Strict);
+
         [Fact]
         public void CanExecute_ProductQuantityMoreThan0_True()
         {
             //Arrange
             var product = new Product { Quantity = 1 };
 
-            var repositoryMock = new Mock<IRepository<Product>>(MockBehavior.Strict);
+        //  var repositoryMock = new Mock<IRepository<Product>>(MockBehavior.Strict);
+            var repositoryMock = mockRepository.Create<IRepository<Product>>();
+
             repositoryMock.Setup(rm => rm.Get(product.ProductId)).Returns(product);
+
 
             var buyCommand = new BuyCommand(repositoryMock.Object, product.ProductId);
 
@@ -25,6 +30,7 @@ namespace RepositoryDesignPatternTests
 
             //Assert
             Assert.True(actualResult);
+            mockRepository.VerifyAll();
         }
 
         [Fact]
