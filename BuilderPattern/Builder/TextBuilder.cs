@@ -2,14 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
 
+[assembly: InternalsVisibleTo("RepositoryPattern.Tests")]
 namespace BuilderPattern.Builder
 {
     public class TextBuilder : IReportBuilder
     {
         private readonly IEnumerable _books;
-        private readonly StringBuilder _result = new();
+        internal readonly StringBuilder _result = new();
 
         public TextBuilder(IEnumerable<Book> books)
         {
