@@ -31,8 +31,14 @@ namespace RepositoryDesignPattern.Commands
 
         public void Undo()
         {
+
             Console.WriteLine("calling Undo");
             var product = _productRepository.Get(_productId);
+
+            if (product.Quantity>=100)
+            {
+                throw new ArgumentOutOfRangeException("quantity", "Storage is full");
+            }
             product.Quantity += 1;
             _productRepository.Update(product);
             _productRepository.SaveChanges();

@@ -46,30 +46,69 @@ namespace RepositoryDesignPatternTests.Commands
             Assert.AreEqual(expectedResult,result);
         }
 
-        [Test]
-        public void Execute_StateUnderTest_ExpectedBehavior()
+        [TestCase(10, 9)]
+        [TestCase(1, 0)]
+        public void Execute_Quantity_QuantityDecreasedByOne(int quantity, int expectedResult)
         {
             // Arrange
             var buyCommand = this.CreateBuyCommand();
+
+            var product = new Product
+            {
+                Quantity = quantity
+            };
+
+            RepositoryMock.Setup(rm => rm.Get(It.IsAny<Guid>())).Returns(product);
+            RepositoryMock.Setup(rm => rm.Update(It.IsAny<Product>())).Returns(product);
+            RepositoryMock.Setup(rm => rm.SaveChanges());
 
             // Act
             buyCommand.Execute();
 
             // Assert
-            Assert.Fail();
+            Assert.AreEqual(expectedResult, product.Quantity);
         }
 
-        [Test]
-        public void Undo_StateUnderTest_ExpectedBehavior()
+        [TestCase(1,2 )]
+        [TestCase(99, 100)]
+        public void Undo_Quantity_QuantityIncreasedByOne(int quantity,int expectedResult)
         {
             // Arrange
             var buyCommand = this.CreateBuyCommand();
+
+            var product = new Product
+            {
+                Quantity = quantity
+            };
+
+            RepositoryMock.Setup(rm => rm.Get(It.IsAny<Guid>())).Returns(product);
+            RepositoryMock.Setup(rm => rm.Update(It.IsAny<Product>())).Returns(product);
+            RepositoryMock.Setup(rm => rm.SaveChanges());
 
             // Act
             buyCommand.Undo();
 
             // Assert
-            Assert.Fail();
+            Assert.AreEqual(expectedResult, product.Quantity);
+        }
+
+        // use when the expected exception could be multiple types
+        [TestCase(101, typeof(ArgumentOutOfRangeException))]
+        [TestCase(100,typeof(ArgumentOutOfRangeException))]
+        public void Undo_QuantityEquals100_RaisedArgumentOutOfRange(int quantity, Type exceptionType)
+        {
+            // Arrange
+            var buyCommand = this.CreateBuyCommand();
+
+            var product = new Product
+            {
+                Quantity = quantity
+            };
+
+            RepositoryMock.Setup(rm => rm.Get(It.IsAny<Guid>())).Returns(product);
+
+            // Act and Assert
+            var result = Assert.Throws(exceptionType, () => buyCommand.Undo());
         }
     }
 }
