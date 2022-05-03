@@ -4,6 +4,7 @@ using BuilderPattern.Builder;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace RepositoryPattern.Tests.Builder
 {
@@ -12,10 +13,12 @@ namespace RepositoryPattern.Tests.Builder
     {
 
         private IEnumerable<Book> _books;
+        private Mock<IDateTimeProvider> _dateTimeProviderMock;
 
         [SetUp]
         public void SetUp()
         {
+            _dateTimeProviderMock = MockRepo.Create<IDateTimeProvider>();
             _books = new List<Book>
             {
                 new(){Author = "Robert C. Martin", Name = "Clean Code", NumberOfPages = "324"},
@@ -29,7 +32,7 @@ namespace RepositoryPattern.Tests.Builder
 
         private TextBuilder CreateTextBuilder()
         {
-            return new TextBuilder(_books);
+            return new TextBuilder(_books,_dateTimeProviderMock.Object);
         }
 
         [Test]
@@ -76,15 +79,16 @@ namespace RepositoryPattern.Tests.Builder
         [Test]
         public void AddDateStamp_StateUnderTest_ExpectedBehavior()
         {
-            OTESTOVAT
             // Arrange
+            var dateTimeTesting = new DateTime(2020, 5, 11, 22, 22, 22);
             var unit = CreateTextBuilder();
+            _dateTimeProviderMock.Setup(dtp => dtp.UtcNow).Returns(dateTimeTesting);
 
             // Act
-            var result = unit.AddDateStamp();
-
+            var result = unit.AddDateStamp() as TextBuilder;
+            var innerString = result._result.ToString();
             // Assert
-            Assert.Fail();
+            Assert.AreEqual($"{dateTimeTesting.ToString(CultureInfo.InvariantCulture)}{Environment.NewLine}",innerString);
         }
 
         [Test]

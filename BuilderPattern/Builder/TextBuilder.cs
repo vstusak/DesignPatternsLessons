@@ -12,10 +12,12 @@ namespace BuilderPattern.Builder
     {
         private readonly IEnumerable _books;
         internal readonly StringBuilder _result = new();
+        private IDateTimeProvider _dateTimeProvider;
 
-        public TextBuilder(IEnumerable<Book> books)
+        public TextBuilder(IEnumerable<Book> books, IDateTimeProvider dateTimeProvider)
         {
             _books = books;
+            _dateTimeProvider = dateTimeProvider;
         }
 
         public IReportBuilder SetHeader()
@@ -41,7 +43,8 @@ namespace BuilderPattern.Builder
 
         public IReportBuilder AddDateStamp()
         {
-            _result.AppendLine(DateTime.UtcNow.ToString(CultureInfo.InvariantCulture));
+            //_result.AppendLine(DateTime.UtcNow.ToString(CultureInfo.InvariantCulture));
+            _result.AppendLine(_dateTimeProvider.UtcNow.ToString(CultureInfo.InvariantCulture));
             return this;
         }
 
