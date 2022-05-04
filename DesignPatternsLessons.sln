@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingletonPattern", "Singlet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cqrs", "Cqrs\Cqrs.csproj", "{EED7538F-8753-4952-9E8C-D427CE21AEDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryDesignPatternTests", "RepositoryDesignPatternTests\RepositoryDesignPatternTests.csproj", "{805F0FDD-1930-44D1-92E2-42FCF5DABB21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDesignPatternTests", "RepositoryDesignPatternTests\RepositoryDesignPatternTests.csproj", "{805F0FDD-1930-44D1-92E2-42FCF5DABB21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPatternTests", "BuilderPatternTests\BuilderPatternTests.csproj", "{484CD84B-AA37-4F40-B965-F4898B224782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{805F0FDD-1930-44D1-92E2-42FCF5DABB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{805F0FDD-1930-44D1-92E2-42FCF5DABB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{805F0FDD-1930-44D1-92E2-42FCF5DABB21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{484CD84B-AA37-4F40-B965-F4898B224782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{484CD84B-AA37-4F40-B965-F4898B224782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{484CD84B-AA37-4F40-B965-F4898B224782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{484CD84B-AA37-4F40-B965-F4898B224782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

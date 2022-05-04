@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
+[assembly: InternalsVisibleTo("BuilderPatternTests")]
 namespace BuilderPattern
 {
-    class SimpleReportBuilder : IReportBuilder
+    public class SimpleReportBuilder : IReportBuilder
     {
-        private StringBuilder _report = new StringBuilder();
+        internal StringBuilder _report = new StringBuilder();
 
         public IReportBuilder Reset()
         {
