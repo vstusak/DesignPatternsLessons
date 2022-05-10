@@ -19,8 +19,8 @@ namespace CQRS
 
     public class ProductDetailQueryHandler : IProductDetailQueryHandler
     {
-        private ProductRepository _productRepository;
-        public ProductDetailQueryHandler(ProductRepository productRepository)
+        private IRepository<Product> _productRepository;
+        public ProductDetailQueryHandler(IRepository<Product> productRepository)
         {
             _productRepository = productRepository;
         }
