@@ -9,12 +9,12 @@ using RepositoryDesignPattern.Queries;
 
 namespace Cqrs
 {
-    internal interface IQueryHandler<TQuery, TResult>
+    public interface IQueryHandler<TQuery, TResult>
     {
         TResult Execute(TQuery query);
     }
 
-    interface IProductQueryHandler : IQueryHandler<ProductQuery, Product>
+    public interface IProductQueryHandler : IQueryHandler<ProductQuery, Product>
     {
         
     }

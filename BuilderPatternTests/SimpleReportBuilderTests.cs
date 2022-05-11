@@ -12,17 +12,17 @@ namespace BuilderPatternTests
     [TestFixture]
     public class SimpleReportBuilderTests : TestBase
     {
-
+        private Mock<IDateTimeProvider> _timeProviderMock;
 
         [SetUp]
         public void SetUp()
         {
-
+            _timeProviderMock = MockRepository.Create<IDateTimeProvider>();
         }
 
         private SimpleReportBuilder CreateSimpleReportBuilder()
         {
-            return new SimpleReportBuilder();
+            return new SimpleReportBuilder(_timeProviderMock.Object);
         }
 
         [Test]
@@ -87,13 +87,15 @@ namespace BuilderPatternTests
         public void SetTimeStamp_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var simpleReportBuilder = CreateSimpleReportBuilder0();
+            var simpleReportBuilder = CreateSimpleReportBuilder();
+            DateTime expectedDateTime = new DateTime(2022, 05, 25, 17, 30, 00);
+            _timeProviderMock.Setup(tpm => tpm.Now).Returns(expectedDateTime);
 
             // Act
-            var result = simpleReportBuilder.SetTimeStamp();
+            SimpleReportBuilder result = simpleReportBuilder.SetTimeStamp() as SimpleReportBuilder;
 
             // Assert
-            Assert.Fail();
+            Assert.AreEqual($"{expectedDateTime.ToString()}{Environment.NewLine}", result?._report.ToString());
         }
 
         [Test]

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cqrs
 {
-    internal class ProductQuery
+    public class ProductQuery
     {
         public Guid ProductId { get; }
 

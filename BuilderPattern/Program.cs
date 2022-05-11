@@ -19,7 +19,7 @@ namespace BuilderPattern
                 new Book{Author="",Name="1985", NumberOfPages="350"}
             };
 
-            var simpleBuilder = new SimpleReportBuilder();
+            var simpleBuilder = new SimpleReportBuilder(new DateTimeProvider());
 
             var director = new DirectorReportGenerator(simpleBuilder);
             var report = director.MakeFullReport(books);

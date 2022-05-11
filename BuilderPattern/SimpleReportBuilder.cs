@@ -9,6 +9,12 @@ namespace BuilderPattern
     public class SimpleReportBuilder : IReportBuilder
     {
         internal StringBuilder _report = new StringBuilder();
+        private IDateTimeProvider _myDateTimeProvider;
+
+        public SimpleReportBuilder(IDateTimeProvider dateTimeProvider)
+        {
+            _myDateTimeProvider = dateTimeProvider;
+        }
 
         public IReportBuilder Reset()
         {
@@ -39,7 +45,7 @@ namespace BuilderPattern
 
         public IReportBuilder SetTimeStamp()
         {
-            _report.AppendLine(DateTime.Now.ToString());
+            _report.AppendLine(_myDateTimeProvider.Now.ToString());
             return this;
         }
 
