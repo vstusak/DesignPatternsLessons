@@ -29,7 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDesignPatternTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderPatternTests", "BuilderPatternTests\BuilderPatternTests.csproj", "{484CD84B-AA37-4F40-B965-F4898B224782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CqrsTests", "CqrsTests\CqrsTests.csproj", "{8787002F-9E72-4428-8F49-0E7E7F0FB8E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CqrsTests", "CqrsTests\CqrsTests.csproj", "{8787002F-9E72-4428-8F49-0E7E7F0FB8E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{C9F7DE6C-F825-47E6-A15D-A0CD357C593D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzTests", "FizzBuzzTests\FizzBuzzTests.csproj", "{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +97,14 @@ Global
 		{8787002F-9E72-4428-8F49-0E7E7F0FB8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8787002F-9E72-4428-8F49-0E7E7F0FB8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8787002F-9E72-4428-8F49-0E7E7F0FB8E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F7DE6C-F825-47E6-A15D-A0CD357C593D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F7DE6C-F825-47E6-A15D-A0CD357C593D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F7DE6C-F825-47E6-A15D-A0CD357C593D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F7DE6C-F825-47E6-A15D-A0CD357C593D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
