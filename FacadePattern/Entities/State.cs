@@ -2,6 +2,6 @@
 {
     public class State
     {
-        public string Name => "Austria";
+        public string Name = "Austria";
     }
 }

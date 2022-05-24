@@ -2,6 +2,6 @@
 {
     public class City
     {
-        public string Name => "Wien";
+        public string Name = "Wien";
     }
 }
