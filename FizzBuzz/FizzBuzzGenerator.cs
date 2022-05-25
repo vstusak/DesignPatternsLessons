@@ -3,22 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace FizzBuzz
 {
     public class FizzBuzzGenerator
     {
-        public string Generate(int start, int iterationCount)
+        public string Generate(string start, string iterationCount)
         {
             var result = "";
-            for (int i = start; i <= iterationCount + start; i++)
+
+            
+            for (int i = Int32.Parse(start); i < Int32.Parse(start) + Int32.Parse(iterationCount); i++)
             {
-                if (i % 3 == 0)
-                    result += "Fizz";
-                if (i % 5 == 0)
-                    result += "Buzz";
+                result += GetForNumber(i) + " ";
             }
-            return result;
+            return result.TrimEnd();
+        }
+
+        public string GetForNumber(int number)
+        {
+            if ( number % 3 == 0 && number % 5 == 0)
+                return "FizzBuzz";
+
+            if (number % 3 == 0)
+                return "Fizz";
+
+            if (number % 5 == 0)
+                return "Buzz";
+            
+            return number.ToString();
         }
     }
 }
