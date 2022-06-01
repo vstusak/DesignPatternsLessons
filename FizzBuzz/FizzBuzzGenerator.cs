@@ -9,11 +9,63 @@ namespace FizzBuzz
 {
     public class FizzBuzzGenerator
     {
-        public string Generate(string start, string iterationCount)
+        public string GenerateStringBuilder(string start, string iterationCount)
+        {
+            var result = new StringBuilder();
+
+            for (int i = Int32.Parse(start); i < Int32.Parse(start) + Int32.Parse(iterationCount); i++)
+            {
+                result.Append(GetForNumber(i));
+                result.Append(" ");
+            }
+            return result.ToString().TrimEnd();
+        }
+
+        public string GenerateStringBuilderWithoutParsing(string start, string iterationCount)
+        {
+            var startIteration = Int32.Parse(start);
+            var iterCount = Int32.Parse(iterationCount);
+            var iterCountResult = startIteration + iterCount;
+            var result = new StringBuilder();
+
+            for (int i = startIteration; i < iterCountResult; i++)
+            {
+                result.Append(GetForNumber(i));
+                result.Append(" ");
+            }
+            return result.ToString().TrimEnd();
+        }
+
+        public string GenerateStringBuilderWithoutParsingAloc(string start, string iterationCount)
+        {
+            var startIteration = Int32.Parse(start);
+            var iterCount = Int32.Parse(iterationCount);
+            var iterCountResult = startIteration + iterCount;
+            var result = new StringBuilder(iterCount);
+
+            for (int i = startIteration; i < iterCountResult; i++)
+            {
+                result.Append(GetForNumber(i));
+                result.Append(" ");
+            }
+            return result.ToString().TrimEnd();
+        }
+
+        public string GenerateCollection(string start, string iterationCount)
+        {
+            var result = new List<string>();
+
+            for (int i = Int32.Parse(start); i < Int32.Parse(start) + Int32.Parse(iterationCount); i++)
+            {
+                result.Add(GetForNumber(i));
+            }
+            return string.Join(' ', result);
+        }
+
+        public string GenerateString(string start, string iterationCount)
         {
             var result = "";
 
-            
             for (int i = Int32.Parse(start); i < Int32.Parse(start) + Int32.Parse(iterationCount); i++)
             {
                 result += GetForNumber(i) + " ";

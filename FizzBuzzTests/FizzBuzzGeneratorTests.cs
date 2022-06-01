@@ -17,17 +17,19 @@ namespace FizzBuzzTests
         {
             var fizzBuzzGenerator = new FizzBuzzGenerator();
 
-            var actualResult = fizzBuzzGenerator.Generate(start, iterationCount);
+            var actualResult = fizzBuzzGenerator.GenerateString(start, iterationCount);
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
 
         [Test]
         public void Generate_NoNumericStart_FormatExceptionRaised()
         {
             var fizzBuzzGenerator = new FizzBuzzGenerator();
-            Assert.Throws<FormatException>(() => fizzBuzzGenerator.Generate("Jedna", "5"));
+            Assert.Throws<FormatException>(() => fizzBuzzGenerator.GenerateString("Jedna", "5"));
         }
+
 
         [TestCase(1,"1")]
         [TestCase(3, "Fizz")]
