@@ -31,9 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderPatternTests", "Buil
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CqrsTests", "CqrsTests\CqrsTests.csproj", "{8787002F-9E72-4428-8F49-0E7E7F0FB8E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{C9F7DE6C-F825-47E6-A15D-A0CD357C593D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{C9F7DE6C-F825-47E6-A15D-A0CD357C593D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzTests", "FizzBuzzTests\FizzBuzzTests.csproj", "{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzzTests", "FizzBuzzTests\FizzBuzzTests.csproj", "{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgePattern", "BridgePattern\BridgePattern.csproj", "{6CD3828A-B8BD-47DD-A1CD-17E461E1C834}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37331CD1-1CCB-455B-95D2-7777D7D9AAA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CD3828A-B8BD-47DD-A1CD-17E461E1C834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD3828A-B8BD-47DD-A1CD-17E461E1C834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD3828A-B8BD-47DD-A1CD-17E461E1C834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD3828A-B8BD-47DD-A1CD-17E461E1C834}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
