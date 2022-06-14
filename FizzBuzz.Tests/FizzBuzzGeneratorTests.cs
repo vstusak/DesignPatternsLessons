@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 
 namespace FizzBuzz.Tests
 {
@@ -17,6 +18,14 @@ namespace FizzBuzz.Tests
             var result = unitUnderTest.GetSequence(input);
 
             Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void InvalidArgumentExceptionTest()
+        {
+            var unitUnderTest = new FizzBuzzGenerator();
+
+            Assert.Throws<ArgumentException>(() => unitUnderTest.GetSequence("prase"));
         }
     }
 }
