@@ -1,5 +1,5 @@
 ﻿using System;
-using RepositoryPattern.Commands;
+using CommandPattern.Commands;
 using Moq;
 using RepositoryPattern.Context;
 using NUnit.Framework;

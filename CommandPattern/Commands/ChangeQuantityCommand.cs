@@ -1,7 +1,7 @@
-﻿using RepositoryPattern.Context;
-using System;
+﻿using RepositoryPattern;
+using RepositoryPattern.Context;
 
-namespace RepositoryPattern.Commands
+namespace CommandPattern.Commands
 {
     public class ChangeQuantityCommand : IAcademyCommand
     {

@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using VisitorPattern;
+
 using VisitorPattern.Products;
 using VisitorPattern.Visitors;
 using System;

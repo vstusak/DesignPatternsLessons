@@ -1,5 +1,4 @@
-﻿using VisitorPattern.VisitableObjects;
-using VisitorPattern.Visitors;
+﻿using VisitorPattern.Visitors;
 
 namespace VisitorPattern.Products
 {

@@ -1,6 +1,5 @@
 ﻿using CQRS;
 using RepositoryPattern;
-using RepositoryPattern.Commands;
 using RepositoryPattern.Context;
 using System;
 using System.Threading.Tasks;

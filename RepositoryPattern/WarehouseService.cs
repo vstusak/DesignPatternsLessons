@@ -1,6 +1,5 @@
 ﻿using RepositoryPattern.Context;
 using System;
-using System.Linq;
 
 namespace RepositoryPattern
 {

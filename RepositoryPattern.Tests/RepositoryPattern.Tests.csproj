@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BuilderPattern\BuilderPattern.csproj" />
+    <ProjectReference Include="..\CommandPattern\CommandPattern.csproj" />
     <ProjectReference Include="..\CQRS\CQRS.csproj" />
     <ProjectReference Include="..\FacadePattern\FacadePattern.csproj" />
     <ProjectReference Include="..\RepositoryPattern\RepositoryPattern.csproj" />

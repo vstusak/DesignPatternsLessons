@@ -1,6 +1,6 @@
 using System;
+using CommandPattern.Commands;
 using Xunit;
-using RepositoryPattern.Commands;
 using Moq;
 using RepositoryPattern.Context;
 

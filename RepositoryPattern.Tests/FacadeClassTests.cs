@@ -2,7 +2,6 @@
 using FacadePattern.Entities;
 using Moq;
 using NUnit.Framework;
-using System;
 
 namespace RepositoryPattern.Tests
 {

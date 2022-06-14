@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using RepositoryPattern.Commands;
+﻿using CommandPattern.Commands;
 
-namespace RepositoryPattern
+namespace CommandPattern
 {
     internal class CommandManager
     {

@@ -1,7 +1,6 @@
 ﻿using CQRS;
 using Moq;
 using NUnit.Framework;
-using RepositoryPattern;
 using System;
 using RepositoryPattern.Context;
 

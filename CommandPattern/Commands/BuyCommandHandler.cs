@@ -1,6 +1,6 @@
-﻿using System;
+﻿using RepositoryPattern;
 
-namespace RepositoryPattern.Commands
+namespace CommandPattern.Commands
 {
     public class BuyCommandHandler : ICommandHandler
     {

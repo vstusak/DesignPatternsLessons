@@ -1,4 +1,4 @@
-﻿namespace RepositoryPattern.Commands
+﻿namespace CommandPattern.Commands
 {
     public interface IOnlyCommand
     {

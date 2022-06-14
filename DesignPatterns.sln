@@ -35,9 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitorPattern", "VisitorPa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryPattern.Tests", "RepositoryPattern.Tests\RepositoryPattern.Tests.csproj", "{F323DB9B-74C9-4BF0-BB0A-78052C9E0795}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{A03FA29E-43E5-44A9-AFF0-0540895E2B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{A03FA29E-43E5-44A9-AFF0-0540895E2B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz.Tests", "FizzBuzz.Tests\FizzBuzz.Tests.csproj", "{43352C2A-D500-4846-9B7F-B8EECE4028DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz.Tests", "FizzBuzz.Tests\FizzBuzz.Tests.csproj", "{43352C2A-D500-4846-9B7F-B8EECE4028DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandPattern", "CommandPattern\CommandPattern.csproj", "{9E8AD0AE-D946-4706-AA22-55D951989414}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +119,10 @@ Global
 		{43352C2A-D500-4846-9B7F-B8EECE4028DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43352C2A-D500-4846-9B7F-B8EECE4028DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43352C2A-D500-4846-9B7F-B8EECE4028DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E8AD0AE-D946-4706-AA22-55D951989414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E8AD0AE-D946-4706-AA22-55D951989414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E8AD0AE-D946-4706-AA22-55D951989414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E8AD0AE-D946-4706-AA22-55D951989414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

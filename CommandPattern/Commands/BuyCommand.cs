@@ -1,6 +1,7 @@
-﻿using RepositoryPattern.Context;
+﻿using RepositoryPattern;
+using RepositoryPattern.Context;
 
-namespace RepositoryPattern.Commands
+namespace CommandPattern.Commands
 {
     public class BuyCommand : IAcademyCommand
     {

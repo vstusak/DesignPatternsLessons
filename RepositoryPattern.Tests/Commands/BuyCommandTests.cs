@@ -1,10 +1,8 @@
 ﻿using Moq;
 using NUnit.Framework;
-using RepositoryPattern;
-using RepositoryPattern.Commands;
 using RepositoryPattern.Context;
 using System;
-
+using CommandPattern.Commands;
 namespace RepositoryPattern.Tests.Commands
 {
     [TestFixture]
@@ -34,7 +32,7 @@ namespace RepositoryPattern.Tests.Commands
             // Arrange
             product.Quantity = quantity;
             mockRepository.Setup(prm => prm.Get(It.IsAny<Guid>())).Returns(product);
-            
+
             var buyCommand = CreateBuyCommand();
 
             // Act
