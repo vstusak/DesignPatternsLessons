@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace BridgePattern
 {
     public class DetailView : IView
     {
-        public void Render(IProduct product)
+        public void Render(IProductAdapter productAdapter)
         {
-            Console.WriteLine($"Showing DetailView of product:");
-            Console.WriteLine(product.GetName());
-            var items = product.GetAllInformation();
+            Console.WriteLine($"Showing DetailView of product:{productAdapter.GetName()}");
+            var items = productAdapter.GetAllInformation();
             foreach (var item in items)
             {
-                Console.WriteLine($"{item.Key} = {item.Value}");
+                Console.WriteLine($"\t{item.Key}\t{item.Value}");
             }
         }
     }
 
     public class PromotionView : IView
     {
-        public void Render(IProduct product)
+        public void Render(IProductAdapter productAdapter)
         {
             Console.WriteLine($"Showing PromotionView of product:");
         }
@@ -30,15 +30,17 @@ namespace BridgePattern
 
     public class ListView : IView
     {
-        public void Render(IProduct product)
+        public void Render(IProductAdapter productAdapter)
         {
-            Console.WriteLine($"Showing ListView of product:");
+            Console.WriteLine($"Showing ListView of product:{productAdapter.GetName()}");
+            Console.WriteLine($"Description: {productAdapter.GetDescription()}");
+            Console.WriteLine($"Price is {productAdapter.GetPrice()}");
         }
     }
 
     public class AccessoryView : IView
     {
-        public void Render(IProduct product)
+        public void Render(IProductAdapter productAdapter)
         {
             Console.WriteLine($"Showing AccessoryView of product:");
         }
@@ -46,6 +48,6 @@ namespace BridgePattern
 
     interface IView
     {
-        void Render(IProduct product);
+        void Render(IProductAdapter productAdapter);
     }
 }
