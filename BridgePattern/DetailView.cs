@@ -8,47 +8,44 @@ namespace BridgePattern
 {
     public class DetailView : IView
     {
-        public void Render()
+        public void Render(IProduct product)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Showing DetailView of product:");
+            Console.WriteLine(product.GetName());
+            var items = product.GetAllInformation();
+            foreach (var item in items)
+            {
+                Console.WriteLine($"{item.Key} = {item.Value}");
+            }
         }
-
-        public IProduct Product { get; set; }
     }
 
     public class PromotionView : IView
     {
-        public void Render()
+        public void Render(IProduct product)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Showing PromotionView of product:");
         }
-
-        public IProduct Product { get; set; }
     }
 
     public class ListView : IView
     {
-        public void Render()
+        public void Render(IProduct product)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Showing ListView of product:");
         }
-
-        public IProduct Product { get; set; }
     }
 
     public class AccessoryView : IView
     {
-        public void Render()
+        public void Render(IProduct product)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Showing AccessoryView of product:");
         }
-
-        public IProduct Product { get; set; }
     }
 
     interface IView
     {
-        void Render();
-        IProduct Product { get; set; }
+        void Render(IProduct product);
     }
 }

@@ -8,5 +8,8 @@ namespace BridgePattern
 {
     public interface IProduct
     {
+        Dictionary<string, string> GetAllInformation();
+
+        string GetName();
     }
 }
