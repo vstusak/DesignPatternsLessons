@@ -1,4 +1,5 @@
 ﻿using CommandPattern.Commands;
+using CommandPattern.Memento;
 using RepositoryPattern;
 using RepositoryPattern.Context;
 
@@ -20,6 +21,7 @@ namespace CommandPattern
             var selectedProducts = productRepository.All().First();
 
             commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
+            repositoryCareTaker.SaveState(productRepository.CreateMemento());
             commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
             commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
 
