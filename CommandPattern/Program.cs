@@ -13,6 +13,7 @@ namespace CommandPattern
             var productRepository = new ProductRepository(context);
             var commandManager = new CommandManager();
             var buyCommandHandler = new BuyCommandHandler(productRepository);
+            var repositoryCareTaker = new RepositoryCareTaker();
             ///////////////////////////////////////////////////////////// ^ IOC container
 
             WriteAll(productRepository.All());

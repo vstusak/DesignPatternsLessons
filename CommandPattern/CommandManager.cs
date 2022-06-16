@@ -4,7 +4,7 @@ namespace CommandPattern
 {
     internal class CommandManager
     {
-        private readonly Stack<IAcademyCommand> _commads = new();
+        //private readonly Stack<IAcademyCommand> _commads = new();
         public CommandManager()
         {
 
@@ -16,7 +16,7 @@ namespace CommandPattern
             if (command.CanExecute())
             {
                 command.Execute();
-                _commads.Push(command);
+               // _commads.Push(command);
             }
         }
 
@@ -27,8 +27,8 @@ namespace CommandPattern
 
         internal void Undo()
         {
-            var lastCommand = _commads.Pop();
-            lastCommand.Undo();
+            //var lastCommand = _commads.Pop();
+            //lastCommand.Undo();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using RepositoryPattern.Context;
+using RepositoryPattern.Memento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,6 +84,11 @@ namespace RepositoryPattern
         public ProductRepository(WarehouseContext context)
             : base(context)
         {
+        }
+
+        public ProductRepositoryMemento CreateMemento()
+        {
+            throw new NotImplementedException();
         }
 
         public override Product Update(Product entity)
