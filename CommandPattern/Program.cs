@@ -15,15 +15,15 @@ namespace CommandPattern
             var commandManager = new CommandManager();
             var buyCommandHandler = new BuyCommandHandler(productRepository);
             var repositoryCareTaker = new RepositoryCareTaker();
+            var commandManagerWithHistory = new CommandManagerWithHistory(repositoryCareTaker, commandManager, productRepository);
             ///////////////////////////////////////////////////////////// ^ IOC container
 
             WriteAll(productRepository.All());
             var selectedProducts = productRepository.All().First();
 
-            commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
-            repositoryCareTaker.SaveState(productRepository.CreateMemento());
-            commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
-            commandManager.Invoke(new BuyCommand(selectedProducts, productRepository));
+            commandManagerWithHistory.Invoke(new BuyCommand(selectedProducts, productRepository));
+            commandManagerWithHistory.Invoke(new BuyCommand(selectedProducts, productRepository));
+            commandManagerWithHistory.Invoke(new BuyCommand(selectedProducts, productRepository));
 
             //service.WriteProductsWithPriceOver100();
 
@@ -65,6 +65,27 @@ namespace CommandPattern
             context.Add(new Product { Name = "Coaster", Price = 10, Quantity = 500 });
 
             await context.SaveChangesAsync();
+        }
+    }
+
+    class CommandManagerWithHistory
+    {
+        private readonly RepositoryCareTaker repositoryCareTaker;
+        private readonly CommandManager commandManager;
+        private readonly ProductRepository productRepository;
+
+        public CommandManagerWithHistory(RepositoryCareTaker repositoryCareTaker, CommandManager commandManager, ProductRepository productRepository)
+        {
+            this.repositoryCareTaker = repositoryCareTaker;
+            this.commandManager = commandManager;
+            this.productRepository = productRepository;
+        }
+
+        public void Invoke(IAcademyCommand command)
+        {
+            repositoryCareTaker.PushCurrentToHistory();
+            commandManager.Invoke(command);
+            repositoryCareTaker.SetNewCurrent(productRepository.CreateMemento());
         }
     }
 }
