@@ -17,3 +17,4 @@ string zip = "61300";
 
 var weatherResult = weatherFacadeService.GetWeather(zip);
 Console.WriteLine($"Weather for {weatherResult.City.Name}, {weatherResult.State.Name} is {weatherResult.Fahrenheit}F/{weatherResult.Celsius}C");
+//TODO: Auto install IOC Container 
