@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32002.261
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_StrategyPattern", "01_StrategyPattern\01_StrategyPattern.csproj", "{F7520C94-94E8-46D3-8C63-7417B187BDEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_ProxyPattern", "ProxyPattern\02_ProxyPattern.csproj", "{B24BF89C-4FE2-4D3D-8767-C4D9763CF76A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F7520C94-94E8-46D3-8C63-7417B187BDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7520C94-94E8-46D3-8C63-7417B187BDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7520C94-94E8-46D3-8C63-7417B187BDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B24BF89C-4FE2-4D3D-8767-C4D9763CF76A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24BF89C-4FE2-4D3D-8767-C4D9763CF76A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24BF89C-4FE2-4D3D-8767-C4D9763CF76A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24BF89C-4FE2-4D3D-8767-C4D9763CF76A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
