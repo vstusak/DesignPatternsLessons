@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace FacadePattern
 {
-    public class WeatherFacadeService
+    public class WeatherFacadeService : IWeatherFacadeService
     {
-        private readonly LocationLookupService _locationLookupService;
-        private readonly WeatherService _weatherService;
-        private readonly TemperatureConverterService _temperatureConverterService;
+        private readonly ILocationLookupService _locationLookupService;
+        private readonly IWeatherService _weatherService;
+        private readonly ITemperatureConverterService _temperatureConverterService;
 
-        public WeatherFacadeService(LocationLookupService locationLookupService, WeatherService weatherService, TemperatureConverterService temperatureConverterService)
+        public WeatherFacadeService(ILocationLookupService locationLookupService, IWeatherService weatherService, ITemperatureConverterService temperatureConverterService)
         {
             _locationLookupService = locationLookupService;
             _weatherService = weatherService;

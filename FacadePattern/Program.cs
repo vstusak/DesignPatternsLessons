@@ -1,11 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Castle.Windsor;
 using FacadePattern;
 
-var locationLookupService = new LocationLookupService();
-var weatherService = new WeatherService();
-var temperatureConverterService = new TemperatureConverterService();
-var weatherFacadeService = new WeatherFacadeService(locationLookupService, weatherService, temperatureConverterService);
+//var locationLookupService = new LocationLookupService();
+//var weatherService = new WeatherService();
+//var temperatureConverterService = new TemperatureConverterService();
+//var weatherFacadeService = new WeatherFacadeService(locationLookupService, weatherService, temperatureConverterService);
+var container = new WindsorContainer();
+
+container.Install(new FacadeInstaller());
+
 //--------------------------------------------------------------------
 
 string zip = "61300";
@@ -15,6 +20,8 @@ string zip = "61300";
 //var celsius = temperatureConverterService.ToCelsius(fahrenheit);
 //Console.WriteLine($"Weather for {city.Name}, {state.Name} is {fahrenheit}F/{celsius}C");
 
+var weatherFacadeService = container.Resolve<IWeatherFacadeService>();
 var weatherResult = weatherFacadeService.GetWeather(zip);
 Console.WriteLine($"Weather for {weatherResult.City.Name}, {weatherResult.State.Name} is {weatherResult.Fahrenheit}F/{weatherResult.Celsius}C");
+
 //TODO: Auto install IOC Container 
