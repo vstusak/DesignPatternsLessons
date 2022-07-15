@@ -2,7 +2,7 @@
 
 namespace CommandPattern
 {
-    internal class CommandManager
+    public class CommandManager
     {
         //private readonly Stack<IAcademyCommand> _commads = new();
         public CommandManager()

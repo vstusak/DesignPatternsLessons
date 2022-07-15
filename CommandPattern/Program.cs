@@ -29,17 +29,19 @@ namespace CommandPattern
 
             WriteAll(productRepository.All());
             Console.ReadLine();
-            commandManager.Undo();
+            commandManagerWithHistory.Undo();
             WriteAll(productRepository.All());
-            commandManager.Invoke(new ChangeQuantityCommand(selectedProducts, productRepository, 5));
-            WriteAll(productRepository.All());
+            //commandManager.Undo();
+            //WriteAll(productRepository.All());
+            //commandManager.Invoke(new ChangeQuantityCommand(selectedProducts, productRepository, 5));
+            //WriteAll(productRepository.All());
 
-            ///////////////////////////////////////////////////////////// CQRS
-            Console.WriteLine("CQRS starts now!");
-            var buyCommand = new BuyOnlyCommand(selectedProducts.ProductId);
-            buyCommandHandler.Execute(buyCommand);
-            WriteAll(productRepository.All());
-            Console.ReadLine();
+            /////////////////////////////////////////////////////////////// CQRS
+            //Console.WriteLine("CQRS starts now!");
+            //var buyCommand = new BuyOnlyCommand(selectedProducts.ProductId);
+            //buyCommandHandler.Execute(buyCommand);
+            //WriteAll(productRepository.All());
+            //Console.ReadLine();
         }
 
         private static void WriteAll(IEnumerable<Product> all)
@@ -65,27 +67,6 @@ namespace CommandPattern
             context.Add(new Product { Name = "Coaster", Price = 10, Quantity = 500 });
 
             await context.SaveChangesAsync();
-        }
-    }
-
-    class CommandManagerWithHistory
-    {
-        private readonly RepositoryCareTaker repositoryCareTaker;
-        private readonly CommandManager commandManager;
-        private readonly ProductRepository productRepository;
-
-        public CommandManagerWithHistory(RepositoryCareTaker repositoryCareTaker, CommandManager commandManager, ProductRepository productRepository)
-        {
-            this.repositoryCareTaker = repositoryCareTaker;
-            this.commandManager = commandManager;
-            this.productRepository = productRepository;
-        }
-
-        public void Invoke(IAcademyCommand command)
-        {
-            repositoryCareTaker.PushCurrentToHistory();
-            commandManager.Invoke(command);
-            repositoryCareTaker.SetNewCurrent(productRepository.CreateMemento());
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using RepositoryPattern.Context;
-using RepositoryPattern.Memento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RepositoryPattern
@@ -78,31 +78,4 @@ namespace RepositoryPattern
             return context.Set<T>().Update(entity).Entity;
         }
     }
-
-    public class ProductRepository : GenericRepository<Product>
-    {
-        public ProductRepository(WarehouseContext context)
-            : base(context)
-        {
-        }
-
-        public ProductRepositoryMemento CreateMemento()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Product Update(Product entity)
-        {
-            var product = context.Products.Single(product => product.ProductId == entity.ProductId);
-
-            if (product.Quantity != entity.Quantity)
-            {
-                product.Quantity = entity.Quantity;
-                product.LastQuantityModified = DateTimeOffset.Now;
-            }
-
-            return base.Update(product);
-        }
-    }
-
 }

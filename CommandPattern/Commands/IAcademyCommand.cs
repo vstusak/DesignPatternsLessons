@@ -1,6 +1,6 @@
 ﻿namespace CommandPattern.Commands
 {
-    internal interface IAcademyCommand
+    public interface IAcademyCommand
     {
         void Execute();
         bool CanExecute();
