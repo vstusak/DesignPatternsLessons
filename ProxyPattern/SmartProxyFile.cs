@@ -11,6 +11,7 @@ namespace _02_ProxyPattern
         private FileStream _fileStream;
         private Dictionary<string, FileStream> fileStreams = new Dictionary<string, FileStream>();
         public FileStream OpenWrite(string path)
+            //todo: implement dictionary
         {
             if (_fileStream == null)
             {
