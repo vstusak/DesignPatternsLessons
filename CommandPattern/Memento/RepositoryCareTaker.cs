@@ -1,21 +1,24 @@
 ﻿using RepositoryPattern.Memento;
+using System;
 using System.Collections.Generic;
 
 namespace CommandPattern.Memento
 {
     public class RepositoryCareTaker
     {
-        private Stack<ProductRepositoryMemento> OldStates { get; set; } = new();
+        private Stack<ProductRepositoryMemento> UndoStates { get; set; } = new();
+        private Stack<ProductRepositoryMemento> RedoStates { get; set; } = new();
         private ProductRepositoryMemento CurrentState { get; set; }
 
-        public int UndoCount => OldStates.Count;
+        public int UndoCount => UndoStates.Count;
+        public int RedoCount => RedoStates.Count;
 
-        public void PushCurrentToHistory()
+        public void PushCurrentToUndo()
         {
             // first calling of this method before SetNewCurrent will save null
             if (CurrentState != null)
             {
-                OldStates.Push(CurrentState);
+                UndoStates.Push(CurrentState);
             }
         }
 
@@ -24,9 +27,27 @@ namespace CommandPattern.Memento
             CurrentState = productRepositoryMemento;
         }
 
-        public ProductRepositoryMemento PopState()
+        public ProductRepositoryMemento PopUndoState()
         {
-            return OldStates.Pop();
+            return UndoStates.Pop();
+        }
+
+        public void ClearRedoStack()
+        {
+            RedoStates.Clear();
+        }
+
+        public ProductRepositoryMemento PopRedoState()
+        {
+            return RedoStates.Pop();
+        }
+
+        internal void PushCurrentToRedo()
+        {
+            if (CurrentState != null)
+            {
+                RedoStates.Push(CurrentState);
+            }
         }
     }
 }

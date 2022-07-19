@@ -32,8 +32,13 @@ namespace CommandPattern
             //service.WriteProductsWithPriceOver100();
 
             WriteAll(productRepository.All());
+            Console.WriteLine("Undo will be carry out after pressing enter");
             Console.ReadLine();
             commandManagerWithHistory.Undo();
+            WriteAll(productRepository.All());
+            Console.WriteLine("Redo will be carry out after pressing enter");
+            Console.ReadLine();
+            commandManagerWithHistory.Redo();
             WriteAll(productRepository.All());
             //commandManager.Undo();
             //WriteAll(productRepository.All());
