@@ -1,5 +1,6 @@
 ﻿using RepositoryPattern;
 using RepositoryPattern.Context;
+using System;
 
 namespace CommandPattern.Commands
 {

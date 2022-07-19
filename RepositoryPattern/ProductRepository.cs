@@ -40,7 +40,20 @@ namespace RepositoryPattern
         public void SetMemento(ProductRepositoryMemento memento)
         {
             var products = JsonConvert.DeserializeObject<List<Product>>(memento.Content);
-            context.Products = products;
+
+            //foreach (var product in context.Products)
+            //{
+            //    context.Products.Remove(product);
+            //}
+
+            context.Products.RemoveRange(context.Products);
+            context.SaveChanges();
+
+            context.Products.AddRange(products);
+            context.SaveChanges();
+
+            //context.Products.UpdateRange(products);
+            //context.SaveChanges();
         }
     }
 }

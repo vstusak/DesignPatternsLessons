@@ -1,4 +1,6 @@
-﻿namespace CommandPattern.Commands
+﻿using System;
+
+namespace CommandPattern.Commands
 {
     public class BuyOnlyCommand : IOnlyCommand
     {

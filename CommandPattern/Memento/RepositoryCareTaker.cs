@@ -1,4 +1,5 @@
 ﻿using RepositoryPattern.Memento;
+using System.Collections.Generic;
 
 namespace CommandPattern.Memento
 {
@@ -7,7 +8,7 @@ namespace CommandPattern.Memento
         private Stack<ProductRepositoryMemento> OldStates { get; set; } = new();
         private ProductRepositoryMemento CurrentState { get; set; }
 
-        public int Count => OldStates.Count;
+        public int UndoCount => OldStates.Count;
 
         public void PushCurrentToHistory()
         {
