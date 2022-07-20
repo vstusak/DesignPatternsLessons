@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FacadePattern
 {
-    public class WeatherFacadeService : IWeatherFacadeService
+    public class WeatherFacadeService : IWeatherFacadeService, IAutoInstall
     {
         private readonly ILocationLookupService _locationLookupService;
         private readonly IWeatherService _weatherService;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FacadePattern
 {
-    public class TemperatureConverterService : ITemperatureConverterService
+    public class TemperatureConverterService : ITemperatureConverterService, IAutoInstall
     {
         public int ToCelsius(int f)
         {

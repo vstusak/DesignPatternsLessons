@@ -7,7 +7,7 @@ using FacadePattern.Entities;
 
 namespace FacadePattern
 {
-    public class LocationLookupService : ILocationLookupService
+    public class LocationLookupService : ILocationLookupService, IAutoInstall
     {
         public City GetCity(string zipCode)
         {
