@@ -8,6 +8,10 @@ using FacadePattern;
 //var temperatureConverterService = new TemperatureConverterService();
 //var weatherFacadeService = new WeatherFacadeService(locationLookupService, weatherService, temperatureConverterService);
 var container = new WindsorContainer();
+//var containerType = container.GetType();
+//var methods = containerType.GetMethods();
+//var installMethod = methods[11];
+//var methodbody = installMethod.GetMethodBody();
 
 container.Install(new FacadeInstaller());
 
