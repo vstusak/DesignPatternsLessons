@@ -18,7 +18,7 @@ public class Folder : IFolder
 
     public int GetSize()
     {
-        throw new NotImplementedException();
+        return systemItems.Sum(si => si.GetSize());
     }
 
     public void AddItem(ISystemItem item)
@@ -36,11 +36,9 @@ public class Folder : IFolder
     public void RemoveItem(string itemName)
     {
         var item = systemItems.FirstOrDefault(si => si.Name == itemName);
-
-        // todo make desision if we want to go to deep remove or only on first level
-        if (systemItems.Remove(item))
+        if(item != null)
         {
-
+            systemItems.Remove(item);
         }
     }
 }
