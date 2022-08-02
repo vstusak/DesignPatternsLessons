@@ -22,7 +22,8 @@ var stream3 = smartFile.OpenWrite("log.txt");
 /////
 ///
 
-var loader = new DataLoader();
+DataLoader loader = DataLoader.CreateInstance();
+
 var data = loader.expensiveResults;
 //hromada kodu
 foreach (var item in data)
