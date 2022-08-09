@@ -22,11 +22,26 @@ var stream3 = smartFile.OpenWrite("log.txt");
 /////
 ///
 
-DataLoader loader = DataLoader.CreateInstance();
+//DataLoader loader = DataLoader.CreateInstance();
+//Console.WriteLine("Initialization finished");
+//var data = loader.expensiveResults;
+////hromada kodu
+//foreach (var item in data)
+//{
+//    Console.WriteLine(item);
+//}
 
-var data = loader.expensiveResults;
-//hromada kodu
+//Console.ReadLine();
+////////////////////////////////
+/////Lazy Loading
+/////
+
+var lazyDataLoader = new LazyDataLoader();
+Console.WriteLine("Initialization finished");
+
+var data = lazyDataLoader.expensiveResults;
 foreach (var item in data)
 {
     Console.WriteLine(item);
 }
+Console.ReadLine();

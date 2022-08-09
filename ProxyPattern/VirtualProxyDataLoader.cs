@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _02_ProxyPattern
+﻿namespace _02_ProxyPattern
 {
     public class VirtualProxyDataLoader : DataLoader
     {
@@ -20,6 +14,7 @@ namespace _02_ProxyPattern
                 if (base.expensiveResults == null)
                 {
                     base.expensiveResults = DataSource.GetEntities();
+                    Console.WriteLine("text");
                 }
                 return base.expensiveResults;
             }
@@ -28,6 +23,6 @@ namespace _02_ProxyPattern
                 base.expensiveResults = value;
             }
         }
-        
+
     }
 }

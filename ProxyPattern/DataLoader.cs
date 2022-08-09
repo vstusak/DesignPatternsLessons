@@ -5,9 +5,9 @@
         //private string myProperty2;
 
         private string _text; //TODO - Show inicialization of object
+        //public IEnumerable<ExpensiveResult> expensiveResults { get; set; } = DataSource.GetEntities();
 
         public virtual IEnumerable<ExpensiveResult> expensiveResults { get; protected set; }
-
         protected DataLoader()
         {
             Console.WriteLine($"Constructor [DataLoader] has been loaded.");
@@ -26,9 +26,9 @@
         //    }
         //}
 
-        public static DataLoader CreateInstance() 
-        { 
-            return new VirtualProxyDataLoader(); 
+        public static DataLoader CreateInstance()
+        {
+            return new VirtualProxyDataLoader();
         }
     }
 }
