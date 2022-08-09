@@ -1,4 +1,6 @@
-﻿namespace FizzBuzz
+﻿using System.Text;
+
+namespace FizzBuzz
 {
     public class FizzBuzzGenerator
     {
@@ -7,7 +9,7 @@
         {
             var inputNumber = ParseInput(input);
             var sequence = new List<string>();
-            for (int i = inputNumber; i < CountOfMembers + inputNumber; i++)
+            for (var i = inputNumber; i < CountOfMembers + inputNumber; i++)
             {
                 sequence.Add(ResolveNumber(i));
             }
@@ -18,7 +20,7 @@
         {
             var inputNumber = ParseInput(input);
             var sequence = new List<string>();
-            for (int i = inputNumber; i < CountOfMembers + inputNumber; i++)
+            for (var i = inputNumber; i < CountOfMembers + inputNumber; i++)
             {
                 sequence.Add(ResolveNumber(i));
             }
@@ -29,7 +31,7 @@
         {
             var inputNumber = ParseInput(input);
             var result = String.Empty;
-            for (int i = inputNumber; i < CountOfMembers + inputNumber; i++)
+            for (var i = inputNumber; i < CountOfMembers + inputNumber; i++)
             {
                 result = result + ResolveNumber(i) + " ";
             }
@@ -40,7 +42,7 @@
         {
             var inputNumber = ParseInput(input);
             var stringBuilder = new StringBuilder(20000);
-            for (int i = inputNumber; i < CountOfMembers + inputNumber; i++)
+            for (var i = inputNumber; i < CountOfMembers + inputNumber; i++)
             {
                 stringBuilder.Append(ResolveNumber(i));
                 stringBuilder.Append(' ');
@@ -50,7 +52,7 @@
 
         private int ParseInput(string input)
         {
-            if (Int32.TryParse(input, out int result))
+            if (int.TryParse(input, out var result))
             {
                 return result;
             }

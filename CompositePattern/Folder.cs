@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CompositePattern;
+﻿namespace CompositePattern;
 public class Folder : IFolder
 {
-    private IList<ISystemItem> systemItems = new List<ISystemItem>();
+    private readonly IList<ISystemItem> systemItems = new List<ISystemItem>();
 
     public Folder(string name)
     {
@@ -36,7 +30,7 @@ public class Folder : IFolder
     public void RemoveItem(string itemName)
     {
         var item = systemItems.FirstOrDefault(si => si.Name == itemName);
-        if(item != null)
+        if (item != null)
         {
             systemItems.Remove(item);
         }
