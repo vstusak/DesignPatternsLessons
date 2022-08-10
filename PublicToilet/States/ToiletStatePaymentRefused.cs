@@ -6,26 +6,27 @@ using System.Threading.Tasks;
 
 namespace PublicToilet.States
 {
-    public class ToiletStateFree : IToiletState
+    internal class ToiletStatePaymentRefused: IToiletState
     {
-        private const ToiletState _state = ToiletState.Free;
+        private const ToiletState _state = ToiletState.PaymentRefused;
+        
         private IPaymentService _paymentService;
         private IToiletV2 _toilet;
 
-        public ToiletStateFree(IToiletV2 toilet)
+        public ToiletStatePaymentRefused(IToiletV2 toilet)
         {
-            _toilet = toilet;
             _paymentService = new PaymentService();
+            _toilet = toilet;
         }
 
         public ToiletDoorResult Enter()
         {
-            return new ToiletDoorResult { DisplayText = "Free.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = _state };
         }
 
         public ToiletDoorResult Leave()
         {
-            return new ToiletDoorResult { DisplayText = "Free.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = _state };
         }
 
         public ToiletDoorResult SwipeCard()
@@ -38,8 +39,7 @@ namespace PublicToilet.States
             }
             else
             {
-                _toilet.ChangeStateObject(new ToiletStatePaymentRefused(_toilet));
-                return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = ToiletState.PaymentRefused };
+                return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = _state };
             }
         }
     }

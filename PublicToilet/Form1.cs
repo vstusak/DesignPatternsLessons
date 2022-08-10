@@ -2,11 +2,11 @@ namespace PublicToilet
 {
     public partial class Form1 : Form
     {
-        private readonly Toilet _toilet;
+        private readonly IToilet _toilet;
         public Form1()
         {
             InitializeComponent();
-            _toilet = new Toilet(new PaymentService());
+            _toilet = new ToiletV2();
             label1.Text = "Free.";
             label2.Text = ToiletState.Free.ToString();
         }
