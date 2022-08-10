@@ -6,19 +6,6 @@ using System.Threading.Tasks;
 
 namespace PublicToilet
 {
-    public enum ToiletState
-    {
-        Free,
-        Occupied,
-        Paid,
-        PaymentRefused
-    }
-
-    public class ToiletDoorResult
-    {
-        public string DisplayText { get; set; }
-        public ToiletState ToiletState { get; set; }
-    }
     public class Toilet : IToilet
     {
         private ToiletState _state = ToiletState.Free;
