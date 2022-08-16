@@ -14,13 +14,14 @@ namespace CompositePatternTodoList
             Text = text;
         }
 
-        public string GetString()
+        public string GetString(int depth = 0)
         {
+
             var isDoneText = IsDone
                 ? "[x]"
-                : string.Empty;
+                : "[ ]";
 
-            return $"{isDoneText} {Caption} - {Text}";
+            return $"{GetOs(depth)} {isDoneText} {Caption} - {Text}";
 
             //public ITodoItem Add(ITodoItem item)
             //{
@@ -33,6 +34,13 @@ namespace CompositePatternTodoList
 
             //    return todoComposite.Add(item);
             //}
+
+
+        }
+
+        private string GetOs(int depth)
+        {
+            return new string('O', depth);
         }
     }
 
@@ -61,18 +69,20 @@ namespace CompositePatternTodoList
             Items.Add(item);
         }
 
-        public string GetString()
+        public string GetString(int depth = 0)
         {
             var isDoneText = IsDone
                 ? "[x]"
-                : string.Empty;
+                : "[ ]";
 
             var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine($"{isDoneText} {Caption}-{Text}");
+            stringBuilder.AppendLine($"{GetOs(depth)} {isDoneText} {Caption}-{Text}");
+
+            var newDepth = depth + 1;
 
             foreach (var item in Items)
             {
-                stringBuilder.AppendLine($"-{item.GetString()}");
+                stringBuilder.AppendLine($"{item.GetString(newDepth)}");
             }
 
             return stringBuilder.ToString();
@@ -81,6 +91,11 @@ namespace CompositePatternTodoList
         public void Remove(ITodoItem item)
         {
             Items.Remove(item);
+        }
+
+        private string GetOs(int depth)
+        {
+            return new string('O', depth);
         }
     }
 }

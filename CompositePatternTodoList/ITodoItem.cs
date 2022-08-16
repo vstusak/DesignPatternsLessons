@@ -5,6 +5,6 @@
         string Caption { get; set; }
         bool IsDone { get; set; }
         string Text { get; set; }
-        string GetString();
+        string GetString(int depth = 0);
     }
 }
