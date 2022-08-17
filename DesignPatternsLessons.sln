@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgePattern", "BridgePatt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacadePattern", "FacadePattern\FacadePattern.csproj", "{B104D786-44F4-4100-B53A-A06D03F81959}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicToilet", "PublicToilet\PublicToilet.csproj", "{016FF19F-FC34-4A06-817D-FD46516F2E72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PublicToilet", "PublicToilet\PublicToilet.csproj", "{016FF19F-FC34-4A06-817D-FD46516F2E72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisitorPattern", "VisitorPattern\VisitorPattern.csproj", "{3BD797C6-80DC-4B28-ABFF-895D54648446}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{016FF19F-FC34-4A06-817D-FD46516F2E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{016FF19F-FC34-4A06-817D-FD46516F2E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{016FF19F-FC34-4A06-817D-FD46516F2E72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD797C6-80DC-4B28-ABFF-895D54648446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD797C6-80DC-4B28-ABFF-895D54648446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD797C6-80DC-4B28-ABFF-895D54648446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD797C6-80DC-4B28-ABFF-895D54648446}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
