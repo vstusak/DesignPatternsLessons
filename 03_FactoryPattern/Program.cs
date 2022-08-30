@@ -17,6 +17,9 @@ public static class Program
         var factoryCard = factory.CreateCard(factoryCardType);
 
         Console.WriteLine(factoryCard.ToString());
+
+        //////////////////////////////////////
+        
     }
 
     static ICard CreateCardFactoryMethod(CardType cardType)
