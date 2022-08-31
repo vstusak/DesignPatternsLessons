@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VisitorPattern.Visitors;
 
 namespace VisitorPattern.Products
 {
-    public interface IProduct : IVisitable
+    public interface IVisitable
     {
-        string Name { get; set; }
-        int Price { get; set; }
+        void Accept(IVisitor visitor);
     }
 }
