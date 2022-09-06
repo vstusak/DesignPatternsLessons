@@ -1,11 +1,18 @@
-﻿namespace _03_FactoryPattern;
+﻿using System;
+
+namespace _03_FactoryPattern;
 
 public static class Program
 {
     public static void Main()
     {
         var cardType = CardType.Debit;
+        var serviceType = BankServiceType.standard;
 
+        //////////////////////////////////////
+        ///Everything above comes from API./// 
+        //////////////////////////////////////
+        
         var card = CreateCardFactoryMethod(cardType);
 
         Console.WriteLine(card.ToString());
@@ -20,6 +27,21 @@ public static class Program
 
         //////////////////////////////////////
         
+        ///Get account object and card object based on serviceType service from API. 
+        IBankServicesFactory bankServicesFactory = null;
+
+        switch (serviceType)
+        {
+            case BankServiceType.standard:
+                bankServicesFactory = new StandardBankServicesFactory();
+                break;
+            case BankServiceType.premium:   
+                bankServicesFactory = new PremiumBankServicesFactory();
+                break;
+        }
+
+        var card2 = bankServicesFactory.CreateCard();
+        var account = bankServicesFactory.CreateAccount(false);
     }
 
     static ICard CreateCardFactoryMethod(CardType cardType)
