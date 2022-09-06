@@ -2,23 +2,37 @@
 
 public class AlphabeticalByNamePeopleIterator : IPeopleIterator
 {
-    public Person GetNext()
+    private PeopleCollection _localCollection;
+    private int _index;
+
+    public AlphabeticalByNamePeopleIterator(PeopleCollection collection)
     {
-        throw new NotImplementedException();
+        _localCollection = collection;
+        _index = 0;
+    }
+
+    public bool GetNext()
+    {
+        if (AtEnd())
+        {
+            return false;
+        }
+        _index++;
+        return true;
     }
 
     public Person Current()
     {
-        throw new NotImplementedException();
+        return _localCollection[_index];
     }
 
     public bool AtEnd()
     {
-        throw new NotImplementedException();
+        return (_index >= _localCollection.Count);
     }
 
     public void Reset()
     {
-        throw new NotImplementedException();
+        _index = 0;
     }
 }

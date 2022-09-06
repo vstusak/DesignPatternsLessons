@@ -2,7 +2,7 @@
 
 public interface IPeopleIterator
 {
-    Person GetNext();
+    bool GetNext();
     Person Current();
     bool AtEnd();
     void Reset();
