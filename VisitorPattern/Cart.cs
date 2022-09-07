@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VisitorPattern.Products;
+using VisitorPattern.Visitors;
 
 namespace VisitorPattern
 {
@@ -23,6 +24,14 @@ namespace VisitorPattern
             }
 
             Console.WriteLine($"Total price: {_items.Sum(i => i.Price)}");
+        }
+
+        public void ApplyVisitor(IVisitor visitor)
+        {
+            foreach (var item in _items)
+            {
+                item.Accept(visitor);
+            }
         }
     }
 }
