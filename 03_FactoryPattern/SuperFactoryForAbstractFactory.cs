@@ -8,6 +8,21 @@ namespace _03_FactoryPattern
 {
     public class SuperFactoryForAbstractFactory
     {
-        public IBankServicesFactory CreateBankServicesFactory();
+        public IBankServicesFactory CreateBankServicesFactory(BankServiceType serviceType)
+        {
+            IBankServicesFactory bankServicesFactory = null;
+
+            switch (serviceType)
+            {
+                case BankServiceType.standard:
+                    bankServicesFactory = new StandardBankServicesFactory();
+                    break;
+                case BankServiceType.premium:
+                    bankServicesFactory = new PremiumBankServicesFactory();
+                    break;
+            }
+
+            return bankServicesFactory;
+        }
     }
 }

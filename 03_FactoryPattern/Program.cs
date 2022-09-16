@@ -12,7 +12,7 @@ public static class Program
         //////////////////////////////////////
         ///Everything above comes from API./// 
         //////////////////////////////////////
-        
+
         var card = CreateCardFactoryMethod(cardType);
 
         Console.WriteLine(card.ToString());
@@ -26,19 +26,10 @@ public static class Program
         Console.WriteLine(factoryCard.ToString());
 
         //////////////////////////////////////
-        
-        ///Get account object and card object based on serviceType service from API. 
-        IBankServicesFactory bankServicesFactory = null;
 
-        switch (serviceType)
-        {
-            case BankServiceType.standard:
-                bankServicesFactory = new StandardBankServicesFactory();
-                break;
-            case BankServiceType.premium:   
-                bankServicesFactory = new PremiumBankServicesFactory();
-                break;
-        }
+        ///Get account object and card object based on serviceType service from API. 
+        var supperFactory = new SuperFactoryForAbstractFactory();
+        IBankServicesFactory bankServicesFactory = supperFactory.CreateBankServicesFactory(serviceType);
 
         var card2 = bankServicesFactory.CreateCard();
         var account = bankServicesFactory.CreateAccount(false);
