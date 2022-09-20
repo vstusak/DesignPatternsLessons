@@ -2,13 +2,26 @@
 using IteratorPattern;
 
 var list = new PeopleCollection { new Person("Pepa"), new Person("Radim"), new Person("Anna"), new Person("Lada"), new Person("Borivoj"), new Person("Julia"), new Person("Eva"), new Person("Beata") };
+Console.WriteLine("Going to use foreach default enumerator");
+
 foreach (var item in list)
 {
     Console.WriteLine(item.Name);
 }
 
+Console.WriteLine("Going to use while and default enumerator");
 var defaultEnumerator = list.GetEnumerator();
-//todo: spustit a pouzit defaultni enumerator z listu
-do{
+
+while (defaultEnumerator.MoveNext())
+{
     Console.WriteLine(defaultEnumerator.Current.Name);
-}while(defaultEnumerator.MoveNext());
+}
+
+Console.WriteLine("Going to use while and our enumerator");
+var ourEnumerator = list.CreateIterator();
+
+while (!ourEnumerator.AtEnd())
+{
+    Console.WriteLine(ourEnumerator.Current().Name);
+    ourEnumerator.GetNext();
+}

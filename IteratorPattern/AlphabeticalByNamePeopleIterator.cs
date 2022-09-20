@@ -21,6 +21,7 @@ public class AlphabeticalByNamePeopleIterator : IPeopleIterator
         return true;
     }
 
+    //@TODO - apply alphabetical sorting
     public Person Current()
     {
         return _localCollection[_index];

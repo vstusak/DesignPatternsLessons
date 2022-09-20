@@ -4,6 +4,6 @@ public class PeopleCollection : List<Person>, IPeopleCollection
 {
     public IPeopleIterator CreateIterator()
     {
-        throw new NotImplementedException();
+        return new AlphabeticalByNamePeopleIterator(this);
     }
 }
