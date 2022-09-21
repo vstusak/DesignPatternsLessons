@@ -23,8 +23,7 @@ namespace VisitorPattern.Visitors
 
         public void VisitToy(Toy toy)
         {
-            //TODO: not working, fix this
-            toy.Price =- (int)((double)toy.Price * (double)(_discountPercentage/100));
+            toy.Price -= (int)(toy.Price * _discountPercentage / 100.0);
         }
 
         public ToyDiscountVisitor(int discountPercentage)
