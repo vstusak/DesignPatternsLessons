@@ -2,7 +2,7 @@
 
 namespace RepositoryDesignPattern.Commands
 {
-    internal interface ICommand
+    public interface ICommand
     {
         bool CanExecute();
         void Execute();

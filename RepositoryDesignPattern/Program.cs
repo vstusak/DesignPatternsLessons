@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RepositoryDesignPattern.Commands;
 using RepositoryDesignPattern.Context;
+using RepositoryDesignPattern.Memento;
 using RepositoryDesignPattern.Queries;
 
 namespace RepositoryDesignPattern
@@ -18,6 +19,8 @@ namespace RepositoryDesignPattern
             //var productRepository = new GenericRepository<Product>(context);
             var productRepository = new ProductRepository(context);
             var commandController = new CommandController();
+            var careTaker = new ProductRepositoryCareTaker(productRepository);
+            var commandControllerWithHistory = new CommandControllerWithHistory(commandController, careTaker);
             var warehouseService = new WarehouseService(productRepository);
             var productQueryHandler = new ProductCqrsQueryHandler(productRepository);
             var buyCqrsCommandHandler = new BuyCqrsCommandHandler(productRepository, productQueryHandler);
@@ -35,10 +38,10 @@ namespace RepositoryDesignPattern
             Console.WriteLine(productToBuy);
             Console.WriteLine(productIdToBuy);
             var command = new BuyCommand(productRepository, productIdToBuy);
-            commandController.Invoke(command);
+            commandControllerWithHistory.Invoke(command);
             Console.WriteLine(productToBuy);
 
-            commandController.Undo();
+            commandControllerWithHistory.Undo();
             Console.WriteLine(productToBuy);
 
             //*****************************************************************
