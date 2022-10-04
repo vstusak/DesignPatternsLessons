@@ -1,4 +1,4 @@
-﻿namespace RepositoryPattern
+﻿namespace _04_RepositoryPattern
 {
     public class Product
     {
@@ -11,6 +11,5 @@
         {
             ProductId = Guid.NewGuid();
         }
-
     }
 }
