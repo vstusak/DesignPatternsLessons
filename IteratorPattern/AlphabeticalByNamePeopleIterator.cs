@@ -24,7 +24,7 @@ public class AlphabeticalByNamePeopleIterator : IPeopleIterator
     //@TODO - apply alphabetical sorting
     public Person Current()
     {
-        return _localCollection[_index];
+        return _localCollection.OrderBy(x => x.Name).ToList()[_index];
     }
 
     public bool AtEnd()
