@@ -20,13 +20,18 @@ namespace RepositoryDesignPattern
 
         public void Invoke(ICommand command)
         {
+            _careTaker.Push();
             _controller.Invoke(command);
-            //TODO: Call CareTaker
         }
 
         public void Undo()
         {
-            //TODO: Call CareTaker
+            _careTaker.Undo();
+        }
+
+        public void Redo()
+        {
+            _careTaker.Redo();
         }
     }
 }

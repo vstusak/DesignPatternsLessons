@@ -42,14 +42,19 @@ namespace RepositoryDesignPattern
             Console.WriteLine(productToBuy);
 
             commandControllerWithHistory.Undo();
-            Console.WriteLine(productToBuy);
+            var productAfterMemento = warehouseService.GetAll().First();
+            Console.WriteLine(productAfterMemento);
+
+            commandControllerWithHistory.Redo();
+            productAfterMemento = warehouseService.GetAll().First(p => p.Name == "Circle");
+            Console.WriteLine(productAfterMemento);
 
             //*****************************************************************
             //CQRS
-            Console.WriteLine("CQRS Baby!");
-            var buyCqrsCommand = new BuyCqrsCommand(productIdToBuy);
-            buyCqrsCommandHandler.Execute(buyCqrsCommand);
-            Console.WriteLine(productToBuy);
+            //Console.WriteLine("CQRS Baby!");
+            //var buyCqrsCommand = new BuyCqrsCommand(productIdToBuy);
+            //buyCqrsCommandHandler.Execute(buyCqrsCommand);
+            //Console.WriteLine(productToBuy);
 
             Console.ReadLine();
         }

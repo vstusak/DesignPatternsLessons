@@ -24,7 +24,10 @@ namespace RepositoryDesignPattern
         {
             var serializedAllProducts = memento.GetState();
             var newContext = JsonConvert.DeserializeObject<List<Product>>(serializedAllProducts);
-            //TODO: Context.Products.insert
+            Context.Products.RemoveRange(Context.Products);
+            Context.SaveChanges();
+            Context.Products.AddRange(newContext);
+            Context.SaveChanges();
         }
 
         public override Product Update(Product product)

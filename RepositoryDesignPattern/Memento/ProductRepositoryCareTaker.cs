@@ -11,6 +11,7 @@ namespace RepositoryDesignPattern.Memento
     {
         private ProductRepository _productRepository { get; }
         private readonly Stack<ProductRepositoryMemento> _undoStack = new Stack<ProductRepositoryMemento>();
+        private readonly Stack<ProductRepositoryMemento> _redoStack = new Stack<ProductRepositoryMemento>();
 
         public ProductRepositoryCareTaker(ProductRepository productRepository)
         {
@@ -21,12 +22,18 @@ namespace RepositoryDesignPattern.Memento
         {
             var memento = _productRepository.CreateMemento();
             _undoStack.Push(memento);
+            _redoStack.Clear();
         }
 
-        public void Pop()
+        public void Undo()
         {
+            _redoStack.Push(_productRepository.CreateMemento());
             _productRepository.SetMemento(_undoStack.Pop());
         }
         
+        public void Redo()
+        {
+            _productRepository.SetMemento(_redoStack.Pop());
+        }
     }
 }
