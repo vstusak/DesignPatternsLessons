@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IteratorPattern
+﻿namespace IteratorPattern
 {
     public class PeopleCollectionV2 : List<Person>
     {
-        public new Enumerator GetEnumerator()
+        //public new Enumerator GetEnumerator()
+        //{
+        //    return new Enumerator(this);
+        //}
+
+        public new IEnumerator<Person> GetEnumerator()
         {
-            return new Enumerator(this);
+            return new AlphabeticalByNamePeopleIteratorV2(this);
         }
     }
 }

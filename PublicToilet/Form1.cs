@@ -35,5 +35,10 @@ namespace PublicToilet
             DisplayLabel.Text = result.Message;
             DisplayLabel.BackColor = result.Color;
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

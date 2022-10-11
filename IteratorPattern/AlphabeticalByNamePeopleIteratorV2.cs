@@ -1,51 +1,45 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace IteratorPattern
 {
     public class AlphabeticalByNamePeopleIteratorV2 : IEnumerator<Person>
     {
-        private List<Person> list;
+        private readonly List<Person> list;
         private int index;
-        private Person current;
 
         public AlphabeticalByNamePeopleIteratorV2(List<Person> list)
         {
             this.list = list;
-            index = 0;            
-            current = default(Person);
+            index = 0;
+            Current = default;
         }
-        public Person Current => current;
+        public Person Current { get; private set; }
 
-        object IEnumerator.Current => current;
+        object IEnumerator.Current => Current;
 
         public void Dispose()
-        {        }
+        { }
 
         public bool MoveNext()
         {
             if (index < this.list.Count)
             {
-                current = this.list[index];
+                Current = this.list
+                    .OrderBy(p => p.Name)
+                    .ToList()[index];
                 index++;
                 return true;
             }
 
             index = this.list.Count + 1;
-            current = default(Person);
+            Current = default;
             return false;
         }
 
         public void Reset()
         {
             index = 0;
-            current = default(Person);
+            Current = default;
         }
     }
 }

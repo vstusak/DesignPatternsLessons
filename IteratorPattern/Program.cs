@@ -33,3 +33,5 @@ foreach(var item in list2)
 {
     Console.WriteLine(item.Name);
 }
+
+Console.ReadLine();
