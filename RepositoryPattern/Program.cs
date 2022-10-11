@@ -7,6 +7,9 @@ namespace _04_RepositoryPattern
         public static void Main()
         {
             InitDb();
+            var productRepository = new ProductRepository();
+            var service = new WarehouseService(productRepository);
+            service.WriteAllProducts();
         }
 
         public static void InitDb()
