@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using PublicToilet.ObservatorDesignPattern;
 
 namespace PublicToilet
 {
@@ -36,9 +37,31 @@ namespace PublicToilet
             DisplayLabel.BackColor = result.Color;
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void EnableLogging_Click(object sender, EventArgs e)
         {
+            var observer = new LoggingObserver(textBox1);
+            // @TODO Finish unsubscribe in future
+            var unsubscriber = _toilet.Subscribe(observer);
+        }
+    }
 
+    internal class LoggingObserver : IOurObserver
+    {
+        private readonly TextBox _output;
+
+        public LoggingObserver(TextBox output)
+        {
+            _output = output;
+        }
+
+        public void NotificationRaised()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnSubscribe()
+        {
+            throw new NotImplementedException();
         }
     }
 }
