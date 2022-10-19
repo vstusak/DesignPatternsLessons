@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CompositePattern
 {
-    public interface IFolder
+    public interface IFolder:ISystemItem
     {
         void AddItem(ISystemItem item);
         void RemoveItem(string Name);
