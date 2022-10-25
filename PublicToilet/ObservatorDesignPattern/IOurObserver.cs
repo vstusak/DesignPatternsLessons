@@ -2,7 +2,7 @@
 {
     public interface IOurObserver
     {
-        void NotificationRaised();
+        void NotificationRaised(IOurObservable source);
         void UnSubscribe();
     }
 }

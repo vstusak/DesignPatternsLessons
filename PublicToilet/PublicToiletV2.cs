@@ -8,18 +8,18 @@ namespace PublicToilet
         private IToiletState _state;
         private IPaymentService _paymentService;
         private readonly IEnumerable<IToiletState> toiletStates;
-        private readonly IList<IOurObserver> _observers = new List<IOurObserver>();
+        private readonly List<IOurObserver> _observers = new List<IOurObserver>();
 
-        public PublicToiletV2(IPaymentService paymentService, IEnumerable<IToiletState> toiletStates)
+        public PublicToiletV2()
         {
-            //ChangeState(new LockedToiletState());
-            _paymentService = paymentService;
-            this.toiletStates = toiletStates;
+            ChangeState(new LockedToiletState(this));
+            _paymentService = new PaymentService();
+            //this.toiletStates = toiletStates;
         }
 
         public void ChangeState(IToiletState state)
         {
-            if (state.NameOfState != _state.NameOfState)
+            if (_state != null && state.NameOfState != _state.NameOfState)
             {
                 NotifyAll();
             }
@@ -48,14 +48,13 @@ namespace PublicToilet
         }
 
         public void NotifyAll()
-        {
-            @TODO Run application
-            throw new System.NotImplementedException();
+        {            
+            _observers.ForEach(o => o.NotificationRaised(this));
         }
 
         public State GetState()
         {
-            throw new System.NotImplementedException();
+            return _state.NameOfState;
         }
     }
 }
