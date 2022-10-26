@@ -8,9 +8,9 @@ namespace CompositePattern2
 {
     public interface IToDoItem
     {
-        string Name { get; }
-        string Text { get; }
-        bool IsCompleted { get; }
-        string GetString();
+        string Name { get; set; }
+        string Text { get; set; }
+        bool IsCompleted { get; set; }
+        string GetString(int depth);
     }
 }

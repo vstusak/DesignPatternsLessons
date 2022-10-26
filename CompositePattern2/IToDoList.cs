@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CompositePattern2
 {
-    public interface IToDoList
+    public interface IToDoList : IToDoItem
     {
+        void AddItem(IToDoItem item);
+        //void RemoveItem(IToDoItem item);
     }
 }
