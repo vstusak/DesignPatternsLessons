@@ -2,14 +2,14 @@
 
 namespace _04_RepositoryPattern
 {
-    internal interface IProductRepository
+    internal interface IRepository<T>
     {
-        IEnumerable<Product> GetAll();
-        Product Add(Product product);
-        Product Update(Product product);
-        Product Get(string name);
-        void Remove(Product product);
+        IEnumerable<T> GetAll();
+        T Add(T item);
+        T Update(T item);
+        T Get(string name);
+        void Remove(T item);
 
-        IEnumerable<Product> Find(Expression<Func<Product, bool>> expression);
+        IEnumerable<T> Find(Expression<Func<T, bool>> expression);
     }
 }

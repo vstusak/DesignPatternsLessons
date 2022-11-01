@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _04_RepositoryPattern
+﻿namespace _04_RepositoryPattern
 {
     internal class WarehouseService
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IRepository<Product> _productRepository;
 
-        public WarehouseService(IProductRepository productRepository)
+        public WarehouseService(IRepository<Product> productRepository)
         {
             _productRepository = productRepository;
         }

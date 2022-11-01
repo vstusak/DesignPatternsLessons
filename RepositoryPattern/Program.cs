@@ -1,13 +1,14 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace _04_RepositoryPattern
+﻿namespace _04_RepositoryPattern
 {
     public static class Program
     {
         public static void Main()
         {
             InitDb();
-            var productRepository = new ProductRepository(new WarehouseContext());
+            //var productRepository = new ProductRepository(new WarehouseContext());
+            var productRepository = new GenericRepository<Product>(new WarehouseContext());
+            var customerRepository = new GenericRepository<Customer>(new WarehouseContext());
+
             var service = new WarehouseService(productRepository);
             service.WriteAllProducts();
         }
