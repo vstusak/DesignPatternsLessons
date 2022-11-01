@@ -12,18 +12,18 @@ namespace PublicToilet
 
         public PublicToiletV2()
         {
-            ChangeState(new LockedToiletState(this));
+            _state = new LockedToiletState(this);
             _paymentService = new PaymentService();
             //this.toiletStates = toiletStates;
         }
 
         public void ChangeState(IToiletState state)
         {
-            if (_state != null && state.NameOfState != _state.NameOfState)
+            if (state.NameOfState != _state.NameOfState)
             {
+                _state = state;
                 NotifyAll();
             }
-            _state = state;
         }
 
         public ToiletDoorResult LeaveToilet()
@@ -44,11 +44,11 @@ namespace PublicToilet
         public IOurUnSubscriber Subscribe(IOurObserver observer)
         {
             _observers.Add(observer);
-            return new UnSubscriber();
+            return new UnSubscriber(_observers, observer);
         }
 
         public void NotifyAll()
-        {            
+        {
             _observers.ForEach(o => o.NotificationRaised(this));
         }
 
