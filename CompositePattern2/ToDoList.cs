@@ -9,6 +9,7 @@ namespace CompositePattern2
     internal class ToDoList : IToDoList
     {
         private List<IToDoItem> _list = new();
+        private bool _isCompleted;
 
         public string Name { get; set; }
 
@@ -16,8 +17,28 @@ namespace CompositePattern2
 
         public bool IsCompleted
         {
-            get => _list.Count > 0 && _list.All(i => i.IsCompleted);
-            set => _list.ForEach(i => i.IsCompleted = value);
+            get
+            {
+                if (_list.Any())
+                {
+                    return _list.All(i => i.IsCompleted);
+                }
+                else
+                {
+                    return _isCompleted;
+                }
+            }
+            set
+            {
+                if (_list.Any())
+                {
+                    _list.ForEach(i => i.IsCompleted = value);
+                }
+                else
+                {
+                    _isCompleted = value;
+                }                 
+            }
         }
 
         public void AddItem(IToDoItem item)
