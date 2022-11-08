@@ -10,6 +10,7 @@ namespace PublicToilet
         public Form1()
         {
             InitializeComponent();
+            
             _toilet = new PublicToiletV2();
         }
 
@@ -42,6 +43,21 @@ namespace PublicToilet
             var observer = new AdminObserver(textBox1);
             // @TODO Finish unsubscribe in future
             var unsubscriber = _toilet.Subscribe(observer);
+            //listView1.Items.Add()
+            listBox1.Items.Add(unsubscriber);
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            var box = (ListBox)sender;
+            var unSubscriber = (UnSubscriber)box.SelectedItem;
+            unSubscriber.UnSubscribe();
+            box.Items.Remove(unSubscriber);
         }
     }
 
