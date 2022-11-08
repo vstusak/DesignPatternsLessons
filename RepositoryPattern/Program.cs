@@ -11,6 +11,12 @@
 
             var service = new WarehouseService(productRepository);
             service.WriteAllProducts();
+
+            var balls = productRepository.Get("ball");
+            balls.Quantity =- 1;
+            productRepository.Update(balls);
+            productRepository.S
+            service.WriteAllProducts();
         }
 
         public static void InitDb()
