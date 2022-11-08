@@ -12,10 +12,9 @@
             var service = new WarehouseService(productRepository);
             service.WriteAllProducts();
 
-            var balls = productRepository.Get("ball");
-            balls.Quantity =- 1;
+            var balls = productRepository.GetAll().First(product=>string.Equals(product.Name, "ball", StringComparison.InvariantCultureIgnoreCase));
+            balls.Quantity -= 1;
             productRepository.Update(balls);
-            productRepository.S
             service.WriteAllProducts();
         }
 
