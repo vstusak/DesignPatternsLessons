@@ -6,13 +6,14 @@
         {
             InitDb();
             //var productRepository = new ProductRepository(new WarehouseContext());
-            var productRepository = new GenericRepository<Product>(new WarehouseContext());
+            //var productRepository = new GenericRepository<Product>(new WarehouseContext());
+            var productRepository = new ProductRepositoryOverride(new WarehouseContext());
             var customerRepository = new GenericRepository<Customer>(new WarehouseContext());
 
             var service = new WarehouseService(productRepository);
             service.WriteAllProducts();
 
-            var balls = productRepository.GetAll().First(product=>string.Equals(product.Name, "ball", StringComparison.InvariantCultureIgnoreCase));
+            var balls = productRepository.GetAll().First(product => string.Equals(product.Name, "ball", StringComparison.InvariantCultureIgnoreCase));
             balls.Quantity -= 1;
             productRepository.Update(balls);
             service.WriteAllProducts();

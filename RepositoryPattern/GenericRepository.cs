@@ -35,11 +35,27 @@ namespace _04_RepositoryPattern
             _warehouseContext.Remove(item);
         }
 
-        public T Update(T item)
+        public virtual T Update(T item)
         {
             var result = _warehouseContext.Update(item).Entity;
             _warehouseContext.SaveChanges();
             return result;
+        }
+    }
+
+    class ProductRepositoryOverride : GenericRepository<Product>
+    {
+        public ProductRepositoryOverride(WarehouseContext warehouseContext) : base(warehouseContext)
+        {
+        }
+
+        public override Product Update(Product product)
+        {
+            product.LastTimeModified = DateTime.Now;
+            //var result = _warehouseContext.Products.Update(product).Entity;
+            //_warehouseContext.SaveChanges();
+
+            return base.Update(product);
         }
     }
 }
