@@ -17,28 +17,26 @@ namespace IteratorPattern
     public class PeopleIterator : IPeopleIterator
     {
         private readonly PeopleCollection _people;
-        private int _currentPosition =0;
+        private int _currentPosition = 0;
+        public Person CurrentPerson { get; private set; }
 
         public PeopleIterator(PeopleCollection people)
         {
             _people = people;
         }
-        public bool AtEnd()
-        {
-            return _currentPosition+1 >= _people.Count;
-        }
 
-        public void Next()
+        public bool Next()
         {
-            if (!AtEnd())
+            if (_currentPosition < _people.Count)
             {
+                CurrentPerson = _people[_currentPosition];
                 _currentPosition++;
+                return true;
             }
-        }
-
-        public Person Current()
-        {
-            return _people[_currentPosition];
+            else
+            {
+                return false;
+            }
         }
     }
 
@@ -49,8 +47,7 @@ namespace IteratorPattern
 
     public interface IPeopleIterator
     {
-        bool AtEnd();
-        void Next();
-        Person Current();
+        bool Next();
+        Person CurrentPerson { get; }
     }
 }

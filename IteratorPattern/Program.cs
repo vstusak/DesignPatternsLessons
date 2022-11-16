@@ -26,13 +26,11 @@ var iterator =  people.CreateIterator();
 
 Console.WriteLine("Own Iterator ---");
 
-//TODO: eliminate AtEnd, and replace with Next/ Current methods
-while (!iterator.AtEnd())
+while (iterator.Next())
 {
-    var person = iterator.Current();
+    var person = iterator.CurrentPerson;
     Console.WriteLine(person.Name);
-    iterator.Next();
 }
 
 Console.WriteLine("After At End  Iterator ---");
-Console.WriteLine(iterator.Current().Name);
+Console.WriteLine(iterator.CurrentPerson.Name);
