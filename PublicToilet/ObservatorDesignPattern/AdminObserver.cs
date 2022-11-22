@@ -14,7 +14,10 @@ namespace PublicToilet.ObservatorDesignPattern
         public AdminObserver(TextBox output)
         {
             _output = output;
+            //Id = Guid.NewGuid();
         }
+
+        //public Guid Id { get; }
 
         public void NotificationRaised(IOurObservable source)
         {

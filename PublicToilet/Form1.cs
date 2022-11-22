@@ -12,6 +12,8 @@ namespace PublicToilet
             InitializeComponent();
             
             _toilet = new PublicToiletV2();
+            //listBox1.DataSource = _toilet._observers;
+            //listBox1.DisplayMember = "Id";
         }
 
         private void swipeCardButton_Click(object sender, EventArgs e)

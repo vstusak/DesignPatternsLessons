@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using PublicToilet.ObservatorDesignPattern;
 
 namespace PublicToilet
@@ -8,7 +9,8 @@ namespace PublicToilet
         private IToiletState _state;
         private IPaymentService _paymentService;
         private readonly IEnumerable<IToiletState> toiletStates;
-        private readonly List<IOurObserver> _observers = new List<IOurObserver>();
+        public readonly List<IOurObserver> _observers = new();
+        //public readonly BindingList<IOurObserver> _observers = new();
 
         public PublicToiletV2()
         {
@@ -49,7 +51,10 @@ namespace PublicToilet
 
         public void NotifyAll()
         {
-            _observers.ForEach(o => o.NotificationRaised(this));
+            foreach (var observer in _observers)
+            {
+                observer.NotificationRaised(this);
+            }
         }
 
         public State GetState()
