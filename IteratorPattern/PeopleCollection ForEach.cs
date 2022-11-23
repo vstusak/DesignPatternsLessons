@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace IteratorPattern
 {
-    public class PeopleCollection:List<Person>, IPeopleCollection
+    public class PeopleCollectionForEach:List<Person>
     {
-        public IPeopleIterator CreateIterator()
+        public new IEnumerator<Person> GetEnumerator()
         {
-            return new PeopleIterator(this);
+            return new PeopleIteratorForEach(this);
         }
     }
 }
