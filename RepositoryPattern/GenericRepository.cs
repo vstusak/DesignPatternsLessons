@@ -1,4 +1,6 @@
-﻿namespace _04_RepositoryPattern
+﻿using System.Runtime.InteropServices;
+
+namespace _04_RepositoryPattern
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
@@ -18,9 +20,9 @@
             return _warehouseContext.Set<T>().Where(expression);
         }
 
-        public T Get(string name)
+        public T Get(Guid id)
         {
-            return _warehouseContext.Find<T>(name);
+            return _warehouseContext.Find<T>(id);
         }
 
         public IEnumerable<T> GetAll()
@@ -33,9 +35,27 @@
             _warehouseContext.Remove(item);
         }
 
-        public T Update(T item)
+        public virtual T Update(T item)
         {
-            return _warehouseContext.Update(item).Entity;
+            var result = _warehouseContext.Update(item).Entity;
+            _warehouseContext.SaveChanges();
+            return result;
+        }
+    }
+
+    class ProductRepositoryOverride : GenericRepository<Product>
+    {
+        public ProductRepositoryOverride(WarehouseContext warehouseContext) : base(warehouseContext)
+        {
+        }
+
+        public override Product Update(Product product)
+        {
+            product.LastTimeModified = DateTime.Now;
+            //var result = _warehouseContext.Products.Update(product).Entity;
+            //_warehouseContext.SaveChanges();
+
+            return base.Update(product);
         }
     }
 }
