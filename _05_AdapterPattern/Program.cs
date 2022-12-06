@@ -18,3 +18,4 @@ IDbClient client = new CosmosDBContextAdapter(); //misa wants this naming!
 
 var data3 = client.SomeMethod();
 logger.WriteLog(data3);
+//TODO: IOC + DataEntityObjectInit.
