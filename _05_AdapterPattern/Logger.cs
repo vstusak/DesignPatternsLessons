@@ -4,4 +4,9 @@
     {
         Console.WriteLine($"Name: {entity.Name}, ID: {entity.SQLID}");
     }
+
+    public void WriteLog(DataEntity entity)
+    {
+        Console.WriteLine($"Name: {entity.Name}, ID: {entity.ID}");
+    }
 }
