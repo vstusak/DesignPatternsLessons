@@ -10,5 +10,5 @@ public interface IObservableToilet
 {
     Unsubscriber Add(IToiletObserver observerToilet);
     void NotifyAll();
-    void GetState();
+    string GetState();
 }

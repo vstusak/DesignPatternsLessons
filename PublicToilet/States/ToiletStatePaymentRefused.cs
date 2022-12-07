@@ -8,7 +8,7 @@ namespace PublicToilet.States
 {
     internal class ToiletStatePaymentRefused: IToiletState
     {
-        private const ToiletState _state = ToiletState.PaymentRefused;
+        public ToiletState State => ToiletState.PaymentRefused;
         
         private IPaymentService _paymentService;
         private IToiletV2 _toilet;
@@ -21,12 +21,12 @@ namespace PublicToilet.States
 
         public ToiletDoorResult Enter()
         {
-            return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = State };
         }
 
         public ToiletDoorResult Leave()
         {
-            return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = State };
         }
 
         public ToiletDoorResult SwipeCard()
@@ -39,7 +39,7 @@ namespace PublicToilet.States
             }
             else
             {
-                return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = _state };
+                return new ToiletDoorResult { DisplayText = "Payment refused.", ToiletState = State };
             }
         }
     }

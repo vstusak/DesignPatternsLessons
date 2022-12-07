@@ -4,7 +4,7 @@ namespace PublicToilet
 {
     public partial class Form1 : Form
     {
-        private readonly IToilet _toilet;
+        private readonly IToiletV2 _toilet;
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +31,8 @@ namespace PublicToilet
 
         private void btnCreateObserver_Click(object sender, EventArgs e)
         {
-            var observer = new Observer();
+            var observer = new Observer(_toilet, textBox1);
+            var unsubscriber = _toilet.Add(observer);
         }
     }
 }

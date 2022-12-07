@@ -8,7 +8,7 @@ namespace PublicToilet.States
 {
     public class ToiletStateFree : IToiletState
     {
-        private const ToiletState _state = ToiletState.Free;
+        public ToiletState State => ToiletState.Free;
         private IPaymentService _paymentService;
         private IToiletV2 _toilet;
 
@@ -20,12 +20,12 @@ namespace PublicToilet.States
 
         public ToiletDoorResult Enter()
         {
-            return new ToiletDoorResult { DisplayText = "Free.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "Free.", ToiletState = State };
         }
 
         public ToiletDoorResult Leave()
         {
-            return new ToiletDoorResult { DisplayText = "Free.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "Free.", ToiletState = State };
         }
 
         public ToiletDoorResult SwipeCard()

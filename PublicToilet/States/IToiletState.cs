@@ -8,6 +8,7 @@ namespace PublicToilet.States
 {
     public interface IToiletState
     {
+        ToiletState State { get; }
         ToiletDoorResult Enter();
         ToiletDoorResult Leave();
         ToiletDoorResult SwipeCard();

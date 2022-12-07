@@ -1,10 +1,12 @@
-﻿using PublicToilet.States;
+﻿using PublicToilet.ObserverDesignPattern;
+using PublicToilet.States;
 
 namespace PublicToilet
 {
     public class ToiletV2:IToiletV2
     {
         private IToiletState _toiletStateObject;
+        private List<IToiletObserver> toiletObservers = new();
 
         public ToiletV2()
         {
@@ -29,6 +31,26 @@ namespace PublicToilet
         public void ChangeStateObject(IToiletState toiletState)
         {
             _toiletStateObject = toiletState;
+            NotifyAll();
+        }
+
+        public Unsubscriber Add(IToiletObserver observerToilet)
+        {
+            toiletObservers.Add(observerToilet);
+            return new Unsubscriber();
+        }
+
+        public void NotifyAll()
+        {
+            foreach(var observer in toiletObservers)
+            {
+                observer.Update();
+            }
+        }
+
+        public string GetState()
+        {
+            return $"[{DateTime.Now}] {_toiletStateObject.State}";
         }
     }
 }

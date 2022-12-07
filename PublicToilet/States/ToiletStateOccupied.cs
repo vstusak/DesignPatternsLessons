@@ -15,11 +15,11 @@ namespace PublicToilet.States
             _toilet = toilet;
         }
 
-        private const ToiletState _state = ToiletState.Occupied;
+        public ToiletState State => ToiletState.Occupied;
 
         public ToiletDoorResult Enter()
         {
-            return new ToiletDoorResult { DisplayText = "Occupied.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "Occupied.", ToiletState = State };
         }
 
         public ToiletDoorResult Leave()
@@ -30,7 +30,7 @@ namespace PublicToilet.States
 
         public ToiletDoorResult SwipeCard()
         {
-            return new ToiletDoorResult { DisplayText = "Occupied.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "Occupied.", ToiletState = State };
         }
     }
 }

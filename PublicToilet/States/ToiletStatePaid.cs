@@ -15,7 +15,7 @@ namespace PublicToilet.States
             _toilet = toilet;
         }
 
-        private const ToiletState _state = ToiletState.Paid;
+        public ToiletState State => ToiletState.Paid;
 
         public ToiletDoorResult Enter()
         {
@@ -25,12 +25,12 @@ namespace PublicToilet.States
 
         public ToiletDoorResult Leave()
         {
-            return new ToiletDoorResult { DisplayText = "You can enter.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "You can enter.", ToiletState = State };
         }
 
         public ToiletDoorResult SwipeCard()
         {
-            return new ToiletDoorResult { DisplayText = "You can enter.", ToiletState = _state };
+            return new ToiletDoorResult { DisplayText = "You can enter.", ToiletState = State };
         }
     }
 }
