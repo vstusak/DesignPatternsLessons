@@ -1,6 +1,8 @@
-﻿public class SolarisContext
+﻿namespace _05_AdapterPattern;
+
+public class SolarisContext
 {
-    SolarisEntity FindData()
+    public SolarisEntity FindData()
     {
         return new SolarisEntity { Name = "Dan", SolarisID = 3 };
     }

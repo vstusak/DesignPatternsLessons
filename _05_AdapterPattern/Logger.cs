@@ -1,4 +1,6 @@
-﻿public class Logger
+﻿namespace _05_AdapterPattern;
+
+public class Logger
 {
     public void WriteLog(SQLEntity entity)
     {
