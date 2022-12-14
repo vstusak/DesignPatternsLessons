@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using PublicToilet.ObserverDesignPattern;
 
 namespace PublicToilet
@@ -32,7 +33,17 @@ namespace PublicToilet
         private void btnCreateObserver_Click(object sender, EventArgs e)
         {
             var observer = new Observer(_toilet, textBox1);
-            var unsubscriber = _toilet.Add(observer);
+            var unsubscriber = _toilet.AddObserver(observer);
+            lbObservers.Items.Add(unsubscriber);
+        }
+
+        private void btnRemoveObserver_Click(object sender, EventArgs e)
+        {
+            if (lbObservers.SelectedItem is not null)
+            {
+                ((Unsubscriber)lbObservers.SelectedItem).RemoveObserver();
+                lbObservers.Items.Remove(lbObservers.SelectedItem);
+            }
         }
     }
 }

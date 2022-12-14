@@ -34,10 +34,10 @@ namespace PublicToilet
             NotifyAll();
         }
 
-        public Unsubscriber Add(IToiletObserver observerToilet)
+        public Unsubscriber AddObserver(IToiletObserver toiletObserver)
         {
-            toiletObservers.Add(observerToilet);
-            return new Unsubscriber();
+            toiletObservers.Add(toiletObserver);
+            return new Unsubscriber(toiletObservers, toiletObserver);
         }
 
         public void NotifyAll()

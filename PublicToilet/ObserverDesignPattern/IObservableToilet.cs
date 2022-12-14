@@ -8,7 +8,7 @@ namespace PublicToilet.ObserverDesignPattern;
 
 public interface IObservableToilet
 {
-    Unsubscriber Add(IToiletObserver observerToilet);
+    Unsubscriber AddObserver(IToiletObserver observerToilet);
     void NotifyAll();
     string GetState();
 }
