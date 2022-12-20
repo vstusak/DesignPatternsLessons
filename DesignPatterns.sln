@@ -49,7 +49,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IteratorPattern", "Iterator
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrototypePattern", "PrototypePattern\PrototypePattern.csproj", "{E5F56CC5-AA8C-4132-AC2C-1B6109CD0D22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationApp", "RegistrationApp\RegistrationApp.csproj", "{98C7BDD3-0276-4CB8-8AB7-495162598477}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistrationApp", "RegistrationApp\RegistrationApp.csproj", "{98C7BDD3-0276-4CB8-8AB7-495162598477}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
