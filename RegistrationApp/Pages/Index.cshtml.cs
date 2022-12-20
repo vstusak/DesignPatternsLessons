@@ -21,8 +21,7 @@ namespace RegistrationApp.Pages
 
         public void OnPost(Person person)
         {
-            var validator = new NinoValidator();
-            var resulut = validator.Validate(person.Nino, person.DateOfBirth);
+            
         }
     }
 }
