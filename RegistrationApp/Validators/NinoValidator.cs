@@ -5,7 +5,7 @@
         public bool Validate(string nino, DateTime date)
         {
             string dateString = date.ToString("yyMMdd");
-            return String.Equals(nino, dateString);
+            return string.Equals(nino, dateString);
         }
     }
 }

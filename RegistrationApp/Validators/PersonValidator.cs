@@ -12,7 +12,10 @@ namespace RegistrationApp.Validators
             var validator = new NinoValidator();
             var result = validator.Validate(person.Nino, person.DateOfBirth);
 
-            return IsNameValid && IsSureNameValid && result && IsAdult;
+            return IsNameValid &&
+                   IsSureNameValid &&
+                   result &&
+                   IsAdult;
         }
     }
 }

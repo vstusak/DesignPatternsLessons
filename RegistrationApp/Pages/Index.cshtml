@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+
 }
 
 <div class="text-center">
@@ -9,12 +10,12 @@
     <form method="post">
         <table>
             <th>
-                <td>Create new user</td>
+            <td>Create new user</td>
             </th>
             <tr>
                 <td>Name:</td>
                 <td>
-                    <input type="text" id="TxtName" name="Name"/>
+                    <input type="text" id="TxtName" name="Name" />
                 </td>
             </tr>
             <tr>
@@ -36,7 +37,12 @@
                 </td>
             </tr>
         </table>
-        <input type="submit"/>
+        <input type="submit" />
     </form>
+    @if (Model.HasBeenValidated)
+    {
+        <h3>Validation result: @Model.ValidationResult</h3>
+    }
+
 
 </div>
