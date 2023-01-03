@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _06_DecoratorPattern
 {
     public partial class Form1 : Form
     {
+        private IWatcher _watcher = new SystemWatcher();
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +13,23 @@ namespace _06_DecoratorPattern
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello world");
+            _watcher.EventRaised(textBox1);
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
