@@ -3,11 +3,11 @@ using System.Windows.Forms;
 
 namespace _06_DecoratorPattern
 {
-    public class SystemWatcher : IWatcher
+    public class MoneySender : IWatcher
     {
         public void EventRaised(TextBox textBox)
         {
-            textBox.AppendText("Something happened" + Environment.NewLine);
+            textBox.AppendText("Sending money" + Environment.NewLine);
         }
     }
 }
