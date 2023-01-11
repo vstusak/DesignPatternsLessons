@@ -32,9 +32,22 @@ Console.WriteLine("Name: " + Object.ReferenceEquals(person.Name, shallowPerson.N
 Console.WriteLine("Age: " + Object.ReferenceEquals(person.Age, shallowPerson.Age));
 Console.WriteLine("Address: " + Object.ReferenceEquals(person.Address, shallowPerson.Address));
 
+
+Console.WriteLine("DeepCopy");
+var deepPerson = person.DeepCopy();
+Console.WriteLine(deepPerson.ToString());
+Console.WriteLine("Are the deep copy and person the same?");
+Console.WriteLine("Person: " + Object.ReferenceEquals(person, deepPerson));
+Console.WriteLine("Id: " + Object.ReferenceEquals(person.Id, deepPerson.Id));
+Console.WriteLine("Name: " + Object.ReferenceEquals(person.Name, deepPerson.Name));
+Console.WriteLine("Age: " + Object.ReferenceEquals(person.Age, deepPerson.Age));
+Console.WriteLine("Address: " + Object.ReferenceEquals(person.Address, deepPerson.Address));
+
+
 person.Address.City = "Prague";
 Console.WriteLine(person.ToString());
-Console.WriteLine(shallowPerson.ToString());
+Console.WriteLine(deepPerson.ToString());
+
 
 
 
