@@ -10,6 +10,7 @@ namespace RegistrationApp.Pages
         private readonly ILogger<IndexModel> _logger;
         public bool ValidationResult { get; set; }
         public bool HasBeenValidated { get; set; }
+        public List<string> Messages { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -25,7 +26,8 @@ namespace RegistrationApp.Pages
         {
             HasBeenValidated = true;
             var personValidator = new PersonValidator();
-            ValidationResult = personValidator.ValidatePerson(person);
+            Messages = personValidator.ValidatePerson(person);
+            ValidationResult = Messages.Any();
         }
     }
 }

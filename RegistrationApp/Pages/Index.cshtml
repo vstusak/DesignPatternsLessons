@@ -41,6 +41,10 @@
     </form>
     @if (Model.HasBeenValidated)
     {
+        @foreach(var message in Model.Messages)
+        {
+            <p>@message</p>
+        }
         <h3>Validation result: @Model.ValidationResult</h3>
     }
 
