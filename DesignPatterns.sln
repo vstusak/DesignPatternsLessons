@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrototypePattern", "Prototy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistrationApp", "RegistrationApp\RegistrationApp.csproj", "{98C7BDD3-0276-4CB8-8AB7-495162598477}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM", "ATM\ATM.csproj", "{734262AE-8224-44ED-A248-8B2F486D574A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{98C7BDD3-0276-4CB8-8AB7-495162598477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98C7BDD3-0276-4CB8-8AB7-495162598477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98C7BDD3-0276-4CB8-8AB7-495162598477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{734262AE-8224-44ED-A248-8B2F486D574A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{734262AE-8224-44ED-A248-8B2F486D574A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{734262AE-8224-44ED-A248-8B2F486D574A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{734262AE-8224-44ED-A248-8B2F486D574A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
