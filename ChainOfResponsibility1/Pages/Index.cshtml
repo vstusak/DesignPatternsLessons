@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Create new user</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" id="name" name="Name" /></td>
+                </tr>
+                <tr>
+                    <td>Surname:</td>
+                    <td><input type="text" id="surname" name="Surname" /></td>
+                </tr>
+                <tr>
+                    <td>Date of birth:</td>
+                    <td><input type="date" id="date" name="DateOfBirth" /></td>
+                </tr>
+                <tr>
+                    <td>Nino:</td>
+                    <td><input type="text" id="nino" name="Nino" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit"/>
+    </form>
+</div>
