@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace _06_DecoratorPattern
 {
-    internal class BankAccounMoneyValidation : IWatcher
+    internal class BankAccountMoneyValidation : IWatcher
     {
         private readonly IWatcher _decoratedObject;
         private int balance = 1001;
 
-        public BankAccounMoneyValidation(IWatcher decoratedObject)
+        public BankAccountMoneyValidation(IWatcher decoratedObject)
         {
             _decoratedObject = decoratedObject;
         }
