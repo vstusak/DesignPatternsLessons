@@ -1,4 +1,5 @@
-﻿using ChainOfResponsibility1.Entities;
+﻿using System.Xml;
+using ChainOfResponsibility1.Entities;
 using ChainOfResponsibility1.Validators;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,14 +24,17 @@ namespace ChainOfResponsibility1.Pages
 
         public void OnPost(Person person)
         {
-            if(IsValidName(person.Name) && IsValidSurname(person.Surname) && IsAdult(person.DateOfBirth) && IsValidNino(person.Nino, person.DateOfBirth))
-            {
-                IsModelValid = true;
-            }
+            var personValidator = new PersonValidator();
+            IsModelValid = personValidator.Validate(person);
 
+            //if(IsValidName(person.Name) && IsValidSurname(person.Surname) && IsAdult(person.DateOfBirth) && IsValidNino(person.Nino, person.DateOfBirth))
+            //{
+            //    IsModelValid = true;
+            //}
+            
             HasBeenModelValidated = true;
         }
-
+/*
         bool IsValidName(string name)
         {
             return !string.IsNullOrEmpty(name);
@@ -51,5 +55,6 @@ namespace ChainOfResponsibility1.Pages
             var validator = new RWSNinoValidator();
             return validator.IsValidNino(nino, date);
         }
+*/
     }
 }
