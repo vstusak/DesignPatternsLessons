@@ -36,6 +36,13 @@
     </form>
     @if(Model.HasBeenModelValidated)
     {
-        <h2>Validation result: @Model.IsModelValid</h2>
+        <h2>Validation result: @(Model.Errors.Count == 0)</h2>
+
+        <ul>
+        @foreach(var e in Model.Errors)
+        {
+            <li>@e</li>
+        }
+        </ul>
     }
 </div>

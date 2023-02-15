@@ -22,7 +22,7 @@ public class PersonValidator
         //_list = list;
     }
 
-    public bool Validate(Person person)
+    public List<string> Validate(Person person)
     {
         //IHandler<Person> chain = null;
         
@@ -34,12 +34,9 @@ public class PersonValidator
             .SetNext(new AdultValidationHandler(errorMessages))
             .SetNext(new NinoValidationHandler(errorMessages));
 
-        if (errorMessages.Count > 0)
-        {
-            return false;
-        }
+        nameHandler.Handle(person);
 
-        return true;
+        return errorMessages;
 
         //try
         //{

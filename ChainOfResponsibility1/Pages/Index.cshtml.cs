@@ -9,8 +9,8 @@ namespace ChainOfResponsibility1.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        public bool IsModelValid { get; set; } = false;
         public bool HasBeenModelValidated { get; set; } = false;
+        public List<string> Errors { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -25,7 +25,7 @@ namespace ChainOfResponsibility1.Pages
         public void OnPost(Person person)
         {
             var personValidator = new PersonValidator();
-            IsModelValid = personValidator.Validate(person);
+            Errors = personValidator.Validate(person);
 
             //if(IsValidName(person.Name) && IsValidSurname(person.Surname) && IsAdult(person.DateOfBirth) && IsValidNino(person.Nino, person.DateOfBirth))
             //{
