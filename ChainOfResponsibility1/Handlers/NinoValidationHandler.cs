@@ -5,6 +5,11 @@ namespace ChainOfResponsibility1.Handlers
 {
     public class NinoValidationHandler: Handler<Person>
     {
+        public NinoValidationHandler(List<string> errorMessages)
+        {
+            base._errorMessages = errorMessages;
+        }
+
         public override void Handle(Person request)
         {
             var validator = new RWSNinoValidator();
@@ -15,7 +20,8 @@ namespace ChainOfResponsibility1.Handlers
             }
             else
             {
-                throw new ArgumentNullException(nameof(request.Name));
+                _errorMessages.Add("Nino validator failed");
+                //throw new ArgumentNullException(nameof(request.Name));
             }
         }
     }
