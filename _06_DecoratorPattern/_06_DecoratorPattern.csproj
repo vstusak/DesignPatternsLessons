@@ -53,6 +53,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IPlugIn.cs" />
     <Compile Include="IWatcher.cs" />
     <Compile Include="PerformanceMonitorDecorator.cs" />
     <Compile Include="Program.cs" />

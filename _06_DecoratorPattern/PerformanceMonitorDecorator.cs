@@ -22,4 +22,27 @@ namespace _06_DecoratorPattern
             textBox.AppendText(afterEvent-beforeEvent + Environment.NewLine);
         }
     }
+
+    public class PerformanceMonitorPlugIn : IPlugIn
+    {
+        private readonly TextBox _textBox;
+        private long _beforeEvent;
+
+        public PerformanceMonitorPlugIn(TextBox textBox)
+        {
+            _textBox = textBox;
+        }
+        public void BeforeEvent()
+        {
+            _beforeEvent = DateTime.Now.Ticks;
+            _textBox.AppendText(_beforeEvent + Environment.NewLine);
+        }
+
+        public void AfterEvent()
+        {
+            var afterEvent = DateTime.Now.Ticks;
+            _textBox.AppendText(afterEvent + Environment.NewLine);
+            _textBox.AppendText(afterEvent - _beforeEvent + Environment.NewLine);
+        }
+    }
 }
