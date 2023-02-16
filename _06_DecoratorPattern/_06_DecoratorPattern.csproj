@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="IPlugIn.cs" />
     <Compile Include="IWatcher.cs" />
+    <Compile Include="MessengerPlugIn.cs" />
     <Compile Include="PerformanceMonitorDecorator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

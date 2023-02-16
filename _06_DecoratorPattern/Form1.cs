@@ -6,9 +6,12 @@ namespace _06_DecoratorPattern
     public partial class Form1 : Form
     {
         private IWatcher _watcher = new MoneySender("Initial creation");
+        private PerformanceMonitorPlugIn _performancePlugin;
+
         public Form1()
         {
             InitializeComponent();
+            _performancePlugin = new PerformanceMonitorPlugIn(textBox1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -53,6 +56,21 @@ namespace _06_DecoratorPattern
             checkBox2.Checked = false;
             checkBox2.Enabled = true;
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ((MoneySender)_watcher).AddPlugIn(_performancePlugin);
+        }
+        private void AddMessengerButton_Click(object sender, EventArgs e)
+        {
+            var messengerPlugIn = new MessengerPlugIn(textBox1);
+            ((MoneySender)_watcher).AddPlugIn(messengerPlugIn);
+        }
+
+        private void RemovePerformanceButton_Click(object sender, EventArgs e)
+        {
+            ((MoneySender)_watcher).RemovePlugIn(_performancePlugin);
         }
     }
 }
