@@ -10,10 +10,10 @@ namespace ATM.Handlers
     {
         public override void HandleRequest(int balanceToPay)
         {
-            if (balanceToPay % 100 != 0) 
+            if (balanceToPay % 100 != 0)
             {
                 Console.WriteLine("The requested amount is not valid. It must be devidible by 100.");
-                return; 
+                return;
             }
             base.HandleRequest(balanceToPay);
         }
