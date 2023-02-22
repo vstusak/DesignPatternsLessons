@@ -1,8 +1,7 @@
-﻿namespace ChainOfResponsibility2.Handlers
+﻿namespace ChainOfResponsibility2.Handlers;
+
+public interface IHandler
 {
-    public interface IHandler
-    {
-        void Handle(int balanceToPay);
-        IHandler SetNext(IHandler next);
-    }
+    void Handle(int balanceToPay);
+    IHandler SetNext(IHandler next);
 }

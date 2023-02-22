@@ -1,37 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ChainOfResponsibility2.Handlers;
 
-namespace ChainOfResponsibility2.Handlers
+public class CashHandler : Handler
 {
-    public class CashHandler : Handler
+    private readonly int _cash;
+
+    public CashHandler(BankNotes cash)
     {
-        int _cash;
+        _cash = (int)cash;
+    }
 
-        public CashHandler(int cash)
+    public override void Handle(int balanceToPay)
+    {
+        int count = balanceToPay / _cash;
+
+        if(count > 0) 
         {
-            _cash = cash;
+            Console.WriteLine($"{count}x {_cash}");
         }
-
-        public override void Handle(int balanceToPay)
-        {
-            int count = balanceToPay / _cash;
-
-            if(count > 0) 
-            {
-                Console.WriteLine($"{count}x {_cash}");
-            }
             
 
-            var rest = balanceToPay % _cash;
+        var rest = balanceToPay % _cash;
 
-            if(rest > 0)
-            {
-                base.Handle(rest);
-            }
-            
+        if(rest > 0)
+        {
+            base.Handle(rest);
         }
+            
     }
 }
