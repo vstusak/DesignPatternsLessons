@@ -2,5 +2,5 @@
 
 public static class Constants
 {
-    public static int LowestBankNote = Enum.GetValues(typeof(BankNotes)).Cast<int>().Min();
+    public static int LowestBankNote = Enum.GetValues(typeof(BankNote)).Cast<int>().Min();
 }

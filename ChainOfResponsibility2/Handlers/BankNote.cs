@@ -1,11 +1,18 @@
-﻿namespace ChainOfResponsibility2.Handlers;
+﻿using System.Dynamic;
 
-public enum BankNotes
+namespace ChainOfResponsibility2.Handlers;
+
+public class BankNote 
 {
-    OneHundred = 100,
-    TwoHundred = 200,
-    FiveHundred = 500,
-    OneThousand = 1000,
-    TwoThousand = 2000,
-    FiveThousand = 5000
+    public BankNoteDenomination Note { get; }
+    
+    public int NoteValue => (int)Note; 
+
+    public int Count { get; set; }
+
+    public BankNote(BankNoteDenomination note, int count)
+    {
+        Note = note;
+        Count = count;
+    }
 }

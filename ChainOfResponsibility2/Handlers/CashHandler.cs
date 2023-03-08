@@ -2,24 +2,35 @@
 
 public class CashHandler : Handler
 {
-    private readonly int _cash;
+    private readonly BankNotesResource _resource;
+    private readonly BankNoteDenomination _noteDenom;
 
-    public CashHandler(BankNotes cash)
+    public CashHandler(BankNoteDenomination noteDenom, BankNotesResource resource)
     {
-        _cash = (int)cash;
+        _resource = resource;
+        _noteDenom = noteDenom;
     }
 
     public override void Handle(int balanceToPay)
     {
-        int count = balanceToPay / _cash;
+        var availableBankNotes = _resource.GetAvailableNotes(_noteDenom);
+        
+        var countNeeded = balanceToPay / (int)_noteDenom;
+        
+        var rest = 0;
 
-        if(count > 0) 
+        if (countNeeded <= availableBankNotes)
         {
-            Console.WriteLine($"{count}x {_cash}");
+            Console.WriteLine($"{countNeeded} x {(int)_noteDenom}");
+            _resource.UpdateAvailableNotes(_noteDenom, countNeeded);
+            rest = balanceToPay % (int)_noteDenom;
         }
-            
-
-        var rest = balanceToPay % _cash;
+        else
+        {
+            Console.WriteLine($"{availableBankNotes} x {(int)_noteDenom}");
+            _resource.UpdateAvailableNotes(_noteDenom, availableBankNotes);
+            rest = balanceToPay - (availableBankNotes * (int)_noteDenom);
+        }
 
         if(rest > 0)
         {
