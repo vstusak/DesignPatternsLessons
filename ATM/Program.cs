@@ -3,6 +3,7 @@
 using ATM;
 using ATM.Handlers;
 using static ATM.BankNotesDenomination;
+//TODO: implement this using BankNoteResource
 var cashRegister = new CashRegister(
     amountOf5000Banknotes: 10,
     amountOf2000Banknotes: 0,
@@ -13,6 +14,8 @@ var cashRegister = new CashRegister(
 
 // TODO fixme, I am broken
 const int amountToPay = 2100;
+Console.WriteLine( $"amount to pay {amountToPay}");
+Console.WriteLine($"money in chash register {cashRegister.GetCashBalance()}");
 IHandler _handler = new AmountToPayValidationHandler();
 _handler.SetNext(new SumToPayValidationHandler(cashRegister))
     .SetNext(new BanknoteHandler(BankNote5000, cashRegister))

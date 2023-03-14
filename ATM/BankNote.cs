@@ -9,6 +9,7 @@ public class BankNote
     }
 
     public BankNotesDenomination Type { get; init; }
+    public int Value => (int)Type;
 
     public int Amount { get; set; }
 }
