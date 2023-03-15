@@ -4,7 +4,7 @@ public class IsSumResourcesAvailableValidationHandler : Handler
 {
     private BankNotesResource resource;
 
-    public IsSumResourcesAvailableValidationHandler(BankNotesResource resource)
+    public IsSumResourcesAvailableValidationHandler(BankNotesResource resource, ValidationExceptionLoggerHandler exceptionChain)
     {
         this.resource = resource;
     }

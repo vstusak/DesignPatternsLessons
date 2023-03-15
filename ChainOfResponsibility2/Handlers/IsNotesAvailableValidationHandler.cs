@@ -4,7 +4,7 @@ public class IsNotesAvailableValidationHandler : Handler
 {
     private BankNotesResource resource;
 
-    public IsNotesAvailableValidationHandler(BankNotesResource resource)
+    public IsNotesAvailableValidationHandler(BankNotesResource resource, ValidationExceptionLoggerHandler exceptionChain)
     {
         this.resource = resource;
     }
@@ -31,7 +31,10 @@ public class IsNotesAvailableValidationHandler : Handler
 
         if (actualBalance > 0)
         {
-            Console.WriteLine($"Amount {balanceToPay} is not available in resource (no notes available).");
+            var message = $"Amount {balanceToPay} is not available in resource (no notes available).";
+            Console.WriteLine(message);
+            //base.SetNext(new ValidationExceptionLoggerHandler(resource, this.GetType().FullName!, message));
+            //base.Handle(balanceToPay);
         }
         else
         {

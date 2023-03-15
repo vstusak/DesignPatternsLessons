@@ -3,7 +3,7 @@
 var desiredBalance = 3100;
 var resource = new BankNotesResource();
 
-resource.Add(new BankNote(BankNoteDenomination.OneHundred, 3));
+resource.Add(new BankNote(BankNoteDenomination.OneHundred, 0));
 resource.Add(new BankNote(BankNoteDenomination.TwoHundred, 5));
 resource.Add(new BankNote(BankNoteDenomination.FiveHundred, 2));
 resource.Add(new BankNote(BankNoteDenomination.OneThousand, 2));
@@ -13,9 +13,12 @@ resource.Add(new BankNote(BankNoteDenomination.FiveThousand, 1));
 Console.WriteLine($"Available in resources: {resource.GetTotalBalance()}");
 Console.WriteLine($"Want to pay: {desiredBalance}");
 
-var handler = new IsBalanceToPayValidValidationHandler(resource);
-handler.SetNext(new IsSumResourcesAvailableValidationHandler(resource))
-    .SetNext(new IsNotesAvailableValidationHandler(resource))
+var exceptionChain = new ValidationExceptionLoggerHandler(resource);
+exceptionChain.SetNext(new ValidationExceptionNotificatorHandler(resource));
+
+var handler = new IsBalanceToPayValidValidationHandler(resource, exceptionChain);
+handler.SetNext(new IsSumResourcesAvailableValidationHandler(resource, exceptionChain))
+    .SetNext(new IsNotesAvailableValidationHandler(resource, exceptionChain))
     
     .SetNext(new CashHandler(BankNoteDenomination.FiveThousand, resource))
     .SetNext(new CashHandler(BankNoteDenomination.TwoThousand, resource))

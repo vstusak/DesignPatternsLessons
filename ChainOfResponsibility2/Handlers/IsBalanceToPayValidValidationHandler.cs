@@ -4,7 +4,7 @@ public class IsBalanceToPayValidValidationHandler : Handler
 {
     private readonly BankNotesResource _resource;
 
-    public IsBalanceToPayValidValidationHandler(BankNotesResource resource)
+    public IsBalanceToPayValidValidationHandler(BankNotesResource resource, (TODO Which type?) ValidationExceptionLoggerHandler exceptionChain)
     {
         _resource = resource;
     }
