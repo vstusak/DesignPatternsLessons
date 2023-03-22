@@ -2,18 +2,22 @@
 
 public class IsSumResourcesAvailableValidationHandler : Handler
 {
-    private BankNotesResource resource;
+    private BankNotesResource _resource;
+    private IExceptionHandlerFactory _exceptionFactory;
 
-    public IsSumResourcesAvailableValidationHandler(BankNotesResource resource, ValidationExceptionLoggerHandler exceptionChain)
+    public IsSumResourcesAvailableValidationHandler(BankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
     {
-        this.resource = resource;
+        _resource = resource;
+        _exceptionFactory = exceptionFactory;
     }
 
     public override void Handle(int balanceToPay)
     {
-        if (resource.GetTotalBalance() < balanceToPay)
+        if (_resource.GetTotalBalance() < balanceToPay)
         {
             Console.WriteLine($"Amount {balanceToPay} is not available in resource (insufficient total).");
+            var handler = _exceptionFactory.GetLoggerAndNotificationExceptionChainHandler();
+            handler.Handle(balanceToPay, GetType().Name, $"Amount {balanceToPay} is not available in resource (insufficient total).");
         }
         else
         {
