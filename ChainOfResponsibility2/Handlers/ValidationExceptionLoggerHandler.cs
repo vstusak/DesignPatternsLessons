@@ -1,6 +1,6 @@
 ﻿namespace ChainOfResponsibility2.Handlers;
 
-public class ValidationExceptionLoggerHandler : ExceptionHandler
+public class ValidationExceptionLoggerHandler : ExceptionHandler, IExceptionLoggerHandler
 {
     private readonly BankNotesResource _resource;
 

@@ -2,30 +2,29 @@
 
 public class ExceptionChainFactory:IExceptionHandlerFactory
 {
-    private BankNotesResource _resource;
+    private readonly IExceptionHandler _exceptionLoggerHandler;
+    private readonly IExceptionHandler _exceptionNotificationHandler;
 
-    public ExceptionChainFactory(BankNotesResource resource)
+    public ExceptionChainFactory(IExceptionLoggerHandler exceptionLoggerHandler, IExceptionNotificationHandler exceptionNotificationHandler)
     {
-        _resource = resource;
+        _exceptionLoggerHandler = exceptionLoggerHandler;
+        _exceptionNotificationHandler = exceptionNotificationHandler;
     }
 
     public IExceptionHandler GetLoggerExceptionHandler()
     {
-        return new ValidationExceptionLoggerHandler(_resource);
+        return _exceptionLoggerHandler;
     }
 
     public IExceptionHandler GetNotificationExceptionHandler()
     {
-        return new ValidationExceptionNotificatorHandler(_resource);
+        return _exceptionNotificationHandler;
     }
 
     public IExceptionHandler GetLoggerAndNotificationExceptionChainHandler()
     {
-        var logger = new ValidationExceptionLoggerHandler(_resource);
-        var notification = new ValidationExceptionNotificatorHandler(_resource);
+        _exceptionLoggerHandler.SetNext(_exceptionNotificationHandler);
 
-        logger.SetNext(notification);
-
-        return logger;
+        return _exceptionLoggerHandler;
     }
 }

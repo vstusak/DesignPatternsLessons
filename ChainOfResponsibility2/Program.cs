@@ -1,4 +1,5 @@
-﻿using ChainOfResponsibility2.Handlers;
+﻿using Castle.Windsor;
+using ChainOfResponsibility2.Handlers;
 
 var desiredBalance = 3400;
 var resource = new BankNotesResource();
@@ -14,10 +15,15 @@ resource.Add(new BankNote(BankNoteDenomination.FiveThousand, 1));
 Console.WriteLine($"Available in resources: {resource.GetTotalBalance()}");
 Console.WriteLine($"Want to pay: {desiredBalance}");
 
-var exceptionChain = new ValidationExceptionLoggerHandler(resource);
-exceptionChain.SetNext(new ValidationExceptionNotificatorHandler(resource));
+// TODO: implement container
+var container = new WindsorContainer();
 
-var exceptionChainFactory = new ExceptionChainFactory(resource);
+container.Install(new ATMInstaller());
+
+var exceptionLoggerHandler = new ValidationExceptionLoggerHandler(resource);
+var exceptionNotificationHandler = new ValidationExceptionNotificatorHandler(resource);
+
+var exceptionChainFactory = new ExceptionChainFactory(exceptionLoggerHandler, exceptionNotificationHandler);
 
 var handler = new IsBalanceToPayValidValidationHandler(resource, exceptionChainFactory);
 handler.SetNext(new IsSumResourcesAvailableValidationHandler(resource, exceptionChainFactory))
