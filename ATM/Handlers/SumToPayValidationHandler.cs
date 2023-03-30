@@ -15,8 +15,6 @@ public class SumToPayValidationHandler : Handler
         {
             Console.WriteLine("Sorry, we don't have enough banknotes for your request.");
             // @TODO resolve hard dependencies - factory, injection
-            SetNext(new LogExceptionHandler(GetType().Name))
-                .SetNext(new NotificationExceptionsHandler(GetType().Name));
 
             //return;
         }
