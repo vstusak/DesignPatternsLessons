@@ -3,10 +3,13 @@
 public class SumToPayValidationHandler : Handler
 {
     private readonly BankNoteResource _bankNoteResource;
+    private readonly IExceptionsChainsFactory _exceptionsChainsFactory;
 
-    public SumToPayValidationHandler(BankNoteResource bankNoteResource)
+    public SumToPayValidationHandler(BankNoteResource bankNoteResource,
+        IExceptionsChainsFactory exceptionsChainsFactory)
     {
         _bankNoteResource = bankNoteResource;
+        _exceptionsChainsFactory = exceptionsChainsFactory;
     }
 
     public override void HandleRequest(int balanceToPay)
@@ -14,11 +17,12 @@ public class SumToPayValidationHandler : Handler
         if (_bankNoteResource.GetCashBalance() < balanceToPay)
         {
             Console.WriteLine("Sorry, we don't have enough banknotes for your request.");
-            // @TODO resolve hard dependencies - factory, injection
-
-            //return;
+            var exceptionChain = _exceptionsChainsFactory.GetLogAndNotificationExceptionHandlers();
+            exceptionChain.HandleRequest(GetType().Name, balanceToPay);
         }
-
-        base.HandleRequest(balanceToPay);
+        else
+        {
+            base.HandleRequest(balanceToPay);
+        }
     }
 }

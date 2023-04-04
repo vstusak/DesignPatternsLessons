@@ -1,29 +1,34 @@
 ﻿using ATM.ExceptionHandlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ATM
+namespace ATM;
+
+public class ExceptionsChainsFactory : IExceptionsChainsFactory
 {
-    internal class ExceptionsChainsFactory
+    private readonly IExceptionHandler _notificationExceptionHandler;
+    private readonly IExceptionHandler _logExceptionHandler;
+
+    //@TODO Make concrete interfaces for every exception handler
+    public ExceptionsChainsFactory(IExceptionHandler notificationExceptionHandler,
+        IExceptionHandler logExceptionHandler)
     {
-        public IExceptionHandler GetNotificationExceptionHandler()
-        {
-            return new NotificationExceptionsHandler();
-        }
+        _notificationExceptionHandler = notificationExceptionHandler;
+        _logExceptionHandler = logExceptionHandler;
+    }
 
-        public IExceptionHandler GetLogExceptionHandler()
-        {
-            return new LogExceptionHandler();
-        }
+    public IExceptionHandler GetNotificationExceptionHandler()
+    {
+        return _notificationExceptionHandler;
+    }
 
-        public IExceptionHandler GetLogAndNotificationExceptionHandlers()
-        {
-            var handler = new LogExceptionHandler();
-            handler.SetNext(new NotificationExceptionsHandler());
-            return handler;
-        }
+    public IExceptionHandler GetLogExceptionHandler()
+    {
+        return _logExceptionHandler;
+    }
+
+    public IExceptionHandler GetLogAndNotificationExceptionHandlers()
+    {
+        var handler = _logExceptionHandler;
+        handler.SetNext(_notificationExceptionHandler);
+        return handler;
     }
 }

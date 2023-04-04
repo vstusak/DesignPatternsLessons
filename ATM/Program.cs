@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using ATM;
+using ATM.ExceptionHandlers;
 using ATM.Handlers;
 using static ATM.BankNotesDenomination;
 
@@ -11,6 +12,12 @@ using static ATM.BankNotesDenomination;
 //    amountOf500Banknotes: 2,
 //    amountOf200Banknotes: 10,
 //    amountOf100Banknotes: 0);
+
+// @TODO How to setup windsor container for resolve list of interfaces - RWS interview home work
+
+var notificationExceptionsHandler = new NotificationExceptionsHandler();
+var logExceptionHandler = new LogExceptionHandler();
+var exceptionChainsFactory = new ExceptionsChainsFactory(notificationExceptionsHandler, logExceptionHandler);
 
 var bankNoteResource = new BankNoteResource
 {
@@ -26,8 +33,8 @@ var bankNoteResource = new BankNoteResource
 const int amountToPay = 2100;
 Console.WriteLine($"amount to pay {amountToPay}");
 Console.WriteLine($"money in cash register {bankNoteResource.GetCashBalance()}");
-IHandler handler = new AmountToPayValidationHandler();
-handler.SetNext(new SumToPayValidationHandler(bankNoteResource))
+IHandler handler = new AmountToPayValidationHandler(exceptionChainsFactory);
+handler.SetNext(new SumToPayValidationHandler(bankNoteResource, exceptionChainsFactory))
     .SetNext(new BanknoteHandler(BankNote5000, bankNoteResource))
     .SetNext(new BanknoteHandler(BankNote2000, bankNoteResource))
     .SetNext(new BanknoteHandler(BankNote1000, bankNoteResource))

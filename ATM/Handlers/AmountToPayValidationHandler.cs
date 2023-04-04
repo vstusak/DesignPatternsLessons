@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ATM.Handlers;
 
-namespace ATM.Handlers
+public class AmountToPayValidationHandler : Handler
 {
-    internal class AmountToPayValidationHandler : Handler
+    private readonly IExceptionsChainsFactory _exceptionChainsFactory;
+
+    public AmountToPayValidationHandler(IExceptionsChainsFactory exceptionChainsFactory)
     {
-        public override void HandleRequest(int balanceToPay)
+        _exceptionChainsFactory = exceptionChainsFactory;
+    }
+
+    public override void HandleRequest(int balanceToPay)
+    {
+        if (balanceToPay % 100 != 0)
         {
-            if (balanceToPay % 100 != 0)
-            {
-                Console.WriteLine("The requested amount is not valid. It must be devidible by 100.");
-                return;
-            }
+            Console.WriteLine("The requested amount is not valid. It must be devidible by 100.");
+            var exceptionChain = _exceptionChainsFactory.GetLogExceptionHandler();
+            exceptionChain.HandleRequest(GetType().Name, balanceToPay);
+        }
+        else
+        {
             base.HandleRequest(balanceToPay);
         }
     }
