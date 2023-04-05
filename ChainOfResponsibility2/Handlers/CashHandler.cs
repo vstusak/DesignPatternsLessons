@@ -2,10 +2,10 @@
 
 public class CashHandler : Handler
 {
-    private readonly BankNotesResource _resource;
+    private readonly IBankNotesResource _resource;
     private readonly BankNoteDenomination _noteDenom;
 
-    public CashHandler(BankNoteDenomination noteDenom, BankNotesResource resource)
+    public CashHandler(BankNoteDenomination noteDenom, IBankNotesResource resource)
     {
         _resource = resource;
         _noteDenom = noteDenom;

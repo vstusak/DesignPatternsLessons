@@ -2,11 +2,11 @@
 
 public class IsBalanceToPayValidValidationHandler : Handler
 {
-    private readonly BankNotesResource _resource;
+    private readonly IBankNotesResource _resource;
     private readonly IExceptionHandlerFactory _exceptionFactory;
 
 
-    public IsBalanceToPayValidValidationHandler(BankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
+    public IsBalanceToPayValidValidationHandler(IBankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
     {
         _resource = resource;
         _exceptionFactory = exceptionFactory;

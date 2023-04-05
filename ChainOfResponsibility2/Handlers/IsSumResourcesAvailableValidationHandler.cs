@@ -2,10 +2,10 @@
 
 public class IsSumResourcesAvailableValidationHandler : Handler
 {
-    private BankNotesResource _resource;
+    private IBankNotesResource _resource;
     private IExceptionHandlerFactory _exceptionFactory;
 
-    public IsSumResourcesAvailableValidationHandler(BankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
+    public IsSumResourcesAvailableValidationHandler(IBankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
     {
         _resource = resource;
         _exceptionFactory = exceptionFactory;

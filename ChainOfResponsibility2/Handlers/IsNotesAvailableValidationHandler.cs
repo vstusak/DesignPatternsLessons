@@ -2,10 +2,10 @@
 
 public class IsNotesAvailableValidationHandler : Handler
 {
-    private BankNotesResource resource;
+    private IBankNotesResource resource;
     private IExceptionHandlerFactory _exceptionFactory;
 
-    public IsNotesAvailableValidationHandler(BankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
+    public IsNotesAvailableValidationHandler(IBankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
     {
         this.resource = resource;
         _exceptionFactory = exceptionFactory;
