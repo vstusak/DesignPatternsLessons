@@ -13,6 +13,13 @@
         _inventory = inventory;
     }
 
+    public bool CanInvoke()
+    {
+        var product = _inventory.GetProduct(_productId);
+        var result = product.Amount >= _count;
+        return result;
+    }
+
     public void Invoke()
     {
         var product = _inventory.GetProduct(_productId);
@@ -21,42 +28,10 @@
         _orderNotificator.SendNotification(message);
     }
 
-}
-
-public interface IOrderNotificator
-{
-    void SendNotification(string notificationMessage);
-}
-
-public class OrderNotificator : IOrderNotificator
-{
-    public void SendNotification(string notificationMessage)
+    public void ValidationMessage()
     {
-        Console.WriteLine(notificationMessage);
-    }
-}
-
-public interface IInventory
-{
-    Product GetProduct(int productId);
-}
-
-public class Inventory : IInventory
-{
-    private readonly List<Product> _products;
-
-    public Inventory()
-    {
-        _products = new List<Product>
-        {
-            new Product() {ProductId = 1, Amount = 5, Name = "Bodkociarka" },
-            new Product() {ProductId = 2, Amount = 10, Name = "Plafon" },
-            new Product() {ProductId = 3, Amount = 8, Name = "Cucoriedka"},
-        };
-    }
-    public Product GetProduct(int productId)
-    {
-        throw new NotImplementedException(); // TODO implement GetProduct
-
+        var product = _inventory.GetProduct(_productId);
+        var message = $"Nepodařilo se koupit {product.Name} v počtu {_count} kusů. Na skladě je jen {product.Amount} kusů.";
+        _orderNotificator.SendNotification(message);
     }
 }

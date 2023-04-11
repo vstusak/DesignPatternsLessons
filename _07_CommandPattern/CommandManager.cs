@@ -2,6 +2,13 @@
 {
     public void RunCommand(ICommand command)
     {
-        command.Invoke();
+        if (command.CanInvoke())
+        {
+            command.Invoke();
+        }
+        else
+        {
+            command.ValidationMessage();
+        }
     }
 }
