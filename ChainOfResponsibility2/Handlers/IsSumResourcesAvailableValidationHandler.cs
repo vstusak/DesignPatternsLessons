@@ -4,6 +4,8 @@ public class IsSumResourcesAvailableValidationHandler : Handler
 {
     private IBankNotesResource _resource;
     private IExceptionHandlerFactory _exceptionFactory;
+    public override HandlerType HandlerType => HandlerType.Validation;
+    public override int HandlerOrder => 2;
 
     public IsSumResourcesAvailableValidationHandler(IBankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
     {

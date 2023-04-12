@@ -4,12 +4,15 @@ public class CashHandler : Handler
 {
     private readonly IBankNotesResource _resource;
     private readonly BankNoteDenomination _noteDenom;
+    public override HandlerType HandlerType => HandlerType.Cash;
+    public override int HandlerOrder => (int)_noteDenom;
 
     public CashHandler(BankNoteDenomination noteDenom, IBankNotesResource resource)
     {
         _resource = resource;
         _noteDenom = noteDenom;
     }
+
 
     public override void Handle(int balanceToPay)
     {

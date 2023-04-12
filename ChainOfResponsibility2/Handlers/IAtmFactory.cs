@@ -10,17 +10,4 @@ namespace ChainOfResponsibility2.Handlers
     {
         IHandler GetChain();
     }
-
-    class AtmFactory : IAtmFactory
-    {
-        xxx;
-        public AtmFactory()
-        {
-            
-        }
-        public IHandler GetChain()
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

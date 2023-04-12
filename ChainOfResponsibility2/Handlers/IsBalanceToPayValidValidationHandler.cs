@@ -4,6 +4,8 @@ public class IsBalanceToPayValidValidationHandler : Handler
 {
     private readonly IBankNotesResource _resource;
     private readonly IExceptionHandlerFactory _exceptionFactory;
+    public override HandlerType HandlerType => HandlerType.Validation;
+    public override int HandlerOrder => 1;
 
 
     public IsBalanceToPayValidValidationHandler(IBankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
