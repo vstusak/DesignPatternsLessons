@@ -2,10 +2,10 @@
 
 public class SumToPayValidationHandler : Handler
 {
-    private readonly BankNoteResource _bankNoteResource;
+    private readonly IBankNoteResource _bankNoteResource;
     private readonly IExceptionsChainsFactory _exceptionsChainsFactory;
 
-    public SumToPayValidationHandler(BankNoteResource bankNoteResource,
+    public SumToPayValidationHandler(IBankNoteResource bankNoteResource,
         IExceptionsChainsFactory exceptionsChainsFactory)
     {
         _bankNoteResource = bankNoteResource;

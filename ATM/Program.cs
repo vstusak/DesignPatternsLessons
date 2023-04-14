@@ -3,6 +3,7 @@
 using ATM;
 using ATM.ExceptionHandlers;
 using ATM.Handlers;
+using Castle.Windsor;
 using static ATM.BankNotesDenomination;
 
 //var cashRegister = new CashRegister(
@@ -15,19 +16,12 @@ using static ATM.BankNotesDenomination;
 
 // @TODO How to setup windsor container for resolve list of interfaces - RWS interview home work
 
-var notificationExceptionsHandler = new NotificationExceptionsHandler();
-var logExceptionHandler = new LogExceptionHandler();
-var exceptionChainsFactory = new ExceptionsChainsFactory(notificationExceptionsHandler, logExceptionHandler);
+var container = new WindsorContainer();
+container.Install(new ATMInstaller());
 
-var bankNoteResource = new BankNoteResource
-{
-    new(BankNote5000, 10),
-    new(BankNote2000, 0),
-    new(BankNote1000, 1),
-    new(BankNote500, 2),
-    new(BankNote200, 10),
-    new(BankNote100, 0)
-};
+
+var exceptionChainsFactory = container.Resolve<IExceptionsChainsFactory>();
+var bankNoteResource = container.Resolve<IBankNoteResource>();
 
 
 const int amountToPay = 2100;

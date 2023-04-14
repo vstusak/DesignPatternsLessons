@@ -3,9 +3,9 @@
 internal class BanknoteHandler : Handler
 {
     private readonly BankNotesDenomination _banknoteDenomination;
-    private readonly BankNoteResource _bankNoteResource;
+    private readonly IBankNoteResource _bankNoteResource;
 
-    public BanknoteHandler(BankNotesDenomination banknoteDenomination, BankNoteResource bankNoteResource)
+    public BanknoteHandler(BankNotesDenomination banknoteDenomination, IBankNoteResource bankNoteResource)
     {
         _banknoteDenomination = banknoteDenomination;
         _bankNoteResource = bankNoteResource;

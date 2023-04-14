@@ -1,7 +1,18 @@
 ﻿namespace ATM;
+using static ATM.BankNotesDenomination;
 
-public class BankNoteResource : List<BankNote>
+public class BankNoteResource : List<BankNote>, IBankNoteResource
 {
+    public BankNoteResource()
+    {
+        this.Add(new(BankNote5000, 10));
+        this.Add(new(BankNote2000, 0));
+        this.Add(new(BankNote1000, 1));
+        this.Add(new(BankNote500, 2));
+        this.Add(new(BankNote200, 10));
+        this.Add(new(BankNote100, 0));
+    }
+
     public int GetCashBalance()
         => this.Sum(n => n.Amount * n.Value);
 

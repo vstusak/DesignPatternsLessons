@@ -8,8 +8,8 @@ public class ExceptionsChainsFactory : IExceptionsChainsFactory
     private readonly IExceptionHandler _logExceptionHandler;
 
     //@TODO Make concrete interfaces for every exception handler
-    public ExceptionsChainsFactory(IExceptionHandler notificationExceptionHandler,
-        IExceptionHandler logExceptionHandler)
+    public ExceptionsChainsFactory(INotificationExceptionsHandler notificationExceptionHandler,
+        ILogExceptionHandler logExceptionHandler)
     {
         _notificationExceptionHandler = notificationExceptionHandler;
         _logExceptionHandler = logExceptionHandler;

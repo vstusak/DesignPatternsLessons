@@ -1,6 +1,6 @@
 ﻿namespace ATM.ExceptionHandlers;
 
-public class NotificationExceptionsHandler : ExceptionHandler
+public class NotificationExceptionsHandler : ExceptionHandler, INotificationExceptionsHandler
 {
     public override void HandleRequest(string sourceName, int balanceToPay)
     {
