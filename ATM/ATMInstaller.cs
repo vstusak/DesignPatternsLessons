@@ -3,6 +3,7 @@
 using ATM.ExceptionHandlers;
 using ATM.Handlers;
 using Castle.MicroKernel.Registration;
+using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
@@ -19,8 +20,8 @@ internal class ATMInstaller : IWindsorInstaller
             .LifestyleSingleton());
         container.Register(Component.For<IBankNoteResource>().ImplementedBy<BankNoteResource>().LifestyleSingleton());
 
-        container.Register(Component.For<IHandler>().ImplementedBy<BanknoteHandler>());
-
-        //container.Register(Component.For<IFacadeClass>().ImplementedBy<FacadeClass>());
+        container.Kernel.Resolver.AddSubResolver(new ListResolver(container.Kernel));
+        container.Register(Component.For<IHandler>().ImplementedBy<BanknoteHandler>()
+            .DependsOn(Dependency.OnValue<BankNotesDenomination>(BankNotesDenomination.BankNote5000)));
     }
 }
