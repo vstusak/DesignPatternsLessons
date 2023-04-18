@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using ATM;
-using ATM.ExceptionHandlers;
 using ATM.Handlers;
 using Castle.Windsor;
 using static ATM.BankNotesDenomination;
@@ -22,6 +21,7 @@ container.Install(new ATMInstaller());
 
 var exceptionChainsFactory = container.Resolve<IExceptionsChainsFactory>();
 var bankNoteResource = container.Resolve<IBankNoteResource>();
+var handlerChainFactory = new HandlerChainFactory();
 
 
 const int amountToPay = 2100;
@@ -39,3 +39,16 @@ handler.SetNext(new SumToPayValidationHandler(bankNoteResource, exceptionChainsF
 handler.HandleRequest(amountToPay);
 
 Console.ReadKey();
+
+public class HandlerChainFactory : IHandlerChainFactory
+{
+    public IHandler GetChain()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public interface IHandlerChainFactory
+{
+    IHandler GetChain();
+}

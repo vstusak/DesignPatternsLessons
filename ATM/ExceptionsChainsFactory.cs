@@ -7,7 +7,6 @@ public class ExceptionsChainsFactory : IExceptionsChainsFactory
     private readonly IExceptionHandler _notificationExceptionHandler;
     private readonly IExceptionHandler _logExceptionHandler;
 
-    //@TODO Make concrete interfaces for every exception handler
     public ExceptionsChainsFactory(INotificationExceptionsHandler notificationExceptionHandler,
         ILogExceptionHandler logExceptionHandler)
     {
