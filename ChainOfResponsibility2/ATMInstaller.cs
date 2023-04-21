@@ -10,6 +10,9 @@ public class ATMInstaller : IWindsorInstaller
     {
         //TODO: Initialize from file
         xxxxx;
+
+        // TODO: Split interfaces IHandler
+        xxxxx;
         container.Register(Component.For<IBankNotesResource>().ImplementedBy<BankNotesResource>().LifestyleSingleton());
         container.Register(Component.For<IExceptionLoggerHandler>().ImplementedBy<ValidationExceptionLoggerHandler>());
         container.Register(Component.For<IExceptionNotificationHandler>().ImplementedBy<ValidationExceptionNotificatorHandler>());
