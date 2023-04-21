@@ -15,6 +15,7 @@ class AtmFactory : IAtmFactory
 
         var chain = _handlers.Single(h => h.HandlerType == HandlerType.Default);
 
+        var first = chain;
         foreach (var block in validationBlocks)
         {
             chain = chain.SetNext(block);
@@ -25,6 +26,6 @@ class AtmFactory : IAtmFactory
             chain = chain.SetNext(block);
         }
 
-        return chain;
+        return first;
     }
 }

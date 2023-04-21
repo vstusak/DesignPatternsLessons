@@ -16,16 +16,19 @@ Console.WriteLine($"Want to pay: {desiredBalance}");
 
 var exceptionChainFactory = container.Resolve<IExceptionHandlerFactory>(); //new ExceptionChainFactory(exceptionLoggerHandler, exceptionNotificationHandler);
 
-var handler = new IsBalanceToPayValidValidationHandler(resource, exceptionChainFactory);
-handler.SetNext(new IsSumResourcesAvailableValidationHandler(resource, exceptionChainFactory))
-    .SetNext(new IsNotesAvailableValidationHandler(resource, exceptionChainFactory))
-    
-    .SetNext(new CashHandler(BankNoteDenomination.FiveThousand, resource))
-    .SetNext(new CashHandler(BankNoteDenomination.TwoThousand, resource))
-    .SetNext(new CashHandler(BankNoteDenomination.OneThousand, resource))
-    .SetNext(new CashHandler(BankNoteDenomination.FiveHundred, resource))
-    .SetNext(new CashHandler(BankNoteDenomination.FourHundred, resource))
-    .SetNext(new CashHandler(BankNoteDenomination.TwoHundred, resource))
-    .SetNext(new CashHandler(BankNoteDenomination.OneHundred, resource));
+var atmFactory = container.Resolve<IAtmFactory>();
+var chain = atmFactory.GetChain();
 
-handler.Handle(desiredBalance);
+//var handler = new IsBalanceToPayValidValidationHandler(resource, exceptionChainFactory);
+//handler.SetNext(new IsSumResourcesAvailableValidationHandler(resource, exceptionChainFactory))
+  //  .SetNext(new IsNotesAvailableValidationHandler(resource, exceptionChainFactory))
+    
+    //.SetNext(new CashHandler(BankNoteDenomination.FiveThousand, resource))
+    //.SetNext(new CashHandler(BankNoteDenomination.TwoThousand, resource))
+    //.SetNext(new CashHandler(BankNoteDenomination.OneThousand, resource))
+    //.SetNext(new CashHandler(BankNoteDenomination.FiveHundred, resource))
+    //.SetNext(new CashHandler(BankNoteDenomination.FourHundred, resource))
+    //.SetNext(new CashHandler(BankNoteDenomination.TwoHundred, resource))
+    //.SetNext(new CashHandler(BankNoteDenomination.OneHundred, resource));
+
+chain.Handle(desiredBalance);

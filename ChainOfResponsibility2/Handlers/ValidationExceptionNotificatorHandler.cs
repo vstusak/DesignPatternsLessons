@@ -2,9 +2,9 @@
 
 public class ValidationExceptionNotificatorHandler : ExceptionHandler, IExceptionNotificationHandler
 {
-    private readonly BankNotesResource _resource;
+    private readonly IBankNotesResource _resource;
 
-    public ValidationExceptionNotificatorHandler(BankNotesResource resource)
+    public ValidationExceptionNotificatorHandler(IBankNotesResource resource)
     {
         _resource = resource;
     }

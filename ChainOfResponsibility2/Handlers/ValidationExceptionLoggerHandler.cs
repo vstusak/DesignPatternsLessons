@@ -2,9 +2,9 @@
 
 public class ValidationExceptionLoggerHandler : ExceptionHandler, IExceptionLoggerHandler
 {
-    private readonly BankNotesResource _resource;
+    private readonly IBankNotesResource _resource;
 
-    public ValidationExceptionLoggerHandler(BankNotesResource resource)
+    public ValidationExceptionLoggerHandler(IBankNotesResource resource)
     {
         _resource = resource;
     }
