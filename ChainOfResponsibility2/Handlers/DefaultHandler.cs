@@ -1,8 +1,8 @@
 ﻿namespace ChainOfResponsibility2.Handlers;
 
-public class DefaultHandler : Handler
+public class DefaultHandler : Handler, IHandlerConfigurationInfo
 {
-    public override HandlerType HandlerType => HandlerType.Default;
-    public override int HandlerOrder => 1;
+    public HandlerType HandlerType => HandlerType.Default;
+    public int HandlerOrder => 1;
 
 }

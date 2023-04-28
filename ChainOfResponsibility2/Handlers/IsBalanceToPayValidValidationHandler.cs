@@ -1,11 +1,11 @@
 ﻿namespace ChainOfResponsibility2.Handlers;
 
-public class IsBalanceToPayValidValidationHandler : Handler
+public class IsBalanceToPayValidValidationHandler : Handler, IHandlerConfigurationInfo
 {
     private readonly IBankNotesResource _resource;
     private readonly IExceptionHandlerFactory _exceptionFactory;
-    public override HandlerType HandlerType => HandlerType.Validation;
-    public override int HandlerOrder => 1;
+    public HandlerType HandlerType => HandlerType.Validation;
+    public int HandlerOrder => 1;
 
 
     public IsBalanceToPayValidValidationHandler(IBankNotesResource resource, IExceptionHandlerFactory exceptionFactory)

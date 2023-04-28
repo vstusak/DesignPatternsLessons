@@ -1,11 +1,11 @@
 ﻿namespace ChainOfResponsibility2.Handlers;
 
-public class IsSumResourcesAvailableValidationHandler : Handler
+public class IsSumResourcesAvailableValidationHandler : Handler, IHandlerConfigurationInfo
 {
     private IBankNotesResource _resource;
     private IExceptionHandlerFactory _exceptionFactory;
-    public override HandlerType HandlerType => HandlerType.Validation;
-    public override int HandlerOrder => 2;
+    public HandlerType HandlerType => HandlerType.Validation;
+    public int HandlerOrder => 2;
 
     public IsSumResourcesAvailableValidationHandler(IBankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
     {

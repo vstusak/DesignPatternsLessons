@@ -14,7 +14,7 @@ Console.WriteLine($"Want to pay: {desiredBalance}");
 //var exceptionLoggerHandler = new ValidationExceptionLoggerHandler(resource);
 //var exceptionNotificationHandler = new ValidationExceptionNotificatorHandler(resource);
 
-var exceptionChainFactory = container.Resolve<IExceptionHandlerFactory>(); //new ExceptionChainFactory(exceptionLoggerHandler, exceptionNotificationHandler);
+//var exceptionChainFactory = container.Resolve<IExceptionHandlerFactory>(); //new ExceptionChainFactory(exceptionLoggerHandler, exceptionNotificationHandler);
 
 var atmFactory = container.Resolve<IAtmFactory>();
 var chain = atmFactory.GetChain();

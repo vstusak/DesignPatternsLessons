@@ -1,11 +1,11 @@
 ﻿namespace ChainOfResponsibility2.Handlers;
 
-public class IsNotesAvailableValidationHandler : Handler
+public class IsNotesAvailableValidationHandler : Handler, IHandlerConfigurationInfo
 {
     private IBankNotesResource resource;
     private IExceptionHandlerFactory _exceptionFactory;
-    public override HandlerType HandlerType => HandlerType.Validation;
-    public override int HandlerOrder => 3;
+    public HandlerType HandlerType => HandlerType.Validation;
+    public int HandlerOrder => 3;
 
     public IsNotesAvailableValidationHandler(IBankNotesResource resource, IExceptionHandlerFactory exceptionFactory)
     {
