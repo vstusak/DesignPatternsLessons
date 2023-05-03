@@ -8,9 +8,6 @@ public class ATMInstaller : IWindsorInstaller
 {
     public void Install(IWindsorContainer container, IConfigurationStore store)
     {
-        //TODO: Initialize from file
-        xxxx
-
         container.Register(Component.For<IBankNotesResource>().ImplementedBy<BankNotesResource>().LifestyleSingleton());
         container.Register(Component.For<IExceptionLoggerHandler>().ImplementedBy<ValidationExceptionLoggerHandler>());
         container.Register(Component.For<IExceptionNotificationHandler>().ImplementedBy<ValidationExceptionNotificatorHandler>());

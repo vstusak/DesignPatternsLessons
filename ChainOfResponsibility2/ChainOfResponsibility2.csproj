@@ -11,4 +11,10 @@
     <PackageReference Include="Castle.Windsor" Version="5.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="installer.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

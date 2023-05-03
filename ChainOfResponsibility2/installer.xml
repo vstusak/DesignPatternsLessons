@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<configuration>
+	<components>
+		<component
+			id="BankNotesResource"
+			type="ChainOfResponsibility2.Handlers.BankNotesResource, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IBankNotesResource, ChainOfResponsibility2"
+		>
+		</component>
+		<component
+			id="ValidationExceptionLoggerHandler"
+			type="ChainOfResponsibility2.Handlers.ValidationExceptionLoggerHandler, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IExceptionLoggerHandler, ChainOfResponsibility2"
+		>
+		</component>
+		<component
+			id="ValidationExceptionNotificatorHandler"
+			type="ChainOfResponsibility2.Handlers.ValidationExceptionNotificatorHandler, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IExceptionNotificationHandler, ChainOfResponsibility2"
+		>
+		</component>
+		<component
+			id="ExceptionChainFactory"
+			type="ChainOfResponsibility2.Handlers.ExceptionChainFactory, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IExceptionHandlerFactory, ChainOfResponsibility2"
+		>
+		</component>
+		<component
+			id="AtmFactory"
+			type="ChainOfResponsibility2.Handlers.AtmFactory, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IAtmFactory, ChainOfResponsibility2"
+		>
+		</component>
+		
+		<component
+			id="DefaultHandler"
+			type="ChainOfResponsibility2.Handlers.DefaultHandler, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IHandlerConfigurationInfo, ChainOfResponsibility2"
+		>
+		</component>
+		<component
+			id="IsBalanceToPayValidValidationHandler"
+			type="ChainOfResponsibility2.Handlers.IsBalanceToPayValidValidationHandler, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IHandlerConfigurationInfo, ChainOfResponsibility2"
+		>
+		</component>
+		<component
+			id="IsSumResourcesAvailableValidationHandler"
+			type="ChainOfResponsibility2.Handlers.IsSumResourcesAvailableValidationHandler, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IHandlerConfigurationInfo, ChainOfResponsibility2"
+		>
+		</component>
+		<component
+			id="IsNotesAvailableValidationHandler"
+			type="ChainOfResponsibility2.Handlers.IsNotesAvailableValidationHandler, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IHandlerConfigurationInfo, ChainOfResponsibility2"
+		>
+		</component>
+		<component
+			id="CashHandler5000"
+			type="ChainOfResponsibility2.Handlers.CashHandler, ChainOfResponsibility2" 
+			service="ChainOfResponsibility2.Handlers.IHandlerConfigurationInfo, ChainOfResponsibility2"
+		>
+			<parameters>
+				<noteDenom>5000</noteDenom>
+			</parameters>
+		</component>
+
+
+	</components>
+</configuration>

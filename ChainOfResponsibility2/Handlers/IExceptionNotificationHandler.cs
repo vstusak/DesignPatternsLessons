@@ -1,4 +1,4 @@
-﻿using ChainOfResponsibility2.Handlers;
+﻿namespace ChainOfResponsibility2.Handlers;
 
 public interface IExceptionNotificationHandler: IExceptionHandler
 {

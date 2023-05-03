@@ -1,8 +1,16 @@
-﻿using Castle.Windsor;
+﻿using Castle.MicroKernel.Resolvers.SpecializedResolvers;
+using Castle.Windsor;
+using Castle.Windsor.Configuration.Interpreters;
 using ChainOfResponsibility2.Handlers;
 
-var container = new WindsorContainer();
+var assembly = typeof(BankNotesResource).Assembly;
 
+//From file:
+//var fileName = "installer.xml";
+//var interpreter = new XmlInterpreter(fileName);
+//var container = new WindsorContainer(interpreter);
+
+var container = new WindsorContainer();
 container.Install(new ATMInstaller());
 
 var desiredBalance = 3400;
