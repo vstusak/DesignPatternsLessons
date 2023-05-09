@@ -19,22 +19,23 @@ var container = new WindsorContainer();
 container.Install(new ATMInstaller());
 
 
-var exceptionChainsFactory = container.Resolve<IExceptionsChainsFactory>();
+//var exceptionChainsFactory = container.Resolve<IExceptionsChainsFactory>();
 var bankNoteResource = container.Resolve<IBankNoteResource>();
-var handlerChainFactory = new HandlerChainFactory();
+var handlerChainFactory = container.Resolve<IHandlerChainFactory>();
 
 
 const int amountToPay = 2100;
 Console.WriteLine($"amount to pay {amountToPay}");
 Console.WriteLine($"money in cash register {bankNoteResource.GetCashBalance()}");
-IHandler handler = new AmountToPayValidationHandler(exceptionChainsFactory);
-handler.SetNext(new SumToPayValidationHandler(bankNoteResource, exceptionChainsFactory))
-    .SetNext(new BanknoteHandler(BankNote5000, bankNoteResource))
-    .SetNext(new BanknoteHandler(BankNote2000, bankNoteResource))
-    .SetNext(new BanknoteHandler(BankNote1000, bankNoteResource))
-    .SetNext(new BanknoteHandler(BankNote500, bankNoteResource))
-    .SetNext(new BanknoteHandler(BankNote200, bankNoteResource))
-    .SetNext(new BanknoteHandler(BankNote100, bankNoteResource));
+var handler = handlerChainFactory.GetChain();
+//IHandler handler = new AmountToPayValidationHandler(exceptionChainsFactory);
+//handler.SetNext(new SumToPayValidationHandler(bankNoteResource, exceptionChainsFactory))
+//    .SetNext(new BanknoteHandler(BankNote5000, bankNoteResource))
+//    .SetNext(new BanknoteHandler(BankNote2000, bankNoteResource))
+//    .SetNext(new BanknoteHandler(BankNote1000, bankNoteResource))
+//    .SetNext(new BanknoteHandler(BankNote500, bankNoteResource))
+//    .SetNext(new BanknoteHandler(BankNote200, bankNoteResource))
+//    .SetNext(new BanknoteHandler(BankNote100, bankNoteResource));
 
 handler.HandleRequest(amountToPay);
 
@@ -42,9 +43,15 @@ Console.ReadKey();
 
 public class HandlerChainFactory : IHandlerChainFactory
 {
+    private readonly IList<IHandler> handlers;
+
+    public HandlerChainFactory(IList<IHandler> handlers)
+    {
+        this.handlers = handlers;
+    }
     public IHandler GetChain()
     {
-        throw new NotImplementedException();
+        var handler = handlers.Where(x => x.N)
     }
 }
 
