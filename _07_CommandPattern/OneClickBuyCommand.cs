@@ -28,6 +28,14 @@
         _orderNotificator.SendNotification(message);
     }
 
+    public void Undo()
+    {
+        var product = _inventory.GetProduct(_productId);
+        product.Amount += _count;
+        var message = $"Vrátil jsi {product.Name} v počtu {_count} kusů. Na skladě zůstalo {product.Amount} kusů.";
+        _orderNotificator.SendNotification(message);
+    }
+
     public void ValidationMessage()
     {
         var product = _inventory.GetProduct(_productId);
