@@ -1,4 +1,6 @@
 ﻿@page
+@using PeopleRegistration.Entities
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -15,20 +17,62 @@
             </thead>
             <tbody>
             <tr>
-                <td>First Name:</td>
-                <td><input type="text" id="firstName" name="FirstName" /></td>
+                @*<td>First Name:</td>
+                <td><input type="text" id="firstName" name="FirstName" value="@Model.Person.FirstName" /></td>*@
+                
+                <td>
+                    <label asp-for="Person.FirstName"></label>
+                </td>
+                <td>
+                    <input asp-for="Person.FirstName"/>
+                </td>
+                <td>
+                    <span asp-validation-for="Person.FirstName"></span>
+                </td>
             </tr>
             <tr>
-                <td>Last Name:</td>
-                <td><input type="text" id="lastName" name="LastName" /></td>
+                @*<td>Last Name:</td>
+                <td><input type="text" id="lastName" name="LastName" /></td>*@
+
+                <td>
+                    <label asp-for="Person.LastName"></label>
+                </td>
+                <td>
+                    <input asp-for="Person.LastName" />
+                </td>
+                <td>
+                    <span asp-validation-for="Person.LastName"></span>
+                </td>
             </tr>
             <tr>
-                <td>Gender:</td>
-                <td><input type="text" id="gender" name="Gender" /></td>
+                @*<td>Gender:</td>
+                <td><input type="text" id="gender" name="Gender" /></td>*@
+
+                <td>
+                    <label asp-for="Person.Gender"></label>
+                </td>
+                <td>
+                    <select asp-for="Person.Gender" asp-items="Html.GetEnumSelectList<GenderType>()">
+                        <option>Please select</option>
+                    </select>
+                </td>
+                <td>
+                    <span asp-validation-for="Person.Gender"></span>
+                </td>
             </tr>
             <tr>
-                <td>E-mail:</td>
-                <td><input type="email" id="email" name="Email" /></td>
+                @*<td>E-mail:</td>
+                <td><input type="email" id="email" name="Email" /></td>*@
+
+                <td>
+                    <label asp-for="Person.Email"></label>
+                </td>
+                <td>
+                    <input asp-for="Person.Email" />
+                </td>
+                <td>
+                    <span asp-validation-for="Person.Email"></span>
+                </td>
             </tr>
             </tbody>
         </table>

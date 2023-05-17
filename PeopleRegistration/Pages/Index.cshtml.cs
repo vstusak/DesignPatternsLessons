@@ -8,6 +8,8 @@ namespace PeopleRegistration.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        [BindProperty]
+        public Person Person { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -19,7 +21,7 @@ namespace PeopleRegistration.Pages
 
         }
 
-        public void OnPost(Person person)
+        public void OnPost()
         {
 
         }
