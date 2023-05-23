@@ -4,23 +4,31 @@ IInventory inventory = new Inventory();
 
 //////////////////////////////////////////////////////
 
-var command = new OneClickBuyCommand(2, 5, orderNotificator, inventory);
-manager.RunCommand(command);
+//var command = new OneClickBuyCommand(2, 5, orderNotificator, inventory);
+//manager.RunCommand(command);
 
-var command2 = new OneClickBuyCommand(1, 6, orderNotificator, inventory);
-manager.RunCommand(command2);
+//var command2 = new OneClickBuyCommand(1, 6, orderNotificator, inventory);
+//manager.RunCommand(command2);
 
-//TODO add functionality to 'return back' (undo)
-var productId = 2;
+////TODO add functionality to 'return back' (undo)
+//var productId = 2;
 
-var productCount = inventory.GetProduct(productId).Amount;
-Console.WriteLine($"ProductCount for product [{productId}] before Undo: [{productCount}]");
+//var productCount = inventory.GetProduct(productId).Amount;
+//Console.WriteLine($"ProductCount for product [{productId}] before Undo: [{productCount}]");
 
-manager.Undo();
-manager.Undo();
-manager.Undo();
-manager.Undo();
-manager.Undo();
+//manager.Undo();
+//manager.Undo();
+//manager.Undo();
+//manager.Undo();
+//manager.Undo();
 
-var productCountAfter = inventory.GetProduct(productId).Amount;
-Console.WriteLine($"ProductCount for product [{productId}] after Undo: [{productCountAfter}]");
+//var productCountAfter = inventory.GetProduct(productId).Amount;
+//Console.WriteLine($"ProductCount for product [{productId}] after Undo: [{productCountAfter}]");
+try
+{
+	manager.Undo();
+}
+catch (Exception e)
+{
+	Console.WriteLine(e.StackTrace);
+}
