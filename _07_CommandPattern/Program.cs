@@ -28,7 +28,15 @@ try
 {
 	manager.Undo();
 }
+catch (KonecSvetaException e) when (e.ErrorCode == -2)
+{ 
+Console.WriteLine(e.ErrorCode);
+}
 catch (Exception e)
 {
 	Console.WriteLine(e.StackTrace);
+}
+finally
+{
+	Console.WriteLine();
 }

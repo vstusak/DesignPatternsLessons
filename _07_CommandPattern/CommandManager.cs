@@ -28,13 +28,19 @@
         {
             //Console.WriteLine(e);
             Console.WriteLine("There are no commands to undo.");
-            throw e;
+            //throw e;
             //throw;
-            //throw new NotImplementedException();
+            var excpt = new KonecSvetaException("Nevyšlo to", e);
+            excpt.ErrorCode = -1;
+            throw excpt;
             //TODO probrat poradne exception handling
             //TODO vyzkouset naimplementovat vlastni exception
         }
-
+        finally
+        {
+            Console.WriteLine("Jsme ve Finally");
+        }
+        Console.WriteLine("Jsme za Finally");
     }
 
     public ICommand ExtraUndo()
@@ -45,5 +51,27 @@
     public void Redo()
     {
         //TODO
+    }
+
+
+
+
+}
+
+
+public class KonecSvetaException : Exception
+{
+    public int ErrorCode { get; set; }
+    public KonecSvetaException()
+    {
+        
+    }
+    public KonecSvetaException(string message) : base(message)
+    {
+        
+    }
+    public KonecSvetaException(string message, Exception inner) : base(message, inner)
+    {
+        
     }
 }
