@@ -9,6 +9,9 @@ public class AmountToPayValidationHandler : Handler
         _exceptionChainsFactory = exceptionChainsFactory;
     }
 
+    public override int Order { get; }
+    public override HandlerType HandlerType => HandlerType.ValidationHandler;
+
     public override void HandleRequest(int balanceToPay)
     {
         if (balanceToPay % 100 != 0)

@@ -11,6 +11,9 @@ internal class BanknoteHandler : Handler
         _bankNoteResource = bankNoteResource;
     }
 
+    public override int Order => (int)_banknoteDenomination;
+    public override HandlerType HandlerType => HandlerType.BankNoteHandler;
+
     public override void HandleRequest(int balanceToPay)
     {
         var needed = balanceToPay / (int)_banknoteDenomination;

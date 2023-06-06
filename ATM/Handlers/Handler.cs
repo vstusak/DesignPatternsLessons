@@ -4,6 +4,9 @@ public abstract class Handler : IHandler
 {
     private IHandler _next;
 
+    public abstract int Order { get; }
+    public abstract HandlerType HandlerType { get; }
+
     public IHandler SetNext(IHandler next)
     {
         _next = next;
@@ -12,12 +15,13 @@ public abstract class Handler : IHandler
 
     public virtual void HandleRequest(int balanceToPay)
     {
-        if(balanceToPay == 0)
+        if (balanceToPay == 0)
         {
             Console.WriteLine("Enjoy your cash! Good bye");
             return;
         }
+
         Console.WriteLine($"Go to next in chain with balance {balanceToPay}");
         _next?.HandleRequest(balanceToPay);
-    }    
+    }
 }

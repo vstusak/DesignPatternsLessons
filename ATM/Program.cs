@@ -1,9 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using ATM;
-using ATM.Handlers;
 using Castle.Windsor;
-using static ATM.BankNotesDenomination;
 
 //var cashRegister = new CashRegister(
 //    amountOf5000Banknotes: 10,
@@ -40,22 +38,3 @@ var handler = handlerChainFactory.GetChain();
 handler.HandleRequest(amountToPay);
 
 Console.ReadKey();
-
-public class HandlerChainFactory : IHandlerChainFactory
-{
-    private readonly IList<IHandler> handlers;
-
-    public HandlerChainFactory(IList<IHandler> handlers)
-    {
-        this.handlers = handlers;
-    }
-    public IHandler GetChain()
-    {
-        var handler = handlers.Where(x => x.N)
-    }
-}
-
-public interface IHandlerChainFactory
-{
-    IHandler GetChain();
-}

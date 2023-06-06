@@ -12,6 +12,9 @@ public class SumToPayValidationHandler : Handler
         _exceptionsChainsFactory = exceptionsChainsFactory;
     }
 
+    public override int Order { get; }
+    public override HandlerType HandlerType => HandlerType.ValidationHandler;
+
     public override void HandleRequest(int balanceToPay)
     {
         if (_bankNoteResource.GetCashBalance() < balanceToPay)
