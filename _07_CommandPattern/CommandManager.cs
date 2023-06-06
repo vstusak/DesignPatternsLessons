@@ -33,8 +33,6 @@
             var excpt = new KonecSvetaException("Nevyšlo to", e);
             excpt.ErrorCode = -1;
             throw excpt;
-            //TODO probrat poradne exception handling
-            //TODO vyzkouset naimplementovat vlastni exception
         }
         finally
         {
