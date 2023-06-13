@@ -1,28 +1,30 @@
 ﻿public class CommandManager
 {
-    private readonly Stack<ICommand> _commands = new();
+    private readonly Stack<ICommand> _undo = new();
+    private readonly Stack<ICommand> _redo = new();
 
     public void RunCommand(ICommand command)
     {
         if (command.CanInvoke())
         {
             command.Invoke();
-            _commands.Push(command);
+            _undo.Push(command);
+            _redo.Clear();
         }
         else
         {
             command.ValidationMessage();
         }
-
     }
 
     public void Undo()
     {
         try
         {
-            //var lastCommand = _commands.Pop();
-            var lastCommand = ExtraUndo();
+            var lastCommand = _undo.Pop();
+            //var lastCommand = ExtraUndo();
             lastCommand.Undo();
+            _redo.Push(lastCommand);
         }
         catch (Exception e)
         {
@@ -43,19 +45,16 @@
 
     public ICommand ExtraUndo()
     {
-        return _commands.Pop();
+        return _undo.Pop();
     }
 
     public void Redo()
     {
-        //TODO
+        var lastCommand = _redo.Pop();
+        lastCommand.Invoke();
+        _undo.Push(lastCommand);
     }
-
-
-
-
 }
-
 
 public class KonecSvetaException : Exception
 {
