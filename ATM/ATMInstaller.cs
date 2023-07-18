@@ -23,6 +23,7 @@ internal class ATMInstaller : IWindsorInstaller
         container.Register(Component.For<IBankNoteResource>().ImplementedBy<BankNoteResource>().LifestyleSingleton());
 
         container.Kernel.Resolver.AddSubResolver(new ListResolver(container.Kernel));
+        container.Register(Component.For<IHandler>().ImplementedBy<FirstHandler>());
         container.Register(Component.For<IHandler>().ImplementedBy<AmountToPayValidationHandler>());
         container.Register(Component.For<IHandler>().ImplementedBy<SumToPayValidationHandler>());
         container.Register(Component.For<IHandler>().ImplementedBy<BanknoteHandler>().DependsOn(Dependency.OnValue<BankNotesDenomination>(BankNotesDenomination.BankNote5000)).Named(BankNotesDenomination.BankNote5000.ToString()));

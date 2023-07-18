@@ -4,6 +4,7 @@
     {
         None,
         ValidationHandler,
-        BankNoteHandler
+        BankNoteHandler,
+        FirstHandler
     }
 }

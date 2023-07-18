@@ -17,11 +17,12 @@ public class HandlerChainFactory : IHandlerChainFactory
             .Where(handler => handler.HandlerType == HandlerType.BankNoteHandler)
             .OrderByDescending(handler => handler.Order);
 
-        var handler = validationHandlers.First();
+        var firstHandler = handlers.Single(handler => handler.HandlerType == HandlerType.FirstHandler);
+        var handler = firstHandler;
 
-        for (var i = 1; i < validationHandlers.Count - 1; i++)
+        foreach (var validationHandler in validationHandlers)
         {
-            handler = handler.SetNext(validationHandlers[i]);
+            handler = handler.SetNext(validationHandler);
         }
 
         foreach (var bankNoteHandler in bankNoteHandlers)
@@ -29,6 +30,6 @@ public class HandlerChainFactory : IHandlerChainFactory
             handler = handler.SetNext(bankNoteHandler);
         }
 
-        // @TODO make return and debug
+        return firstHandler;
     }
 }

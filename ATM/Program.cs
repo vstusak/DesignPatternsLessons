@@ -22,7 +22,7 @@ var bankNoteResource = container.Resolve<IBankNoteResource>();
 var handlerChainFactory = container.Resolve<IHandlerChainFactory>();
 
 
-const int amountToPay = 2100;
+const int amountToPay = 210000;
 Console.WriteLine($"amount to pay {amountToPay}");
 Console.WriteLine($"money in cash register {bankNoteResource.GetCashBalance()}");
 var handler = handlerChainFactory.GetChain();
