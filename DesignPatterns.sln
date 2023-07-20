@@ -51,7 +51,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrototypePattern", "Prototy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistrationApp", "RegistrationApp\RegistrationApp.csproj", "{98C7BDD3-0276-4CB8-8AB7-495162598477}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM", "ATM\ATM.csproj", "{734262AE-8224-44ED-A248-8B2F486D574A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATM", "ATM\ATM.csproj", "{734262AE-8224-44ED-A248-8B2F486D574A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationAppProperValidations", "RegistrationAppProperValidations\RegistrationAppProperValidations.csproj", "{A4324151-841B-4ECF-9AC4-E9B9006D26A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +161,10 @@ Global
 		{734262AE-8224-44ED-A248-8B2F486D574A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{734262AE-8224-44ED-A248-8B2F486D574A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{734262AE-8224-44ED-A248-8B2F486D574A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4324151-841B-4ECF-9AC4-E9B9006D26A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4324151-841B-4ECF-9AC4-E9B9006D26A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4324151-841B-4ECF-9AC4-E9B9006D26A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4324151-841B-4ECF-9AC4-E9B9006D26A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
