@@ -13,5 +13,7 @@ namespace ObjectChatApplication.Positions
             Name = name;
             PositionType = PositionType.Ceo;
         }
+
+
     }
 }

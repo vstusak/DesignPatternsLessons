@@ -12,13 +12,14 @@ namespace ObjectChatApplication.Positions
         public PositionType PositionType { get; set; }
         protected List<Person> AllRecipients = new();
 
-        public void SentToAll()
+        public virtual void SentToAll()
         {
             foreach (var recipient in AllRecipients)
             {
                 recipient.MessageReceived(Name);
             }
         }
+
 
         public void MessageReceived(string from)
         {

@@ -18,5 +18,8 @@ leader.AddRecipient(worker);
 worker.AddRecipient(ceo);
 worker.AddRecipient(leader);
 
+Console.WriteLine("ceo");
 ceo.SentToAll();
 
+Console.WriteLine("worker");
+worker.SentToAll();
