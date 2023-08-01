@@ -34,10 +34,19 @@
             <tr>
                 <td><label asp-for="Person.DateOfBirth"></label></td>
                 <td>
-                    <input asp-for="Person.DateOfBirth" />
+                    <input asp-for="Person.DateOfBirth" max="2023-08-04T00:00" min="2023-07-31T00:00" />
                 </td>
                 <td>
                     <span asp-validation-for="Person.DateOfBirth"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="Person.Email"></label></td>
+                <td>
+                    <input asp-for="Person.Email" />
+                </td>
+                <td>
+                    <span asp-validation-for="Person.Email"></span>
                 </td>
             </tr>
             <tr>
@@ -49,7 +58,9 @@
                     <span asp-validation-for="Person.Nino"></span>
                 </td>
             </tr>
+            
         </table>
         <input type="submit" />
     </form>
+    <div asp-validation-summary="All"></div>
 </div>
