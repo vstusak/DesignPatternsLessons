@@ -57,7 +57,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainOfResponsibility2", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleRegistration", "PeopleRegistration\PeopleRegistration.csproj", "{39E433A2-FFD1-491F-BCBF-D09222DDF679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectChatApplication", "ObjectChatApplication\ObjectChatApplication.csproj", "{7110A5AD-E33C-4A3C-B7F8-5AA48B1C37C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectChatApplication", "ObjectChatApplication\ObjectChatApplication.csproj", "{7110A5AD-E33C-4A3C-B7F8-5AA48B1C37C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectChatApplicationMediator", "ObjectChatApplicationMediator\ObjectChatApplicationMediator.csproj", "{9DE30EF0-C18E-4E91-B689-2A9E658E4B23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +179,10 @@ Global
 		{7110A5AD-E33C-4A3C-B7F8-5AA48B1C37C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7110A5AD-E33C-4A3C-B7F8-5AA48B1C37C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7110A5AD-E33C-4A3C-B7F8-5AA48B1C37C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE30EF0-C18E-4E91-B689-2A9E658E4B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE30EF0-C18E-4E91-B689-2A9E658E4B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE30EF0-C18E-4E91-B689-2A9E658E4B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE30EF0-C18E-4E91-B689-2A9E658E4B23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
