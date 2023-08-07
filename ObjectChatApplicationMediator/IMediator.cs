@@ -8,6 +8,8 @@ namespace ObjectChatApplicationMediator
 {
     public interface IMediator
     {
-        void SendToAll();
+        void SendToAll(string from);
+
+        void AddRecipient(IRecipient recipient);
     }
 }
