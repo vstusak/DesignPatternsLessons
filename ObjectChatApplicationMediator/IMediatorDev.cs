@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace ObjectChatApplicationMediator
 {
-    public interface IMediator
+    public interface IMediatorDev
     {
         void SendTo(string from, string to);
 
-        void SendToAll(string from);
-
         void SendToGroup(string from, Type to);
 
-        void AddRecipient(IRecipient recipient);
+        void SendToAll(string from);
     }
 }
