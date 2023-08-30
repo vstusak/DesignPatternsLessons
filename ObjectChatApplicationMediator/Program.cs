@@ -1,11 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Castle.Windsor;
 using ObjectChatApplicationMediator;
 using ObjectChatApplicationMediator.Positions;
 
+var container = new WindsorContainer();
+container.Install(new ObjectChatApplicationInstaller());
+
 Console.WriteLine("Hello, Mediator!");
 
-IMediator mediator = new Mediator();
+var mediator = container.Resolve<IMediator>();
 
 //TODO: Apply proxy pattern for permissions
 
@@ -35,4 +39,3 @@ worker1.SendTo("Dev");
 
 worker1.SendToGroup(typeof(Lawyer));
 lawyer.SendToGroup(typeof(Worker));
-

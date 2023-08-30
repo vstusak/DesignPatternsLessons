@@ -7,7 +7,7 @@ using ObjectChatApplicationMediator.Positions;
 
 namespace ObjectChatApplicationMediator
 {
-    public class Mediator: IMediator, IMediatorDev, IMediatorWorker
+    public class Mediator: IMediator
     {
         protected List<IRecipient> AllRecipients = new();
         
@@ -16,7 +16,7 @@ namespace ObjectChatApplicationMediator
         //Limit worker to send only to your group and bellow (Worker x CEO, Lawyers; Dev x Lawyers)
         private IEnumerable<IRecipient> CorrectedRecipients(string name) => AllRecipients.Where(r=>r.Name != name);
 
-        public void SendToAll(string from)
+        public void SendToAll(string from, Type fromType)
         {
             foreach (var recipient in CorrectedRecipients(from))
             {
@@ -32,21 +32,21 @@ namespace ObjectChatApplicationMediator
             }
         }
 
-        void IMediatorDev.SendToAll(string from)
-        {
-            foreach (var recipient in CorrectedRecipients(from).Where(r=>r.GetType() != typeof(Lawyer)))
-            {
-                recipient.ReactToMessage(from);
-            }
-        }
+        //void IMediatorDev.SendToAll(string from)
+        //{
+        //    foreach (var recipient in CorrectedRecipients(from).Where(r=>r.GetType() != typeof(Lawyer)))
+        //    {
+        //        recipient.ReactToMessage(from);
+        //    }
+        //}
 
-        void IMediatorWorker.SendToAll(string from)
-        {
-            foreach (var recipient in CorrectedRecipients(from).Where(r=>r.GetType() != typeof(Lawyer) && r.GetType() != typeof(Ceo)))
-            {
-                recipient.ReactToMessage(from);
-            }
-        }
+        //void IMediatorWorker.SendToAll(string from)
+        //{
+        //    foreach (var recipient in CorrectedRecipients(from).Where(r=>r.GetType() != typeof(Lawyer) && r.GetType() != typeof(Ceo)))
+        //    {
+        //        recipient.ReactToMessage(from);
+        //    }
+        //}
 
         public void AddRecipient(IRecipient recipient)
         {

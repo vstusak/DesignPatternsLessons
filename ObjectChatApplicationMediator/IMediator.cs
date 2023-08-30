@@ -10,7 +10,7 @@ namespace ObjectChatApplicationMediator
     {
         void SendTo(string from, string to);
 
-        void SendToAll(string from);
+        void SendToAll(string from, Type fromType);
 
         void SendToGroup(string from, Type to);
 
