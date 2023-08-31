@@ -8,9 +8,16 @@ var mediator = new Mediator();
 var ceo = new CEO(mediator);
 mediator.AddRecipient(ceo);
 mediator.AddRecipient(new Developer(mediator));
+mediator.AddRecipient(new Developer(mediator));
+mediator.AddRecipient(new Developer(mediator));
 mediator.AddRecipient(new Manager(mediator));
 mediator.AddRecipient(new Worker(mediator));
 
-ceo.SendMessage("Testing message");
+//ceo.SendMessage("Testing message");
+
+ceo.SendMessageToGroup<Developer>("Work!");
 
 // CEO, Developer, Manager, Worker
+
+//ToDo worker => sendToAll: messages are blocked for CEO, Developers
+//ToDo developer => sendToAll: messages are blocker for CEO
