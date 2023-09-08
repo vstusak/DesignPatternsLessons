@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectChatApplicationMediator
-{
-    public interface IMediatorDev
-    {
-        void SendTo(string from, string to);
+//namespace ObjectChatApplicationMediator
+//{
+//    public interface IMediatorDev
+//    {
+//        void SendTo(string from, string to);
 
-        void SendToGroup(string from, Type to);
+//        void SendToGroup(string from, Type to);
 
-        void SendToAll(string from);
-    }
-}
+//        void SendToAll(string from);
+//    }
+//}

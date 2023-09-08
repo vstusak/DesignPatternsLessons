@@ -14,13 +14,18 @@ namespace ObjectChatApplicationMediator
         //protected Dictionary<string, IRecipient> AllRecipients = new();
         
         //Limit worker to send only to your group and bellow (Worker x CEO, Lawyers; Dev x Lawyers)
-        private IEnumerable<IRecipient> CorrectedRecipients(string name) => AllRecipients.Where(r=>r.Name != name);
+        protected IEnumerable<IRecipient> CorrectedRecipients(string name) => AllRecipients.Where(r=>r.Name != name);
 
-        public void SendToAll(string from, Type fromType)
+
+        protected void SendMessage(string from, IRecipient to)
+        {
+            to.ReactToMessage(from);
+        }
+        public virtual void SendToAll(string from, Type fromType)
         {
             foreach (var recipient in CorrectedRecipients(from))
             {
-                recipient.ReactToMessage(from);
+                SendMessage(from, recipient);
             }
         }
 
@@ -28,7 +33,7 @@ namespace ObjectChatApplicationMediator
         {
             foreach (var recipient in CorrectedRecipients(from).Where(r=>r.GetType() == to))
             {
-                recipient.ReactToMessage(from);
+                SendMessage(from, recipient);
             }
         }
 
@@ -56,7 +61,12 @@ namespace ObjectChatApplicationMediator
         public void SendTo(string from, string to)
         {
             var recipient = AllRecipients.FirstOrDefault(r => r.Name == to);
-            recipient?.ReactToMessage(from);
+            
+            if (recipient != null)
+            {
+                SendMessage(from, recipient);
+            }
+
         }
     }
 }

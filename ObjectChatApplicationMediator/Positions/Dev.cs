@@ -2,10 +2,10 @@
 
 public class Dev:IRecipient
 {
-    private IMediatorDev _mediator;
+    private IMediator _mediator;
     public string Name { get; set; }
     
-    public Dev(string name, IMediatorDev mediator)
+    public Dev(string name, IMediator mediator)
     {
         Name = name;
         _mediator = mediator;
@@ -18,7 +18,7 @@ public class Dev:IRecipient
 
     public void SendToAll()
     {
-        _mediator.SendToAll(GetType().Name);
+        _mediator.SendToAll(Name, GetType());
     }
 
     public void SendTo(string To)

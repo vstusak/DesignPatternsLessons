@@ -4,18 +4,22 @@ using Castle.Windsor;
 using ObjectChatApplicationMediator;
 using ObjectChatApplicationMediator.Positions;
 
+
 var container = new WindsorContainer();
-container.Install(new ObjectChatApplicationInstaller());
+
+var defaultInstaller = new ObjectChatApplicationInstaller();
+
+var permissionInstaller = new ObjectPermissionChatApplicationInstaller();
+
+container.Install(permissionInstaller);
 
 Console.WriteLine("Hello, Mediator!");
 
 var mediator = container.Resolve<IMediator>();
 
-//TODO: Apply proxy pattern for permissions
-
-var worker1 = new Worker("Worker1", (IMediatorWorker)mediator);
-var worker2 = new Worker("Worker2", (IMediatorWorker)mediator);
-var dev = new Dev("Dev", (IMediatorDev)mediator);
+var worker1 = new Worker("Worker1", mediator);
+var worker2 = new Worker("Worker2", mediator);
+var dev = new Dev("Dev", mediator);
 var ceo = new Ceo("Ceo", mediator);
 var lawyer = new Lawyer("Lawyer", mediator);
 

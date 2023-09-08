@@ -7,38 +7,50 @@ using ObjectChatApplicationMediator.Positions;
 
 namespace ObjectChatApplicationMediator
 {
-    public class PermissionCheckProxyMediator : IMediator
+    public class PermissionCheckProxyMediator : Mediator
     {
-        private readonly IMediator _mediator;
-
-        public PermissionCheckProxyMediator(IMediator mediator)
+       
+        //Limit worker to send only to your group and bellow (Worker x CEO, Lawyers; Dev x Lawyers)
+        public override void SendToAll(string from, Type fromType)
         {
-            _mediator = mediator;
-        }
 
-        public void SendTo(string from, string to)
-        {
-            _mediator.SendTo(from, to);
-        }
+            //alternative - where and single for instead of  if
+            //foreach (var recipient in
+            //    CorrectedRecipients(from).Where(r =>
+            //        fromType == typeof(Dev) && r.GetType() != typeof(Lawyer)
+            //        || fromType == typeof(Worker) && r.GetType() != typeof(Lawyer) 
+            //                                      && r.GetType() != typeof(Ceo))
+            //    )
+            //{
+            //    SendMessage(from,recipient);
+            //}
+            
 
-        public void SendToAll(string from, Type fromType)
-        {
-            var devType = typeof(Dev);
-            switch (fromType)
+            //TODO rework to if-less version
+
+            if (fromType == typeof(Dev))
             {
-                case devType:
-                    break;
+                foreach (var recipient in CorrectedRecipients(from).Where(r => r.GetType() != typeof(Lawyer)))
+                {
+                    SendMessage(from, recipient);
+                }
             }
+
+            else if (fromType == typeof(Worker)) 
+            {
+                foreach (var recipient in CorrectedRecipients(from)
+                             .Where(r => r.GetType() != typeof(Lawyer) && r.GetType() != typeof(Ceo)))
+                {
+                    SendMessage(from, recipient);
+                }
+            }
+
+            else
+            {
+                base.SendToAll(from, fromType);
+            }
+        
         }
 
-        public void SendToGroup(string from, Type to)
-        {
-            _mediator.SendToGroup(from, to);
-        }
-
-        public void AddRecipient(IRecipient recipient)
-        {
-            _mediator.AddRecipient(recipient);
-        }
     }
 }

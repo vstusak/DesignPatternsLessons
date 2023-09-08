@@ -2,10 +2,10 @@
 
 public class Worker : IRecipient
 {
-    private IMediatorWorker _mediator;
+    private IMediator _mediator;
     public string Name { get; set; }
 
-    public Worker(string name, IMediatorWorker mediator)
+    public Worker(string name, IMediator mediator)
     {
         Name = name;
         _mediator = mediator;
@@ -18,7 +18,7 @@ public class Worker : IRecipient
 
     public void SendToAll()
     {
-        _mediator.SendToAll(Name);
+        _mediator.SendToAll(Name, GetType());
     }
 
     public void SendTo(string to)

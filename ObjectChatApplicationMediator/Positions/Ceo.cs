@@ -26,7 +26,7 @@ namespace ObjectChatApplicationMediator.Positions
 
         public void SendToAll()
         {
-            _mediator.SendToAll(GetType().Name);
+            _mediator.SendToAll(Name, GetType());
         }
 
         public void SendTo(string to)
