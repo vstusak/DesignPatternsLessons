@@ -2,14 +2,14 @@
 
 public class Developer : IDeveloper
 {
-    private readonly IMediator _mediator;
+    private readonly IMediatorForDeveloper _mediator;
 
-    public Developer(IMediator mediator)
+    public Developer(IMediatorForDeveloper mediator)
     {
         _mediator = mediator;
     }
 
-    public void SendMessage(string message)
+    public void SendMessageToAll(string message)
     {
         _mediator.SendMessageToAll(message, this);
     }
@@ -21,6 +21,6 @@ public class Developer : IDeveloper
 
     public void SendMessageToGroup<T>(string message)
     {
-        _mediator.SendMessageToAll<T>(message, this);
+        _mediator.SendMessageToGroup<T>(message, this);
     }
 }

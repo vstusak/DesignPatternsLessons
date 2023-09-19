@@ -17,7 +17,7 @@ public class Mediator : IMediator, IMediatorForDeveloper, IMediatorForWorker
         }
     }
 
-    public void SendMessageToAll<T>(string message, ISupportMediator from)
+    public void SendMessageToGroup<T>(string message, ISupportMediator from)
     {
         foreach (var recipient in GetRecipients<T>(from))
         {
@@ -25,17 +25,17 @@ public class Mediator : IMediator, IMediatorForDeveloper, IMediatorForWorker
         }
     }
 
-    //void IMediatorForDeveloper.SendMessageToAll(string message, ISupportMediator from)
+    void IMediatorForDeveloper.SendMessageToAll(string message, ISupportMediator from)
     {
-        foreach (var recipient in GetRecipients(from))
+        foreach (var recipient in GetRecipients(from).Where(x => x.GetType() != typeof(CEO)))
         {
             recipient.ReceiveMessage(message, from.GetType().Name);
         }
     }
 
-    //void IMediatorForWorker.SendMessageToAll(string message, ISupportMediator from)
+    void IMediatorForWorker.SendMessageToAll(string message, ISupportMediator from)
     {
-        foreach (var recipient in GetRecipients(from))
+        foreach (var recipient in GetRecipients(from).Where(x => x.GetType() != typeof(CEO) && x.GetType() != typeof(Developer)))
         {
             recipient.ReceiveMessage(message, from.GetType().Name);
         }

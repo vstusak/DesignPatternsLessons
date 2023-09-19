@@ -2,14 +2,14 @@
 
 public class Worker : IWorker
 {
-    private readonly IMediator _mediator;
+    private readonly IMediatorForWorker _mediator;
 
-    public Worker(IMediator mediator)
+    public Worker(IMediatorForWorker mediator)
     {
         _mediator = mediator;
     }
 
-    public void SendMessage(string message)
+    public void SendMessageToAll(string message)
     {
         _mediator.SendMessageToAll(message, this);
     }
@@ -21,6 +21,6 @@ public class Worker : IWorker
 
     public void SendMessageToGroup<T>(string message)
     {
-        _mediator.SendMessageToAll<T>(message, this);
+        _mediator.SendMessageToGroup<T>(message, this);
     }
 }

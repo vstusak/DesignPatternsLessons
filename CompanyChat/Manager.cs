@@ -9,7 +9,7 @@ public class Manager : IManager
         _mediator = mediator;
     }
 
-    public void SendMessage(string message)
+    public void SendMessageToAll(string message)
     {
         _mediator.SendMessageToAll(message, this);
     }
@@ -21,6 +21,6 @@ public class Manager : IManager
 
     public void SendMessageToGroup<T>(string message)
     {
-        _mediator.SendMessageToAll<T>(message, this);
+        _mediator.SendMessageToGroup<T>(message, this);
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace CompanyChat
 {
-    internal interface IMediatorForWorker
+    public interface IMediatorForWorker
     {
         void SendMessageToAll(string message, ISupportMediator from);
-        void SendMessageToAll<T>(string message, ISupportMediator from);
+        void SendMessageToGroup<T>(string message, ISupportMediator from);
     }
 }

@@ -9,14 +9,14 @@ public class CEO : ICeo
         _mediator = mediator;
     }
 
-    public void SendMessage(string message)
+    public void SendMessageToAll(string message)
     {
         _mediator.SendMessageToAll(message, this);
     }
 
     public void SendMessageToGroup<T>(string message)
     {
-        _mediator.SendMessageToAll<T>(message, this);
+        _mediator.SendMessageToGroup<T>(message, this);
     }
 
     public void ReceiveMessage(string message, string from)
