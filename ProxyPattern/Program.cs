@@ -6,10 +6,10 @@ namespace ProxyPattern
     {
         static void Main(string[] args)
         {
-            //var loader = DataLoader.Create();
-            var loader = new LazyDataLoader();
+            var loader = DataLoader.Create();
+            //var loader = new LazyDataLoader();
 
-            if (false)
+            if (true)
             {
                 var results = string.Join(' ', loader.ExpensiveResults1);
 

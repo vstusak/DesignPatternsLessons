@@ -1,7 +1,8 @@
 ﻿namespace CompanyChat;
 
-public class Mediator : IMediator, IMediatorForDeveloper, IMediatorForWorker
+public class Mediator : IMediator//, IMediatorForDeveloper, IMediatorForWorker
 {
+    //ToDo: implement ProxyMediator that inherits from Mediator
     private readonly List<ISupportMediator> _recipients = new();
 
     public void AddRecipient(ISupportMediator recipient)
@@ -25,21 +26,21 @@ public class Mediator : IMediator, IMediatorForDeveloper, IMediatorForWorker
         }
     }
 
-    void IMediatorForDeveloper.SendMessageToAll(string message, ISupportMediator from)
-    {
-        foreach (var recipient in GetRecipients(from).Where(x => x.GetType() != typeof(CEO)))
-        {
-            recipient.ReceiveMessage(message, from.GetType().Name);
-        }
-    }
+    //void IMediatorForDeveloper.SendMessageToAll(string message, ISupportMediator from)
+    //{
+    //    foreach (var recipient in GetRecipients(from).Where(x => x.GetType() != typeof(CEO)))
+    //    {
+    //        recipient.ReceiveMessage(message, from.GetType().Name);
+    //    }
+    //}
 
-    void IMediatorForWorker.SendMessageToAll(string message, ISupportMediator from)
-    {
-        foreach (var recipient in GetRecipients(from).Where(x => x.GetType() != typeof(CEO) && x.GetType() != typeof(Developer)))
-        {
-            recipient.ReceiveMessage(message, from.GetType().Name);
-        }
-    }
+    //void IMediatorForWorker.SendMessageToAll(string message, ISupportMediator from)
+    //{
+    //    foreach (var recipient in GetRecipients(from).Where(x => x.GetType() != typeof(CEO) && x.GetType() != typeof(Developer)))
+    //    {
+    //        recipient.ReceiveMessage(message, from.GetType().Name);
+    //    }
+    //}
 
     private List<ISupportMediator> GetRecipients<T>(ISupportMediator from)
     {

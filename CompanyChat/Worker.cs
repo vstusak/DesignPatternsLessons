@@ -2,9 +2,9 @@
 
 public class Worker : IWorker
 {
-    private readonly IMediatorForWorker _mediator;
+    private readonly IMediator _mediator;
 
-    public Worker(IMediatorForWorker mediator)
+    public Worker(IMediator mediator)
     {
         _mediator = mediator;
     }

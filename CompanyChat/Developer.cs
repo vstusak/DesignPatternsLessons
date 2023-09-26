@@ -2,9 +2,9 @@
 
 public class Developer : IDeveloper
 {
-    private readonly IMediatorForDeveloper _mediator;
+    private readonly IMediator _mediator;
 
-    public Developer(IMediatorForDeveloper mediator)
+    public Developer(IMediator mediator)
     {
         _mediator = mediator;
     }
