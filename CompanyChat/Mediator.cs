@@ -1,8 +1,7 @@
 ﻿namespace CompanyChat;
 
-public class Mediator : IMediator//, IMediatorForDeveloper, IMediatorForWorker
+public class Mediator : IMediator //, IMediatorForDeveloper, IMediatorForWorker
 {
-    //ToDo: implement ProxyMediator that inherits from Mediator
     private readonly List<ISupportMediator> _recipients = new();
 
     public void AddRecipient(ISupportMediator recipient)
@@ -10,7 +9,7 @@ public class Mediator : IMediator//, IMediatorForDeveloper, IMediatorForWorker
         _recipients.Add(recipient);
     }
 
-    public void SendMessageToAll(string message, ISupportMediator from)
+    public virtual void SendMessageToAll(string message, ISupportMediator from)
     {
         foreach (var recipient in GetRecipients(from))
         {
@@ -47,6 +46,31 @@ public class Mediator : IMediator//, IMediatorForDeveloper, IMediatorForWorker
         return _recipients.Where(recipient => !recipient.Equals(from) && typeof(T) == recipient.GetType()).ToList();
     }
 
-    private List<ISupportMediator> GetRecipients(ISupportMediator from) =>
+    protected List<ISupportMediator> GetRecipients(ISupportMediator from) =>
         _recipients.Where(recipient => !recipient.Equals(from)).ToList();
+}
+
+public class ProxyMediator : Mediator
+{
+    private static readonly Dictionary<Type, List<Type>> ForbidenRecipients = new()
+    {
+        { typeof(Developer), new List<Type> { typeof(CEO) } },
+        { typeof(Worker), new List<Type> { typeof(CEO), typeof(Developer) } }
+    };
+
+    public override void SendMessageToAll(string message, ISupportMediator from)
+    {
+        var recipients = GetRecipients(from);
+
+        var fromType = from.GetType();
+        if (ForbidenRecipients.ContainsKey(fromType))
+        {
+            recipients.RemoveAll(recipient => ForbidenRecipients[fromType].Contains(recipient.GetType()));
+        }
+
+        foreach (var recipient in recipients)
+        {
+            recipient.ReceiveMessage(message, fromType.Name);
+        }
+    }
 }
