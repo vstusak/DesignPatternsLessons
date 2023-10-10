@@ -8,7 +8,7 @@ using CompanyChat;
 var container = new WindsorContainer();
 container.Install(new CompanyChatInstaller());
 
-var mediator = new Mediator();
+var mediator = container.Resolve<IMediator>();
 var ceo = new CEO(mediator);
 var dev = new Developer(mediator);
 mediator.AddRecipient(ceo);
@@ -16,11 +16,12 @@ mediator.AddRecipient(dev);
 mediator.AddRecipient(new Developer(mediator));
 mediator.AddRecipient(new Developer(mediator));
 mediator.AddRecipient(new Manager(mediator));
-mediator.AddRecipient(new Worker(mediator));
+var worker = new Worker(mediator);
+mediator.AddRecipient(worker);
 
-dev.SendMessageToAll("from dev to all");
-
-
+worker.SendMessageToAll("from worker to all");
+//dev.SendMessageToAll("from dev to all");
+//ceo.SendMessageToAll("from ceo to all");
 
 //ceo.SendMessage("Testing message");
 

@@ -13,7 +13,7 @@ public class Mediator : IMediator //, IMediatorForDeveloper, IMediatorForWorker
     {
         foreach (var recipient in GetRecipients(from))
         {
-            recipient.ReceiveMessage(message, from.GetType().Name);
+            SendTo(message, from, recipient);
         }
     }
 
@@ -21,8 +21,13 @@ public class Mediator : IMediator //, IMediatorForDeveloper, IMediatorForWorker
     {
         foreach (var recipient in GetRecipients<T>(from))
         {
-            recipient.ReceiveMessage(message, from.GetType().Name);
+            SendTo(message, from, recipient);
         }
+    }
+
+    protected void SendTo(string message, ISupportMediator from, ISupportMediator recipient)
+    {
+        recipient.ReceiveMessage(message, from.GetType().Name);
     }
 
     //void IMediatorForDeveloper.SendMessageToAll(string message, ISupportMediator from)
@@ -52,7 +57,7 @@ public class Mediator : IMediator //, IMediatorForDeveloper, IMediatorForWorker
 
 public class ProxyMediator : Mediator
 {
-    private static readonly Dictionary<Type, List<Type>> ForbidenRecipients = new()
+    private static readonly Dictionary<Type, List<Type>> ForbiddenRecipients = new()
     {
         { typeof(Developer), new List<Type> { typeof(CEO) } },
         { typeof(Worker), new List<Type> { typeof(CEO), typeof(Developer) } }
@@ -60,17 +65,24 @@ public class ProxyMediator : Mediator
 
     public override void SendMessageToAll(string message, ISupportMediator from)
     {
-        var recipients = GetRecipients(from);
-
-        var fromType = from.GetType();
-        if (ForbidenRecipients.ContainsKey(fromType))
-        {
-            recipients.RemoveAll(recipient => ForbidenRecipients[fromType].Contains(recipient.GetType()));
-        }
+        var recipients = FilterRecipients(from);
 
         foreach (var recipient in recipients)
         {
-            recipient.ReceiveMessage(message, fromType.Name);
+            SendTo(message, from, recipient);
         }
+    }
+
+    private List<ISupportMediator> FilterRecipients(ISupportMediator from)
+    {
+        var recipients = GetRecipients(from);
+
+        var fromType = from.GetType();
+        if (ForbiddenRecipients.ContainsKey(fromType))
+        {
+            recipients.RemoveAll(recipient => ForbiddenRecipients[fromType].Contains(recipient.GetType()));
+        }
+
+        return recipients;
     }
 }

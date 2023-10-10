@@ -12,6 +12,6 @@ public class CompanyChatInstaller : IWindsorInstaller
 {
     public void Install(IWindsorContainer container, IConfigurationStore store)
     {
-        container.Register(Component.For<IMediator>().ImplementedBy<Mediator>());
+        container.Register(Component.For<IMediator>().ImplementedBy<ProxyMediator>());
     }
 }
