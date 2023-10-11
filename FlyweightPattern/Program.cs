@@ -16,3 +16,6 @@ Console.WriteLine("Diff:   " + (GC.GetTotalMemory(false) - originalSize).ToStrin
 Console.ReadLine();
 
 Console.WriteLine(particle.ToString());
+
+
+// TODO: follow Refactoring Guru example
