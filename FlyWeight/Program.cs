@@ -9,7 +9,7 @@ blobs.Add(new Blob());
 blobs.Add(new Blob());
 blobs.Add(new Blob());
 Console.ReadLine();
-
+//Todo learn memory profilers
 class Blob
 {
     public Blob()
