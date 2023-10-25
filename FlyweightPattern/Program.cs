@@ -1,5 +1,6 @@
 ﻿using FlyweightPattern;
 
+/*
 Console.ReadLine();
 
 Console.WriteLine("Flyweight!");
@@ -16,6 +17,20 @@ Console.WriteLine("Diff:   " + (GC.GetTotalMemory(false) - originalSize).ToStrin
 Console.ReadLine();
 
 Console.WriteLine(particle.ToString());
+*/
 
 
-// TODO: follow Refactoring Guru example
+var game = new Game();
+
+var originalSize = GC.GetTotalMemory(false);
+Console.WriteLine("Before: " + originalSize.ToString());
+
+Console.ReadLine();
+
+game.initialization();
+
+Console.WriteLine("After:  " + GC.GetTotalMemory(false).ToString());
+Console.WriteLine("Diff:   " + (GC.GetTotalMemory(false) - originalSize).ToString());
+
+
+Console.ReadLine();

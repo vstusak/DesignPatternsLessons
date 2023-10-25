@@ -11,21 +11,17 @@ namespace FlyweightPattern
 {
     public class Particle
     {
-        public Point Coords { get; set; }
-        public int Vector { get; set; }
-        public int Speed { get; set; }
+        
         public Color Color { get; set; }
         public byte[] Sprite { get; set; }
 
-        public Particle()
+        public Particle(Color color)
         {
-            Sprite = new byte[2048 * 2048];
+            Sprite = new byte[1048 * 1048];
+            Color = color;
         }
 
-        public override string ToString()
-        {
-            return $"{Coords.X}, {Coords.Y}";
-        }
+        
     }
 
 }
