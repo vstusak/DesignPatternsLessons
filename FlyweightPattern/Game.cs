@@ -30,18 +30,23 @@ public class Game
         }
         */
 
-        var movingParticleFactory = MovingParticleFactory.GetInstance();
+        //var movingParticleFactory = MovingParticleFactory.GetInstance();
 
+        //for (var i = 1; i < 10000; i++)
+        //{
+        //    //_particles.Add(new Particle());
+        //    _particles.Add(movingParticleFactory.GetMovingParticle(
+        //        new Point(2, 2 * i),
+        //        i,
+        //        i - 656,
+        //        Color.Red));
+        //}
+
+        var badParticles = new List<BadParticle>();
         for (var i = 1; i < 10000; i++)
         {
-            //_particles.Add(new Particle());
-            _particles.Add(movingParticleFactory.GetMovingParticle(
-                new Point(2, 2 * i),
-                i,
-                i - 656,
-                Color.Red));
+            badParticles.Add(new BadParticle(new Point(2, 2 * i), i, i - 656));
         }
-        
     }
 }
 

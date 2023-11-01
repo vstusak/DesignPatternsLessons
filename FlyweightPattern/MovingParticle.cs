@@ -22,7 +22,6 @@ namespace FlyweightPattern
             Vector= vector;
             Speed = speed;
             Particle = particle;
-
         }
 
         public override string ToString()
