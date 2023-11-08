@@ -6,20 +6,28 @@ using System.Threading.Tasks;
 
 namespace TemplateMethodPattern
 {
-    abstract class MailParser
+    public abstract class MailParser
     {
-        public void ConnectToServer()
+        protected void ConnectToServer()
         {
             Console.WriteLine("Connecting to server...");
         }
 
-        public abstract void AuthToServer();
+        protected abstract void AuthToServer();
 
-        public abstract void LoadEmailsFromServer();
+        protected abstract void LoadEmailsFromServer();
 
-        public void DistributeEmails()
+        protected void DistributeEmails()
         {
             Console.WriteLine("Emails distribution...");
+        }
+
+        public void ProcessEmail()
+        {
+            ConnectToServer();
+            AuthToServer();
+            LoadEmailsFromServer();
+            DistributeEmails();
         }
     }
 }

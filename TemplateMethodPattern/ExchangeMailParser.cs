@@ -1,39 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace TemplateMethodPattern;
 
-namespace TemplateMethodPattern
+public class ExchangeMailParser : MailParser
 {
-    public class ExchangeMailParser
+    protected override void AuthToServer()
     {
-        public void ProcessEmail()
-        {
-            ConnectToServer();
-            AuthToServer();
-            LoadEmailsFromServer();
-            DistributeEmails();
-        }
+        Console.WriteLine("Auth to exchange server...");
+    }
 
-        public void ConnectToServer()
-        {
-            Console.WriteLine("Connecting to server...");
-        }
-
-        public void AuthToServer()
-        {
-            Console.WriteLine("Auth to exchange server...");
-        }
-
-        public void LoadEmailsFromServer()
-        {
-            Console.WriteLine("Loading emails from exchange server...");
-        }
-
-        public void DistributeEmails()
-        {
-            Console.WriteLine("Emails distribution...");
-        }
+    protected override void LoadEmailsFromServer()
+    {
+        Console.WriteLine("Loading emails from exchange server...");
     }
 }

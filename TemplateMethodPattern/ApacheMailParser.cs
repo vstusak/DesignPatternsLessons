@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace TemplateMethodPattern;
 
-namespace TemplateMethodPattern
+public class ApacheMailParser : MailParser
 {
-    public class ApacheMailParser
+    protected override void AuthToServer()
     {
-        public void ProcessEmail()
-        {
-            Console.WriteLine("Connecting to server...");
-            Console.WriteLine("Auth to apache server...");
-            Console.WriteLine("Loading emails from apache server...");
-            Console.WriteLine("Emails distribution...");
-        }
+        Console.WriteLine("Auth to apache server...");
+    }
+
+    protected override void LoadEmailsFromServer()
+    {
+        Console.WriteLine("Loading emails from apache server...");
     }
 }
