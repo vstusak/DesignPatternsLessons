@@ -65,6 +65,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyweightPattern", "Flyweig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMethodPattern", "TemplateMethodPattern\TemplateMethodPattern.csproj", "{22AD6E2A-94A5-450A-8514-CC0BD6ED65B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeEditViewMVC", "BridgeEditViewMVC\BridgeEditViewMVC.csproj", "{46BC278E-AD83-49B1-9D8B-3885E3371EE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +197,10 @@ Global
 		{22AD6E2A-94A5-450A-8514-CC0BD6ED65B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22AD6E2A-94A5-450A-8514-CC0BD6ED65B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22AD6E2A-94A5-450A-8514-CC0BD6ED65B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46BC278E-AD83-49B1-9D8B-3885E3371EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46BC278E-AD83-49B1-9D8B-3885E3371EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46BC278E-AD83-49B1-9D8B-3885E3371EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46BC278E-AD83-49B1-9D8B-3885E3371EE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

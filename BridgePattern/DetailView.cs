@@ -19,35 +19,4 @@ namespace BridgePattern
             }
         }
     }
-
-    public class PromotionView : IView
-    {
-        public void Render(IProductAdapter productAdapter)
-        {
-            Console.WriteLine($"Showing PromotionView of product:");
-        }
-    }
-
-    public class ListView : IView
-    {
-        public void Render(IProductAdapter productAdapter)
-        {
-            Console.WriteLine($"Showing ListView of product:{productAdapter.GetName()}");
-            Console.WriteLine($"Description: {productAdapter.GetDescription()}");
-            Console.WriteLine($"Price is {productAdapter.GetPrice()}");
-        }
-    }
-
-    public class AccessoryView : IView
-    {
-        public void Render(IProductAdapter productAdapter)
-        {
-            Console.WriteLine($"Showing AccessoryView of product:");
-        }
-    }
-
-    interface IView
-    {
-        void Render(IProductAdapter productAdapter);
-    }
 }
