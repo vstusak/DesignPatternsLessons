@@ -1,14 +1,51 @@
-﻿@model BridgeEditViewMVC.Entities.Book;
+﻿@using System.Reflection
+@using BridgeEditViewMVC.Entities
+@model BridgeEditViewMVC.Entities.Book;
 
 @{
     ViewData["Title"] = "Home Page";
     
 }
 
-<div class="text-center">
+    
+@{
+    Type myType = Model.GetType();
+    IList<PropertyInfo> props = new List<PropertyInfo>(myType.GetProperties());
+}
 
-    <p>@Model.Author</p>
-    <p>@Model.Title</p>
+@using (Html.BeginForm("Save", "Home", FormMethod.Post)) {
+     
+    @Html.Hidden("typeName", myType.Name)
 
+    @foreach (var prop in props)
+    {
+        <div class="mb-3">
 
-</div>
+        @switch (prop.PropertyType.Name)
+        {
+            case "String":
+                @Html.Label(prop.Name, prop.Name)
+                <br/>
+                @Html.TextBox(prop.Name, prop.GetValue(Model))
+                break;
+            case "Int32":
+                if (prop.Name.Equals("id", StringComparison.InvariantCultureIgnoreCase))
+                {
+                        @Html.Hidden(prop.Name, prop.GetValue(Model))
+                }
+                else
+                {
+                    @Html.Label(prop.Name, prop.Name)
+                    <br/>
+                    @Html.TextBox(prop.Name, prop.GetValue(Model), new {type="number"})
+                }
+                break;
+            default:
+                break;
+        }
+        </div>
+    }
+    
+    <button type="submit">Save</button>
+}
+

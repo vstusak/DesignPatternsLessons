@@ -16,7 +16,7 @@ namespace BridgeEditViewMVC.Controllers
 
         public IActionResult Index()
         {
-            var item = new Book() {Author = "Jara", Price = 222, Publisher = "MediaX", Title = "Holoubci"};
+            var item = new Book() {Id = 1, Author = "Jara", Price = 222, Publisher = "MediaX", Title = "Holoubci"};
 
             var type = item.GetType();
 
@@ -25,7 +25,26 @@ namespace BridgeEditViewMVC.Controllers
         // edit - select control based on reflection type (string/integer etc)
         // POST method must also use reflection
 
-            return View();
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Save()
+        {
+            switch (Request.Form["typeName"])
+            {
+                case "Book":
+                    var book = new Book()
+                    {
+                        Id = int.Parse(Request.Form["Id"]),
+                        Author = Request.Form["Author"],
+                        Price = int.Parse(string.IsNullOrWhiteSpace(Request.Form["Price"]) ? "0" : Request.Form["Price"]),
+                        Publisher = Request.Form["Publisher"],
+                        Title = Request.Form["Title"]
+                    };
+                    return View("Index", book);
+            }
+            return View("Index");
         }
 
         public IActionResult Privacy()
