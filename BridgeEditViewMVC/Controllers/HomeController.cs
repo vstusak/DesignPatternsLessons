@@ -25,6 +25,10 @@ namespace BridgeEditViewMVC.Controllers
         // edit - select control based on reflection type (string/integer etc)
         // POST method must also use reflection
 
+        //TODO: remove reflection in view + use list<T> as a model
+        //TODO: use entity and entityviewmodel (avoid viewbag, viewdata)
+        //TODO: granular view based on access 
+
             return View(item);
         }
 
@@ -34,7 +38,7 @@ namespace BridgeEditViewMVC.Controllers
             switch (Request.Form["typeName"])
             {
                 case "Book":
-                    var book = new Book()
+                    var book = new Book
                     {
                         Id = int.Parse(Request.Form["Id"]),
                         Author = Request.Form["Author"],
