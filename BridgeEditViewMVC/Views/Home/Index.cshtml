@@ -1,42 +1,39 @@
 ﻿@using System.Reflection
-@model object;
+@model List<FormItem>;
 
 @{
     ViewData["Title"] = "Home Page";
     
 }
-
     
-@{
-    Type myType = Model.GetType();
-    IList<PropertyInfo> props = new List<PropertyInfo>(myType.GetProperties());
-}
 
 @using (Html.BeginForm("Save", "Home", FormMethod.Post)) {
      
-    @Html.Hidden("typeName", myType.Name)
-
-    @foreach (var prop in props)
+    @Html.Hidden("typeName", ViewBag.TypeName.ToString(), null)
+    
+    @for (var i = 0; i < Model.Count(); i++)
     {
         <div class="mb-3">
+        @Html.HiddenFor(m=> Model[i].PropertyName)
+        @Html.HiddenFor(m=> Model[i].PropertyType)
 
-        @switch (prop.PropertyType.Name)
+        @switch ( Model[i].PropertyType)
         {
             case "String":
-                @Html.Label(prop.Name, prop.Name)
-                <br/>
-                @Html.TextBox(prop.Name, prop.GetValue(Model))
+                @Html.Label(Model[i].PropertyName)
+                <br />
+                @Html.TextBoxFor(m=> Model[i].PropertyValue)
                 break;
             case "Int32":
-                if (prop.Name.Equals("id", StringComparison.InvariantCultureIgnoreCase))
+                if (Model[i].PropertyName.Equals("id", StringComparison.InvariantCultureIgnoreCase))
                 {
-                        @Html.Hidden(prop.Name, prop.GetValue(Model))
+                    @Html.HiddenFor(m=> Model[i].PropertyValue)
                 }
                 else
                 {
-                    @Html.Label(prop.Name, prop.Name)
-                    <br/>
-                    @Html.TextBox(prop.Name, prop.GetValue(Model), new {type="number"})
+                    @Html.Label(Model[i].PropertyName)
+                    <br />
+                    @Html.TextBoxFor(m=> Model[i].PropertyValue, new { type = "number" })
                 }
                 break;
             default:
@@ -44,6 +41,38 @@
         }
         </div>
     }
+
+
+    @*
+    @foreach (var prop in Model)
+    {
+        <div class="mb-3">
+
+        @switch (prop.PropertyType)
+        {
+            case "String":
+                @Html.Label(prop.PropertyName, prop.PropertyName)
+                <br/>
+                @Html.TextBox(prop.PropertyName, prop.PropertyValue)
+                break;
+            case "Int32":
+                if (prop.PropertyName.Equals("id", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    @Html.Hidden(prop.PropertyName, prop.PropertyValue)
+                }
+                else
+                {
+                    @Html.Label(prop.PropertyName, prop.PropertyName)
+                    <br/>
+                    @Html.TextBox(prop.PropertyName, prop.PropertyValue, new { type = "number" })
+                }
+                break;
+            default:
+                break;
+        }
+        </div>
+    }
+    *@
     
     <button type="submit">Save</button>
 }

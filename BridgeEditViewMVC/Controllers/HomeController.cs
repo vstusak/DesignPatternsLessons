@@ -1,7 +1,9 @@
 ﻿using BridgeEditViewMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.IO.Pipes;
 using BridgeEditViewMVC.Entities;
+using System.Reflection;
 
 namespace BridgeEditViewMVC.Controllers
 {
@@ -18,37 +20,39 @@ namespace BridgeEditViewMVC.Controllers
         {
             var item = new Book() {Id = 1, Author = "Jara", Price = 222, Publisher = "MediaX", Title = "Holoubci"};
 
+            //var item = new Toy() { Name = "Babka", Color = "Pink", Description = "Panther", Price = 333 };
+
+            var formItems = new List<FormItem>();
             var type = item.GetType();
 
-        //TODO - view model is dynamic;
-        // show model properties from type reflection
-        // edit - select control based on reflection type (string/integer etc)
-        // POST method must also use reflection
+            IList<PropertyInfo> props = new List<PropertyInfo>(type.GetProperties());
+            foreach (PropertyInfo prop in props)
+            {
+                var formItem = new FormItem(prop.Name, prop.GetValue(item)?.ToString() ?? "", prop.PropertyType.Name);
+                formItems.Add(formItem);
+            }
 
-        //TODO: remove reflection in view + use list<T> as a model
-        //TODO: use entity and entityviewmodel (avoid viewbag, viewdata)
-        //TODO: granular view based on access 
+            //TODO - view model is dynamic;
+            // show model properties from type reflection
+            // edit - select control based on reflection type (string/integer etc)
+            // POST method must also use reflection
 
-            return View(item);
+            //TODO: use entity and entityviewmodel (avoid viewbag, viewdata)
+            //TODO: granular view based on access 
+
+            ViewBag.TypeName = type.Name;
+
+            return View(formItems);
         }
 
         [HttpPost]
-        public IActionResult Save()
+        public IActionResult Save(List<FormItem> formItems)
         {
-            switch (Request.Form["typeName"])
-            {
-                case "Book":
-                    var book = new Book
-                    {
-                        Id = int.Parse(Request.Form["Id"]),
-                        Author = Request.Form["Author"],
-                        Price = int.Parse(string.IsNullOrWhiteSpace(Request.Form["Price"]) ? "0" : Request.Form["Price"]),
-                        Publisher = Request.Form["Publisher"],
-                        Title = Request.Form["Title"]
-                    };
-                    return View("Index", book);
-            }
-            return View("Index");
+            //TODO: refactor without switch
+            //TODO resolve persistence - create DB, table, store Items
+            ViewBag.TypeName = Request.Form["typeName"];
+            var item = ObjFactory.GetObject(formItems, ViewBag.TypeName);
+            return View("Index", formItems);
         }
 
         public IActionResult Privacy()
@@ -63,5 +67,27 @@ namespace BridgeEditViewMVC.Controllers
         }
 
 
+    }
+
+    public static class ObjFactory
+    {
+        public static object GetObject(List<FormItem> formItems, string typeName)
+        {
+            switch (typeName)
+            {
+                case "Book":
+                    var book = new Book()
+                    {
+                        Id = Int32.Parse(formItems.First(i => i.PropertyName == "Id").PropertyValue),
+                        Author = formItems.First(i=> i.PropertyName=="Author").PropertyValue,
+                        Price = Int32.Parse(formItems.First(i => i.PropertyName == "Price").PropertyValue),
+                        Publisher = formItems.First(i => i.PropertyName == "Publisher").PropertyValue,
+                        Title = formItems.First(i => i.PropertyName == "Title").PropertyValue,
+                    };
+                    return book;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
     }
 }
