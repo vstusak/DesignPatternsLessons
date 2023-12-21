@@ -11,6 +11,9 @@ string rootpath = @"C:\Recursion";
 
 var directoryGetPaths_OldDirectories = Directory.GetDirectories(rootpath,"*", SearchOption.AllDirectories);
 
+
+
+
 foreach (var directory in directoryGetPaths_OldDirectories)
 {
     Console.WriteLine(directory);
