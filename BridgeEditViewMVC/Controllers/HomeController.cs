@@ -40,7 +40,7 @@ namespace BridgeEditViewMVC.Controllers
             //TODO: use entity and entityviewmodel (avoid viewbag, viewdata)
             //TODO: granular view based on access 
 
-            ViewBag.TypeName = type.Name;
+            ViewBag.TypeName = type.AssemblyQualifiedName;
 
             return View(formItems);
         }
@@ -48,10 +48,9 @@ namespace BridgeEditViewMVC.Controllers
         [HttpPost]
         public IActionResult Save(List<FormItem> formItems)
         {
-            //TODO: refactor without switch
             //TODO resolve persistence - create DB, table, store Items
             ViewBag.TypeName = Request.Form["typeName"];
-            var item = ObjFactory.GetObject(formItems, ViewBag.TypeName);
+            var item = ObjFactory.GetObjectWithoutSwitch(formItems, ViewBag.TypeName);
             return View("Index", formItems);
         }
 
@@ -88,6 +87,31 @@ namespace BridgeEditViewMVC.Controllers
                 default:
                     throw new NotImplementedException();
             }
+        }
+
+        public static object GetObjectWithoutSwitch(List<FormItem> formItems, string typeName)
+        {
+            var t = Type.GetType(typeName);
+            var instance = Activator.CreateInstance(t);
+            var properties = t.GetProperties();
+
+            foreach (var formItem in formItems)
+            {
+                var property = properties.First(p => p.Name == formItem.PropertyName);
+
+                switch (formItem.PropertyType)
+                {
+                    case "String":
+                        property.SetValue(instance, formItem.PropertyValue);
+                        break;
+
+                    case "Int32":
+                        property.SetValue(instance, Int32.Parse(formItem.PropertyValue));
+                        break;
+                }
+            }
+
+            return instance!;
         }
     }
 }
