@@ -11,19 +11,27 @@ namespace Recursion
         public List<string> GetAllFiles(string rootFolder)
         {
             List<string> content = new List<string>();
+            
+            content.AddRange(Directory.GetFiles(rootFolder));
+
             var directories = Directory.GetDirectories(rootFolder);
 
-            content.AddRange(Directory.GetFiles(rootFolder));
+            foreach (var directory in directories)
+            {
+                content.AddRange(GetAllFiles(directory));
+            }
+
+
 
            return content;
         }
 
-        public List<string> GetAllDirectories(string rootFolder)
-        {
+        //public List<string> GetAllDirectories(string rootFolder)
+        //{
 
-            return Directory.GetDirectories(rootFolder).ToList();
+        //    return Directory.GetDirectories(rootFolder).ToList();
              
-        }
+        //}
 
 
     }
