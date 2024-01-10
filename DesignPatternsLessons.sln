@@ -63,9 +63,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectChatApplicationMediat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyweightPattern", "FlyweightPattern\FlyweightPattern.csproj", "{6C0A660C-BACC-4034-A238-1F0F04CC0105}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMethodPattern", "TemplateMethodPattern\TemplateMethodPattern.csproj", "{22AD6E2A-94A5-450A-8514-CC0BD6ED65B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateMethodPattern", "TemplateMethodPattern\TemplateMethodPattern.csproj", "{22AD6E2A-94A5-450A-8514-CC0BD6ED65B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeEditViewMVC", "BridgeEditViewMVC\BridgeEditViewMVC.csproj", "{46BC278E-AD83-49B1-9D8B-3885E3371EE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgeEditViewMVC", "BridgeEditViewMVC\BridgeEditViewMVC.csproj", "{46BC278E-AD83-49B1-9D8B-3885E3371EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net8newFeatures", "Net8newFeatures\Net8newFeatures.csproj", "{376871EE-C82A-419D-BDB5-65AD22B80B50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -201,6 +203,10 @@ Global
 		{46BC278E-AD83-49B1-9D8B-3885E3371EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46BC278E-AD83-49B1-9D8B-3885E3371EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46BC278E-AD83-49B1-9D8B-3885E3371EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{376871EE-C82A-419D-BDB5-65AD22B80B50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{376871EE-C82A-419D-BDB5-65AD22B80B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{376871EE-C82A-419D-BDB5-65AD22B80B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{376871EE-C82A-419D-BDB5-65AD22B80B50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
