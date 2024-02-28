@@ -11,8 +11,8 @@ var ftp = new FakeTimeProvider();
 //var fs2 = new FirstService(ftp);
 
 var serviceCollection = new ServiceCollection();
-serviceCollection.AddSingleton<TimeProvider, OurTimeProvider>(TimeProviderType.Real);  //TODO: Solve key problem (keyed singleton missing?)
-serviceCollection.AddSingleton<TimeProvider>(new IntTimeProvider(2099));
+serviceCollection.AddKeyedSingleton<TimeProvider, OurTimeProvider>(TimeProviderType.Real);
+serviceCollection.AddKeyedSingleton<TimeProvider>(TimeProviderType.Fake, new IntTimeProvider(TimeProviderType.Test, 2099));
 
 serviceCollection.AddSingleton<IFirstService, FirstService>();
 
@@ -26,7 +26,7 @@ public interface IFirstService
 
 public class FirstService : IFirstService
 {
-    public FirstService(TimeProvider tp)
+    public FirstService([FromKeyedServices(TimeProviderType.Fake)]TimeProvider tp)
     {
         Console.WriteLine(tp.GetUtcNow());
     }
@@ -48,7 +48,8 @@ public class SecondService : ISecondService
 public enum TimeProviderType
 {
     Real,
-    Fake
+    Fake,
+    Test
 }
 
 
@@ -70,9 +71,10 @@ public class IntTimeProvider : TimeProvider
 {
     public int year { get; set; }
 
-    public IntTimeProvider(int year)
+    public IntTimeProvider([ServiceKey] TimeProviderType type, int year)
     {
         this.year = year;
+        Console.WriteLine(type);
     }
     public override DateTimeOffset GetUtcNow()
     {
