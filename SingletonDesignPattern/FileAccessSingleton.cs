@@ -22,7 +22,10 @@ namespace SingletonDesignPattern
             {
                 if (_instance == null)
                 {
-                    _instance = new FileAccessSingleton();
+                    lock (_instance)
+                    {
+                        _instance = new FileAccessSingleton();
+                    }
                 }
             }
 
