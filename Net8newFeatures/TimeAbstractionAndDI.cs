@@ -1,23 +1,29 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
 
-Console.WriteLine("Time Abstraction");
+class TimeAbstractions
+{
+    public TimeAbstractions()
+    {
+        Console.WriteLine("Time Abstraction");
 
-var otp = new OurTimeProvider();
-var ftp = new FakeTimeProvider();
-//Console.WriteLine(otp.GetLocalNow());
+        var otp = new OurTimeProvider();
+        var ftp = new FakeTimeProvider();
+        //Console.WriteLine(otp.GetLocalNow());
 
-//var fs = new FirstService(otp);
-//var fs2 = new FirstService(ftp);
+        //var fs = new FirstService(otp);
+        //var fs2 = new FirstService(ftp);
 
-var serviceCollection = new ServiceCollection();
-serviceCollection.AddKeyedSingleton<TimeProvider, OurTimeProvider>(TimeProviderType.Real);
-serviceCollection.AddKeyedSingleton<TimeProvider>(TimeProviderType.Fake, new IntTimeProvider(TimeProviderType.Test, 2099));
+        var serviceCollection = new ServiceCollection();
+        serviceCollection.AddKeyedSingleton<TimeProvider, OurTimeProvider>(TimeProviderType.Real);
+        serviceCollection.AddKeyedSingleton<TimeProvider>(TimeProviderType.Fake, new IntTimeProvider(TimeProviderType.Test, 2099));
 
-serviceCollection.AddSingleton<IFirstService, FirstService>();
+        serviceCollection.AddSingleton<IFirstService, FirstService>();
 
-var service = serviceCollection.BuildServiceProvider();
-_ = service.GetService<IFirstService>();
+        var service = serviceCollection.BuildServiceProvider();
+        _ = service.GetService<IFirstService>();
+    }
+}
 
 
 public interface IFirstService
