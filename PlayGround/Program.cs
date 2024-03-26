@@ -36,10 +36,50 @@ var lenka = new Person()
     Birth = new DateTime(2013, 07, 30),
     Name = "Lenka"
 };
+var emil = new Person()
+{
+    Age = 13,
+    Birth = new DateTime(2011, 03, 03),
+    Name = "Emil"
+};
 
 var people = new List<Person>();
 people.Add(pepa);
 people.Add(jarda);
 people.Add(lenka);
+people.Add(emil);
 
-var names = people.Select(x => x.Name).ToList();
+//var names = people.Select(x => x.Name);
+
+//foreach (var name in names)
+//{
+//    System.Console.WriteLine(name);
+//}
+
+var peopleWithLowerCaseEinName = people.Where(person => person.Name.Contains('e'));
+var peopleWithAnyEinNameString = people.Where(person => person.Name.ToLower().Contains('e'));
+var peopleWithEinNameString2 = people.Where(person => person.Name.Contains('e') || person.Name.Contains('E'));
+var peopleWithEinNameStringIgnoreCase = people.Where(person => person.Name.Contains("e",StringComparison.InvariantCultureIgnoreCase));
+
+//foreach (var person in peopleWithLowerCaseEinName)
+//{
+//    System.Console.WriteLine(person);
+//}
+
+//foreach (var person in peopleWithAnyEinNameString)
+//{
+//    System.Console.WriteLine(person);
+//}
+
+foreach (var person in peopleWithEinNameString2)
+{
+    System.Console.WriteLine(person);
+}
+
+foreach (var person in peopleWithEinNameStringIgnoreCase)
+{
+    System.Console.WriteLine(person);
+}
+
+//TODO vysvětlit znovu hodnotove a referenční datové typy a jak funguje string (obrazek)
+//TODO proč a jak používat stringBuilder
