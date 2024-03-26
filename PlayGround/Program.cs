@@ -56,10 +56,10 @@ people.Add(emil);
 //    System.Console.WriteLine(name);
 //}
 
-var peopleWithLowerCaseEinName = people.Where(person => person.Name.Contains('e'));
-var peopleWithAnyEinNameString = people.Where(person => person.Name.ToLower().Contains('e'));
-var peopleWithEinNameString2 = people.Where(person => person.Name.Contains('e') || person.Name.Contains('E'));
-var peopleWithEinNameStringIgnoreCase = people.Where(person => person.Name.Contains("e",StringComparison.InvariantCultureIgnoreCase));
+var peopleWithLowerCaseEinName = people.Where(person => person.Name.Contains('e')); // vybere objekty, ktere v parametru name obsahuji male e (char)
+var peopleWithAnyEinNameString = people.Where(person => person.Name.ToLower().Contains('e')); // zmeni pro porovnani objekt string na lower case, male e (char)
+var peopleWithEinNameString2 = people.Where(person => person.Name.Contains('e') || person.Name.Contains('E')); // vybere objekt, kde char v name e nebo E
+var peopleWithEinNameStringIgnoreCase = people.Where(person => person.Name.Contains("e",StringComparison.InvariantCultureIgnoreCase)); // ignoruje case
 
 //foreach (var person in peopleWithLowerCaseEinName)
 //{
