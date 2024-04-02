@@ -43,6 +43,9 @@ var emil = new Person()
     Name = "Emil"
 };
 
+var zirafa = new Animal("Zofka",48, new DateTime(1976, 03, 03));
+var defaultPerson = new Person();
+
 var people = new List<Person>();
 people.Add(pepa);
 people.Add(jarda);
@@ -80,6 +83,15 @@ foreach (var person in peopleWithEinNameStringIgnoreCase)
 {
     System.Console.WriteLine(person);
 }
+
+emil.Age = 14; // pokud je set, tak muzu zmenit objekt pozdeji (emil uz byl vytvoren s vekem 13)
+// zirafa.Age = 40; // set je private, nejde pouzit
+
+zirafa.ChangeAge(40); // set je private, ale v metode uvnitr tridy se menit muze. Dela se treba v pripade, ze metoda rozsiruje zmenu (i.e. logovanim)
+var jmenoZirafy = zirafa.Name;
+zirafa.Name = "uZofka";
+
+var count = zirafa.LimbCount;
 
 //TODO vysvětlit znovu hodnotove a referenční datové typy a jak funguje string (obrazek)
 //TODO proč a jak používat stringBuilder
