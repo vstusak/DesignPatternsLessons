@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection.Emit;
+using System.Reflection.Metadata.Ecma335;
 
 // drive: pri deserializaci - objekt by mel byt vytvoren takto (mit public settery a bezparametricky konstruktor)
 // ted (4_2024) uz je pro deserializaci json mozne pouzit s parametrickym konstruktorem
@@ -27,6 +29,22 @@ public class Animal
     public int Age { get; private set; } // Private setter = po vytvoreni objektu je mozne propertu zmenit pouze metodou uvnitr tridy
     public DateTime Birth { get; set; }
 
+
+
+    private string _location;
+    public string Location 
+    { 
+        get 
+        { 
+            return _location; 
+        }
+        
+        set
+        {
+            _location = value;
+        }
+    }
+
     public int LimbCount;
 
     // TODO dovysvetlit, proc by se melo/mohlo pouzivat vic konstruktoru
@@ -37,12 +55,12 @@ public class Animal
         Birth = birth;
     }
 
-    public Animal(string name, int age = 4) // parametricky konstruktor vynucuje zadani property Name (parametr name)
-                                            // property Age je optional (ma defaultni hodnotu, ktera se do Age vlozi, pokud neni do parametru age nic vlozene
-    {
-        Name = name;
-        Age = age;
-    }
+    //public Animal(string name, int age = 4) // parametricky konstruktor vynucuje zadani property Name (parametr name)
+    //                                        // property Age je optional (ma defaultni hodnotu, ktera se do Age vlozi, pokud neni do parametru age nic vlozene
+    //{
+    //    Name = name;
+    //    Age = age;
+    //}
 
     public Animal(string name) // vice konstruktoru: parametricky konstruktor vynucuje zadani propert
     {
