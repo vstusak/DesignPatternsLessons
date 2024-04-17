@@ -67,7 +67,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateMethodPattern", "Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgeEditViewMVC", "BridgeEditViewMVC\BridgeEditViewMVC.csproj", "{46BC278E-AD83-49B1-9D8B-3885E3371EE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net8newFeatures", "Net8newFeatures\Net8newFeatures.csproj", "{376871EE-C82A-419D-BDB5-65AD22B80B50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net8newFeatures", "Net8newFeatures\Net8newFeatures.csproj", "{376871EE-C82A-419D-BDB5-65AD22B80B50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Logging\Logging.csproj", "{C3995E48-17EE-48DA-BFA6-B5D8E478C384}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -207,6 +209,10 @@ Global
 		{376871EE-C82A-419D-BDB5-65AD22B80B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{376871EE-C82A-419D-BDB5-65AD22B80B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{376871EE-C82A-419D-BDB5-65AD22B80B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3995E48-17EE-48DA-BFA6-B5D8E478C384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3995E48-17EE-48DA-BFA6-B5D8E478C384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3995E48-17EE-48DA-BFA6-B5D8E478C384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3995E48-17EE-48DA-BFA6-B5D8E478C384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
