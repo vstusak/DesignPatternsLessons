@@ -52,6 +52,28 @@ people.Add(jarda);
 people.Add(lenka);
 people.Add(emil);
 
+int? i = null;
+int j = i ?? 5;
+
+if (i != null)
+{
+    j = i.Value;
+}
+else
+{
+    j = 5;
+}
+
+bool isnotnull = i == null ? false : true;
+
+if (i == null)
+{
+    isnotnull = false;
+}
+else
+{
+    isnotnull = true;
+}
 //var names = people.Select(x => x.Name);
 
 //foreach (var name in names)
