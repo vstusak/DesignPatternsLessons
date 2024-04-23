@@ -111,7 +111,7 @@ emil.Age = 14; // pokud je set, tak muzu zmenit objekt pozdeji (emil uz byl vytv
 
 zirafa.ChangeAge(40); // set je private, ale v metode uvnitr tridy se menit muze. Dela se treba v pripade, ze metoda rozsiruje zmenu (i.e. logovanim)
 var jmenoZirafy = zirafa.Name;
-zirafa.Name = "uZofka";
+//zirafa.Name = "uZofka";
 
 var count = zirafa.LimbCount;
 
