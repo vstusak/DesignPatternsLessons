@@ -7,12 +7,18 @@ using Logging.Domain.Model;
 
 namespace Logging.Domain
 {
-    internal class ProductProvider : IProductProvider
+    public class ProductProvider : IProductProvider
     {
         public IEnumerable<Product> GetProductsForCategory(string category)
         {
             return GetAllProducts().Where(p =>
+                string.Equals(category, "All",StringComparison.InvariantCultureIgnoreCase) ||
                 string.Equals(p.Category, category, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public Product? GetProduct(int productId)
+        {
+            return GetAllProducts().SingleOrDefault(p => p.Id == productId);
         }
 
         private IEnumerable<Product> GetAllProducts()

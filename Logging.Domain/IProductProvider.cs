@@ -1,9 +1,10 @@
-﻿using Logging.Domain.Model;
+﻿using Logging.Data.Model;
 
 namespace Logging.Domain
 {
     public interface IProductProvider
     {
         IEnumerable<Product> GetProductsForCategory(string category);
+        Product? GetProduct(int productId);
     }
 }

@@ -1,4 +1,6 @@
 
+using Logging.Domain;
+
 namespace Logging.Api
 {
     public class Program
@@ -12,6 +14,8 @@ namespace Logging.Api
             //builder.Logging.ClearProviders();
             //builder.Logging.AddProvider(our provider);
 
+            builder.Services.AddScoped<IProductProvider, ProductProvider>();
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -22,8 +26,8 @@ namespace Logging.Api
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+               app.UseSwagger();
+               app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();
