@@ -10,4 +10,10 @@
     <PackageReference Include="System.Text.Json" Version="8.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="pokemons.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

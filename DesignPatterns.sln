@@ -67,12 +67,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Api", "Logging\Logg
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging project", "Logging project", "{7C4438F6-0356-4B98-8A12-27B622038C81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Domain", "Logging.Domain\Logging.Domain.csproj", "{66EC751E-2238-4784-8B64-DC4304148BAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Domain", "Logging.Domain\Logging.Domain.csproj", "{66EC751E-2238-4784-8B64-DC4304148BAE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{60F1EBF7-8FFD-4DFD-85C4-93950AA8B2A8}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\Users\SZigo\Downloads\pokemons.json = ..\..\Users\SZigo\Downloads\pokemons.json
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
