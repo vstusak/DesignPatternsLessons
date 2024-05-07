@@ -1,4 +1,4 @@
-namespace Logging
+namespace Logging.Api
 {
     public class WeatherForecast
     {

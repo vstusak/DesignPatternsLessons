@@ -61,9 +61,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyWeight", "FlyWeight\FlyW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet_8_playground", "DotNet_8_playground\DotNet_8_playground.csproj", "{A635F190-533A-4D25-BBF0-A9BDC0FDF2A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBox", "TestBox\TestBox.csproj", "{5DF47DDC-FCC3-4D13-A12A-8FEA17DB72F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBox", "TestBox\TestBox.csproj", "{5DF47DDC-FCC3-4D13-A12A-8FEA17DB72F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Logging\Logging.csproj", "{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Api", "Logging\Logging.Api.csproj", "{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging project", "Logging project", "{7C4438F6-0356-4B98-8A12-27B622038C81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Domain", "Logging.Domain\Logging.Domain.csproj", "{66EC751E-2238-4784-8B64-DC4304148BAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{60F1EBF7-8FFD-4DFD-85C4-93950AA8B2A8}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Users\SZigo\Downloads\pokemons.json = ..\..\Users\SZigo\Downloads\pokemons.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,9 +204,18 @@ Global
 		{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66EC751E-2238-4784-8B64-DC4304148BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66EC751E-2238-4784-8B64-DC4304148BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66EC751E-2238-4784-8B64-DC4304148BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66EC751E-2238-4784-8B64-DC4304148BAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2} = {7C4438F6-0356-4B98-8A12-27B622038C81}
+		{66EC751E-2238-4784-8B64-DC4304148BAE} = {7C4438F6-0356-4B98-8A12-27B622038C81}
+		{60F1EBF7-8FFD-4DFD-85C4-93950AA8B2A8} = {7C4438F6-0356-4B98-8A12-27B622038C81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {481A5F37-6076-4268-92F1-D670B22C04AE}

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Logging.Controllers
+namespace Logging.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
