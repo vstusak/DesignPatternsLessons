@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DecoratorPattern": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:64601;http://localhost:64602"
+    }
+  }
+}

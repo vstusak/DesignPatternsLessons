@@ -1,5 +1,5 @@
 using Logging.Domain;
-using Logging.Domain.Model;
+using Logging.Data.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Logging.Api.Controllers

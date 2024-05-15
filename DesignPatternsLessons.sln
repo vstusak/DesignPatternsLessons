@@ -75,6 +75,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project Logging", "Project 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Domain", "Logging.Domain\Logging.Domain.csproj", "{E6420947-1B01-4F96-93F6-28B8C5D44DA2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Data", "Logging.Data\Logging.Data.csproj", "{82FCDA83-A663-45E4-9926-5D5373A6A9F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,6 +223,10 @@ Global
 		{E6420947-1B01-4F96-93F6-28B8C5D44DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6420947-1B01-4F96-93F6-28B8C5D44DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6420947-1B01-4F96-93F6-28B8C5D44DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82FCDA83-A663-45E4-9926-5D5373A6A9F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82FCDA83-A663-45E4-9926-5D5373A6A9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82FCDA83-A663-45E4-9926-5D5373A6A9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82FCDA83-A663-45E4-9926-5D5373A6A9F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -228,6 +234,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C3995E48-17EE-48DA-BFA6-B5D8E478C384} = {73747857-3221-490F-BE30-7993E1B87C3F}
 		{E6420947-1B01-4F96-93F6-28B8C5D44DA2} = {73747857-3221-490F-BE30-7993E1B87C3F}
+		{82FCDA83-A663-45E4-9926-5D5373A6A9F5} = {73747857-3221-490F-BE30-7993E1B87C3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9628AC0A-8791-4D56-A8C3-C96586502232}

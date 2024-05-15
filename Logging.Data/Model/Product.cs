@@ -1,4 +1,4 @@
-﻿namespace Logging.Domain.Model
+﻿namespace Logging.Data.Model
 {
     public class Product
     {

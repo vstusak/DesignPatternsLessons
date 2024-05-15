@@ -1,4 +1,5 @@
 
+using Logging.Data;
 using Logging.Domain;
 
 namespace Logging.Api
@@ -14,6 +15,8 @@ namespace Logging.Api
             //builder.Logging.ClearProviders();
             //builder.Logging.AddProvider(our provider);
 
+            builder.Services.AddDbContext<WarehouseContext>();
+
             builder.Services.AddScoped<IProductProvider, ProductProvider>();
 
             builder.Services.AddControllers();
@@ -23,11 +26,22 @@ namespace Logging.Api
 
             var app = builder.Build();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<WarehouseContext>();
+                context.Seed();
+
+                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+                var startupLogger = loggerFactory.CreateLogger("Startup");
+                startupLogger.LogInformation("Data has been seeded.");
+            }
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-               app.UseSwagger();
-               app.UseSwaggerUI();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();

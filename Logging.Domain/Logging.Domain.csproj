@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Logging.Data\Logging.Data.csproj" />
+  </ItemGroup>
+
 </Project>

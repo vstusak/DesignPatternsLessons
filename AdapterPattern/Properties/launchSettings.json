@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "AdapterPattern": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:64603;http://localhost:64604"
+    }
+  }
+}
