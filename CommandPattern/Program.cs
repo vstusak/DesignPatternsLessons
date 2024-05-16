@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CQRS.Customers.CommandHandlers;
+using CQRS.Customers.Commands;
 
 namespace CommandPattern
 {
@@ -40,17 +42,30 @@ namespace CommandPattern
             Console.ReadLine();
             commandManagerWithHistory.Redo();
             WriteAll(productRepository.All());
-            //commandManager.Undo();
-            //WriteAll(productRepository.All());
-            //commandManager.Invoke(new ChangeQuantityCommand(selectedProducts, productRepository, 5));
-            //WriteAll(productRepository.All());
+            commandManager.Undo();
+            WriteAll(productRepository.All());
+            commandManager.Invoke(new ChangeQuantityCommand(selectedProducts, productRepository, 5));
+            WriteAll(productRepository.All());
 
-            /////////////////////////////////////////////////////////////// CQRS
-            //Console.WriteLine("CQRS starts now!");
-            //var buyCommand = new BuyOnlyCommand(selectedProducts.ProductId);
-            //buyCommandHandler.Execute(buyCommand);
-            //WriteAll(productRepository.All());
-            //Console.ReadLine();
+            ///////////////////////////////////////////////////////////// CQRS
+            
+            Console.WriteLine("CQRS starts now!");
+            var buyCommand = new BuyOnlyCommand(selectedProducts.ProductId);
+            buyCommandHandler.Execute(buyCommand);
+            WriteAll(productRepository.All());
+            Console.ReadLine();
+
+
+
+
+            var createCustomerHandler = new CreateCustomerCommandHandler(context);
+            var createCustomerCommand = new CreateCustomerCommand
+            {
+                FirstName = "John",
+                Surname = "Dohn"
+            };
+
+            await createCustomerHandler.Execute(createCustomerCommand);
         }
 
         private static void WriteAll(IEnumerable<Product> all)

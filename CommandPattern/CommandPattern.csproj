@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CQRS\CQRS.csproj" />
     <ProjectReference Include="..\RepositoryPattern\RepositoryPattern.csproj" />
   </ItemGroup>
 
