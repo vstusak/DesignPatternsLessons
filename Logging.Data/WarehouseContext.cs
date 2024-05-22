@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Logging.Data.Model;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Logging.Data
 {
@@ -19,7 +21,6 @@ namespace Logging.Data
 
         public void Seed()
         {
-            //TODO: do not delete if db file exists
             Database.EnsureDeleted();
             Database.EnsureCreated();
 
@@ -29,6 +30,12 @@ namespace Logging.Data
             Products.Add(new Product() { Id = 4, Name = "Bear", Category = "Animal", Price = 456 });
 
             SaveChanges();
+        }
+
+        public bool DatabaseExists()
+        {
+            return Database.CanConnect()
+                   && Database.GetService<IRelationalDatabaseCreator>().HasTables();
         }
     }
 }

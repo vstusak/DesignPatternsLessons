@@ -3,22 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logging.Data;
 using Logging.Data.Model;
+using Microsoft.Extensions.Logging;
 
 namespace Logging.Domain
 {
     public class ProductProvider : IProductProvider
     {
+        private readonly IProductRepository _productRepository;
+        private readonly ILogger<ProductProvider> _logger;
+
+        public ProductProvider( IProductRepository productRepository, ILogger<ProductProvider> logger)
+        {
+            _productRepository = productRepository;
+            _logger = logger;
+        }
+
         public IEnumerable<Product> GetProductsForCategory(string category)
         {
-            return GetAllProducts().Where(p =>
-                string.Equals(category, "All",StringComparison.InvariantCultureIgnoreCase) ||
-                string.Equals(p.Category, category, StringComparison.InvariantCultureIgnoreCase));
+            _logger.LogInformation($"Getting enumeration of products with {category} category.");
+            return _productRepository.GetForCategory(category);
         }
 
         public Product? GetProduct(int productId)
         {
-            return GetAllProducts().SingleOrDefault(p => p.Id == productId);
+            _logger.LogInformation($"Getting product with {productId} Id.");
+            return _productRepository.Get(productId);
         }
 
         private IEnumerable<Product> GetAllProducts()

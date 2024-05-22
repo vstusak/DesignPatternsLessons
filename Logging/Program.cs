@@ -17,8 +17,9 @@ namespace Logging.Api
 
             builder.Services.AddDbContext<WarehouseContext>();
 
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductProvider, ProductProvider>();
-
+            
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -30,8 +31,11 @@ namespace Logging.Api
             {
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<WarehouseContext>();
-                context.Seed();
-
+                if (!context.DatabaseExists())
+                {
+                    context.Seed();
+                }
+                
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 var startupLogger = loggerFactory.CreateLogger("Startup");
                 startupLogger.LogInformation("Data has been seeded.");
