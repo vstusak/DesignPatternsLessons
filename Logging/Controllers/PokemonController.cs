@@ -8,17 +8,18 @@ namespace Logging.Api.Controllers
     public class PokemonController : ControllerBase
     {
         private readonly ILogger<PokemonController> _logger;
-        private PokemonProvider _pokemonProvider;
+        private readonly IPokemonProvider _pokemonProvider;
 
-        public PokemonController(ILogger<PokemonController> logger)
+        public PokemonController(ILogger<PokemonController> logger, IPokemonProvider pokemonProvider)
         {
             _logger = logger;
+            _pokemonProvider = pokemonProvider;
         }
 
         [HttpGet]
         public Pokemon Get()
         {
-            // @TODO vyzkouset - vytvorit registraci a inicializaci PokemonProvider
+            _logger.LogInformation("Pokemon request called");
             return _pokemonProvider.Get();
         }
     }

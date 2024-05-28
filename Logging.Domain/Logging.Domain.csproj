@@ -13,10 +13,4 @@
     <ProjectReference Include="..\Logging.Data\Logging.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="pokemons.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

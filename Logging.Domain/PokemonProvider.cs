@@ -1,10 +1,9 @@
-using System.Text.Json;
-using System.Text.Json.Nodes;
 using Logging.Domain;
+using System.Text.Json;
 
 namespace Logging.Api.Controllers;
 
-public class PokemonProvider
+public class PokemonProvider : IPokemonProvider
 {
     private IEnumerable<Pokemon> GetAll()
     {
