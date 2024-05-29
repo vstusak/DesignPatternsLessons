@@ -14,7 +14,7 @@ namespace Logging.Domain
         private readonly IProductRepository _productRepository;
         private readonly ILogger<ProductProvider> _logger;
 
-        public ProductProvider( IProductRepository productRepository, ILogger<ProductProvider> logger)
+        public ProductProvider(IProductRepository productRepository, ILogger<ProductProvider> logger)
         {
             _productRepository = productRepository;
             _logger = logger;

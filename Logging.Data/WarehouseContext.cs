@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Logging.Data.Model;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Debug;
 
 namespace Logging.Data
 {
@@ -14,9 +16,11 @@ namespace Logging.Data
     {
         public DbSet<Product> Products { get; set; }
 
+        //TODO: try to enable sensitive data logging
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=products.db");
+            //optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
         }
 
         public void Seed()

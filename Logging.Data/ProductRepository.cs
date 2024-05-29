@@ -1,4 +1,5 @@
 ﻿using Logging.Data.Model;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Logging.Data
@@ -11,7 +12,7 @@ namespace Logging.Data
 
         //ToDo: implement  DB layer logging
         //ToDo: log debug the query details
-        public ProductRepository(WarehouseContext warehouseContext, ILogger<ProductRepository> logger )
+        public ProductRepository(WarehouseContext warehouseContext, ILogger<ProductRepository> logger)
         {
             _warehouseContext = warehouseContext;
             _logger = logger;
@@ -25,8 +26,12 @@ namespace Logging.Data
         public IEnumerable<Product> GetForCategory(string category)
         {
             _logger.LogInformation($"Getting products with {category} category from warehouse");
-            return _warehouseContext.Products.Where(p => p.Category == category 
+            var q = _warehouseContext.Products.Where(p => p.Category == category 
                                                          || category == "All");
+            var queryString = q.ToQueryString();
+            //_logger.LogDebug(queryString);
+
+            return q;
         }
     }
 }
