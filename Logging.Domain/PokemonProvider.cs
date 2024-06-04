@@ -1,7 +1,8 @@
-using Logging.Domain;
+using Logging.Data;
+using Logging.Data.enums;
 using System.Text.Json;
 
-namespace Logging.Api.Controllers;
+namespace Logging.Domain;
 
 public class PokemonProvider : IPokemonProvider
 {
@@ -11,9 +12,13 @@ public class PokemonProvider : IPokemonProvider
         return JsonSerializer.Deserialize<IEnumerable<Pokemon>>(content);
     }
 
-    public Pokemon Get()
+    public IEnumerable<Pokemon> GetByPokemonType(string pokemonType)
     {
-        var result = GetAll();
-        return result.First();
+        return GetAll().Where(pokemon => pokemon.Type1 == pokemonType || pokemonType == "All");
+    }
+
+    public Pokemon GetById(int id)
+    {
+        return GetAll().SingleOrDefault(pokemon => pokemon.Id == id);
     }
 }

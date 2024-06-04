@@ -1,9 +1,11 @@
-﻿using Logging.Domain;
+﻿using Logging.Data;
+using Logging.Data.enums;
 
-namespace Logging.Api.Controllers
+namespace Logging.Domain
 {
     public interface IPokemonProvider
     {
-        Pokemon Get();
+        IEnumerable<Pokemon> GetByPokemonType(string pokemonType);
+        Pokemon GetById(int id);
     }
 }

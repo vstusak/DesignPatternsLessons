@@ -1,19 +1,17 @@
-﻿using Logging.Domain.enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+using Logging.Data.enums;
 
-namespace Logging.Domain
+namespace Logging.Data
 {
     public class Pokemon
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public PokemonType Type1 { get; set; }
-        public PokemonType Type2 { get; set; }
+        [JsonPropertyName("Type 1")]
+        public string Type1 { get; set; }
+
+        [JsonPropertyName("Type 2")]
+        public string Type2 { get; set; }
         public int Total { get; set; }
         public int HP { get; set; }
         public int Attack { get; set; }

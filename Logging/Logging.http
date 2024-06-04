@@ -2,5 +2,12 @@
 
 ###
 
-GET {{Logging_HostAddress}}/pokemon/
+GET {{Logging_HostAddress}}/pokemon?pokemonType=Grass
+Accept: application/json
+
+###
+GET {{Logging_HostAddress}}/pokemon/114
+Accept: application/json
+### Not found
+GET {{Logging_HostAddress}}/pokemon/1114
 Accept: application/json

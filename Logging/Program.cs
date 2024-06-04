@@ -1,4 +1,4 @@
-using Logging.Api.Controllers;
+using Logging.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 

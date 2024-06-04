@@ -1,3 +1,5 @@
+using Logging.Data;
+using Logging.Data.enums;
 using Logging.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +19,25 @@ namespace Logging.Api.Controllers
         }
 
         [HttpGet]
-        public Pokemon Get()
+        public IEnumerable<Pokemon> Get(string pokemonType = "All")
         {
-            _logger.LogInformation("Pokemon request called");
-            return _pokemonProvider.Get();
+            _logger.LogInformation($"Pokemon request called with {nameof(pokemonType)}: {pokemonType}");
+            return _pokemonProvider.GetByPokemonType(pokemonType);
+        }
+
+        [HttpGet("{id:int}")]
+        public IActionResult GetById(int id)
+        {
+            _logger.LogDebug($"Pokemon request called with {nameof(id)}: {id}");
+            var result = _pokemonProvider.GetById(id);
+            if (result == null)
+            {
+                _logger.LogWarning($"Pokemon not found with id: {id}");
+                return NotFound();
+            }
+
+            return Ok(result);
+
         }
     }
 }
