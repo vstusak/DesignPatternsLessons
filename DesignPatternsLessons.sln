@@ -73,7 +73,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Api", "Logging\Logg
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project Logging", "Project Logging", "{73747857-3221-490F-BE30-7993E1B87C3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Domain", "Logging.Domain\Logging.Domain.csproj", "{E6420947-1B01-4F96-93F6-28B8C5D44DA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Domain", "Logging.Domain\Logging.Domain.csproj", "{E6420947-1B01-4F96-93F6-28B8C5D44DA2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Data", "Logging.Data\Logging.Data.csproj", "{82FCDA83-A663-45E4-9926-5D5373A6A9F5}"
 EndProject
