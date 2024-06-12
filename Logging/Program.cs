@@ -1,6 +1,7 @@
 
 using Logging.Data;
 using Logging.Domain;
+using System.Diagnostics;
 
 namespace Logging.Api
 {
@@ -9,7 +10,15 @@ namespace Logging.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            
+
+            //TODO: https://learn.microsoft.com/en-us/answers/questions/1377949/logging-in-c-to-a-text-file
+            //var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            //var tracePath = Path.Join(path, $"Log_Products_{DateTime.Now.ToString("yyyyMMdd-HHmm")}.txt");
+            //Trace.Listeners.Add(new TextWriterTraceListener(File.CreateText(tracePath)));
+            //Trace.AutoFlush = true;
+
+            builder.Logging.AddFilter("DataAccessLayer", LogLevel.Information);
+
             // Add services to the container.
 
             //builder.Logging.ClearProviders();
