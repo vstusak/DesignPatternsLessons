@@ -1,9 +1,10 @@
-﻿
-namespace Logging.Data
+﻿namespace Logging.Data;
+
+public interface IPokemonRepository
 {
-    //TODO: decide to refactor to IRepository<T>  
-    public interface IPokemonRepository
-    {
-        IEnumerable<Pokemon> GetAll();
-    }
+    IEnumerable<Pokemon> GetAll();
+
+    IEnumerable<Pokemon> GetByType(string pokemonType);
+
+    Pokemon? GetById(int id);
 }

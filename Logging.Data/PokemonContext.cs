@@ -1,18 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 
-namespace Logging.Data
+namespace Logging.Data;
+
+public class PokemonContext : DbContext
 {
-    public class PokemonContext : DbContext
+    public DbSet<Pokemon> Pokemons { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        public DbSet<Pokemon> Pokemons { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("Data Source=Pokemons.db");
-        }
+        optionsBuilder.UseSqlite("Data Source=Pokemons.db");
+    }
+
+    public void DefaultSeed()
+    {
+        Database.EnsureDeleted();
+        Database.EnsureCreated();
+
+        var content = File.ReadAllText("pokemons.json");
+        var data = JsonSerializer.Deserialize<IEnumerable<Pokemon>>(content);
+        Pokemons.AddRange(data);
+        SaveChanges();
     }
 }

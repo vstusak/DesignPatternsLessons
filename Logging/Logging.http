@@ -1,7 +1,5 @@
 @Logging_HostAddress = http://localhost:5151
 
-###
-
 GET {{Logging_HostAddress}}/pokemon?pokemonType=Grass
 Accept: application/json
 
