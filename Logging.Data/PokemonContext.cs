@@ -1,5 +1,7 @@
 ﻿using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Logging.Data;
 
@@ -19,7 +21,12 @@ public class PokemonContext : DbContext
 
         var content = File.ReadAllText("pokemons.json");
         var data = JsonSerializer.Deserialize<IEnumerable<Pokemon>>(content);
-        Pokemons.AddRange(data);
+        Pokemons.AddRange(data.DistinctBy(p => p.Id));
         SaveChanges();
+    }
+
+    public bool DatabaseExists()
+    {
+        return Database.CanConnect() && Database.GetService<IRelationalDatabaseCreator>().HasTables();
     }
 }
