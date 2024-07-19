@@ -2,6 +2,7 @@
 using Logging.Data;
 using Logging.Domain;
 using System.Diagnostics;
+using Logging.Api.CommonLoggers;
 
 namespace Logging.Api
 {
@@ -11,7 +12,7 @@ namespace Logging.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            //TODO: https://learn.microsoft.com/en-us/answers/questions/1377949/logging-in-c-to-a-text-file
+            //https://learn.microsoft.com/en-us/answers/questions/1377949/logging-in-c-to-a-text-file
             //var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             //var tracePath = Path.Join(path, $"Log_Products_{DateTime.Now.ToString("yyyyMMdd-HHmm")}.txt");
             //Trace.Listeners.Add(new TextWriterTraceListener(File.CreateText(tracePath)));
@@ -22,7 +23,9 @@ namespace Logging.Api
             // Add services to the container.
 
             //builder.Logging.ClearProviders();
-            //builder.Logging.AddProvider(our provider);
+            //TODO remove dependency on streamWriter (move streamWriter inside FileLoggerProvider)
+            using var logFileWriter = new StreamWriter("log.txt");
+            builder.Logging.AddProvider(new FileLoggerProvider(logFileWriter));
 
             builder.Services.AddDbContext<WarehouseContext>();
 
