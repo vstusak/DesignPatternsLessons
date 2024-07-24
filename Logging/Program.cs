@@ -3,6 +3,8 @@ using Logging.Data;
 using Logging.Domain;
 using System.Diagnostics;
 using Logging.Api.CommonLoggers;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Logging.Api
 {
@@ -23,9 +25,18 @@ namespace Logging.Api
             // Add services to the container.
 
             //builder.Logging.ClearProviders();
-            //TODO remove dependency on streamWriter (move streamWriter inside FileLoggerProvider)
-            using var logFileWriter = new StreamWriter("log.txt");
-            builder.Logging.AddProvider(new FileLoggerProvider(logFileWriter));
+
+            //custom file logging, doesn't work very well
+            //builder.Services.AddSingleton<ILoggerProvider, FileLoggerProvider>();
+            //builder.Services.AddSingleton<IFileLoggerStreamWriter, FileLoggerStreamWriter>();
+
+            //TODO: setup filters for serilog
+            var serilog = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            builder.Logging.AddSerilog(serilog);
 
             builder.Services.AddDbContext<WarehouseContext>();
 

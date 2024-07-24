@@ -1,0 +1,1 @@
+[Information] [DataAccessLayer] DAL querying products finished in 214121 ticks.
