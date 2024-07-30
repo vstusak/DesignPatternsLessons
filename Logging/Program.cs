@@ -5,7 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<PokemonContext>();
 
-// TODO CALL DATABASE SEED!
+// ToDo apply filters alsop from other places than appsettings
+
+// logging
+//builder.Logging.AddProvider();
 
 // Add services to the container.
 builder.Services.AddScoped<IPokemonProvider, PokemonProvider>();
@@ -25,18 +28,16 @@ using (var scope = app.Services.CreateScope())
     {
         pokemonContext.DefaultSeed();
     }
-    
 }
 
+// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
-    // Configure the HTTP request pipeline.
-    //if (app.Environment.IsDevelopment())
-    //{
-    //    app.UseSwagger();
-    //    app.UseSwaggerUI();
-    //}
-
-    app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

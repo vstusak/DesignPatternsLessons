@@ -24,8 +24,10 @@ public class PokemonController : ControllerBase
         return _pokemonProvider.GetByPokemonType(pokemonType);
     }
 
+    [ProducesResponseType(typeof(Pokemon), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpGet("{id:int}")]
-    public IActionResult GetById(int id)
+    public IActionResult Get(int id)
     {
         _logger.LogDebug($"Pokemon request called with {nameof(id)}: {id}");
         var result = _pokemonProvider.GetById(id);

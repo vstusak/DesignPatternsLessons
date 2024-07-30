@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
 
 namespace Logging.Data;
 
@@ -12,6 +13,7 @@ public class PokemonContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=Pokemons.db");
+        //optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
     }
 
     public void DefaultSeed()
