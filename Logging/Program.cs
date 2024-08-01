@@ -3,6 +3,7 @@ using Logging.Data;
 using Logging.Domain;
 using System.Diagnostics;
 using Logging.Api.CommonLoggers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
@@ -36,7 +37,7 @@ namespace Logging.Api
                 .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
-            builder.Logging.AddSerilog(serilog);
+            //builder.Logging.AddSerilog(serilog);
 
             builder.Services.AddDbContext<WarehouseContext>();
 
