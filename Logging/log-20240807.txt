@@ -1,0 +1,35 @@
+2024-08-07 11:46:16.425 +02:00 [INF] Data has been seeded.
+2024-08-07 11:46:17.108 +02:00 [INF] Now listening on: https://localhost:7055
+2024-08-07 11:46:17.112 +02:00 [INF] Now listening on: http://localhost:5287
+2024-08-07 11:46:17.114 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-07 11:46:17.115 +02:00 [INF] Hosting environment: Development
+2024-08-07 11:46:17.116 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-08-07 11:46:26.906 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-08-07 11:46:27.203 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 300.5543ms
+2024-08-07 11:46:27.229 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/swagger-ui.css - null null
+2024-08-07 11:46:27.233 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/swagger-ui-bundle.js - null null
+2024-08-07 11:46:27.237 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-07 11:46:27.239 +02:00 [INF] The file /swagger-ui-bundle.js was not modified
+2024-08-07 11:46:27.239 +02:00 [INF] The file /swagger-ui.css was not modified
+2024-08-07 11:46:27.241 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/swagger-ui-bundle.js - 304 null text/javascript 8.2353ms
+2024-08-07 11:46:27.251 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-08-07 11:46:27.244 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/swagger-ui-standalone-preset.js - null null
+2024-08-07 11:46:27.241 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/swagger-ui.css - 304 null text/css 11.7865ms
+2024-08-07 11:46:27.261 +02:00 [INF] The file /swagger-ui-standalone-preset.js was not modified
+2024-08-07 11:46:27.258 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 20.6814ms
+2024-08-07 11:46:27.266 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/swagger-ui-standalone-preset.js - 304 null text/javascript 21.6936ms
+2024-08-07 11:46:27.321 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 71.1877ms
+2024-08-07 11:46:27.465 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-08-07 11:46:27.488 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/favicon-32x32.png - null null
+2024-08-07 11:46:27.491 +02:00 [INF] The file /favicon-32x32.png was not modified
+2024-08-07 11:46:27.492 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/favicon-32x32.png - 304 null image/png 4.4119ms
+2024-08-07 11:46:27.589 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 123.6644ms
+2024-08-07 11:46:42.030 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/Product/3 - null null
+2024-08-07 11:46:42.037 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-08-07 11:46:42.053 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int32) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-08-07 11:46:42.095 +02:00 [INF] Getting product with 3 Id.
+2024-08-07 11:46:42.097 +02:00 [INF] Getting product with 3 Id from warehouse
+2024-08-07 11:46:42.400 +02:00 [INF] Executing OkObjectResult, writing value of type 'Logging.Data.Model.Product'.
+2024-08-07 11:46:42.415 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 355.2399ms
+2024-08-07 11:46:42.416 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-08-07 11:46:42.421 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/Product/3 - 200 null application/json; charset=utf-8 391.5507ms

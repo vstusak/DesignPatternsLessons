@@ -21,15 +21,18 @@ namespace Logging.Api
             //Trace.Listeners.Add(new TextWriterTraceListener(File.CreateText(tracePath)));
             //Trace.AutoFlush = true;
 
-            builder.Logging.AddFilter("DataAccessLayer", LogLevel.Information);
+            //builder.Logging.AddFilter("DataAccessLayer", LogLevel.Information);
 
             // Add services to the container.
 
-            //builder.Logging.ClearProviders();
+            builder.Logging.ClearProviders();
 
             //custom file logging, doesn't work very well
             //builder.Services.AddSingleton<ILoggerProvider, FileLoggerProvider>();
             //builder.Services.AddSingleton<IFileLoggerStreamWriter, FileLoggerStreamWriter>();
+
+            //TODO: Try to make a database logger
+            //TODO: Sensitive logging recap
 
             //TODO: setup filters for serilog
             var serilog = new LoggerConfiguration()
@@ -37,7 +40,7 @@ namespace Logging.Api
                 .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
-            //builder.Logging.AddSerilog(serilog);
+            builder.Logging.AddSerilog(serilog);
 
             builder.Services.AddDbContext<WarehouseContext>();
 
