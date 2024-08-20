@@ -1,12 +1,15 @@
 using Logging.Data;
 using Logging.Domain;
-using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<PokemonContext>();
 
-// ToDo apply filters alsop from other places than appsettings
+// ToDo fix "endpoint get by type not working with type Grass"
+// ToDo check file logger output
+// ToDo enable entity framework logging
+// ToDo sensitive logging
+
 // logging
 //builder.Logging.AddFilter("DataAccessLayer", LogLevel.Information);
 builder.Logging.AddProvider(new FileLoggerProvider());
@@ -16,7 +19,6 @@ builder.Services.AddScoped<IPokemonProvider, PokemonProvider>();
 builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
@@ -48,29 +50,30 @@ app.Run();
 
 public class FileLoggerProvider : ILoggerProvider
 {
+    private readonly StreamWriter _streamWriter = new(LogFilePath);
+    private const string LogFilePath = "./log.txt";
+
     public void Dispose()
     {
-        return;
+        _streamWriter.Dispose();
     }
 
     public ILogger CreateLogger(string categoryName)
     {
-        return new FileLogger(categoryName);
+        return new FileLogger(categoryName, _streamWriter);
     }
 }
 
 public class FileLogger : ILogger
 {
     private readonly string _categoryName;
-    private readonly FileStream _fileStream;
+    private readonly StreamWriter _streamWriter;
 
-    public FileLogger(string categoryName)
+    public FileLogger(string categoryName, StreamWriter streamWriter)
     {
         _categoryName = categoryName;
-        _fileStream = new FileStream(LogFilePath, FileMode.OpenOrCreate);
+        _streamWriter = streamWriter;
     }
-
-    private const string LogFilePath = "";
 
     public IDisposable? BeginScope<TState>(TState state) where TState : notnull
     {
@@ -82,10 +85,10 @@ public class FileLogger : ILogger
         return true;
     }
 
-    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception,
-        Func<TState, Exception?, string> formatter)
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
     {
         var message = formatter(state, exception);
-        // @TODO Finish FileLogger and try
+        _streamWriter.WriteLine($"{_categoryName} [{logLevel}]: {message}");
+        _streamWriter.Flush();
     }
 }

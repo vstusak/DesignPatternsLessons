@@ -25,4 +25,10 @@
     <ProjectReference Include="..\Logging.Domain\Logging.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="log.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -29,7 +29,7 @@ public class PokemonController : ControllerBase
     [HttpGet("{id:int}")]
     public IActionResult Get(int id)
     {
-        _logger.LogDebug($"Pokemon request called with {nameof(id)}: {id}");
+        _logger.LogInformation($"Pokemon request called with {nameof(id)}: {id}");
         var result = _pokemonProvider.GetById(id);
         if (result == null)
         {
