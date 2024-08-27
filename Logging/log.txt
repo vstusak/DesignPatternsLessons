@@ -1,0 +1,17 @@
+Microsoft.Hosting.Lifetime [Information]: Now listening on: https://localhost:7246
+Microsoft.Hosting.Lifetime [Information]: Now listening on: http://localhost:5151
+Microsoft.Hosting.Lifetime [Information]: Application started. Press Ctrl+C to shut down.
+Microsoft.Hosting.Lifetime [Information]: Hosting environment: Development
+Microsoft.Hosting.Lifetime [Information]: Content root path: C:\Users\rondrejka\Desktop\DesignPatternsLessons\Logging
+Logging.Api.Controllers.PokemonController [Information]: Pokemon request called with pokemonType: grass
+DataAccessLayer [Information]: DAL querying pokemons finished in 582792 ticks
+Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Error]: An unhandled exception has occurred while executing the request.
+Logging.Api.Controllers.PokemonController [Information]: Pokemon request called with pokemonType: Grass
+DataAccessLayer [Information]: DAL querying pokemons finished in 1320038 ticks
+Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Error]: An unhandled exception has occurred while executing the request.
+Logging.Api.Controllers.PokemonController [Information]: Pokemon request called with pokemonType: Grass
+DataAccessLayer [Information]: DAL querying pokemons finished in 31520 ticks
+Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Error]: An unhandled exception has occurred while executing the request.
+Logging.Api.Controllers.PokemonController [Information]: Pokemon request called with pokemonType: grass
+DataAccessLayer [Information]: DAL querying pokemons finished in 23233 ticks
+Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware [Error]: An unhandled exception has occurred while executing the request.

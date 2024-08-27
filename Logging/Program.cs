@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<PokemonContext>();
 
-// ToDo fix "endpoint get by type not working with type Grass"
+// ToDo fix "endpoint get by type not working with type Grass" => entity framework does not support case insensitive comparison
 // ToDo check file logger output
 // ToDo enable entity framework logging
 // ToDo sensitive logging

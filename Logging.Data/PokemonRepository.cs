@@ -33,14 +33,22 @@ public class PokemonRepository : IPokemonRepository
         }
 
         var stopwatch = Stopwatch.StartNew();
-        var result = _pokemonContext.Pokemons.Where(pokemon => pokemon.Type1 == pokemonType || pokemonType == "All");
+
+        var result = _pokemonContext.Pokemons.Where(
+            pokemon => pokemon.Type1.Contains(pokemonType, StringComparison.InvariantCultureIgnoreCase)
+                                                 || pokemonType.Contains("All", StringComparison.InvariantCultureIgnoreCase));
+
+        //var pokemons = _pokemonContext.Pokemons.ToList();
+        //var result = pokemons.Where(pokemon => pokemon.Type1.Contains(pokemonType, StringComparison.InvariantCultureIgnoreCase)
+        //                                       || pokemonType.Contains("All", StringComparison.InvariantCultureIgnoreCase));
+
         stopwatch.Stop();
 
         _dalLogger.LogInformation("DAL querying pokemons finished in {Ticks} ticks", stopwatch.ElapsedTicks);
 
-        var query = result.ToQueryString();
-        _dalLogger.LogInformation("Executed query {Query}", query);
-         
+        //var query = result.ToQueryString();
+        //_dalLogger.LogInformation("Executed query {Query}", query);
+
         return result;
     }
 
