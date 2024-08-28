@@ -1,0 +1,86 @@
+2024-08-28 11:42:06.429 +02:00 [INF] Data has been seeded.
+2024-08-28 11:42:06.841 +02:00 [INF] Now listening on: https://localhost:7055
+2024-08-28 11:42:06.845 +02:00 [INF] Now listening on: http://localhost:5287
+2024-08-28 11:42:06.847 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-28 11:42:06.848 +02:00 [INF] Hosting environment: Development
+2024-08-28 11:42:06.848 +02:00 [INF] Content root path: Q:\projects\LTG-Development\C# Academy\2021\DesignPatternsLessons\Logging
+2024-08-28 11:42:10.465 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-08-28 11:42:10.694 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 232.5805ms
+2024-08-28 11:42:10.730 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-28 11:42:10.735 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-08-28 11:42:10.745 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 14.6592ms
+2024-08-28 11:42:10.786 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 51.4717ms
+2024-08-28 11:42:10.926 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-08-28 11:42:11.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 113.9183ms
+2024-08-28 11:51:40.568 +02:00 [INF] Data has been seeded.
+2024-08-28 11:51:40.967 +02:00 [INF] Now listening on: https://localhost:7055
+2024-08-28 11:51:40.968 +02:00 [INF] Now listening on: http://localhost:5287
+2024-08-28 11:51:40.969 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-28 11:51:40.970 +02:00 [INF] Hosting environment: Development
+2024-08-28 11:51:40.970 +02:00 [INF] Content root path: Q:\projects\LTG-Development\C# Academy\2021\DesignPatternsLessons\Logging
+2024-08-28 11:51:44.781 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-08-28 11:51:45.010 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 229.4196ms
+2024-08-28 11:51:45.049 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-28 11:51:45.054 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-08-28 11:51:45.057 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 7.7451ms
+2024-08-28 11:51:45.096 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.4742ms
+2024-08-28 11:51:45.245 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-08-28 11:51:45.341 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 96.628ms
+2024-08-28 11:52:32.385 +02:00 [INF] Data has been seeded.
+2024-08-28 11:52:32.995 +02:00 [INF] Now listening on: https://localhost:7055
+2024-08-28 11:52:32.998 +02:00 [INF] Now listening on: http://localhost:5287
+2024-08-28 11:52:32.999 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-28 11:52:32.999 +02:00 [INF] Hosting environment: Development
+2024-08-28 11:52:33.000 +02:00 [INF] Content root path: Q:\projects\LTG-Development\C# Academy\2021\DesignPatternsLessons\Logging
+2024-08-28 11:52:36.206 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-08-28 11:52:36.543 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 341.4361ms
+2024-08-28 11:52:36.587 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-28 11:52:36.591 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-08-28 11:52:36.603 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 15.546ms
+2024-08-28 11:52:36.638 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 47.4239ms
+2024-08-28 11:52:36.688 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-08-28 11:52:36.793 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 105.7002ms
+2024-08-28 11:54:04.456 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-08-28 11:54:04.488 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 31.8842ms
+2024-08-28 11:54:04.505 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-28 11:54:04.511 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.1347ms
+2024-08-28 11:54:04.511 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-08-28 11:54:04.541 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.703ms
+2024-08-28 11:54:04.589 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-08-28 11:54:04.597 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 8.6442ms
+2024-08-28 11:54:18.575 +02:00 [INF] Data has been seeded.
+2024-08-28 11:54:18.980 +02:00 [INF] Now listening on: https://localhost:7055
+2024-08-28 11:54:18.984 +02:00 [INF] Now listening on: http://localhost:5287
+2024-08-28 11:54:18.985 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-28 11:54:18.985 +02:00 [INF] Hosting environment: Development
+2024-08-28 11:54:18.986 +02:00 [INF] Content root path: Q:\projects\LTG-Development\C# Academy\2021\DesignPatternsLessons\Logging
+2024-08-28 11:54:21.951 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-08-28 11:54:22.190 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 242.1778ms
+2024-08-28 11:54:22.233 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-28 11:54:22.237 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-08-28 11:54:22.249 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 15.9889ms
+2024-08-28 11:54:22.290 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 53.1171ms
+2024-08-28 11:54:22.334 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-08-28 11:54:22.445 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 111.0203ms
+2024-08-28 11:56:40.474 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-08-28 11:56:40.504 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 29.9418ms
+2024-08-28 11:56:40.507 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-08-28 11:56:40.512 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-08-28 11:56:40.513 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 7.4549ms
+2024-08-28 11:56:40.530 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.9148ms
+2024-08-28 11:56:40.587 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-08-28 11:56:40.595 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 8.0702ms
+2024-08-28 11:56:44.645 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-08-28 11:56:44.651 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-08-28 11:56:44.666 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-08-28 11:56:44.692 +02:00 [INF] Executing action method Logging.Api.Controllers.ProductController.Get (Logging.Api) - Validation state: "Valid"
+2024-08-28 11:56:44.694 +02:00 [INF] Called product get with 'All' category
+2024-08-28 11:56:44.695 +02:00 [INF] Getting enumeration of products with All category.
+2024-08-28 11:56:44.723 +02:00 [INF] Getting products with All category from warehouse
+2024-08-28 11:56:44.742 +02:00 [INF] DAL querying products finished in 177193 ticks.
+2024-08-28 11:56:44.743 +02:00 [INF] Getting products2 with All category from warehouse
+2024-08-28 11:56:44.911 +02:00 [INF] Executed action method Logging.Api.Controllers.ProductController.Get (Logging.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 214.3459ms.
+2024-08-28 11:56:44.918 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Model.Product, Logging.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-08-28 11:56:44.985 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 312.7411ms
+2024-08-28 11:56:44.987 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-08-28 11:56:44.990 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 345.4659ms
