@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Academy.Common\Academy.Common.csproj" />
     <ProjectReference Include="..\Logging.Data\Logging.Data.csproj" />
     <ProjectReference Include="..\Logging.Domain\Logging.Domain.csproj" />
   </ItemGroup>

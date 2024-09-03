@@ -12,7 +12,8 @@ public class PokemonContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=Pokemons.db");
-        //optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
+        //.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
+        //.EnableSensitiveDataLogging();
     }
 
     public void DefaultSeed()

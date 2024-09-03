@@ -69,7 +69,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging project", "Logging 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Domain", "Logging.Domain\Logging.Domain.csproj", "{66EC751E-2238-4784-8B64-DC4304148BAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Data", "Logging.Data\Logging.Data.csproj", "{FB65C362-CDED-4CE9-959C-798944528117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Data", "Logging.Data\Logging.Data.csproj", "{FB65C362-CDED-4CE9-959C-798944528117}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academy.Common", "Academy.Common\Academy.Common.csproj", "{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -209,6 +211,10 @@ Global
 		{FB65C362-CDED-4CE9-959C-798944528117}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB65C362-CDED-4CE9-959C-798944528117}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB65C362-CDED-4CE9-959C-798944528117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -217,6 +223,7 @@ Global
 		{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2} = {7C4438F6-0356-4B98-8A12-27B622038C81}
 		{66EC751E-2238-4784-8B64-DC4304148BAE} = {7C4438F6-0356-4B98-8A12-27B622038C81}
 		{FB65C362-CDED-4CE9-959C-798944528117} = {7C4438F6-0356-4B98-8A12-27B622038C81}
+		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0} = {7C4438F6-0356-4B98-8A12-27B622038C81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {481A5F37-6076-4268-92F1-D670B22C04AE}
