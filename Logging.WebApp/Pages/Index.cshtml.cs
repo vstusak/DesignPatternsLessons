@@ -1,3 +1,4 @@
+using Logging.Data.Api.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -5,8 +6,10 @@ namespace Logging.WebApp.Pages
 {
     public class IndexModel : PageModel
     {
+        
         private readonly ILogger<IndexModel> _logger;
         private readonly HttpClient _apiClient;
+        public List<Product>? Products { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, HttpClient apiClient)
         {
@@ -18,8 +21,7 @@ namespace Logging.WebApp.Pages
         public async Task OnGetAsync()
         {
             var response = await _apiClient.GetAsync("product");
-            
-
+            Products = await response.Content.ReadFromJsonAsync<List<Product>>();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using Logging.Data.Model;
+using Logging.Data.Api.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 

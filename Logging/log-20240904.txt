@@ -1,0 +1,340 @@
+2024-09-04 11:06:10.651 +02:00 [INF] Data has been seeded.
+2024-09-04 11:06:11.343 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 11:06:11.347 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 11:06:11.348 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 11:06:11.349 +02:00 [INF] Hosting environment: Development
+2024-09-04 11:06:11.350 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 11:06:14.060 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 11:06:14.196 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 140.0375ms
+2024-09-04 11:06:14.218 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 11:06:14.227 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.7357ms
+2024-09-04 11:06:14.393 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 11:06:14.488 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 94.9943ms
+2024-09-04 11:06:24.800 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/Product?category=All - null null
+2024-09-04 11:06:24.806 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 11:06:24.823 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 11:06:24.867 +02:00 [INF] Called product get with 'All' category
+2024-09-04 11:06:24.869 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 11:06:24.896 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 11:06:24.916 +02:00 [INF] DAL querying products finished in 181240 ticks.
+2024-09-04 11:06:24.917 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 11:06:25.087 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Model.Product, Logging.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 11:06:25.159 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 330.7535ms
+2024-09-04 11:06:25.162 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 11:06:25.166 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/Product?category=All - 200 null application/json; charset=utf-8 366.3885ms
+2024-09-04 11:09:27.099 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 11:09:27.102 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 11:09:27.102 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 11:09:27.104 +02:00 [INF] Called product get with 'All' category
+2024-09-04 11:09:27.105 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 11:09:27.105 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 11:09:27.146 +02:00 [INF] DAL querying products finished in 395201 ticks.
+2024-09-04 11:09:27.147 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 11:09:27.150 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Model.Product, Logging.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 11:09:27.154 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 51.1869ms
+2024-09-04 11:09:27.155 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 11:09:27.156 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 57.6182ms
+2024-09-04 11:58:51.208 +02:00 [INF] Data has been seeded.
+2024-09-04 11:58:51.876 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 11:58:51.878 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 11:58:51.879 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 11:58:51.880 +02:00 [INF] Hosting environment: Development
+2024-09-04 11:58:51.881 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 11:58:54.590 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 11:58:54.940 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 354.8721ms
+2024-09-04 11:58:54.959 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 11:58:54.965 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-09-04 11:58:54.969 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 9.3626ms
+2024-09-04 11:58:55.005 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 40.692ms
+2024-09-04 11:58:55.133 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 11:58:55.247 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 113.9701ms
+2024-09-04 11:59:02.886 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 11:59:02.893 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 11:59:02.909 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 11:59:02.928 +02:00 [INF] Called product get with 'All' category
+2024-09-04 11:59:02.931 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 11:59:02.951 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 11:59:02.973 +02:00 [INF] DAL querying products finished in 205484 ticks.
+2024-09-04 11:59:02.976 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 11:59:03.151 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 11:59:03.249 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 334.3645ms
+2024-09-04 11:59:03.250 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 11:59:03.255 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 369.6163ms
+2024-09-04 12:00:35.714 +02:00 [INF] Data has been seeded.
+2024-09-04 12:00:36.053 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 12:00:36.056 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 12:00:36.056 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 12:00:36.057 +02:00 [INF] Hosting environment: Development
+2024-09-04 12:00:36.057 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 12:00:37.883 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 12:00:38.087 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 207.1938ms
+2024-09-04 12:00:38.103 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 12:00:38.108 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-09-04 12:00:38.110 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 7.4376ms
+2024-09-04 12:00:38.142 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 35.0933ms
+2024-09-04 12:00:38.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 12:00:38.268 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 90.9503ms
+2024-09-04 12:00:43.163 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:00:43.170 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:00:43.184 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:00:43.205 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:00:43.207 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:00:43.215 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:00:43.234 +02:00 [INF] DAL querying products finished in 163657 ticks.
+2024-09-04 12:00:43.235 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:00:43.405 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:00:43.481 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 292.3707ms
+2024-09-04 12:00:43.484 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:00:43.487 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 323.9546ms
+2024-09-04 12:01:28.574 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:01:28.577 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:01:28.579 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:01:28.582 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:01:28.583 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:01:28.583 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:01:28.623 +02:00 [INF] DAL querying products finished in 386873 ticks.
+2024-09-04 12:01:28.625 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:01:28.628 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:01:28.632 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 51.2755ms
+2024-09-04 12:01:28.633 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:01:28.634 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 61.6893ms
+2024-09-04 12:01:30.326 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:01:30.329 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:01:30.330 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:01:30.332 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:01:30.333 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:01:30.333 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:01:30.334 +02:00 [INF] DAL querying products finished in 7754 ticks.
+2024-09-04 12:01:30.335 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:01:30.336 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:01:30.340 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 9.08ms
+2024-09-04 12:01:30.344 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:01:30.348 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 22.0128ms
+2024-09-04 12:02:31.905 +02:00 [INF] Data has been seeded.
+2024-09-04 12:02:32.243 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 12:02:32.245 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 12:02:32.246 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 12:02:32.246 +02:00 [INF] Hosting environment: Development
+2024-09-04 12:02:32.247 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 12:02:33.986 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 12:02:34.181 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 198.7174ms
+2024-09-04 12:02:34.202 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 12:02:34.207 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-09-04 12:02:34.210 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.1003ms
+2024-09-04 12:02:34.238 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.3597ms
+2024-09-04 12:02:34.268 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 12:02:34.353 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 84.8049ms
+2024-09-04 12:02:43.373 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:02:43.378 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:02:43.393 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:02:43.413 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:02:43.414 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:02:43.424 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:02:43.441 +02:00 [INF] DAL querying products finished in 161236 ticks.
+2024-09-04 12:02:43.442 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:02:43.604 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:02:43.676 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 276.0813ms
+2024-09-04 12:02:43.677 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:02:43.680 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 307.7147ms
+2024-09-04 12:04:31.501 +02:00 [INF] Data has been seeded.
+2024-09-04 12:04:31.863 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 12:04:31.865 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 12:04:31.866 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 12:04:31.867 +02:00 [INF] Hosting environment: Development
+2024-09-04 12:04:31.868 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 12:04:33.800 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 12:04:33.991 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 194.9394ms
+2024-09-04 12:04:34.005 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 12:04:34.009 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-09-04 12:04:34.017 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 11.2362ms
+2024-09-04 12:04:34.045 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 36.9825ms
+2024-09-04 12:04:34.074 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 12:04:34.160 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 86.2904ms
+2024-09-04 12:04:50.646 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:04:50.652 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:04:50.666 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:04:50.684 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:04:50.686 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:04:50.694 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:04:50.712 +02:00 [INF] DAL querying products finished in 165332 ticks.
+2024-09-04 12:04:50.713 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:04:50.865 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:04:50.930 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 258.4145ms
+2024-09-04 12:04:50.932 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:04:50.935 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 288.7632ms
+2024-09-04 12:06:16.296 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:06:16.298 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:06:16.298 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:06:16.300 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:06:16.300 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:06:16.301 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:06:16.340 +02:00 [INF] DAL querying products finished in 386957 ticks.
+2024-09-04 12:06:16.342 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:06:16.344 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:06:16.347 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 48.1824ms
+2024-09-04 12:06:16.349 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:06:16.349 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 53.6074ms
+2024-09-04 12:06:18.146 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:06:18.149 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:06:18.149 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:06:18.152 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:06:18.152 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:06:18.153 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:06:18.154 +02:00 [INF] DAL querying products finished in 6307 ticks.
+2024-09-04 12:06:18.154 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:06:18.155 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:06:18.160 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 9.3864ms
+2024-09-04 12:06:18.162 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:06:18.164 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 18.3265ms
+2024-09-04 12:06:18.856 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:06:18.859 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:06:18.860 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:06:18.861 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:06:18.862 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:06:18.862 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:06:18.863 +02:00 [INF] DAL querying products finished in 5877 ticks.
+2024-09-04 12:06:18.864 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:06:18.865 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:06:18.868 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 6.3701ms
+2024-09-04 12:06:18.870 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:06:18.871 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 15.0407ms
+2024-09-04 12:06:36.533 +02:00 [INF] Data has been seeded.
+2024-09-04 12:06:36.919 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 12:06:36.921 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 12:06:36.923 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 12:06:36.924 +02:00 [INF] Hosting environment: Development
+2024-09-04 12:06:36.925 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 12:06:38.814 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 12:06:39.010 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 199.2682ms
+2024-09-04 12:06:39.024 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 12:06:39.028 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-09-04 12:06:39.031 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.5265ms
+2024-09-04 12:06:39.061 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 33.2759ms
+2024-09-04 12:06:39.089 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 12:06:39.177 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 87.3871ms
+2024-09-04 12:06:47.045 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:06:47.050 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:06:47.065 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:06:47.084 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:06:47.087 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:06:47.097 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:06:47.115 +02:00 [INF] DAL querying products finished in 165574 ticks.
+2024-09-04 12:06:47.117 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:06:47.275 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:06:47.347 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 275.3631ms
+2024-09-04 12:06:47.349 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:06:47.353 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 308.2917ms
+2024-09-04 12:09:46.719 +02:00 [INF] Data has been seeded.
+2024-09-04 12:09:47.074 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 12:09:47.077 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 12:09:47.077 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 12:09:47.078 +02:00 [INF] Hosting environment: Development
+2024-09-04 12:09:47.079 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 12:09:48.937 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 12:09:49.138 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 204.1861ms
+2024-09-04 12:09:49.154 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 12:09:49.158 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-09-04 12:09:49.162 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.3879ms
+2024-09-04 12:09:49.192 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.0073ms
+2024-09-04 12:09:49.223 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 12:09:49.308 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 85.6731ms
+2024-09-04 12:10:06.289 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:10:06.295 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:10:06.310 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:10:06.329 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:10:06.331 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:10:06.339 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:10:06.356 +02:00 [INF] DAL querying products finished in 161560 ticks.
+2024-09-04 12:10:06.357 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:10:06.508 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:10:06.574 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 258.1861ms
+2024-09-04 12:10:06.576 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:10:06.579 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 290.3763ms
+2024-09-04 12:10:19.894 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:10:19.896 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:10:19.897 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:10:19.898 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:10:19.899 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:10:19.900 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:10:19.940 +02:00 [INF] DAL querying products finished in 392696 ticks.
+2024-09-04 12:10:19.941 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:10:19.943 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:10:19.947 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 49.6609ms
+2024-09-04 12:10:19.949 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:10:19.950 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 56.4574ms
+2024-09-04 12:10:22.376 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:10:22.378 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:10:22.379 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:10:22.381 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:10:22.382 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:10:22.382 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:10:22.386 +02:00 [INF] DAL querying products finished in 6999 ticks.
+2024-09-04 12:10:22.386 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:10:22.387 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:10:22.391 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 10.6509ms
+2024-09-04 12:10:22.392 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:10:22.393 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 17.0206ms
+2024-09-04 12:12:35.283 +02:00 [INF] Data has been seeded.
+2024-09-04 12:12:35.684 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 12:12:35.687 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 12:12:35.688 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 12:12:35.689 +02:00 [INF] Hosting environment: Development
+2024-09-04 12:12:35.690 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 12:12:37.551 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 12:12:37.743 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 194.8643ms
+2024-09-04 12:12:37.760 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 12:12:37.765 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-09-04 12:12:37.768 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.1116ms
+2024-09-04 12:12:37.794 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.6728ms
+2024-09-04 12:12:37.827 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 12:12:37.916 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 88.9918ms
+2024-09-04 12:12:46.639 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:12:46.646 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:12:46.661 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:12:46.680 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:12:46.681 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:12:46.690 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:12:46.708 +02:00 [INF] DAL querying products finished in 170067 ticks.
+2024-09-04 12:12:46.709 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:12:46.864 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:12:46.933 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 266.87ms
+2024-09-04 12:12:46.935 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:12:46.938 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 299.8821ms
+2024-09-04 12:13:48.855 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:13:48.857 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:13:48.858 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:13:48.859 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:13:48.860 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:13:48.860 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:13:48.899 +02:00 [INF] DAL querying products finished in 382887 ticks.
+2024-09-04 12:13:48.900 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:13:48.903 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:13:48.906 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 47.5723ms
+2024-09-04 12:13:48.908 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:13:48.908 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 56.5185ms
+2024-09-04 12:14:30.757 +02:00 [INF] Data has been seeded.
+2024-09-04 12:14:31.104 +02:00 [INF] Now listening on: https://localhost:7055
+2024-09-04 12:14:31.106 +02:00 [INF] Now listening on: http://localhost:5287
+2024-09-04 12:14:31.107 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-04 12:14:31.108 +02:00 [INF] Hosting environment: Development
+2024-09-04 12:14:31.108 +02:00 [INF] Content root path: C:\Projects\Internal - .NET\Moravia Academy\DesignPatternsLessons\Logging
+2024-09-04 12:14:32.984 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/index.html - null null
+2024-09-04 12:14:33.185 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/index.html - 200 null text/html;charset=utf-8 204.5206ms
+2024-09-04 12:14:33.199 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-04 12:14:33.206 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/_vs/browserLink - null null
+2024-09-04 12:14:33.208 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 9.6633ms
+2024-09-04 12:14:33.238 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.879ms
+2024-09-04 12:14:33.266 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - null null
+2024-09-04 12:14:33.350 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7055/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 84.879ms
+2024-09-04 12:14:40.745 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7055/product - null null
+2024-09-04 12:14:40.752 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:14:40.768 +02:00 [INF] Route matched with {action = "Get", controller = "Product"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Logging.Data.Api.Model.Product] Get(System.String) on controller Logging.Api.Controllers.ProductController (Logging.Api).
+2024-09-04 12:14:40.787 +02:00 [INF] Called product get with 'All' category
+2024-09-04 12:14:40.789 +02:00 [INF] Getting enumeration of products with All category.
+2024-09-04 12:14:40.798 +02:00 [INF] Getting products with All category from warehouse
+2024-09-04 12:14:40.815 +02:00 [INF] DAL querying products finished in 163554 ticks.
+2024-09-04 12:14:40.816 +02:00 [INF] Getting products2 with All category from warehouse
+2024-09-04 12:14:40.972 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Logging.Data.Api.Model.Product, Logging.Data.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-04 12:14:41.038 +02:00 [INF] Executed action Logging.Api.Controllers.ProductController.Get (Logging.Api) in 264.719ms
+2024-09-04 12:14:41.040 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.ProductController.Get (Logging.Api)'
+2024-09-04 12:14:41.044 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7055/product - 200 null application/json; charset=utf-8 298.5591ms

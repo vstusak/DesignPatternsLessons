@@ -77,7 +77,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Domain", "Logging.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Data", "Logging.Data\Logging.Data.csproj", "{82FCDA83-A663-45E4-9926-5D5373A6A9F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.WebApp", "Logging.WebApp\Logging.WebApp.csproj", "{3BF9FD01-C52F-4719-ABB2-4BE56B20922A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.WebApp", "Logging.WebApp\Logging.WebApp.csproj", "{3BF9FD01-C52F-4719-ABB2-4BE56B20922A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Data.Api", "Logging.Data.Api\Logging.Data.Api.csproj", "{4249B3DD-4FB1-48EE-A1F3-12FCDA0F6B27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -233,6 +235,10 @@ Global
 		{3BF9FD01-C52F-4719-ABB2-4BE56B20922A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BF9FD01-C52F-4719-ABB2-4BE56B20922A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BF9FD01-C52F-4719-ABB2-4BE56B20922A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4249B3DD-4FB1-48EE-A1F3-12FCDA0F6B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4249B3DD-4FB1-48EE-A1F3-12FCDA0F6B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4249B3DD-4FB1-48EE-A1F3-12FCDA0F6B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4249B3DD-4FB1-48EE-A1F3-12FCDA0F6B27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -242,6 +248,7 @@ Global
 		{E6420947-1B01-4F96-93F6-28B8C5D44DA2} = {73747857-3221-490F-BE30-7993E1B87C3F}
 		{82FCDA83-A663-45E4-9926-5D5373A6A9F5} = {73747857-3221-490F-BE30-7993E1B87C3F}
 		{3BF9FD01-C52F-4719-ABB2-4BE56B20922A} = {73747857-3221-490F-BE30-7993E1B87C3F}
+		{4249B3DD-4FB1-48EE-A1F3-12FCDA0F6B27} = {73747857-3221-490F-BE30-7993E1B87C3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9628AC0A-8791-4D56-A8C3-C96586502232}

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Logging.Data;
-using Logging.Data.Model;
+using Logging.Data.Api.Model;
 using Microsoft.Extensions.Logging;
 
 namespace Logging.Domain

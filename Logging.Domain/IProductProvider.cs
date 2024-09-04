@@ -1,4 +1,4 @@
-﻿using Logging.Data.Model;
+﻿using Logging.Data.Api.Model;
 
 namespace Logging.Domain
 {
