@@ -1,6 +1,6 @@
-using Logging.Data;
+using PokemonStore.Data;
 
-namespace Logging.Domain;
+namespace PokemonStore.Domain;
 
 public class PokemonProvider : IPokemonProvider
 {

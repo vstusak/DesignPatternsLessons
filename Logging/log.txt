@@ -2,11 +2,7 @@ Microsoft.Hosting.Lifetime [Information]: Now listening on: https://localhost:72
 Microsoft.Hosting.Lifetime [Information]: Now listening on: http://localhost:5151
 Microsoft.Hosting.Lifetime [Information]: Application started. Press Ctrl+C to shut down.
 Microsoft.Hosting.Lifetime [Information]: Hosting environment: Development
-Microsoft.Hosting.Lifetime [Information]: Content root path: C:\Users\rondrejka\Desktop\DesignPatternsLessons\Logging
-Logging.Api.Controllers.PokemonController [Information]: Pokemon request called with pokemonType: Grass
-DataAccessLayer [Information]: Executed query .param set @__pokemonType_0 'Grass'
-
-SELECT "p"."Id", "p"."Attack", "p"."Defense", "p"."Generation", "p"."HP", "p"."Legendary", "p"."Name", "p"."Speed", "p"."SpeedAttack", "p"."SpeedDefense", "p"."Total", "p"."Type1", "p"."Type2"
-FROM "Pokemons" AS "p"
-WHERE "p"."Type1" = @__pokemonType_0
-DataAccessLayer [Information]: DAL querying pokemons finished in 628545 ticks
+Microsoft.Hosting.Lifetime [Information]: Content root path: C:\DevGit\DesignPatternsLessons\Logging
+Logging.Api.Controllers.PokemonController [Information]: Pokemon request called with id: 114
+Logging.Api.Controllers.PokemonController [Information]: Pokemon request called with id: 1114
+Logging.Api.Controllers.PokemonController [Warning]: Pokemon not found with id: 1114

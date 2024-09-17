@@ -17,13 +17,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Academy.Common\Academy.Common.csproj" />
-    <ProjectReference Include="..\Logging.Data\Logging.Data.csproj" />
-    <ProjectReference Include="..\Logging.Domain\Logging.Domain.csproj" />
+    <ProjectReference Include="..\Logging.Data\PokemonStore.Data.csproj" />
+    <ProjectReference Include="..\Logging.Domain\PokemonStore.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Logging.Data;
+namespace PokemonStore.Data;
 
 public class PokemonRepository : IPokemonRepository
 {

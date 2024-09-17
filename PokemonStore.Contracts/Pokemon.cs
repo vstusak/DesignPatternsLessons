@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Logging.Data;
+namespace PokemonStore.Contracts;
 
 public class Pokemon
 {

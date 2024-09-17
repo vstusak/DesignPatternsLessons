@@ -1,8 +1,8 @@
-using Logging.Data;
-using Logging.Domain;
 using Microsoft.AspNetCore.Mvc;
+using PokemonStore.Data;
+using PokemonStore.Domain;
 
-namespace Logging.Api.Controllers;
+namespace PokemonStore.WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]

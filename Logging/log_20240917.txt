@@ -1,0 +1,39 @@
+2024-09-17 13:30:48.732 +02:00 [INF] Now listening on: https://localhost:7246
+2024-09-17 13:30:48.803 +02:00 [INF] Now listening on: http://localhost:5151
+2024-09-17 13:30:48.814 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-17 13:30:48.819 +02:00 [INF] Hosting environment: Development
+2024-09-17 13:30:48.822 +02:00 [INF] Content root path: C:\DevGit\DesignPatternsLessons\Logging
+2024-09-17 13:30:51.626 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7246/swagger - null null
+2024-09-17 13:30:52.029 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7246/swagger - 404 0 null 410.3577ms
+2024-09-17 13:30:52.041 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7246/swagger, Response status code: 404
+2024-09-17 13:31:38.638 +02:00 [INF] Now listening on: https://localhost:7246
+2024-09-17 13:31:38.705 +02:00 [INF] Now listening on: http://localhost:5151
+2024-09-17 13:31:38.712 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-17 13:31:38.716 +02:00 [INF] Hosting environment: Development
+2024-09-17 13:31:38.720 +02:00 [INF] Content root path: C:\DevGit\DesignPatternsLessons\Logging
+2024-09-17 13:31:39.685 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7246/swagger - null null
+2024-09-17 13:31:40.033 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7246/swagger - 404 0 null 357.7949ms
+2024-09-17 13:31:40.041 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7246/swagger, Response status code: 404
+2024-09-17 13:33:03.177 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5151/pokemon/114 - null null
+2024-09-17 13:33:03.248 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5151/pokemon/114 - 307 0 null 71.7885ms
+2024-09-17 13:33:03.288 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7246/pokemon/114 - null null
+2024-09-17 13:33:03.295 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.PokemonController.Get (Logging.Api)'
+2024-09-17 13:33:03.325 +02:00 [INF] Route matched with {action = "Get", controller = "Pokemon"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int32) on controller Logging.Api.Controllers.PokemonController (Logging.Api).
+2024-09-17 13:33:03.349 +02:00 [INF] Pokemon request called with id: 114
+2024-09-17 13:33:03.351 +02:00 [INF] Retrieving pokemon with ID 114
+2024-09-17 13:33:03.711 +02:00 [INF] Executing OkObjectResult, writing value of type 'Logging.Data.Pokemon'.
+2024-09-17 13:33:03.807 +02:00 [INF] Executed action Logging.Api.Controllers.PokemonController.Get (Logging.Api) in 467.4989ms
+2024-09-17 13:33:03.811 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.PokemonController.Get (Logging.Api)'
+2024-09-17 13:33:03.821 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7246/pokemon/114 - 200 null application/json; charset=utf-8 532.7489ms
+2024-09-17 13:33:21.957 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5151/pokemon/1114 - null null
+2024-09-17 13:33:21.960 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5151/pokemon/1114 - 307 0 null 3.014ms
+2024-09-17 13:33:21.961 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7246/pokemon/1114 - null null
+2024-09-17 13:33:21.963 +02:00 [INF] Executing endpoint 'Logging.Api.Controllers.PokemonController.Get (Logging.Api)'
+2024-09-17 13:33:21.964 +02:00 [INF] Route matched with {action = "Get", controller = "Pokemon"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get(Int32) on controller Logging.Api.Controllers.PokemonController (Logging.Api).
+2024-09-17 13:33:21.968 +02:00 [INF] Pokemon request called with id: 1114
+2024-09-17 13:33:21.969 +02:00 [INF] Retrieving pokemon with ID 1114
+2024-09-17 13:33:22.065 +02:00 [WRN] Pokemon not found with id: 1114
+2024-09-17 13:33:22.068 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-09-17 13:33:22.095 +02:00 [INF] Executed action Logging.Api.Controllers.PokemonController.Get (Logging.Api) in 129.9795ms
+2024-09-17 13:33:22.097 +02:00 [INF] Executed endpoint 'Logging.Api.Controllers.PokemonController.Get (Logging.Api)'
+2024-09-17 13:33:22.099 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7246/pokemon/1114 - 404 null application/problem+json; charset=utf-8 138.2153ms

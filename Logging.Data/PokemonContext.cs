@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Text.Json;
 
-namespace Logging.Data;
+namespace PokemonStore.Data;
 
 public class PokemonContext : DbContext
 {

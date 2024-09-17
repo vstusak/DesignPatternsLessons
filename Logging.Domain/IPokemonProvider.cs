@@ -1,7 +1,7 @@
-﻿using Logging.Data;
-using Logging.Data.enums;
+﻿using PokemonStore.Data.enums;
+using PokemonStore.Data;
 
-namespace Logging.Domain
+namespace PokemonStore.Domain
 {
     public interface IPokemonProvider
     {

@@ -1,4 +1,4 @@
-﻿namespace Logging.Data;
+﻿namespace PokemonStore.Data;
 
 public interface IPokemonRepository
 {

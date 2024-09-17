@@ -1,0 +1,2 @@
+- ToDo use Serilog (show Risha)
+- Fix issue caused by moving Pokemon.cs

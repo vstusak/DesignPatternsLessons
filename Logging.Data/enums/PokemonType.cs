@@ -1,4 +1,4 @@
-﻿namespace Logging.Data.enums
+﻿namespace PokemonStore.Data.enums
 {
     public enum PokemonType
     {

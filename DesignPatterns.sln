@@ -63,15 +63,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet_8_playground", "DotN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBox", "TestBox\TestBox.csproj", "{5DF47DDC-FCC3-4D13-A12A-8FEA17DB72F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Api", "Logging\Logging.Api.csproj", "{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.WebApi", "Logging\PokemonStore.WebApi.csproj", "{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging project", "Logging project", "{7C4438F6-0356-4B98-8A12-27B622038C81}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pokemon Store", "Pokemon Store", "{7C4438F6-0356-4B98-8A12-27B622038C81}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Domain", "Logging.Domain\Logging.Domain.csproj", "{66EC751E-2238-4784-8B64-DC4304148BAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.Domain", "Logging.Domain\PokemonStore.Domain.csproj", "{66EC751E-2238-4784-8B64-DC4304148BAE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Data", "Logging.Data\Logging.Data.csproj", "{FB65C362-CDED-4CE9-959C-798944528117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.Data", "Logging.Data\PokemonStore.Data.csproj", "{FB65C362-CDED-4CE9-959C-798944528117}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academy.Common", "Academy.Common\Academy.Common.csproj", "{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Academy.Common", "Academy.Common\Academy.Common.csproj", "{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonStore.WebApp", "PokemonStore.WebApp\PokemonStore.WebApp.csproj", "{FA958D54-4936-4B1A-BA78-165B59B3E0F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonStore.Contracts", "PokemonStore.Contracts\PokemonStore.Contracts.csproj", "{E7A23979-ACEC-4159-8957-BB2AACDA326D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -215,6 +219,14 @@ Global
 		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA958D54-4936-4B1A-BA78-165B59B3E0F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA958D54-4936-4B1A-BA78-165B59B3E0F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA958D54-4936-4B1A-BA78-165B59B3E0F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA958D54-4936-4B1A-BA78-165B59B3E0F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A23979-ACEC-4159-8957-BB2AACDA326D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A23979-ACEC-4159-8957-BB2AACDA326D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A23979-ACEC-4159-8957-BB2AACDA326D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A23979-ACEC-4159-8957-BB2AACDA326D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -224,6 +236,8 @@ Global
 		{66EC751E-2238-4784-8B64-DC4304148BAE} = {7C4438F6-0356-4B98-8A12-27B622038C81}
 		{FB65C362-CDED-4CE9-959C-798944528117} = {7C4438F6-0356-4B98-8A12-27B622038C81}
 		{F253F5A1-A4D1-4F38-AD40-FFEF128CF4D0} = {7C4438F6-0356-4B98-8A12-27B622038C81}
+		{FA958D54-4936-4B1A-BA78-165B59B3E0F8} = {7C4438F6-0356-4B98-8A12-27B622038C81}
+		{E7A23979-ACEC-4159-8957-BB2AACDA326D} = {7C4438F6-0356-4B98-8A12-27B622038C81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {481A5F37-6076-4268-92F1-D670B22C04AE}
