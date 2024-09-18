@@ -42,5 +42,22 @@ namespace Logging.Api.Controllers
 
             return Ok(product);
         }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            _logger.LogDebug($"Trying to delete product '{id}'.");
+
+            try
+            {
+                _productProvider.DeleteProduct(id);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Cannot delete product '{id}'.", e);
+            }
+
+            return Ok();
+        }
     }
 }
