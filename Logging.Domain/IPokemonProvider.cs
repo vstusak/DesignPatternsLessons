@@ -1,4 +1,5 @@
-﻿using PokemonStore.Data.enums;
+﻿using PokemonStore.Contracts;
+using PokemonStore.Data.enums;
 using PokemonStore.Data;
 
 namespace PokemonStore.Domain

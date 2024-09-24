@@ -1,26 +1,25 @@
-﻿namespace PokemonStore.Data.enums
+﻿namespace PokemonStore.Data.enums;
+
+public enum PokemonType
 {
-    public enum PokemonType
-    {
-        Undefined,
-        Grass,
-        Fire,
-        Water,
-        Bug,
-        Normal,
-        Poison,
-        Electric,
-        Ground,
-        Fairy,
-        Fighting,
-        Psychic,
-        Rock,
-        Ghost,
-        Ice,
-        Dragon,
-        Dark,
-        Steel,
-        Flying,
-        All
-    }
+    Undefined,
+    Grass,
+    Fire,
+    Water,
+    Bug,
+    Normal,
+    Poison,
+    Electric,
+    Ground,
+    Fairy,
+    Fighting,
+    Psychic,
+    Rock,
+    Ghost,
+    Ice,
+    Dragon,
+    Dark,
+    Steel,
+    Flying,
+    All
 }

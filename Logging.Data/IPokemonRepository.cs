@@ -1,4 +1,6 @@
-﻿namespace PokemonStore.Data;
+﻿using PokemonStore.Contracts;
+
+namespace PokemonStore.Data;
 
 public interface IPokemonRepository
 {

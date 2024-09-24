@@ -1,3 +1,4 @@
+using PokemonStore.Contracts;
 using PokemonStore.Data;
 
 namespace PokemonStore.Domain;

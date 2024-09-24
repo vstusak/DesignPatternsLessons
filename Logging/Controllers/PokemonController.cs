@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PokemonStore.Contracts;
 using PokemonStore.Data;
 using PokemonStore.Domain;
 

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Text.Json;
+using PokemonStore.Contracts;
 
 namespace PokemonStore.Data;
 
