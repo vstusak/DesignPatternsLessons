@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Logging.Data.Api\ProductStore.Contracts.csproj" />
     <ProjectReference Include="..\Logging.Domain\ProductStore.Domain.csproj" />
   </ItemGroup>
 

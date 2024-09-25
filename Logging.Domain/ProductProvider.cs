@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Logging.Data;
 using Logging.Data.Api.Model;
 using Microsoft.Extensions.Logging;
+using ProductStore.Domain;
 
 namespace Logging.Domain
 {
@@ -30,6 +31,13 @@ namespace Logging.Domain
         {
             _logger.LogInformation($"Getting product with {productId} Id.");
             return _productRepository.Get(productId);
+        }
+
+        public void DeleteProduct(int id)
+        {
+            _logger.LogInformation($"Deleting product wiht {id} Id.");
+            _productRepository.Delete(id);
+
         }
 
         private IEnumerable<Product> GetAllProducts()

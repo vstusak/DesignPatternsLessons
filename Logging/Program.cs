@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Logging.Api.CommonLoggers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using ProductStore.Domain;
 using Serilog;
 
 namespace Logging.Api

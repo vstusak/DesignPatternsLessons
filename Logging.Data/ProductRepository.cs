@@ -42,5 +42,14 @@ namespace Logging.Data
 
             return q;
         }
+
+        public void Delete(int id)
+        {
+            _logger.LogInformation($"Removing product with {id} Id.");
+
+            var count =_warehouseContext.Products.Where(p => p.Id == id).ExecuteDelete();
+
+            _logger.LogInformation($"Deleted count={count} for product with {id} Id.");
+        }
     }
 }
