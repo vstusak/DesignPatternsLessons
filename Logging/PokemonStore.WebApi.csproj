@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Academy.Common\Academy.Common.csproj" />
     <ProjectReference Include="..\Logging.Data\PokemonStore.Data.csproj" />
     <ProjectReference Include="..\Logging.Domain\PokemonStore.Domain.csproj" />
   </ItemGroup>

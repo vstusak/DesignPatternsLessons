@@ -1,8 +1,9 @@
-- ToDo use Serilog (show Risha) => DONE
-- Fix issue caused by moving Pokemon.cs
+﻿- ToDo use Serilog (show Risha) => DONE
+- Fix issue caused by moving Pokemon.cs => DONE
 - Create page index.cshtml - CRUD operations on pokemons
 - Logging.API - create randomly failing endpoint
 - Logging.WebApp - use Polly library to secure communication with failing API
 - Test coverage - increase from 0% to 20%
+- Write own test runner
 - Move data from file to DB - docker
 - Use Microsoft Aspire

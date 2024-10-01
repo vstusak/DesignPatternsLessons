@@ -1,10 +1,32 @@
 ﻿@page
+@Model.Pokemons
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type 1</th>
+                <th>Type 2</th>
+                <th>Attack</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pokemon in Model.Pokemons)
+            {
+                <tr>
+                    <td>@pokemon.Id</td>
+                    <td>@pokemon.Name</td>
+                    <td>@pokemon.Type1</td>
+                    <td>@pokemon.Type2</td>
+                    <td>@pokemon.Attack</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
