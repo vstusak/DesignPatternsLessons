@@ -26,22 +26,18 @@ namespace Logging.Api
 
             // Add services to the container.
 
-            builder.Logging.ClearProviders();
+            //builder.Logging.ClearProviders();
 
             //custom file logging, doesn't work very well
             //builder.Services.AddSingleton<ILoggerProvider, FileLoggerProvider>();
             //builder.Services.AddSingleton<IFileLoggerStreamWriter, FileLoggerStreamWriter>();
 
-            //TODO: Try to make a database logger
-            //TODO: Sensitive logging recap
+            //var serilog = new LoggerConfiguration()
+            //    .WriteTo.Console()
+            //    .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day)
+            //    .CreateLogger();
 
-            //TODO: setup filters for serilog
-            var serilog = new LoggerConfiguration()
-                .WriteTo.Console()
-                .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day)
-                .CreateLogger();
-
-            builder.Logging.AddSerilog(serilog);
+            //builder.Logging.AddSerilog(serilog);
 
             builder.Services.AddDbContext<WarehouseContext>();
 

@@ -40,7 +40,13 @@ namespace Logging.Data
         public bool DatabaseExists()
         {
             return Database.CanConnect()
-                   && Database.GetService<IRelationalDatabaseCreator>().HasTables();
+                   && Database.GetService<IRelationalDatabaseCreator>().HasTables()
+                   && HasData();
+        }
+
+        private bool HasData()
+        {
+            return Products.Any();
         }
     }
 }

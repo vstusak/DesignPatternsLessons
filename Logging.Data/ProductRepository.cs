@@ -45,11 +45,11 @@ namespace Logging.Data
 
         public void Delete(int id)
         {
-            _logger.LogInformation($"Removing product with {id} Id.");
+            _databaseLogger.LogInformation($"Deleting product with Id {id}.");
 
             var count =_warehouseContext.Products.Where(p => p.Id == id).ExecuteDelete();
 
-            _logger.LogInformation($"Deleted count={count} for product with {id} Id.");
+            _databaseLogger.LogInformation($"Deleted count={count} for product with Id {id}.");
         }
     }
 }
