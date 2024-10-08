@@ -63,17 +63,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet_8_playground", "DotN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBox", "TestBox\TestBox.csproj", "{5DF47DDC-FCC3-4D13-A12A-8FEA17DB72F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.WebApi", "Logging\PokemonStore.WebApi.csproj", "{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.WebApi", "PokemonStore\PokemonStore.WebApi\PokemonStore.WebApi.csproj", "{3FF0350B-B6D0-4D0F-BD83-A9A1D0CFC3A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pokemon Store", "Pokemon Store", "{7C4438F6-0356-4B98-8A12-27B622038C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.Domain", "PokemonStore\PokemonStore.Domain\PokemonStore.Domain.csproj", "{66EC751E-2238-4784-8B64-DC4304148BAE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.Domain", "Logging.Domain\PokemonStore.Domain.csproj", "{66EC751E-2238-4784-8B64-DC4304148BAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.Data", "PokemonStore\PokemonStore.Data\PokemonStore.Data.csproj", "{FB65C362-CDED-4CE9-959C-798944528117}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonStore.Data", "Logging.Data\PokemonStore.Data.csproj", "{FB65C362-CDED-4CE9-959C-798944528117}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonStore.WebApp", "PokemonStore\PokemonStore.WebApp\PokemonStore.WebApp.csproj", "{FA958D54-4936-4B1A-BA78-165B59B3E0F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonStore.WebApp", "PokemonStore.WebApp\PokemonStore.WebApp.csproj", "{FA958D54-4936-4B1A-BA78-165B59B3E0F8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonStore.Contracts", "PokemonStore.Contracts\PokemonStore.Contracts.csproj", "{E7A23979-ACEC-4159-8957-BB2AACDA326D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonStore.Contracts", "PokemonStore\PokemonStore.Contracts\PokemonStore.Contracts.csproj", "{E7A23979-ACEC-4159-8957-BB2AACDA326D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

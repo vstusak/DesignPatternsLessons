@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Logging.Data\PokemonStore.Data.csproj" />
+    <ProjectReference Include="..\PokemonStore.Data\PokemonStore.Data.csproj" />
   </ItemGroup>
 
 </Project>
