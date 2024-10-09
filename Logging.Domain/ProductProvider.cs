@@ -35,7 +35,7 @@ namespace Logging.Domain
 
         public void DeleteProduct(int id)
         {
-            _logger.LogInformation($"Deleting product wiht {id} Id.");
+            _logger.LogInformation($"3-Deleting product with {id} Id.");
             _productRepository.Delete(id);
 
         }

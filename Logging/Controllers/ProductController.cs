@@ -47,7 +47,7 @@ namespace Logging.Api.Controllers
         [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {
-            _logger.LogDebug($"Trying to delete product '{id}'.");
+            _logger.LogDebug($"2-Trying to delete product '{id}'.");
 
             try
             {

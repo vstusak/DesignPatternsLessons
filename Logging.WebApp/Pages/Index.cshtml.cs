@@ -28,6 +28,7 @@ namespace Logging.WebApp.Pages
 
         public async Task OnGetDeleteAsync(int id)
         {
+            _logger.LogInformation($"1-Webapp backend is going to delete id {id} ");
             var apiClient = _httpClientFactory.CreateClient("api");
             apiClient.BaseAddress = new Uri("https://localhost:7055/");
             await apiClient.DeleteAsync($"Product/{id}");

@@ -1,0 +1,20 @@
+﻿@page
+@model ProductStore.WebApp.Pages.EditModel
+@{
+    <div>
+        <form method="post">
+            <div>@Html.LabelFor(m => m.Product.Id) : @Html.ValueFor(m=> m.Product.Id)</div>
+            <div>@Html.LabelFor(m => m.Product.Name) : @Html.TextBoxFor(m => m.Product.Name)</div>
+            <div>
+                <label asp-for="Product.Category"></label>
+                <input asp-for="Product.Category"/>
+            </div>
+            <div>
+                <label asp-for="Product.Price" ></label>
+                <input asp-for="Product.Price"/>
+            </div>
+
+        </form>
+
+    </div>
+}

@@ -25,7 +25,7 @@
                 <td>@p.Name</td>
                 <td>@p.Category</td>
                 <td class="text-end">@string.Format("{0:C}", p.Price)</td>
-                <td><a href="">Edit</a></td>
+                <td><a asp-page="./Edit" asp-route-id="@p.Id">Edit</a></td>
                 <td>
                     <a asp-page-handler="Delete" asp-route-id="@p.Id">Delete</a>
                 </td>
