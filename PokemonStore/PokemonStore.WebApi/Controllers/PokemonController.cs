@@ -39,6 +39,22 @@ public class PokemonController : ControllerBase
         }
 
         return Ok(result);
+    }
 
+    [HttpDelete("delete/{id:int}")]
+    public IActionResult Delete(int id)
+    {
+        _logger.LogInformation($"Pokemon request called with {nameof(id)}: {id}");
+        try
+        {
+            _pokemonProvider.Delete(id);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, $"Can not delete pokemon with id: {id}");
+            return BadRequest();
+        }
+
+        return Ok();
     }
 }

@@ -1,5 +1,4 @@
 ﻿@page
-@Model.Pokemons
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -14,6 +13,7 @@
                 <th>Type 1</th>
                 <th>Type 2</th>
                 <th>Attack</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +25,7 @@
                     <td>@pokemon.Type1</td>
                     <td>@pokemon.Type2</td>
                     <td>@pokemon.Attack</td>
+                    <td><a asp-page-handler="Banan" asp-route-jablko="@pokemon.Id">Delete</a></td>
                 </tr>
             }
         </tbody>

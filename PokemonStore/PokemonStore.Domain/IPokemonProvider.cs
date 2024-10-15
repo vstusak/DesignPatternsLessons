@@ -8,5 +8,6 @@ namespace PokemonStore.Domain
     {
         IEnumerable<Pokemon> GetByPokemonType(string pokemonType);
         Pokemon GetById(int id);
+        void Delete(int id);
     }
 }
