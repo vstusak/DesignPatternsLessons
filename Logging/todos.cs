@@ -1,5 +1,5 @@
-﻿// Resolve logging to console for delete (we can't see anything) - on filters warning and higher was allowed
-// ToDo: Resolve Edit - add submit and save new data.
+﻿// --Resolve logging to console for delete (we can't see anything) - on filters warning and higher was allowed
+// ToDo: Resolve Edit - add submit and save new data. We are api controller now. Continue with repo
 // Finish index.cshtml - CRUD operations on products
 //check log for the delete operation.
 // Logging.API - create randomly failing endpoint

@@ -60,5 +60,11 @@ namespace Logging.Api.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        public IActionResult Post(Product product)
+        { 
+            return Ok(product);
+        }
     }
 }

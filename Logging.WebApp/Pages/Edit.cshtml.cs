@@ -24,5 +24,13 @@ namespace ProductStore.WebApp.Pages
             var response = await apiClient.GetAsync($"Product/{id}");
             Product = await response.Content.ReadFromJsonAsync<Product>() ?? throw new ArgumentException($"{id} id not found");
         }
+
+        public async Task OnPost(Product product)
+        {
+            var apiClient = _httpClientFactory.CreateClient("api");
+            apiClient.BaseAddress = new Uri("https://localhost:7055/");
+            //var content = New
+            await apiClient.PostAsJsonAsync<Product>("Product/",product);
+        }
     }
 }
