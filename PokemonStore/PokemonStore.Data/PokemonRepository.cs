@@ -49,4 +49,12 @@ public class PokemonRepository : IPokemonRepository
         _logger.LogInformation("Retrieving pokemon with ID {PokemonId}", id);
         return _pokemonContext.Pokemons.Find(id);
     }
+
+    public void Delete(int id)
+    {
+        _logger.LogInformation("Deleting pokemon with ID {PokemonId}", id);
+        _pokemonContext.Pokemons.Where(p => p.Id == id).ExecuteDelete();
+
+        //TODO Handle exception
+    }
 }

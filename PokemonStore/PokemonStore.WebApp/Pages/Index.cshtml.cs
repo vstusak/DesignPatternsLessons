@@ -27,7 +27,7 @@ namespace PokemonStore.WebApp.Pages
         {
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:7246/");
-            var response = await client.GetAsync("Pokemon");
+            var response = await client.GetAsync($"Pokemon/{jablko}");
             Pokemons = await response.Content.ReadFromJsonAsync<List<Pokemon>>() ?? new();
         }
     }

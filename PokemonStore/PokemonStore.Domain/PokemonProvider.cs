@@ -27,4 +27,9 @@ public class PokemonProvider : IPokemonProvider
     {
         return _pokemonRepository.GetById(id);
     }
+
+    public void Delete(int id)
+    {
+        _pokemonRepository.Delete(id);
+    }
 }

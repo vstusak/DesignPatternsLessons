@@ -9,4 +9,5 @@ public interface IPokemonRepository
     IEnumerable<Pokemon> GetByType(string pokemonType);
 
     Pokemon? GetById(int id);
+    void Delete(int id);
 }
