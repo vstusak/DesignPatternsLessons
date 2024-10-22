@@ -64,7 +64,18 @@ namespace Logging.Api.Controllers
         [HttpPost]
         public IActionResult Post(Product product)
         { 
-            return Ok(product);
+            _logger.LogDebug($"2-Trying to add/update product.");
+
+            try
+            {
+                _productProvider.AddOrUpdateProduct(product);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Cannot add/update product.", e);
+            }
+
+            return Ok();
         }
     }
 }

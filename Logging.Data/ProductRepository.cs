@@ -3,6 +3,7 @@ using Logging.Data.Api.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
+
 namespace Logging.Data
 {
     public class ProductRepository: IProductRepository    
@@ -50,6 +51,26 @@ namespace Logging.Data
             var count =_warehouseContext.Products.Where(p => p.Id == id).ExecuteDelete();
 
             _databaseLogger.LogInformation($"5-Deleted count={count} for product with Id {id}.");
+        }
+
+        public void AddOrUpdate(Product product)
+        {
+            _databaseLogger.LogInformation($"Add/Update Product");
+            _warehouseContext.Products.Update(product);
+
+            //var entity = _warehouseContext.Products.SingleOrDefault(p => p.Id == product.Id);
+            //if (entity != null)
+            //{
+            //    _warehouseContext.Products.Update(product);
+            //}
+            //else
+            //{
+            //    _warehouseContext.Products.Add(product);
+            //}
+
+            //_warehouseContext.Products.Entry(product).State = product.Id == 0 ? EntityState.Added : EntityState.Modified;
+
+            _warehouseContext.SaveChanges();
         }
     }
 }

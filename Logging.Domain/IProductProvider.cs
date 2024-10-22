@@ -7,5 +7,6 @@ namespace ProductStore.Domain
         IEnumerable<Product> GetProductsForCategory(string category);
         Product? GetProduct(int productId);
         void DeleteProduct(int id);
+        void AddOrUpdateProduct(Product product);
     }
 }

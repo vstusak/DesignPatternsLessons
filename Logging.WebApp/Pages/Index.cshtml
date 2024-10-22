@@ -7,6 +7,8 @@
 <div>
     <h1 class="display-4">List of products</h1>
     
+    <a asp-page="./Edit">Add</a>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -25,7 +27,7 @@
                 <td>@p.Name</td>
                 <td>@p.Category</td>
                 <td class="text-end">@string.Format("{0:C}", p.Price)</td>
-                <td><a asp-page="./Edit" asp-route-id="@p.Id">Edit</a></td>
+                <td><a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@p.Id">Edit</a></td>
                 <td>
                     <a asp-page-handler="Delete" asp-route-id="@p.Id">Delete</a>
                 </td>

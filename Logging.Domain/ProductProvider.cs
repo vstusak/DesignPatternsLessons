@@ -39,6 +39,11 @@ namespace Logging.Domain
             _productRepository.Delete(id);
 
         }
+        public void AddOrUpdateProduct(Product product)
+        {
+            _logger.LogInformation($"Add or update product.");
+            _productRepository.AddOrUpdate(product);
+        }
 
         private IEnumerable<Product> GetAllProducts()
         {

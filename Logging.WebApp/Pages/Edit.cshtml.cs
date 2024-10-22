@@ -17,7 +17,14 @@ namespace ProductStore.WebApp.Pages
             _logger = logger;
             _httpClientFactory = httpClientFactory;
         }
-        public async Task OnGet(int id)
+
+        
+        public async Task OnGet()
+        {
+
+        }
+
+        public async Task OnGetEdit(int id)
         {
             var apiClient = _httpClientFactory.CreateClient("api");
             apiClient.BaseAddress = new Uri("https://localhost:7055/");
@@ -31,6 +38,7 @@ namespace ProductStore.WebApp.Pages
             apiClient.BaseAddress = new Uri("https://localhost:7055/");
             //var content = New
             await apiClient.PostAsJsonAsync<Product>("Product/",product);
+            Response.Redirect("/");
         }
     }
 }
