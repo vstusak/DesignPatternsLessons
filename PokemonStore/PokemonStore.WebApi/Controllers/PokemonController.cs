@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PokemonStore.Contracts;
 using PokemonStore.Data;
+using PokemonStore.Data.enums;
 using PokemonStore.Domain;
 
 namespace PokemonStore.WebApi.Controllers;
@@ -41,20 +42,22 @@ public class PokemonController : ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete("delete/{id:int}")]
+    [ProducesResponseType(typeof(IEnumerable<Pokemon>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [HttpDelete("{id:int}")]
     public IActionResult Delete(int id)
     {
         _logger.LogInformation($"Pokemon request called with {nameof(id)}: {id}");
         try
         {
             _pokemonProvider.Delete(id);
+            var result = _pokemonProvider.GetByPokemonType();
+            return Ok(result);
         }
         catch (Exception e)
         {
             _logger.LogError(e, $"Can not delete pokemon with id: {id}");
             return BadRequest();
         }
-
-        return Ok();
     }
 }

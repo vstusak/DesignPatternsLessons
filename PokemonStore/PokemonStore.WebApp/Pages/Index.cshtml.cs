@@ -23,11 +23,11 @@ namespace PokemonStore.WebApp.Pages
             var response = await client.GetAsync("Pokemon");
             Pokemons = await response.Content.ReadFromJsonAsync<List<Pokemon>>() ?? new();
         }
-        public async Task OnGetBanan(int jablko)
+        public async Task OnGetDelete(int id)
         {
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:7246/");
-            var response = await client.GetAsync($"Pokemon/{jablko}");
+            var response = await client.DeleteAsync($"Pokemon/{id}");
             Pokemons = await response.Content.ReadFromJsonAsync<List<Pokemon>>() ?? new();
         }
     }

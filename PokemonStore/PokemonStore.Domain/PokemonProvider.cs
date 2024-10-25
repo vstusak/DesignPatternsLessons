@@ -18,7 +18,7 @@ public class PokemonProvider : IPokemonProvider
     //    return JsonSerializer.Deserialize<IEnumerable<Pokemon>>(content);
     //}
 
-    public IEnumerable<Pokemon> GetByPokemonType(string pokemonType)
+    public IEnumerable<Pokemon> GetByPokemonType(string pokemonType = "All")
     {
         return _pokemonRepository.GetByType(pokemonType);
     }

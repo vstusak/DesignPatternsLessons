@@ -6,7 +6,7 @@ namespace PokemonStore.Domain
 {
     public interface IPokemonProvider
     {
-        IEnumerable<Pokemon> GetByPokemonType(string pokemonType);
+        IEnumerable<Pokemon> GetByPokemonType(string pokemonType = "All");
         Pokemon GetById(int id);
         void Delete(int id);
     }
