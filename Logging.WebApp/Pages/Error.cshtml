@@ -7,12 +7,43 @@
 <h1 class="text-danger">Error.</h1>
 <h2 class="text-danger">An error occurred while processing your request.</h2>
 
-@if (Model.ShowRequestId)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
+
+<p>
+    <strong>HTTP Trace Id:</strong> <code>@Model.TraceId</code>
+</p>
+
+<p>
+    <strong>Activity ID (original request ID):</strong> <code>@Model.CurrentActivity?.Id</code>
+</p>
+
+<p>
+    <strong>Activity Span ID:</strong> <code>@Model.CurrentActivity?.SpanId</code>
+</p>
+
+<p>
+    <strong>Activity Trace ID:</strong> <code>@Model.CurrentActivity?.TraceId</code>
+</p>
+
+<p>
+    <strong>Activity Parent:</strong> <code>@Model.CurrentActivity?.Parent</code>
+</p>
+
+<p>
+    <strong>Activity Parent ID:</strong> <code>@Model.CurrentActivity?.ParentId</code>
+</p>
+
+<p>
+    <strong>Activity Parent Span ID:</strong> <code>@Model.CurrentActivity?.ParentSpanId</code>
+</p>
+
+<p>
+    <strong>Activity Root ID:</strong> <code>@Model.CurrentActivity?.RootId</code>
+</p>
+
+<p>
+    <strong>Activity Kind:</strong> <code>@Model.CurrentActivity?.Kind</code>
+</p>
+
 
 <h3>Development Mode</h3>
 <p>
