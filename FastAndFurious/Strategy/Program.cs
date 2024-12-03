@@ -8,6 +8,8 @@ if (!Enum.TryParse<WeatherType>(Console.ReadLine(), true, out var weatherType))
 
 Console.WriteLine($"You chose: {weatherType}");
 
-DressSelector dressSelector = new DressSelector();
-string dress = dressSelector.GetDress(weatherType);
+var dressSelector = new DressSelector(weatherType);
+var dress = dressSelector.GetDress();
 Console.WriteLine(dress);
+
+// TODO move responsibility of strategy selection into strategies

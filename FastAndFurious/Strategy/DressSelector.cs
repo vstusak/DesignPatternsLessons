@@ -1,69 +1,61 @@
-﻿using System.Diagnostics;
-using Strategy.WeatherStrategies;
+﻿using Strategy.WeatherStrategies;
 
 namespace Strategy;
 
 public class DressSelector
 {
     private IWeatherStrategy _weatherStrategy;
+    private readonly Dictionary<WeatherType, IWeatherStrategy> _weatherStrategies = new();
+
+    public DressSelector() : this(WeatherType.Hot)
+    {
+    }
 
     public DressSelector(WeatherType weatherType)
     {
+        ChangeWeather(weatherType);
+    }
+
+    public void ChangeWeather(WeatherType weatherType)
+    {
+        if (_weatherStrategies.TryGetValue(weatherType, out var strategy))
+        {
+            _weatherStrategy = strategy;
+            return;
+        }
+
         _weatherStrategy = weatherType switch
         {
             WeatherType.Cold => new ColdWeatherStrategy(),
             WeatherType.Hot => new HotWeatherStrategy(),
             WeatherType.Rainy => new RainyWeatherStrategy(),
             WeatherType.Windy => new WindyWeatherStrategy(),
-            //WeatherType.Undefined => throw new ArgumentException($"WeatherType {weatherType} in not supported"),
             _ => throw new ArgumentException($"WeatherType {weatherType} in not supported")
         };
+
+        _weatherStrategies[weatherType] = _weatherStrategy;
     }
 
-    private string GetHeadDress(WeatherType weatherType)
+    public string GetHeadDress()
     {
-        //return weatherType switch
-        //{
-        //    WeatherType.Hot => "Sunglasses",
-        //    WeatherType.Cold => "Beanie",
-        //    WeatherType.Rainy => "Hood",
-        //    WeatherType.Windy => "AntiWindyBeanie",
-        //    _ => throw new ArgumentException($"WeatherType {weatherType} in not supported")
-        //};
+        return _weatherStrategy.GetHeadDress();
     }
 
-    private string GetUpperBodyDress(WeatherType weatherType)
+    public string GetUpperBodyDress()
     {
-        //return weatherType switch
-        //{
-        //    WeatherType.Hot => "T-Shirt",
-        //    WeatherType.Cold => "Jacket",
-        //    WeatherType.Rainy => "Raincoat",
-        //    WeatherType.Windy => "Windbreaker",
-        //    _ => throw new ArgumentException($"WeatherType {weatherType} in not supported")
-        //};
+        return _weatherStrategy.GetUpperBodyDress();
     }
 
-    private string GetLowerBodyDress(WeatherType weatherType)
+    public string GetLowerBodyDress()
     {
-        //return weatherType switch
-        //{
-        //    WeatherType.Hot => "Shorts",
-        //    WeatherType.Cold => "Trousers",
-        //    WeatherType.Rainy => "Swimsuit",
-        //    WeatherType.Windy => "AntiWindyTrousers",
-        //    _ => throw new ArgumentException($"WeatherType {weatherType} in not supported")
-        //};
+        return _weatherStrategy.GetLowerBodyDress();
     }
 
-    public string GetDress(WeatherType weatherType)
+    public string GetDress()
     {
-
-
-        //var headDress = GetHeadDress(weatherType);
-        //var upperBodyDress = GetUpperBodyDress(weatherType);
-        //var lowerBodyDress = GetLowerBodyDress(weatherType);
-        //var dress = $"{headDress}, {upperBodyDress}, {lowerBodyDress}";
-        //return dress;
+        var headDress = GetHeadDress();
+        var upperBodyDress = GetUpperBodyDress();
+        var lowerBodyDress = GetLowerBodyDress();
+        return $"{headDress}, {upperBodyDress}, {lowerBodyDress}";
     }
 }
