@@ -26,6 +26,15 @@ namespace Logging.WebApp.Pages
             Products = await response.Content.ReadFromJsonAsync<List<Product>>();
         }
 
+        public async Task OnGetShowFilterAsync(string filter)
+        {
+            //TODO: Finalize filtering feature with better approach than hidden field
+            var apiClient = _httpClientFactory.CreateClient("api");
+            apiClient.BaseAddress = new Uri("https://localhost:7055/");
+            var response = await apiClient.GetAsync("Product");
+            Products = await response.Content.ReadFromJsonAsync<List<Product>>();
+        }
+
         public async Task OnGetDeleteAsync(int id)
         {
             _logger.LogInformation($"1-Webapp backend is going to delete id {id} ");
