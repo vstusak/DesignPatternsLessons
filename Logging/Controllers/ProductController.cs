@@ -20,6 +20,7 @@ namespace Logging.Api.Controllers
         }
 
         [HttpGet]
+        [HttpGet("{category}")]
         public IEnumerable<Product> Get(string category = "All")
         {
             _logger.LogInformation($"Called product get with '{category}' category");

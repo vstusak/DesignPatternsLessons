@@ -8,12 +8,10 @@
     <h1 class="display-4">List of products</h1>
     
     <a asp-page="./Edit">Add</a>
-    
-    @* TODO: Finalize filtering feature with better approach than hidden field *@
-    <form method="get" asp-page-handler="ShowFilter">
-        Category filter: <input type="text" name="filter" />
-        <input type="hidden" name="handler" value="ShowFilter" />
-        <button type="submit" id="btnApplyFilter">Apply</button>
+
+    <form method="post">
+        Category filter: <input type="text" name="filter"/>
+        <button type="submit" asp-page-handler="ShowFilter">Apply</button>
     </form>
     
 

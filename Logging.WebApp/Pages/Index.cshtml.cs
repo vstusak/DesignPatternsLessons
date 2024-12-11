@@ -26,12 +26,11 @@ namespace Logging.WebApp.Pages
             Products = await response.Content.ReadFromJsonAsync<List<Product>>();
         }
 
-        public async Task OnGetShowFilterAsync(string filter)
+        public async Task OnPostShowFilterAsync(string filter)
         {
-            //TODO: Finalize filtering feature with better approach than hidden field
             var apiClient = _httpClientFactory.CreateClient("api");
             apiClient.BaseAddress = new Uri("https://localhost:7055/");
-            var response = await apiClient.GetAsync("Product");
+            var response = await apiClient.GetAsync($"Product/{filter}");
             Products = await response.Content.ReadFromJsonAsync<List<Product>>();
         }
 

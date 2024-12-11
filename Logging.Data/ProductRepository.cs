@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
+using System.Net;
 using Logging.Data.Api.Model;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -29,6 +31,20 @@ namespace Logging.Data
 
         public IEnumerable<Product> GetForCategory(string category)
         {
+            if (category == "Tom")
+            {
+                var ex = new ApplicationException("Tom error occured");
+                ex.Data.Add("category", category);
+                throw ex;
+            }
+
+            if (category == "Milan")
+            {
+                var ex = new SqliteException("Milan SQL error occured", 551);
+                ex.Data.Add("category", category);
+                throw ex;
+            }
+
             var timer = new Stopwatch();
             
             _logger.LogInformation($"Getting products with {category} category from warehouse");

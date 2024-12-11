@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ProductStore.Domain;
 using Serilog;
+using Hellang.Middleware.ProblemDetails;
+//using Hellang.Middleware.ProblemDetails;
 
 namespace Logging.Api
 {
@@ -38,7 +40,7 @@ namespace Logging.Api
             //    .CreateLogger();
 
             //builder.Logging.AddSerilog(serilog);
-
+            builder.Services.AddProblemDetails();
             builder.Services.AddDbContext<WarehouseContext>();
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -50,6 +52,7 @@ namespace Logging.Api
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+            app.UseProblemDetails();
 
             using (var scope = app.Services.CreateScope())
             {
