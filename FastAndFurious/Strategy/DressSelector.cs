@@ -4,8 +4,8 @@ namespace Strategy;
 
 public class DressSelector
 {
-    private IWeatherStrategy _weatherStrategy;
-    private readonly Dictionary<WeatherType, IWeatherStrategy> _weatherStrategies = new();
+    protected IWeatherStrategy _weatherStrategy;
+    protected Dictionary<WeatherType, IWeatherStrategy> _weatherStrategies = new();
 
     public DressSelector() : this(WeatherType.Hot)
     {

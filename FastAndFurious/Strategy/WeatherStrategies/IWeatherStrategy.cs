@@ -5,5 +5,6 @@
         string GetHeadDress();
         string GetUpperBodyDress();
         string GetLowerBodyDress();
+        bool CanProcess(WeatherType weatherType);
     }
 }

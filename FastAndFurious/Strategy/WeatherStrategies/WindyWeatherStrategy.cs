@@ -16,5 +16,10 @@
         {
             return "AntiWindyTrousers";
         }
+
+        public bool CanProcess(WeatherType weatherType)
+        {
+            return weatherType == WeatherType.Windy;
+        }
     }
 }

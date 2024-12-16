@@ -16,5 +16,10 @@
         {
             return "Shorts";
         }
+
+        public bool CanProcess(WeatherType weatherType)
+        {
+            return weatherType == WeatherType.Hot;
+        }
     }
 }

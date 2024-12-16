@@ -16,5 +16,10 @@
         {
             return "Swimsuit";
         }
+
+        public bool CanProcess(WeatherType weatherType)
+        {
+            return weatherType == WeatherType.Rainy;
+        }
     }
 }
