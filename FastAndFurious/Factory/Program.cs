@@ -1,60 +1,23 @@
-﻿using System.Text;
+﻿using Factory;
 
-// @TODO create factory class to create provider
+var country = DestinationCountry.CZ;
 
-public enum DestinationCountry
+var delivery = new DeliveryInfo
 {
-    Undefined,
-    CZ,
-    SK,
-    GB,
-}
+    Name = "Peter",
+    Surname = "Parker",
+    City = "New York",
+    Street = "Ceska",
+    StreetNumber = "10",
+    PostalCode = "60200",
+    Country = country,
+};
 
-public interface ILabelProvider
-{
-    string RenderLabel(DeliveryInfo deliveryInfo);
-}
+var labelProviderFactory = new LabelProviderFactory();
 
-public class CzLabelProvider : ILabelProvider
-{
-    public string RenderLabel(DeliveryInfo deliveryInfo)
-    {
-        var builder = new StringBuilder();
-        builder.AppendLine($"{deliveryInfo.Name} {deliveryInfo.Surname}");
-        builder.AppendLine($"{deliveryInfo.Street} {deliveryInfo.StreetNumber}");
-        builder.AppendLine($"{deliveryInfo.City}");
-        builder.AppendLine($"{deliveryInfo.PostalCode}");
-        builder.AppendLine($"{deliveryInfo.Country}");
+var provider = labelProviderFactory.GetLabelProvider(country);
 
-        return builder.ToString();
-    }
-}
+var result = provider.RenderLabel(delivery);
 
-public class SkLabelProvider : ILabelProvider
-{
-    public string RenderLabel(DeliveryInfo deliveryInfo)
-    {
-        var builder = new StringBuilder();
-        builder.AppendLine($"{deliveryInfo.Name} {deliveryInfo.Surname}");
-        builder.AppendLine($"{deliveryInfo.Street} {deliveryInfo.StreetNumber}");
-        builder.AppendLine($"{deliveryInfo.PostalCode} {deliveryInfo.City}");
-        builder.AppendLine($"{deliveryInfo.Country}");
+Console.WriteLine(result);
 
-        return builder.ToString();
-    }
-}
-
-public class GbLabelProvider : ILabelProvider
-{
-    public string RenderLabel(DeliveryInfo deliveryInfo)
-    {
-        var builder = new StringBuilder();
-        builder.AppendLine($"{deliveryInfo.Surname} {deliveryInfo.Name}");
-        builder.AppendLine($"{deliveryInfo.Street} {deliveryInfo.StreetNumber}");
-        builder.AppendLine($"{deliveryInfo.City}");
-        builder.AppendLine($"{deliveryInfo.PostalCode}");
-        builder.AppendLine($"{deliveryInfo.Country}");
-
-        return builder.ToString();
-    }
-}

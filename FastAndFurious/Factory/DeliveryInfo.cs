@@ -1,4 +1,6 @@
-﻿public class DeliveryInfo
+﻿using Factory;
+
+public class DeliveryInfo
 {
     public string Name { get; set; }
     public string Surname { get; set; }
