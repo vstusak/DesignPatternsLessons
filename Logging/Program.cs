@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ProductStore.Domain;
 using Serilog;
-using Hellang.Middleware.ProblemDetails;
-//using Hellang.Middleware.ProblemDetails;
 
 namespace Logging.Api
 {
+    using Hellang.Middleware.ProblemDetails;
+    
     public class Program
     {
         public static void Main(string[] args)
@@ -40,7 +40,9 @@ namespace Logging.Api
             //    .CreateLogger();
 
             //builder.Logging.AddSerilog(serilog);
-            builder.Services.AddProblemDetails();
+
+            
+            builder.Services.AddProblemDetails(options => options.IncludeExceptionDetails = (ctx,ex) => false);
             builder.Services.AddDbContext<WarehouseContext>();
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
