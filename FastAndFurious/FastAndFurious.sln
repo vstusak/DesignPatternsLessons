@@ -5,9 +5,11 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Strategy", "Strategy\Strategy.csproj", "{6A968381-72D3-42D8-91EA-D87BE3E168D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy", "Proxy\Proxy.csproj", "{A7CA917D-D4E1-4636-9B36-DE3AF6490CF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proxy", "Proxy\Proxy.csproj", "{A7CA917D-D4E1-4636-9B36-DE3AF6490CF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory", "Factory\Factory.csproj", "{27440087-9F8B-4799-89D3-DAE37EB79DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Factory", "Factory\Factory.csproj", "{27440087-9F8B-4799-89D3-DAE37EB79DA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{7BAE1134-1496-408E-9EA7-1158CF86EBE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{27440087-9F8B-4799-89D3-DAE37EB79DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27440087-9F8B-4799-89D3-DAE37EB79DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27440087-9F8B-4799-89D3-DAE37EB79DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BAE1134-1496-408E-9EA7-1158CF86EBE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BAE1134-1496-408E-9EA7-1158CF86EBE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BAE1134-1496-408E-9EA7-1158CF86EBE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BAE1134-1496-408E-9EA7-1158CF86EBE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
