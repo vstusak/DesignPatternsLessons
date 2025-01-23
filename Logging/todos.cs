@@ -3,7 +3,8 @@
 // Finish index.cshtml - CRUD operations on products - DONE
 // check log for the delete operation. - DONE
 // Logging.API - create randomly failing endpoint - DONE
-// TODO - WebApp : create details of product by Id. Get it from failing endpoint
+// WebApp : create details of product by Id. Get it from failing endpoint - DONE
+// Problem details playground
 // Logging.WebApp - use Polly library to secure communication with failing API
 // Test coverage - increase from 0% to 20%
 // Move data from file to DB - docker

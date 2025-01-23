@@ -3,6 +3,7 @@ using Logging.Data;
 using Logging.Domain;
 using System.Diagnostics;
 using Logging.Api.CommonLoggers;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ProductStore.Domain;
@@ -41,8 +42,22 @@ namespace Logging.Api
 
             //builder.Logging.AddSerilog(serilog);
 
-            
-            builder.Services.AddProblemDetails(options => options.IncludeExceptionDetails = (ctx,ex) => false);
+
+            builder.Services.AddProblemDetails(options =>
+                {
+                    options.IncludeExceptionDetails = (ctx, ex) => false;
+                    options.OnBeforeWriteDetails = (ctx, det) =>
+                    {
+                        if (det.Status == 500)
+                        {
+                            det.Detail = $"API Failed, please contact support w/ TraceId {det.Extensions["traceId"]}.";
+                        }
+                    };
+                    options.Rethrow<SqliteException>(); //TODO: Try w/o Rethrow and fiish the middleware
+                    //options.MapToStatusCode<Exception>(StatusCodes.Status500InternalServerError);
+                }
+            );
+                
             builder.Services.AddDbContext<WarehouseContext>();
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -54,6 +69,7 @@ namespace Logging.Api
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+            app.UseMiddleware<OurExceptionMiddleware>();
             app.UseProblemDetails();
 
             using (var scope = app.Services.CreateScope())
