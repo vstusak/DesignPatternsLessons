@@ -7,6 +7,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ProductStore.Domain;
+using ProductStore.WebApi;
 using Serilog;
 
 namespace Logging.Api
@@ -69,8 +70,10 @@ namespace Logging.Api
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-            app.UseMiddleware<OurExceptionMiddleware>();
+            //app.UseMiddleware<OurExceptionMiddleware>();
             app.UseProblemDetails();
+
+            app.AddRequestResponseLogging();
 
             using (var scope = app.Services.CreateScope())
             {
