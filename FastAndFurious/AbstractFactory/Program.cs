@@ -1,28 +1,72 @@
-﻿public class Card
+﻿
+
+/*
+  Regular customer
+   - Regular account
+   - Debet card
+||
+   - Savings acc
+   - None card
+
+   Authorized customer
+   - Credit account
+   - Credit card
+
+   Businessman
+   - FeesFree acc
+   - Credit card
+
+   Regular -> Debet card (Regular customer)
+   Savings -> None (Regular customer with regular account)
+   Credit -> Credit card (Authorized customer),
+   FeesFree -> Credit card (businessman)
+*/
+
+using AbstractFactory;
+
+var customer = new Customer()
 {
-    public int CardId { get; set; }
-    public CardType Type { get; init; }
-    public int AccountId { get; set; }
-    public string HolderId { get; set; }
+    CustomerType = CustomerType.Regular,
+    Name = "Pepa"
+};
+
+var account = GetAccount(customer.CustomerType);
+
+var card = GetCard(customer.CustomerType);
+
+var customerAccount = new CustomerAccount
+{
+    Account = account,
+    Card = card,
+    Customer = customer
+};
+
+Account GetAccount(CustomerType customerType)
+{
+    switch (customerType)
+    {
+        case CustomerType.Undefined:
+            break;
+        case CustomerType.Regular:
+            break;
+        case CustomerType.Authorized:
+            break;
+        case CustomerType.Businessman:
+            break;
+        default:
+            throw new ArgumentOutOfRangeException(nameof(customerType), customerType, null);
+    }
 }
 
-public class Account
+Card GetCard(CustomerType customerType)
 {
-    public int AccountId { get; set; }
-    public AccountType Type { get; init; }
-    public string HolderId { get; set; }
-}
-
-public enum CardType
-{
-    Credit,
-    Debet
-}
-
-public enum AccountType
-{
-    Regular,
-    Savings,
-    Credit,
-    FeesFree
+    switch (customerType)
+    {
+        case CustomerType.Undefined:
+        case CustomerType.Regular:
+        case CustomerType.Authorized:
+        case CustomerType.Businessman:
+        default:
+            throw new ArgumentOutOfRangeException(nameof(customerType), customerType, null);
+    }
 }
