@@ -3,7 +3,7 @@
 public class Card
 {
     public int CardId { get; set; }
-    public CardType Type { get; init; }
+    public CardType Type { get; set; }
     public int AccountId { get; set; }
-    public string HolderId { get; set; }
+    public int HolderId { get; set; }
 }
