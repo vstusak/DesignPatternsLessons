@@ -12,6 +12,7 @@ public enum CustomerType
 {
     Undefined,
     Regular,
+    RegularSavings,
     Authorized,
     Businessman
 }
