@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace ProductStore.WebApi
 {
@@ -9,26 +10,41 @@ namespace ProductStore.WebApi
             if (!context.Request.Path.Value?.Contains("swagger") ?? false)
             {
                 logger.LogInformation($"{context.Request.Path.ToString()} {context.Request.Method}");
+                logger.LogInformation(UriHelper.GetDisplayUrl(context.Request));
 
-                if (!context.Request.Path.Value?.Contains("Petr") ?? false)
+                if (context.Request.Path.Value?.Contains("Petr") ?? false)
                 {
-                    context.Response.StatusCode = 500;
-                    //TODO: Make some reasonable return value
+                    context.Response.StatusCode = 400;
+                    context.Response.ContentType = "text/plain";
+                    await context.Response.WriteAsync("Petr is not valid.");
+                    return;
                 }
 
                 var streamReader = new StreamReader(context.Request.Body);
-                string requestBody = await streamReader.ReadToEndAsync();
+                var requestBody = await streamReader.ReadToEndAsync();
                 if (!string.IsNullOrEmpty(requestBody))
                 {
                     logger.LogInformation($"Request body: {requestBody}");
                 }
             }
 
-            
-
             await next(context);
 
             //TODO: log response
+            if (!context.Request.Path.Value?.Contains("swagger") ?? false)
+            {
+                if (context.Response.Body.CanRead)
+                {
+                    var responseStreamReader = new StreamReader(context.Response.Body);
+                    var responseBody = await responseStreamReader.ReadToEndAsync();
+                    if (!string.IsNullOrEmpty(responseBody))
+                    {
+                        logger.LogInformation($"Response body: {responseBody}");
+                    }
+
+                    context.Response.Body.Position = 0;
+                }
+            }
         }
     }
 
