@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 
 namespace ProductStore.WebApi
@@ -20,7 +21,7 @@ namespace ProductStore.WebApi
                     return;
                 }
 
-                var streamReader = new StreamReader(context.Request.Body);
+                using var streamReader = new StreamReader(context.Request.Body);
                 var requestBody = await streamReader.ReadToEndAsync();
                 if (!string.IsNullOrEmpty(requestBody))
                 {
@@ -28,21 +29,32 @@ namespace ProductStore.WebApi
                 }
             }
 
-            await next(context);
-
-            //TODO: log response
-            if (!context.Request.Path.Value?.Contains("swagger") ?? false)
+            if (context.Request.Path.Value?.Contains("swagger") ?? false)
             {
-                if (context.Response.Body.CanRead)
+                await next(context);
+            }
+            else {
+                Stream originalBody = context.Response.Body;
+                try
                 {
-                    var responseStreamReader = new StreamReader(context.Response.Body);
-                    var responseBody = await responseStreamReader.ReadToEndAsync();
-                    if (!string.IsNullOrEmpty(responseBody))
-                    {
-                        logger.LogInformation($"Response body: {responseBody}");
-                    }
+                    using var memStream = new MemoryStream();
+                    context.Response.Body = memStream;
+                    
+                    // call to the following middleware 
+                    // response should be produced by one of the following middlewares
+                    await next(context);
 
-                    context.Response.Body.Position = 0;
+                    memStream.Position = 0;
+                    string responseBody = new StreamReader(memStream).ReadToEnd();
+
+                    logger.LogInformation($"Response body: {responseBody}");
+                    memStream.Position = 0;
+                    await memStream.CopyToAsync(originalBody);
+                    Console.WriteLine(responseBody);
+                }
+                finally
+                {
+                    context.Response.Body = originalBody;
                 }
             }
         }

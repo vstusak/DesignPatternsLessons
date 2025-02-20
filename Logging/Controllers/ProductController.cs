@@ -83,6 +83,7 @@ namespace Logging.Api.Controllers
             }
             catch (Exception e)
             {
+                //TODO fix the CA2017 error
                 _logger.LogError($"Cannot delete product '{id}'.", e);
             }
 
@@ -100,7 +101,7 @@ namespace Logging.Api.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"Cannot add/update product.", e);
+                _logger.LogError("Cannot add/update product.", e);
             }
 
             return Ok();
