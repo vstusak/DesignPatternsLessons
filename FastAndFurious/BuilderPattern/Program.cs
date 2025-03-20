@@ -3,12 +3,13 @@
 // director rozhoduje jestli jednoducha nebo full verze
 // seznam knizek v knihovne
 
-using System.Collections;
+using System.Runtime.InteropServices.JavaScript;
+using System.Text;
 
 var outputWriter = new OutputWriter();
 var reportFactory = new ReportFactory(new BookRepository());
-
-outputWriter.Write("1");
+var report = reportFactory.CreateFullReport();
+outputWriter.Write(report);
 
 
 
@@ -17,6 +18,11 @@ public class Book
     public string Author { get; set; }
     public string Name { get; set; }
     public string NumberOfPages { get; set; }
+
+    public override string ToString()
+    {
+        return $"{Name} ({Author}) - {NumberOfPages}";
+    }
 }
 
 
@@ -28,10 +34,25 @@ public class ReportFactory
     {
         _bookRepository = bookRepository;
     }
-    public string CreateReport()
+    public string CreateFullReport()
     {
-        //var books = _bookRepository
-        return null;
+        var books = _bookRepository.GetAllBooks();
+        var builder = new StringBuilder();
+        builder.AppendLine("Hello this is content of our library");
+        builder.AppendLine(new string('-', 30));
+        builder.AppendJoin('\n', books);
+        builder.AppendLine($"\nCollected at {DateTime.Now}");
+
+        return builder.ToString();
+    }
+
+    public string CreateSimpleReport()
+    {
+        var books = _bookRepository.GetAllBooks();
+        var builder = new StringBuilder();
+        builder.AppendJoin('\n', books);
+
+        return builder.ToString();
     }
 }
 
