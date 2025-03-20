@@ -11,17 +11,25 @@ namespace FlyweightPattern
 {
     public class Particle
     {
-        
-        public Color Color { get; set; }
+        private static Particle _instance;
+
         public byte[] Sprite { get; set; }
 
-        public Particle(Color color)
+        private Particle()
         {
             Sprite = new byte[1048 * 1048];
-            Color = color;
         }
 
-        
+        public static Particle GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new Particle();
+            }
+
+            return _instance;
+        }
+
     }
 
 }

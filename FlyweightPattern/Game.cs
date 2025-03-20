@@ -53,44 +53,28 @@ public class Game
 //singleton + factory
 public class MovingParticleFactory
 {
-    private static MovingParticleFactory _instance;
-
-    private MovingParticleFactory()
-    {
-        
-    }
-
-    public static MovingParticleFactory GetInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new MovingParticleFactory();
-        }
-
-        return _instance;
-    }
-
-    private readonly Dictionary<Color, Particle> _particles = new ();
+    //private readonly Dictionary<Color, Particle> _particles = new ();
     
-    public MovingParticle GetMovingParticle(Point point, int vector, int speed, Color color)
+    public MovingParticle GetMovingParticle(Point point, int vector, int speed, Color raster)
 
     {
         var movingParticle = new MovingParticle(
             point,
             vector,
             speed,
-            GetColorParticle(color)
+            Particle.GetInstance(),
+            raster
             );
 
         return movingParticle;
     }
 
-    private Particle GetColorParticle(Color color)
-    {
-        if (!_particles.ContainsKey(color))
-        {
-            _particles.Add(color, new Particle(color));
-        }
-        return _particles[color];
-    }
+    //private Particle GetColorParticle(Color color)
+    //{
+    //    if (!_particles.ContainsKey(color))
+    //    {
+    //        _particles.Add(color, Particle.GetInstance());
+    //    }
+    //    return _particles[color];
+    //}
 }

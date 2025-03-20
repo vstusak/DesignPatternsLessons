@@ -15,19 +15,22 @@ namespace FlyweightPattern
         public int Vector { get; set; }
         public int Speed { get; set; }
         public Particle Particle { get; }
+        public Color Raster { get; set; }
 
-        public MovingParticle(Point coords, int vector, int speed, Particle particle)
+        public MovingParticle(Point coords, int vector, int speed, Particle particle, Color raster)
         {
             Coords = coords;
             Vector= vector;
             Speed = speed;
             Particle = particle;
+            Raster = raster;
         }
 
         public override string ToString()
         {
             return $"{Coords.X}, {Coords.Y}";
         }
+
     }
 
 }
