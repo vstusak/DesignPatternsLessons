@@ -1,0 +1,48 @@
+﻿// vytvorit report/string, bud jednoducha verze (datum + seznam polozek na sklade) anebo full report (+ header + footer)
+// builder obsahuje metody ktere urcuji co vytvorit do seznamu
+// director rozhoduje jestli jednoducha nebo full verze
+// seznam knizek v knihovne
+
+using System.Text;
+
+public class ReportFactory
+{
+    private readonly BookRepository _bookRepository;
+    private StringBuilder _stringBuilder = new StringBuilder();
+
+    public ReportFactory(BookRepository bookRepository)
+    {
+        _bookRepository = bookRepository;
+    }
+
+    private void Reset()
+    {
+        _stringBuilder = _stringBuilder.Clear();
+    }
+
+    public string CreateFullReport()
+    {
+        var books = GetBooks();
+        var builder = new StringBuilder();
+        builder.AppendLine("Hello this is content of our library");
+        builder.AppendLine(new string('-', 30));
+        builder.AppendJoin('\n', books);
+        builder.AppendLine($"\nCollected at {DateTime.Now}");
+
+        return builder.ToString();
+    }
+
+    public string CreateSimpleReport()
+    {
+        var books = GetBooks();
+        var builder = new StringBuilder();
+        builder.AppendJoin('\n', books);
+
+        return builder.ToString();
+    }
+
+    private IEnumerable<Book> GetBooks()
+    {
+        return _bookRepository.GetAllBooks();
+    }
+}
