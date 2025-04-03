@@ -44,21 +44,21 @@ namespace Logging.Api
             //builder.Logging.AddSerilog(serilog);
 
 
-            //builder.Services.AddProblemDetails(options =>
-            //    {
-            //        options.IncludeExceptionDetails = (ctx, ex) => true;
-            //        options.OnBeforeWriteDetails = (ctx, det) =>
-            //        {
-            //            if (det.Status == 500)
-            //            {
-            //                det.Detail = $"API Failed, please contact support w/ TraceId {det.Extensions["traceId"]}.";
-            //            }
-            //        };
-            //        options.Rethrow<SqliteException>(); //TODO: Try w/o Rethrow and fiish the middleware
-            //        //options.MapToStatusCode<Exception>(StatusCodes.Status500InternalServerError);
-            //    }
-            //);
-                
+            builder.Services.AddProblemDetails(options =>
+                {
+                    options.IncludeExceptionDetails = (ctx, ex) => true;
+                    options.OnBeforeWriteDetails = (ctx, det) =>
+                    {
+                        if (det.Status == 500)
+                        {
+                            det.Detail = $"API Failed, please contact support w/ TraceId {det.Extensions["traceId"]}.";
+                        }
+                    };
+                    options.Rethrow<SqliteException>(); //TODO: Try w/o Rethrow and fiish the middleware
+                    //options.MapToStatusCode<Exception>(StatusCodes.Status500InternalServerError);
+                }
+            );
+
             builder.Services.AddDbContext<WarehouseContext>();
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -71,7 +71,7 @@ namespace Logging.Api
 
             var app = builder.Build();
             app.UseMiddleware<OurExceptionMiddleware>();
-            //app.UseProblemDetails();
+            app.UseProblemDetails();
 
             app.AddRequestResponseLogging();
 
