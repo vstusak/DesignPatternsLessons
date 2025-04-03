@@ -6,6 +6,8 @@
 
 
 
+namespace BuilderPattern;
+
 public class OutputWriter
 {
     public void Write(string input)

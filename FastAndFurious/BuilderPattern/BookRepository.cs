@@ -6,6 +6,8 @@
 
 
 
+namespace BuilderPattern;
+
 public class BookRepository
 {
     public List<Book> GetAllBooks()

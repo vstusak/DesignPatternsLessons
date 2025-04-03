@@ -3,6 +3,8 @@
 // director rozhoduje jestli jednoducha nebo full verze
 // seznam knizek v knihovne
 
+namespace BuilderPattern;
+
 public class Book
 {
     public string Author { get; set; }

@@ -5,6 +5,8 @@
 
 using System.Text;
 
+namespace BuilderPattern;
+
 public class ReportFactory
 {
     private readonly BookRepository _bookRepository;
