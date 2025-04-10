@@ -23,6 +23,13 @@ namespace Logging.WebApp.Pages
             CurrentActivity = Activity.Current;
             TraceId = HttpContext.TraceIdentifier;
         }
+
+        public void OnPost()
+        {
+            CurrentActivity = Activity.Current;
+            TraceId = HttpContext.TraceIdentifier;
+        }
+
     }
 
 }

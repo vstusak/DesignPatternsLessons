@@ -31,7 +31,20 @@ namespace Logging.WebApp.Pages
             var apiClient = _httpClientFactory.CreateClient("api");
             apiClient.BaseAddress = new Uri("https://localhost:7055/");
             var response = await apiClient.GetAsync($"Product/{filter}");
+            if (!response.IsSuccessStatusCode)
+            {
+                await LogError(filter, apiClient, response);
+            }
             Products = await response.Content.ReadFromJsonAsync<List<Product>>();
+        }
+
+        private async Task LogError(string filter, HttpClient apiClient, HttpResponseMessage response)
+        {
+            var fullPath = $"{apiClient.BaseAddress}Product/{filter}";
+            var details = await response.Content.ReadFromJsonAsync<ProblemDetails>() ?? new ProblemDetails();
+            var traceId = details.Extensions["traceId"]?.ToString();
+            _logger.LogWarning($"API failure: {fullPath}, Response: {response.StatusCode}, TraceId: {traceId}");
+            throw new Exception($"Error occured while getting products with {filter} category");
         }
 
         public async Task OnGetDeleteAsync(int id)

@@ -46,7 +46,7 @@ namespace Logging.Api
 
             builder.Services.AddProblemDetails(options =>
                 {
-                    options.IncludeExceptionDetails = (ctx, ex) => false;
+                    options.IncludeExceptionDetails = (ctx, ex) => true;
                     options.OnBeforeWriteDetails = (ctx, det) =>
                     {
                         if (det.Status == 500)
@@ -58,7 +58,7 @@ namespace Logging.Api
                     //options.MapToStatusCode<Exception>(StatusCodes.Status500InternalServerError);
                 }
             );
-                
+
             builder.Services.AddDbContext<WarehouseContext>();
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -70,7 +70,7 @@ namespace Logging.Api
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-            //app.UseMiddleware<OurExceptionMiddleware>();
+            app.UseMiddleware<OurExceptionMiddleware>();
             app.UseProblemDetails();
 
             app.AddRequestResponseLogging();
