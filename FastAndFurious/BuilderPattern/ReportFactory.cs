@@ -11,10 +11,12 @@ public class ReportFactory
 {
     private readonly BookRepository _bookRepository;
     private StringBuilder _stringBuilder = new StringBuilder();
+    private readonly IMyDateTimeProvider _dateTimeProvider;
 
-    public ReportFactory(BookRepository bookRepository)
+    public ReportFactory(BookRepository bookRepository, IMyDateTimeProvider dateTimeProvider)
     {
         _bookRepository = bookRepository;
+        _dateTimeProvider = dateTimeProvider;
     }
 
     private void Reset()
@@ -29,7 +31,7 @@ public class ReportFactory
         builder.AppendLine("Hello this is content of our library");
         builder.AppendLine(new string('-', 30));
         builder.AppendJoin('\n', books);
-        builder.AppendLine($"\nCollected at {DateTime.Now}");
+        builder.AppendLine($"\nCollected at {_dateTimeProvider.GetDateTime()}");
 
         return builder.ToString();
     }
