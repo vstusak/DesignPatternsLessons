@@ -1,34 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace BuilderPattern;
 
-namespace BuilderPattern
+public class ReportDirector
 {
-    public class ReportDirector
+    private IReportBuilder _reportBuilder;
+
+    public ReportDirector(IReportBuilder reportBuilder)
     {
-        private ReportFactory reportFactory;
+        this._reportBuilder = reportBuilder;
+    }
 
-        public ReportDirector(ReportFactory reportFactory)
+    public string CreateReportBasedOnParameters(string command)
+    {
+        if (command == "s")
         {
-            this.reportFactory = reportFactory;
+            return CreateSimpleReport();
         }
-
-        public string CreateReportBasedOnParameters(string command)
+        else if (command == "f")
         {
-            if (command == "s")
-            {
-                return reportFactory.CreateSimpleReport();
-            }
-            else if (command == "f")
-            {
-                return reportFactory.CreateFullReport();
-            }
-            else
-            {
-                throw new NotSupportedException(command);
-            }
+            return CreateFullReport();
+        }
+        else
+        {
+            throw new NotSupportedException(command);
         }
     }
+
+    public string CreateFullReport()
+    {
+        return _reportBuilder.Reset()
+            .AddHeader()
+            .AddBooks()
+            .AddDateTime()
+            .Build();
+    }
+
+    public string CreateSimpleReport()
+    {
+        return _reportBuilder.Reset()
+            .AddBooks()
+            .Build();
+    }
 }
+
+//public class Extensions
+//{
+//    public static AddCustomText(this IReportBuilder reportBuilder, string customText)
+//    {
+//    }
+//}

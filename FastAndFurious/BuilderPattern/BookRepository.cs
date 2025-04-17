@@ -8,7 +8,7 @@
 
 namespace BuilderPattern;
 
-public class BookRepository
+public class BookRepository : IBookRepository
 {
     public List<Book> GetAllBooks()
     {
@@ -23,4 +23,9 @@ public class BookRepository
             new Book{Author="",Name="1985", NumberOfPages="350"}
         };
     }
+}
+
+public interface IBookRepository
+{
+    List<Book> GetAllBooks();
 }
