@@ -13,12 +13,15 @@ using Serilog;
 namespace Logging.Api
 {
     using Hellang.Middleware.ProblemDetails;
-    
+    using Microsoft.Extensions.Hosting;
+
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.AddServiceDefaults();
 
             //https://learn.microsoft.com/en-us/answers/questions/1377949/logging-in-c-to-a-text-file
             //var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);

@@ -27,7 +27,7 @@ namespace ProductStore.WebApp.Pages
         public async Task OnGetEdit(int id)
         {
             var apiClient = _httpClientFactory.CreateClient("api");
-            apiClient.BaseAddress = new Uri("https://localhost:7055/");
+            apiClient.BaseAddress = new Uri("https+http://apiservice");
             //var response = await apiClient.GetAsync($"Product/{id}");
             var response = await apiClient.GetAsync($"Product/{id}");
             if (response.IsSuccessStatusCode)
@@ -44,7 +44,7 @@ namespace ProductStore.WebApp.Pages
         public async Task OnPost(Product product)
         {
             var apiClient = _httpClientFactory.CreateClient("api");
-            apiClient.BaseAddress = new Uri("https://localhost:7055/");
+            apiClient.BaseAddress = new Uri("https+http://apiservice");
             //var content = New
             await apiClient.PostAsJsonAsync<Product>("Product/",product);
             Response.Redirect("/");

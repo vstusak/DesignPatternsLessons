@@ -12,5 +12,6 @@ builder.AddProject<Projects.ProductStore_WebApp>("webfrontend")
     //.WaitFor(cache)
     .WithReference(apiService)
     .WaitFor(apiService);
+    //TODO: Check how WaitFor is handeled (healthchecks, etc.)
 
 builder.Build().Run();

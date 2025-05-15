@@ -21,7 +21,7 @@ namespace Logging.WebApp.Pages
         public async Task OnGetAsync()
         {
             var apiClient = _httpClientFactory.CreateClient("api");
-            apiClient.BaseAddress = new Uri("https://localhost:7055/");
+            apiClient.BaseAddress = new Uri("https+http://apiservice");
             var response = await apiClient.GetAsync("Product");
             Products = await response.Content.ReadFromJsonAsync<List<Product>>();
         }
@@ -29,7 +29,7 @@ namespace Logging.WebApp.Pages
         public async Task OnPostShowFilterAsync(string filter)
         {
             var apiClient = _httpClientFactory.CreateClient("api");
-            apiClient.BaseAddress = new Uri("https://localhost:7055/");
+            apiClient.BaseAddress = new Uri("https+http://apiservice");
             var response = await apiClient.GetAsync($"Product/{filter}");
             if (!response.IsSuccessStatusCode)
             {
