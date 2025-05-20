@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryPattern
 {
-    class ProductRepository : IRepository<Product>
+    public class ProductRepository : IRepository<Product>
     {
         private readonly WarehouseDbContext _warehouseDbContext;
 
@@ -17,12 +17,25 @@ namespace RepositoryPattern
 
         public Product Get(int id)
         {
-            throw new NotImplementedException();
+            return _warehouseDbContext.Products.Single(p => p.ProductId == id);
         }
 
-        public int Create(Product entity)
+        public int Add(Product entity)
         {
-            throw new NotImplementedException();
+            var entityEntry = _warehouseDbContext.Add(entity);
+            _warehouseDbContext.SaveChanges();
+            return entityEntry.Entity.ProductId;
+        }
+
+        public void AddRange(ICollection<Product> entities)
+        {
+            _warehouseDbContext.AddRange(entities);
+            _warehouseDbContext.SaveChanges();
+        }
+
+        public IEnumerable<Product> GetAll()
+        {
+            return _warehouseDbContext.Products;
         }
     }
 }

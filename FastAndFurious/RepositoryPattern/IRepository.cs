@@ -9,6 +9,8 @@ namespace RepositoryPattern
     public interface IRepository<T>
     {
         public T Get(int id);
-        public int Create(T entity);
+        public int Add(T entity);
+        public void AddRange(ICollection<T>  entities);
+        public IEnumerable<T> GetAll();
     }
 }
