@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.AspireHost", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.ServiceDefaults", "ProductStore.ServiceDefaults\ProductStore.ServiceDefaults.csproj", "{9357E417-5904-4F8F-97D1-114621E24EC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.Loader", "ProductStore.Loader\ProductStore.Loader.csproj", "{F11E7115-602C-407C-ADBA-411CA0B699EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -277,6 +279,10 @@ Global
 		{9357E417-5904-4F8F-97D1-114621E24EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9357E417-5904-4F8F-97D1-114621E24EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9357E417-5904-4F8F-97D1-114621E24EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F11E7115-602C-407C-ADBA-411CA0B699EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11E7115-602C-407C-ADBA-411CA0B699EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11E7115-602C-407C-ADBA-411CA0B699EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11E7115-602C-407C-ADBA-411CA0B699EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -293,6 +299,7 @@ Global
 		{D75B031D-F1C1-48C5-8360-5B4A42F81ACD} = {7251B420-084D-4277-8D76-1EB05F446702}
 		{02473AF3-5805-4D63-A638-FC9BFDCC1F25} = {73747857-3221-490F-BE30-7993E1B87C3F}
 		{9357E417-5904-4F8F-97D1-114621E24EC4} = {73747857-3221-490F-BE30-7993E1B87C3F}
+		{F11E7115-602C-407C-ADBA-411CA0B699EA} = {73747857-3221-490F-BE30-7993E1B87C3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9628AC0A-8791-4D56-A8C3-C96586502232}

@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Logging.WebApp\ProductStore.WebApp.csproj" />
     <ProjectReference Include="..\Logging\ProductStore.WebApi.csproj" />
+    <ProjectReference Include="..\ProductStore.Loader\ProductStore.Loader.csproj" />
   </ItemGroup>
 
 </Project>
