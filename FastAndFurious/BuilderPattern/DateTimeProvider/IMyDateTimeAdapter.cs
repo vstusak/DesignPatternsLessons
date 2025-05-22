@@ -1,6 +1,6 @@
 ﻿namespace BuilderPattern
 {
-    public interface IMyDateTimeProvider
+    public interface IMyDateTimeAdapter
     {
         DateTime GetDateTime();
     }

@@ -13,12 +13,12 @@ public class ReportBuilder : IReportBuilder
 {
     private readonly IBookRepository _bookRepository;
     private StringBuilder _stringBuilder = new StringBuilder();
-    private readonly IMyDateTimeProvider _dateTimeProvider;
+    private readonly IMyDateTimeAdapter _dateTimeAdapter;
 
-    public ReportBuilder(IBookRepository bookRepository, IMyDateTimeProvider dateTimeProvider)
+    public ReportBuilder(IBookRepository bookRepository, IMyDateTimeAdapter dateTimeAdapter)
     {
         _bookRepository = bookRepository;
-        _dateTimeProvider = dateTimeProvider;
+        _dateTimeAdapter = dateTimeAdapter;
     }
 
     public IReportBuilder Reset()
@@ -34,7 +34,7 @@ public class ReportBuilder : IReportBuilder
 
     public IReportBuilder AddDateTime()
     {
-        _stringBuilder.AppendLine($"\nCollected at {_dateTimeProvider.GetDateTime()}");
+        _stringBuilder.AppendLine($"\nCollected at {_dateTimeAdapter.GetDateTime()}");
         return this;
     }
 

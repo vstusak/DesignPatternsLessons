@@ -8,7 +8,7 @@ using BuilderPattern;
 var command = "s";
 
 var outputWriter = new OutputWriter();
-var reportBuilder = new ReportBuilder(new BookRepository(), new MyDateTimeProvider());
+var reportBuilder = new ReportBuilder(new BookRepository(), new MyDateTimeAdapter());
 var reportDirector = new ReportDirector(reportBuilder);
 
 string report = reportDirector.CreateReportBasedOnParameters(command);
