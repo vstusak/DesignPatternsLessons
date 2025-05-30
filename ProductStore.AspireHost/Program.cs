@@ -1,4 +1,10 @@
+//using Aspire.Hosting.SqlServer;
+
 var builder = DistributedApplication.CreateBuilder(args);
+
+var sql = builder.AddSqlServer("sql")
+    .WithDataVolume()
+    .AddDatabase("sqldb");
 
 //TODO: Finalize implementing Aspire on this project ->
 //TODO: move data to database in docker, create docker initialization, setup docker to use local volume
@@ -16,6 +22,5 @@ builder.AddProject<Projects.ProductStore_WebApp>("webfrontend")
     //.WaitFor(cache)
     .WithReference(apiService)
     .WaitFor(apiService);
-    //TODO: Check how WaitFor is handled (healthchecks, etc.)
 
 builder.Build().Run();
