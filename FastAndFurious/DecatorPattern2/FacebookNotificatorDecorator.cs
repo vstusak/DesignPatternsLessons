@@ -10,7 +10,8 @@ public class FacebookNotificatorDecorator : INotificator
     }
     public void RaiseEvent()
     {
+        Console.WriteLine("Before Event: Notification will be sent to Facebook.");
         _baseNotificator.RaiseEvent();
-        Console.WriteLine("Notification has been sent to Facebook.");
+        Console.WriteLine("After Event: Notification has been sent to Facebook.");
     }
 }

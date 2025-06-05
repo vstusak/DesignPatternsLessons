@@ -1,6 +1,6 @@
 ﻿using DecoratorPattern;
 
-INotificator notificator = new BaseNotificator();
+INotificator notificator = new Notificator();
 notificator.RaiseEvent();
 
 Console.WriteLine("___");
@@ -20,7 +20,7 @@ notificator.RaiseEvent();
 
 Console.WriteLine("___");
 
-notificator = new BaseNotificator();
+notificator = new Notificator();
 notificator = new FacebookNotificatorDecorator(notificator);
 notificator = new SlackNotificatorDecorator(notificator);
 notificator.RaiseEvent();

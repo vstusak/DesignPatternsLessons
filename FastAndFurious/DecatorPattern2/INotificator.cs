@@ -1,19 +1,11 @@
-﻿namespace DecoratorPattern;
+﻿using DecoratorPattern.Plugins;
+
+namespace DecoratorPattern;
 
 public interface INotificator
 {
     void RaiseEvent();
-}
 
-public class BaseNotificator : INotificator
-{
-
-    public BaseNotificator()
-    {
-
-    }
-    public void RaiseEvent()
-    {
-        Console.WriteLine("Event raised");
-    }
+    void AddPlugin(INotificatorPlugin plugin);
+    void RemovePlugin(string pluginName);
 }
