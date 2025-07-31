@@ -22,7 +22,9 @@ namespace Logging.Data
             // https://stackoverflow.com/questions/55513532/ef-core-enablesensitivedatalogging-does-not-work-as-expected
             // or enable here optionsBuilder.UseSqlite("Data Source=products.db").EnableSensitiveDataLogging();
 
-
+            //TODO fix conenction for SQL - maybe wrong nuget package
+            //optionsBuilder.AddSqlServerDbContext<WarehouseContext>(connectionName: "database");
+            
             optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
         }
 
