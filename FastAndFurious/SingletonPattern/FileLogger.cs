@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SingletonPattern
 {
-    public class FileLogger
+    public class FileLogger 
     {
 
         private static FileLogger _instance = null;
@@ -28,7 +28,7 @@ namespace SingletonPattern
 
         public void LogToFile(string message)
         {
-            using StreamWriter writer = new StreamWriter(new FileStream(_filePath, FileMode.OpenOrCreate));
+            using StreamWriter writer = new StreamWriter(new FileStream(_filePath, FileMode.Append));
             writer.WriteLine(message);
         }
     }
