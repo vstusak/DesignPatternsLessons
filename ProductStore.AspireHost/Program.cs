@@ -4,11 +4,12 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 //var sql = builder.AddSqlServer("sql")
 //  .WithDataVolume()
- //.AddDatabase("sqldb");
+//.AddDatabase("sqldb");
+var sqlPassword = builder.AddParameter("sql-password", "Sup€rS€cr€t2499");
+var sqlserver = builder.AddSqlServer("sqlserver",password:sqlPassword)
+    .WithDataVolume();
 
- var sqlserver = builder.AddSqlServer("sqlserver")
-     .WithDataVolume()
-     .WithLifetime(ContainerLifetime.Persistent);
+var sqlDb = sqlserver.AddDatabase("StoreDb");
 
  //var addressBookDb = sqlserver.AddDatabase("AddressBook")
    //  .WithCreationScript(File.ReadAllText(initScriptPath));

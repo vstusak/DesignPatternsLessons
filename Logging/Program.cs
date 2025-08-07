@@ -21,6 +21,7 @@ namespace Logging.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.AddSqlServerDbContext<WarehouseContext>("StoreDb");
             builder.AddServiceDefaults();
 
             //https://learn.microsoft.com/en-us/answers/questions/1377949/logging-in-c-to-a-text-file
@@ -62,7 +63,7 @@ namespace Logging.Api
                 }
             );
 
-            builder.Services.AddDbContext<WarehouseContext>();
+            //builder.Services.AddDbContext<WarehouseContext>();
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductProvider, ProductProvider>();
