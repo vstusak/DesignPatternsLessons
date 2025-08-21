@@ -1,5 +1,5 @@
 //using Aspire.Hosting.SqlServer;
-using Redis = Aspire.Hosting.Redis;
+//using Redis = Aspire.Hosting.Redis;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -7,27 +7,24 @@ var builder = DistributedApplication.CreateBuilder(args);
 //  .WithDataVolume()
 //.AddDatabase("sqldb");
 var sqlPassword = builder.AddParameter("sql-password", "Sup€rS€cr€t2499");
-var sqlserver = builder.AddSqlServer("sqlserver",password:sqlPassword)
+var sqlserver = builder.AddSqlServer("sqlserver", password:sqlPassword)
     .WithDataVolume();
 
 var sqlDb = sqlserver.AddDatabase("StoreDb");
 
- //var addressBookDb = sqlserver.AddDatabase("AddressBook")
-   //  .WithCreationScript(File.ReadAllText(initScriptPath));
 
-
-
-//TODO: Finalize implementing Aspire on this project ->
-//TODO: move data to database in docker, create docker initialization, setup docker to use local volume
+//DONE: Finalize implementing Aspire on this project ->
+//DONE: move data to database in docker, create docker initialization, setup docker to use local volume
+//TODO: Create entity framework migrations
 
 //TODO: use cache
 //var cache = builder.AddRedis("cache");
 
-//var loader = builder.AddProject<Projects.ProductStore_Loader>("loader");
+//var loader = builder.AddProject<Projects.ProductStore_Loader>("loader"); //Testing to try waiting for completion 2 rows bellow
 var apiService = builder.AddProject<Projects.ProductStore_WebApi>("apiservice")
        //.WaitForCompletion(loader);
-       .WithReference(sqlserver)
-       .WaitFor(sqlserver);
+       .WithReference(sqlDb)
+       .WaitFor(sqlDb);
 
 builder.AddProject<Projects.ProductStore_WebApp>("webfrontend")
     .WithExternalHttpEndpoints()

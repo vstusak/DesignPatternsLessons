@@ -20,7 +20,7 @@ namespace Logging.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            //Following rows must keep this order (AddSqlServerDbContext > AddServiceDefaults)
             builder.AddSqlServerDbContext<WarehouseContext>("StoreDb");
             builder.AddServiceDefaults();
 

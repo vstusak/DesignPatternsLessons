@@ -37,11 +37,12 @@ namespace Logging.Data
         {
             Database.EnsureDeleted();
             Database.EnsureCreated();
-
-            Products.Add(new Product() { Id = 1, Name = "Ball", Category = "Toy", Price = 123 });
-            Products.Add(new Product() { Id = 2, Name = "Bear", Category = "Toy", Price = 853 });
-            Products.Add(new Product() { Id = 3, Name = "Mouse", Category = "Animal", Price = 56 });
-            Products.Add(new Product() { Id = 4, Name = "Bear", Category = "Animal", Price = 456 });
+            
+            //Removed Ids as they are automatically added in db
+            Products.Add(new Product() { Name = "Ball", Category = "Toy", Price = 123 });
+            Products.Add(new Product() { Name = "Bear", Category = "Toy", Price = 853 });
+            Products.Add(new Product() { Name = "Mouse", Category = "Animal", Price = 56 });
+            Products.Add(new Product() { Name = "Bear", Category = "Animal", Price = 456 });
 
             SaveChanges();
         }
