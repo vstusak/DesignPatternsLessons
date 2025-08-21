@@ -4,18 +4,18 @@ using Redis = Aspire.Hosting.Redis;
 var builder = DistributedApplication.CreateBuilder(args);
 
 //var sql = builder.AddSqlServer("sql")
-//    .WithDataVolume()
-//    .AddDatabase("sqldb");
+//  .WithDataVolume()
+//.AddDatabase("sqldb");
+var sqlPassword = builder.AddParameter("sql-password", "Sup€rS€cr€t2499");
+var sqlserver = builder.AddSqlServer("sqlserver",password:sqlPassword)
+    .WithDataVolume();
 
-//TODO: Tady Milan skoncil, password nelze vlozit (mlati se s Redisem?)
-var sql = builder
-        .AddSqlServer("sql")
-        .WithPassword(password: "password123")
-    //.WithDataBindMount(@"C:\SqlServer\Data", false)
-    //.WithEndpoint(port:6033, targetPort:1433, name:"ssms")
-    //.WithLifetime(ContainerLifetime.Persistent)
-    //.WithContainerName<SqlServerServerResource>("sqlserver")
-    ;
+var sqlDb = sqlserver.AddDatabase("StoreDb");
+
+ //var addressBookDb = sqlserver.AddDatabase("AddressBook")
+   //  .WithCreationScript(File.ReadAllText(initScriptPath));
+
+
 
 //TODO: Finalize implementing Aspire on this project ->
 //TODO: move data to database in docker, create docker initialization, setup docker to use local volume
@@ -23,9 +23,11 @@ var sql = builder
 //TODO: use cache
 //var cache = builder.AddRedis("cache");
 
-var loader = builder.AddProject<Projects.ProductStore_Loader>("loader");
-
-var apiService = builder.AddProject<Projects.ProductStore_WebApi>("apiservice").WaitForCompletion(loader);
+//var loader = builder.AddProject<Projects.ProductStore_Loader>("loader");
+var apiService = builder.AddProject<Projects.ProductStore_WebApi>("apiservice")
+       //.WaitForCompletion(loader);
+       .WithReference(sqlserver)
+       .WaitFor(sqlserver);
 
 builder.AddProject<Projects.ProductStore_WebApp>("webfrontend")
     .WithExternalHttpEndpoints()

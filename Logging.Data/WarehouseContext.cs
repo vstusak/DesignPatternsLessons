@@ -16,14 +16,21 @@ namespace Logging.Data
     {
         public DbSet<Product> Products { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlite("Data Source=products.db");
+        //    // https://stackoverflow.com/questions/55513532/ef-core-enablesensitivedatalogging-does-not-work-as-expected
+        //    // or enable here optionsBuilder.UseSqlite("Data Source=products.db").EnableSensitiveDataLogging();
+
+        //    //TODO fix conenction for SQL - maybe wrong nuget package
+        //    //optionsBuilder.AddSqlServerDbContext<WarehouseContext>(connectionName: "database");
+
+        //    optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
+        //}
+
+        public WarehouseContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlite("Data Source=products.db");
-            // https://stackoverflow.com/questions/55513532/ef-core-enablesensitivedatalogging-does-not-work-as-expected
-            // or enable here optionsBuilder.UseSqlite("Data Source=products.db").EnableSensitiveDataLogging();
 
-
-            optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
         }
 
         public void Seed()
