@@ -93,6 +93,8 @@ namespace Logging.Api.Controllers
         [HttpPost]
         public IActionResult Post(Product product)
         { 
+            //TODO it does not work from Swagger - json parsing
+
             _logger.LogDebug($"2-Trying to add/update product.");
 
             try

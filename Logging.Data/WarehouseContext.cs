@@ -58,5 +58,7 @@ namespace Logging.Data
         {
             return Products.Any();
         }
+
+      
     }
 }
