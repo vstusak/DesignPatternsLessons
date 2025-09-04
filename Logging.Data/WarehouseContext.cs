@@ -1,17 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Logging.Data.Api.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Debug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logging.Data.Api.Model;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Debug;
 
 namespace Logging.Data
 {
+    //TODO we have just created Migration, lets check what is inside and run it.
+    // TODO and check the DB for migration details.
     public class WarehouseContext: DbContext
     {
         public DbSet<Product> Products { get; set; }
@@ -26,6 +29,8 @@ namespace Logging.Data
         //    //optionsBuilder.AddSqlServerDbContext<WarehouseContext>(connectionName: "database");
 
         //    optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
+
+        //optionsBuilder.UseSqlServer("StoreDb");
         //}
 
         public WarehouseContext(DbContextOptions options) : base(options)
@@ -60,5 +65,16 @@ namespace Logging.Data
         }
 
       
+    }
+
+    public class WarehouseContextFactory : IDesignTimeDbContextFactory<WarehouseContext>
+    {
+        public WarehouseContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<WarehouseContext>();
+            optionsBuilder.UseSqlServer("StoreDb");
+
+            return new WarehouseContext(optionsBuilder.Options);
+        }
     }
 }
