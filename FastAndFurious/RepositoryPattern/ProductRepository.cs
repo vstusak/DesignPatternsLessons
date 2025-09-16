@@ -37,5 +37,10 @@ namespace RepositoryPattern
         {
             return _warehouseDbContext.Products;
         }
+
+        public void SaveChanges()
+        {
+            _warehouseDbContext.SaveChanges();
+        }
     }
 }

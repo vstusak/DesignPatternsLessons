@@ -12,5 +12,6 @@ namespace RepositoryPattern
         public int Add(T entity);
         public void AddRange(ICollection<T>  entities);
         public IEnumerable<T> GetAll();
+        public void SaveChanges();
     }
 }

@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using RepositoryPattern;
+using RepositoryPattern.Commands;
 
 var warehouse = new WarehouseDbContext();
 
@@ -8,9 +9,34 @@ var productRepo = new ProductRepository(warehouse);
 
 await DbInitSeed.InitDb(productRepo);
 
-var warehouseProducts = productRepo.GetAll();
+PrintStateOfProductWarehouse(productRepo);
 
-foreach (var warehouseProduct in warehouseProducts)
+Console.WriteLine("Type the product ID:");
+var productId = System.Console.ReadLine();
+Console.WriteLine("Type the quantity to order:");
+var quantity = System.Console.ReadLine();
+
+var firstOrderCommand = new OrderCommand(productRepo, Int32.Parse(productId), int.Parse(quantity));
+
+var invoker = new CommandInvoker();
+invoker.ExecuteCommand(firstOrderCommand);
+
+PrintStateOfProductWarehouse(productRepo);
+
+invoker.UnDo();
+
+PrintStateOfProductWarehouse(productRepo);
+return;
+
+static void PrintStateOfProductWarehouse(ProductRepository productRepository)
 {
-    Console.WriteLine(warehouseProduct);
+    var products = productRepository.GetAll();
+
+    foreach (var warehouseProduct in products)
+    {
+        Console.WriteLine(warehouseProduct);
+    }
 }
+// invoice <- command
+// invoker - execute, revert
+// client - using invoker, create command
