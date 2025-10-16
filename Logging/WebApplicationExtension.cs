@@ -13,8 +13,7 @@ public static class WebApplicationExtension
         var dbContext = scope.ServiceProvider.GetService<WarehouseContext>();
 
         await EnsureDatabaseAsync(dbContext);
-        // TODO uncomment when migration is ready
-        // await RunMigrationAsync(dbContext);
+        await RunMigrationAsync(dbContext);
     }
 
     private static async Task EnsureDatabaseAsync(WarehouseContext context)

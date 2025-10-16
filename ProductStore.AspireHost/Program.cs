@@ -8,7 +8,10 @@ var builder = DistributedApplication.CreateBuilder(args);
 //.AddDatabase("sqldb");
 var sqlPassword = builder.AddParameter("sql-password", "Sup€rS€cr€t2499");
 var sqlserver = builder.AddSqlServer("sqlserver", password:sqlPassword)
-    .WithDataVolume();
+    .WithDataVolume()
+    .WithEndpoint(port: 12345, targetPort: 1433, name: "SSMS")
+    .WithContainerName(name: "ProductStoreDBServer")
+    .WithLifetime(ContainerLifetime.Persistent);
 
 var sqlDb = sqlserver.AddDatabase("StoreDb");
 

@@ -38,19 +38,19 @@ namespace Logging.Data
 
         }
 
-        public void Seed()
-        {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+        //public void Seed()
+        //{
+        //    Database.EnsureDeleted();
+        //    Database.EnsureCreated();
             
-            //Removed Ids as they are automatically added in db
-            Products.Add(new Product() { Name = "Ball", Category = "Toy", Price = 123 });
-            Products.Add(new Product() { Name = "Bear", Category = "Toy", Price = 853 });
-            Products.Add(new Product() { Name = "Mouse", Category = "Animal", Price = 56 });
-            Products.Add(new Product() { Name = "Bear", Category = "Animal", Price = 456 });
+        //    //Removed Ids as they are automatically added in db
+        //    Products.Add(new Product() { Name = "Ball", Category = "Toy", Price = 123 });
+        //    Products.Add(new Product() { Name = "Bear", Category = "Toy", Price = 853 });
+        //    Products.Add(new Product() { Name = "Mouse", Category = "Animal", Price = 56 });
+        //    Products.Add(new Product() { Name = "Bear", Category = "Animal", Price = 456 });
 
-            SaveChanges();
-        }
+        //    SaveChanges();
+        //}
 
         public bool DatabaseExists()
         {

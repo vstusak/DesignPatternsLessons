@@ -77,23 +77,24 @@ namespace Logging.Api
             app.UseMiddleware<OurExceptionMiddleware>();
             app.UseProblemDetails();
 
-            app.AddRequestResponseLogging();
+            //Optional TODO: Try to fix HTTP 400 error for api post (response stream positioning problem)
+            //app.AddRequestResponseLogging();
 
             //run migrations
             await app.ConfigureDatabaseAsync();
             
             using (var scope = app.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<WarehouseContext>();
-                if (!context.DatabaseExists())
-                {
-                    context.Seed();
-                }
+                //var services = scope.ServiceProvider;
+                //var context = services.GetRequiredService<WarehouseContext>();
+                //if (!context.DatabaseExists())
+                //{
+                //    context.Seed();
+                //}
                 
-                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-                var startupLogger = loggerFactory.CreateLogger("Startup");
-                startupLogger.LogInformation("Data has been seeded.");
+                //var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+                //var startupLogger = loggerFactory.CreateLogger("Startup");
+                //startupLogger.LogInformation("Data has been seeded.");
             }
 
             // Configure the HTTP request pipeline.

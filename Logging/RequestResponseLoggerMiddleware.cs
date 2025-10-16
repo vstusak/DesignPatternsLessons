@@ -39,7 +39,7 @@ namespace ProductStore.WebApi
                 {
                     using var memStream = new MemoryStream();
                     context.Response.Body = memStream;
-                    
+                    memStream.Position = 0;
                     // call to the following middleware 
                     // response should be produced by one of the following middlewares
                     await next(context);
@@ -51,6 +51,7 @@ namespace ProductStore.WebApi
                     memStream.Position = 0;
                     await memStream.CopyToAsync(originalBody);
                     Console.WriteLine(responseBody);
+                    memStream.Position = 0;
                 }
                 finally
                 {

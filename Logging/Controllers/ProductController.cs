@@ -91,7 +91,8 @@ namespace Logging.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Product product)
+        
+        public IActionResult Post([FromBody]Product product)
         { 
             //TODO it does not work from Swagger - json parsing
 
