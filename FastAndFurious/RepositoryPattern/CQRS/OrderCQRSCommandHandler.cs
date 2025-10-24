@@ -1,16 +1,23 @@
-﻿namespace RepositoryPattern.Commands.CQRS;
+﻿namespace RepositoryPattern.CQRS;
 
 public class OrderCQRSCommandHandler
 {
-	private IRepository<Product> OrderCQRSCommand 
+    private readonly IRepository<Product> _productRepository;
 
     public OrderCQRSCommandHandler(IRepository<Product> productRepository)
+    {
+        _productRepository = productRepository;
+    }
+
+
+	public void Handle(OrderCQRSCommand command)
 	{
-	}
+        var product = _productRepository.Get(command.ProductId);
+        Console.WriteLine($"State before order: {product.Quantity}");
+        product.Quantity -= command.Quantity;
+        _productRepository.SaveChanges();
+        product = _productRepository.Get(command.ProductId);
 
-
-	public void Handle()
-	{ 
-		
-	}
+        Console.WriteLine($"State after order: {product.Quantity}");
+    }
 }
