@@ -1,7 +1,7 @@
-using Logging.Data.Api.Model;
 using Logging.WebApp.Pages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ProductStore.Contracts.Model;
 
 namespace ProductStore.WebApp.Pages
 {

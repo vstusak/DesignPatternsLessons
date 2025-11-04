@@ -29,13 +29,13 @@
         @foreach (var p in Model.Products)
         {
             <tr>
-                <td>@p.Id</td>
+                <td>@p.ProductId</td>
                 <td>@p.Name</td>
                 <td>@p.Category</td>
                 <td class="text-end">@string.Format("{0:C}", p.Price)</td>
-                <td><a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@p.Id">Edit</a></td>
+                <td><a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@p.ProductId">Edit</a></td>
                 <td>
-                    <a asp-page-handler="Delete" asp-route-id="@p.Id">Delete</a>
+                    <a asp-page-handler="Delete" asp-route-id="@p.ProductId">Delete</a>
                 </td>
             </tr>
         }

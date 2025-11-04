@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Net;
-using Logging.Data.Api.Model;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using ProductStore.Contracts.Model;
 
 
 namespace Logging.Data
@@ -25,7 +25,7 @@ namespace Logging.Data
         }
         public Product? Get(int productId)
         {
-            _logger.LogInformation($"Getting product with {productId} Id from warehouse");
+            _logger.LogInformation($"Getting product with {productId} ProductId from warehouse");
             return _warehouseContext.Products.Find(productId);
         }
 
@@ -62,11 +62,11 @@ namespace Logging.Data
 
         public void Delete(int id)
         {
-            _databaseLogger.LogInformation($"4-Deleting product with Id {id}.");
+            _databaseLogger.LogInformation($"4-Deleting product with ProductId {id}.");
 
-            var count =_warehouseContext.Products.Where(p => p.Id == id).ExecuteDelete();
+            var count =_warehouseContext.Products.Where(p => p.ProductId == id).ExecuteDelete();
 
-            _databaseLogger.LogInformation($"5-Deleted count={count} for product with Id {id}.");
+            _databaseLogger.LogInformation($"5-Deleted count={count} for product with ProductId {id}.");
         }
 
         public void AddOrUpdate(Product product)
@@ -74,7 +74,7 @@ namespace Logging.Data
             _databaseLogger.LogInformation($"Add/Update Product");
             _warehouseContext.Products.Update(product);
 
-            //var entity = _warehouseContext.Products.SingleOrDefault(p => p.Id == product.Id);
+            //var entity = _warehouseContext.Products.SingleOrDefault(p => p.ProductId == product.ProductId);
             //if (entity != null)
             //{
             //    _warehouseContext.Products.Update(product);
@@ -84,7 +84,7 @@ namespace Logging.Data
             //    _warehouseContext.Products.Add(product);
             //}
 
-            //_warehouseContext.Products.Entry(product).State = product.Id == 0 ? EntityState.Added : EntityState.Modified;
+            //_warehouseContext.Products.Entry(product).State = product.ProductId == 0 ? EntityState.Added : EntityState.Modified;
 
             _warehouseContext.SaveChanges();
         }

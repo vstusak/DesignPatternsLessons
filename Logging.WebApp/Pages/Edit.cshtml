@@ -3,7 +3,7 @@
 @{
     <div>
         <form method="post">
-            <div>@Html.LabelFor(m => m.Product.Id) :  @Html.TextBoxFor(m=>m.Product.Id,htmlAttributes:new {@readonly="readonly"})</div>
+            <div>@Html.LabelFor(m => m.Product.ProductId) :  @Html.TextBoxFor(m=>m.Product.ProductId,htmlAttributes:new {@readonly="readonly"})</div>
             <div>@Html.LabelFor(m => m.Product.Name) : @Html.TextBoxFor(m => m.Product.Name)</div>
             <div>
                 <label asp-for="Product.Category"></label>

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Logging.Data;
-using Logging.Data.Api.Model;
+﻿using Logging.Data;
 using Microsoft.Extensions.Logging;
+using ProductStore.Contracts.Model;
 using ProductStore.Domain;
 
 namespace Logging.Domain
@@ -29,13 +24,13 @@ namespace Logging.Domain
 
         public Product? GetProduct(int productId)
         {
-            _logger.LogInformation($"Getting product with {productId} Id.");
+            _logger.LogInformation($"Getting product with {productId} ProductId.");
             return _productRepository.Get(productId);
         }
 
         public void DeleteProduct(int id)
         {
-            _logger.LogInformation($"3-Deleting product with {id} Id.");
+            _logger.LogInformation($"3-Deleting product with {id} ProductId.");
             _productRepository.Delete(id);
 
         }
@@ -49,10 +44,10 @@ namespace Logging.Domain
         {
             return new List<Product>()
             {
-                new Product() {Id = 1, Name="Ball", Category = "Toy", Price = 123},
-                new Product() {Id = 2, Name="Bear", Category = "Toy", Price = 853},
-                new Product() {Id = 3, Name="Mouse", Category = "Animal", Price = 56},
-                new Product() {Id = 4, Name="Bear", Category = "Animal", Price = 456}
+                new Product() {ProductId = 1, Name="Ball", Category = "Toy", Price = 123},
+                new Product() {ProductId = 2, Name="Bear", Category = "Toy", Price = 853},
+                new Product() {ProductId = 3, Name="Mouse", Category = "Animal", Price = 56},
+                new Product() {ProductId = 4, Name="Bear", Category = "Animal", Price = 456}
             };
         }
     }

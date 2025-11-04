@@ -16,18 +16,35 @@ namespace ProductStore.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.9")
+                .HasAnnotation("ProductVersion", "9.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Logging.Data.Api.Model.Product", b =>
+            modelBuilder.Entity("ProductStore.Contracts.Model.Customer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Email")
+                        .HasMaxLength(69)
+                        .HasColumnType("nvarchar(69)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.HasKey("Email", "Name", "Age");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("ProductStore.Contracts.Model.Product", b =>
+                {
+                    b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -40,7 +57,10 @@ namespace ProductStore.Data.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId");
 
                     b.ToTable("Products");
                 });

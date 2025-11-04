@@ -1,6 +1,6 @@
-using Logging.Data.Api.Model;
 using Logging.Domain;
 using Microsoft.AspNetCore.Mvc;
+using ProductStore.Contracts.Model;
 using ProductStore.Domain;
 
 namespace Logging.Api.Controllers

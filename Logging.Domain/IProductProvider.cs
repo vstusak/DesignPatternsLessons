@@ -1,4 +1,4 @@
-﻿using Logging.Data.Api.Model;
+﻿using ProductStore.Contracts.Model;
 
 namespace ProductStore.Domain
 {
