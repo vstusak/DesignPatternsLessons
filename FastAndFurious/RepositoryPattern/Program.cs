@@ -32,7 +32,7 @@ var orderCqrsCommand = new OrderCQRSCommand
 };
 
 /**
- * @TODO Introduce interface to command handler and explain why we need it
+ * Done - Introduce interface to command handler and explain why we need it
  * @TODO Introduce generic interface to command handler
  * @TODO Implement query handler from usage (implementing against interfaces)
  */

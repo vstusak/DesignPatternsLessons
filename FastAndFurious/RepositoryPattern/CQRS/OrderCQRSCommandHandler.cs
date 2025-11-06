@@ -1,6 +1,6 @@
 ﻿namespace RepositoryPattern.CQRS;
 
-public class OrderCQRSCommandHandler
+public class OrderCQRSCommandHandler : IOrderCQRSCommandHandler
 {
     private readonly IRepository<Product> _productRepository;
 
@@ -20,4 +20,9 @@ public class OrderCQRSCommandHandler
 
         Console.WriteLine($"State after order: {product.Quantity}");
     }
+}
+
+public interface IOrderCQRSCommandHandler
+{
+    void Handle(OrderCQRSCommand command);
 }
