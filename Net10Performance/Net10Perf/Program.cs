@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,9 +12,10 @@ using System.Runtime.CompilerServices;
 // --== Useful code ==--
 
 const int Iters = 10_000_000;
-int[] values = Enumerable.Range(0, 100).ToArray();
+//var values = Enumerable.Range(0, 100).ToList();
+var values = new Stack<int>(Enumerable.Range(0, 100));
 
-Console.WriteLine("runnnig...");
+Console.WriteLine("running...");
 
 Stopwatch sw = new();
 
@@ -36,7 +38,7 @@ while (true)
 
 
 [MethodImpl(MethodImplOptions.NoInlining)] // prevent inlining to get more accurate measurements
-static int Test(int[] values)
+static int Test(Stack<int> values)
 {
     //var stopWatch = Stopwatch.StartNew();
     //stopWatch.Stop();
