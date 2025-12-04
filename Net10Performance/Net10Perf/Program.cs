@@ -1,9 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics.Tensors;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 // Optimization of c# code:
 // https://lab.razor.fyi/#xZBNSkMxFIVRpGhG4goujp4Uojh9diAV_KGK0IKgCMb0-noxL9Hc-6oi3YV7cAPuwC04cB2uQF77qLX4NzOj5JwvJ_dEPdeUOowhiybXlpeeagWTz6B9x4J5qiZPuhmcQysUPOtt9BjJ_kDs5nkh5tzhFLNFJvOBhSx_7-hm6OKmN-6OaRprkb-ekjq9iKZLPvtO1x3Dl5wqZZ1hhqqxulcAACxGyEI_UBf2DflkZSiPzHI1g-fgUB9FEmyRx2R5B50LenklHUIDpWAyirxAB1kS8nJyCn3jCuTp1NXVvonAEq6OjNgeNKAt4eqm3Ou2mCgHeJNUD4z4MatLctIbJhU5NGAtVWP1IkQ0tpeULgH5T4N8HmY4fJFDvQH0EVv2qlZEKaIvmaryl4XX_79xMmpb6kCwUY2iW-gz6aVA9fov_UcXTuj0b_-gBmpv1vLxwvzb48PL68Xi3NnM7cw7
@@ -11,9 +15,13 @@ using System.Runtime.CompilerServices;
 
 // --== Useful code ==--
 
-const int Iters = 10_000_000;
+const int Iters = 10_000_0;
 //var values = Enumerable.Range(0, 100).ToList();
-var values = new Stack<int>(Enumerable.Range(0, 100));
+//var values = new Stack<int>(Enumerable.Range(0, 100));
+//var values = new Queue<int>(Enumerable.Range(0, 100));
+//var values = new ConcurrentDictionary<int, int>(Enumerable.Range(0, 100).Select(e => new KeyValuePair<int, int>(e,e)));
+var values1 = new BitArray(1024, false);
+var values2 = new BitArray(1024, true);
 
 Console.WriteLine("running...");
 
@@ -26,7 +34,7 @@ while (true)
     
     for (int i = 0; i < Iters; i++)
     {
-        Test(values);
+        Test(values1, values2);
     }
 
     sw.Stop();
@@ -38,17 +46,33 @@ while (true)
 
 
 [MethodImpl(MethodImplOptions.NoInlining)] // prevent inlining to get more accurate measurements
-static int Test(Stack<int> values)
+static long Test(BitArray values1, BitArray values2)
 {
+#if NET10_0
+    return TensorPrimitives.HammingBitDistance<byte>(
+    CollectionsMarshal.AsBytes(values1),
+    CollectionsMarshal.AsBytes(values2));
+#else
     //var stopWatch = Stopwatch.StartNew();
     //stopWatch.Stop();
-    var sum = 0;
+    var distance = 0;
 
-    foreach(var i in values)
+    for (int i = 0; i < values1.Length; i++)
     {
-        sum += i;
+        if(values1[i] != values2[i])
+        { 
+            distance++; 
+        }
     }
 
-    return sum;
+    return distance;
+#endif
+
+    //foreach(var i in values)
+    //{
+    //    distance += i.Value;
+    //}
+
+    //return distance;
 }
 
