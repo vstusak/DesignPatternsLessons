@@ -1,10 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics.Tensors;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 /**
  * dotnet run -c Release -f net48
@@ -12,14 +15,16 @@ using System.Runtime.CompilerServices;
  * dotnet run -c Release -f net10.0
  */
 
-const int Iters = 10_000_000;
+const int Iters = 10_000;
 
 Console.WriteLine("runnnig...");
 
 //var values = Enumerable.Range(0, 100).ToList();
 //var stack = new Stack<int>(Enumerable.Range(0, 100));
 //var queue = new Queue<int>(Enumerable.Range(0, 100));
-var valuesDict = new ConcurrentDictionary<int, string>(Enumerable.Range(0, 100).Select(e => new KeyValuePair<int, string>(e, e.ToString())));
+//var valuesDict = new ConcurrentDictionary<int, string>(Enumerable.Range(0, 100).Select(e => new KeyValuePair<int, string>(e, e.ToString())));
+var bits1 = new BitArray(1024, false);
+var bits2 = new BitArray(1024, true);
 
 Stopwatch sw = new();
 
@@ -39,7 +44,8 @@ while (true)
         //Test5(values);
         //Test6(stack);
         //Test7(queue);
-        Test8(valuesDict);
+        //Test8(valuesDict);
+        Test9(bits1, bits2);
     }
 
     sw.Stop();
@@ -150,4 +156,27 @@ static int Test8(IEnumerable<KeyValuePair<int, string>> dict)
     }
 
     return summary;
+}
+
+[MethodImpl(MethodImplOptions.NoInlining)]
+static long Test9(BitArray bits1, BitArray bits2)
+{
+    // Hamming distance calculation -count of different bits between two bit arrays
+    #if NET10_0
+        return TensorPrimitives.HammingBitDistance<byte>(
+            CollectionsMarshal.AsBytes(bits1), //in .net10 there is new API to get byte representation of BitArray without allocations
+            CollectionsMarshal.AsBytes(bits2));
+    #else
+        long distance = 0;
+        for (int i = 0; i < bits1.Length; i++)
+        {
+            if (bits1[i] != bits2[i])
+            {
+                distance++;
+            }
+        }
+
+        return distance;
+
+    #endif
 }
