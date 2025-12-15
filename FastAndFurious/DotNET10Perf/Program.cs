@@ -15,7 +15,8 @@ using System.Runtime.InteropServices;
  * dotnet run -c Release -f net10.0
  */
 
-const int Iters = 10_000;
+const int Iters = 10_000_000;
+
 
 Console.WriteLine("runnnig...");
 
@@ -23,9 +24,19 @@ Console.WriteLine("runnnig...");
 //var stack = new Stack<int>(Enumerable.Range(0, 100));
 //var queue = new Queue<int>(Enumerable.Range(0, 100));
 //var valuesDict = new ConcurrentDictionary<int, string>(Enumerable.Range(0, 100).Select(e => new KeyValuePair<int, string>(e, e.ToString())));
+var valuesLinq = Enumerable.Range(0, 100).Reverse();
 var bits1 = new BitArray(1024, false);
 var bits2 = new BitArray(1024, true);
 
+#if NET10_0
+    Console.WriteLine(string.Join(' ', valuesLinq.ToList().Shuffle()));
+
+#else
+    var random = new Random(DateTime.Now.Microsecond);
+    Console.WriteLine(string.Join(' ', valuesLinq.ToList()));
+    var randomList = valuesLinq.OrderBy(item => random.Next()); // Generuje náhodné číslo pro každý prvek .ToList()
+    Console.WriteLine(string.Join(' ', randomList.ToList()));
+#endif
 Stopwatch sw = new();
 
 
@@ -45,7 +56,8 @@ while (true)
         //Test6(stack);
         //Test7(queue);
         //Test8(valuesDict);
-        Test9(bits1, bits2);
+        //Test9(bits1, bits2);
+        Test10(valuesLinq);
     }
 
     sw.Stop();
@@ -179,4 +191,10 @@ static long Test9(BitArray bits1, BitArray bits2)
         return distance;
 
     #endif
+}
+
+[MethodImpl(MethodImplOptions.NoInlining)]
+static bool Test10(IEnumerable<int> queue)
+{
+    return queue.Contains(42);
 }
