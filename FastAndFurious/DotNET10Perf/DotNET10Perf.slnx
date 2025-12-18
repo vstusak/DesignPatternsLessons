@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../BenchmarkDEMO/BenchmarkDEMO.csproj" Id="75852449-fce1-4e16-9cd2-ffa3c5757a17" />
   <Project Path="DotNET10Perf.csproj" />
 </Solution>
