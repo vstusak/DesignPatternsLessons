@@ -9,33 +9,27 @@ namespace Logging.WebApp.Pages
     {
         
         private readonly ILogger<IndexModel> _logger;
-        private readonly IHttpClientFactory _httpClientFactory;
+
+        private readonly ProductStoreApiHttpClientAdapter _httpClient;
+
+        //private readonly IHttpClientFactory _httpClientFactory;
         public List<Product>? Products { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IHttpClientFactory httpClientFactory)
+        public IndexModel(ILogger<IndexModel> logger, ProductStoreApiHttpClientAdapter httpClient)
         {
             _logger = logger;
-            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClient;
+            //_httpClientFactory = httpClientFactory;
         }
 
         public async Task OnGetAsync()
         {
-            var apiClient = _httpClientFactory.CreateClient("api");
-            apiClient.BaseAddress = new Uri("https+http://apiservice");
-            var response = await apiClient.GetAsync("Product");
-            Products = await response.Content.ReadFromJsonAsync<List<Product>>();
+            Products = await _httpClient.GetFilteredProductsAsync();
         }
 
         public async Task OnPostShowFilterAsync(string filter)
         {
-            var apiClient = _httpClientFactory.CreateClient("api");
-            apiClient.BaseAddress = new Uri("https+http://apiservice");
-            var response = await apiClient.GetAsync($"Product/{filter}");
-            if (!response.IsSuccessStatusCode)
-            {
-                await LogError(filter, apiClient, response);
-            }
-            Products = await response.Content.ReadFromJsonAsync<List<Product>>();
+            Products = await _httpClient.GetFilteredProductsAsync(filter);
         }
 
         private async Task LogError(string filter, HttpClient apiClient, HttpResponseMessage response)
@@ -51,7 +45,6 @@ namespace Logging.WebApp.Pages
         {
             _logger.LogInformation($"1-Webapp backend is going to delete id {id} ");
             var apiClient = _httpClientFactory.CreateClient("api");
-            apiClient.BaseAddress = new Uri("https://localhost:7055/");
             await apiClient.DeleteAsync($"Product/{id}");
             var response = await apiClient.GetAsync("Product");
             Products = await response.Content.ReadFromJsonAsync<List<Product>>();
