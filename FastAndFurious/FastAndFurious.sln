@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.34928.147
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11304.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Strategy", "Strategy\Strategy.csproj", "{6A968381-72D3-42D8-91EA-D87BE3E168D1}"
 EndProject
@@ -20,6 +20,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorPattern", "DecatorPattern2\DecoratorPattern.csproj", "{6A015C08-1A0A-4EA5-B1E4-48FC540BA711}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingletonPattern", "SingletonPattern\SingletonPattern.csproj", "{1753409F-5FF0-406B-AEE0-CC955A820D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFuriousStore.AppHost", "ProductFuriousStore\ProductFuriousStore.AppHost\ProductFuriousStore.AppHost.csproj", "{55C6AC46-2109-44E1-A348-C76FE107AE1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFuriousStore.ServiceDefaults", "ProductFuriousStore\ProductFuriousStore.ServiceDefaults\ProductFuriousStore.ServiceDefaults.csproj", "{7503DC63-E7DC-402C-DE41-9B319935E7B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFuriousStore.ApiService", "ProductFuriousStore\ProductFuriousStore.ApiService\ProductFuriousStore.ApiService.csproj", "{7DDDD5D2-86A0-2962-3E4C-E779F1B503E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFuriousStore.Web", "ProductFuriousStore\ProductFuriousStore.Web\ProductFuriousStore.Web.csproj", "{D2975349-D3A3-A196-C2F0-7854DE5C879A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductFuriousStore", "ProductFuriousStore", "{90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,9 +73,31 @@ Global
 		{1753409F-5FF0-406B-AEE0-CC955A820D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1753409F-5FF0-406B-AEE0-CC955A820D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1753409F-5FF0-406B-AEE0-CC955A820D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55C6AC46-2109-44E1-A348-C76FE107AE1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C6AC46-2109-44E1-A348-C76FE107AE1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C6AC46-2109-44E1-A348-C76FE107AE1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C6AC46-2109-44E1-A348-C76FE107AE1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7503DC63-E7DC-402C-DE41-9B319935E7B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7503DC63-E7DC-402C-DE41-9B319935E7B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7503DC63-E7DC-402C-DE41-9B319935E7B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7503DC63-E7DC-402C-DE41-9B319935E7B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DDDD5D2-86A0-2962-3E4C-E779F1B503E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DDDD5D2-86A0-2962-3E4C-E779F1B503E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DDDD5D2-86A0-2962-3E4C-E779F1B503E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DDDD5D2-86A0-2962-3E4C-E779F1B503E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2975349-D3A3-A196-C2F0-7854DE5C879A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2975349-D3A3-A196-C2F0-7854DE5C879A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2975349-D3A3-A196-C2F0-7854DE5C879A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2975349-D3A3-A196-C2F0-7854DE5C879A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{55C6AC46-2109-44E1-A348-C76FE107AE1F} = {90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}
+		{7503DC63-E7DC-402C-DE41-9B319935E7B4} = {90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}
+		{7DDDD5D2-86A0-2962-3E4C-E779F1B503E1} = {90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}
+		{D2975349-D3A3-A196-C2F0-7854DE5C879A} = {90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E83576C-189C-4F7A-9F44-FB02A75A4C7E}
