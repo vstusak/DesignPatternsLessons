@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31912.275
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{B2822129-2EF8-4EAA-A4C9-90526B959468}"
 EndProject
@@ -96,6 +96,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.ServiceDefaults", "ProductStore.ServiceDefaults\ProductStore.ServiceDefaults.csproj", "{9357E417-5904-4F8F-97D1-114621E24EC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.Loader", "ProductStore.Loader\ProductStore.Loader.csproj", "{F11E7115-602C-407C-ADBA-411CA0B699EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.WebApi.Client", "ProductStore.WebApi.Client\ProductStore.WebApi.Client.csproj", "{EE3793FE-E606-478F-931C-FD3C6DC74A10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -283,6 +285,10 @@ Global
 		{F11E7115-602C-407C-ADBA-411CA0B699EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F11E7115-602C-407C-ADBA-411CA0B699EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F11E7115-602C-407C-ADBA-411CA0B699EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE3793FE-E606-478F-931C-FD3C6DC74A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE3793FE-E606-478F-931C-FD3C6DC74A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE3793FE-E606-478F-931C-FD3C6DC74A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE3793FE-E606-478F-931C-FD3C6DC74A10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -300,6 +306,7 @@ Global
 		{02473AF3-5805-4D63-A638-FC9BFDCC1F25} = {73747857-3221-490F-BE30-7993E1B87C3F}
 		{9357E417-5904-4F8F-97D1-114621E24EC4} = {73747857-3221-490F-BE30-7993E1B87C3F}
 		{F11E7115-602C-407C-ADBA-411CA0B699EA} = {73747857-3221-490F-BE30-7993E1B87C3F}
+		{EE3793FE-E606-478F-931C-FD3C6DC74A10} = {73747857-3221-490F-BE30-7993E1B87C3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9628AC0A-8791-4D56-A8C3-C96586502232}

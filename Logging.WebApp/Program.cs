@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Hosting;
-using ProductStore.Contracts.Model;
 using System.Net.Http;
+using ProductStore.WebApi.Client;
+using ProductStore.WebApp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,7 @@ builder.Services.AddRazorPages();
 //{
 //    client.BaseAddress = new Uri("https+http://apiservice");
 //});
-builder.Services.AddHttpClient<ProductStoreApiHttpClientAdapter>(client =>
+builder.Services.AddHttpClient<IProductStoreApiClient,ProductStoreApiClient>(client =>
 {
     client.BaseAddress = new Uri("https+http://apiservice");
 });
@@ -38,21 +39,3 @@ app.MapRazorPages();
 
 
 app.Run();
-
-public class ProductStoreApiHttpClientAdapter(HttpClient httpClient)
-{
-    public async Task<List<Product>> GetFilteredProductsAsync(string filter = "")
-    {
-        var response = await httpClient.GetAsync($"Product/{filter}");
-        try
-        {
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<List<Product>>() ?? [];
-        }
-        catch (Exception e)
-        {
-            // await LogError(filter, apiClient, response);
-            throw;
-        }
-    }
-}

@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Logging.Data.Api\ProductStore.Contracts.csproj" />
     <ProjectReference Include="..\ProductStore.ServiceDefaults\ProductStore.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\ProductStore.WebApi.Client\ProductStore.WebApi.Client.csproj" />
   </ItemGroup>
 
 </Project>
