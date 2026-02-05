@@ -1,4 +1,7 @@
 <Solution>
   <Project Path="../Benchmark/Benchmark.csproj" Id="d511fbd7-1a80-4ae9-a81a-9698004c3820" />
+  <Project Path="../BlazorApp/BlazorApp.csproj" Id="6c5c5796-cc53-4203-9231-cb6f8ff4c48b" />
+  <Project Path="../BlazorAppWebAssembly/BlazorAppWebAssembly.Client/BlazorAppWebAssembly.Client.csproj" Id="c2fdcbd5-69d0-4f80-8aa7-0c496c039a99" />
+  <Project Path="../BlazorAppWebAssembly/BlazorAppWebAssembly/BlazorAppWebAssembly.csproj" Id="8586bace-f1eb-4ba4-8e3b-f2e913e0ddbe" />
   <Project Path="Net10Perf.csproj" />
 </Solution>
