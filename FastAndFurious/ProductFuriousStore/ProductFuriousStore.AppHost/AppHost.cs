@@ -14,3 +14,7 @@ builder.AddProject<Projects.ProductFuriousStore_Web>("webfrontend")
     .WaitFor(apiService);
 
 builder.Build().Run();
+
+// @TODO Create Db for product store
+// @TODO Create controlers in API project for product store
+// @TODO Create all in web project for product store
