@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using ProductStore.Contracts.Model;
 
 
-namespace Logging.Data
+namespace ProductStore.Data
 {
     public class ProductRepository: IProductRepository    
     {

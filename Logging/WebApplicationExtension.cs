@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Logging.Data;
+namespace ProductStore.Data;
 
 public static class WebApplicationExtension
 {

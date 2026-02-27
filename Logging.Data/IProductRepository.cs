@@ -1,6 +1,6 @@
 ﻿using ProductStore.Contracts.Model;
 
-namespace Logging.Data;
+namespace ProductStore.Data;
 
 public interface IProductRepository
 {

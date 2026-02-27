@@ -1,4 +1,4 @@
-﻿using Logging.Data;
+﻿using ProductStore.Data;
 using Microsoft.Extensions.Logging;
 using ProductStore.Contracts.Model;
 using ProductStore.Domain;

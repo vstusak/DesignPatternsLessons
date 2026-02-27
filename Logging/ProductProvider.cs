@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logging.Data;
+using ProductStore.Data;
 using Microsoft.Extensions.Logging;
 using ProductStore.Contracts.Model;
 using ProductStore.Domain;

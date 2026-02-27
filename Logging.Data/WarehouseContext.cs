@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using ProductStore.Contracts.Model;
 
-namespace Logging.Data
+namespace ProductStore.Data
 {
     public class WarehouseContext: DbContext
     {
