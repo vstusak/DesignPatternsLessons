@@ -23,6 +23,7 @@ if (app.Environment.IsDevelopment())
 
 // TODO create api for product store, try both minimal api and controllers, swagger
 
+/*
 //app.MapGet("/weatherforecast", () =>
 //{
 //    var forecast = Enumerable.Range(1, 5).Select(index =>
@@ -36,6 +37,7 @@ if (app.Environment.IsDevelopment())
 //    return forecast;
 //})
 //.WithName("GetWeatherForecast");
+*/
 
 app.MapDefaultEndpoints();
 

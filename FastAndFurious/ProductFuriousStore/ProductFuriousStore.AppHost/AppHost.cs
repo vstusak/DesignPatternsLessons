@@ -2,6 +2,9 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache");
 
+var sqlPassword = builder.AddParameter("sql-password", "CsharpAcademy@2026");
+var sqlServer = // @TODO
+
 var apiService = builder.AddProject<Projects.ProductFuriousStore_ApiService>("apiservice")
     .WithHttpHealthCheck("/health");
 
