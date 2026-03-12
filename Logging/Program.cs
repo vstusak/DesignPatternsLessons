@@ -1,19 +1,24 @@
 
-using ProductStore.Data;
-using Logging.Domain;
-using System.Diagnostics;
 using Logging.Api.CommonLoggers;
+using Logging.Domain;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using ProductStore.Data;
 using ProductStore.Domain;
 using ProductStore.WebApi;
 using Serilog;
+using System.Diagnostics;
+using System.Reflection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using ProductStore.Contracts.Model;
+using ProductStore.WebApi.Endpoints;
 
 namespace Logging.Api
 {
     using Hellang.Middleware.ProblemDetails;
     using Microsoft.Extensions.Hosting;
+    using Serilog.Core;
 
     public class Program
     {
@@ -67,11 +72,13 @@ namespace Logging.Api
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductProvider, ProductProvider>();
-            
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddEndpoints(typeof(Program).Assembly);
 
             var app = builder.Build();
             app.UseMiddleware<OurExceptionMiddleware>();
@@ -82,7 +89,7 @@ namespace Logging.Api
 
             //run migrations
             await app.ConfigureDatabaseAsync();
-            
+
             using (var scope = app.Services.CreateScope())
             {
                 //var services = scope.ServiceProvider;
@@ -91,7 +98,7 @@ namespace Logging.Api
                 //{
                 //    context.Seed();
                 //}
-                
+
                 //var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 //var startupLogger = loggerFactory.CreateLogger("Startup");
                 //startupLogger.LogInformation("Data has been seeded.");
@@ -108,10 +115,38 @@ namespace Logging.Api
 
             app.UseAuthorization();
 
-
             app.MapControllers();
 
+            app.MapEndpoints(); //TODO try to execute and verify if endpoints are mapped correctly
+
             app.Run();
+        }
+    }
+
+    public static class EndpointExtensions
+    {
+        public static IApplicationBuilder MapEndpoints(this WebApplication app)
+        {
+            var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
+            foreach (var endpoint in endpoints)
+            {
+                endpoint.MapEndpoint(app);
+            }
+
+            return app;
+        }
+
+        public static IServiceCollection AddEndpoints(this IServiceCollection services, Assembly assembly)
+        {
+            var serviceDescriptors = assembly.DefinedTypes
+              .Where(type => type is { IsClass: true, IsAbstract: false, IsInterface: false } &&
+                             type.IsAssignableTo(typeof(IEndpoint)))
+              .Select(type => ServiceDescriptor.Singleton(typeof(IEndpoint), type))
+              .ToList();
+
+            services.TryAddEnumerable(serviceDescriptors);
+
+            return services;
         }
     }
 }
