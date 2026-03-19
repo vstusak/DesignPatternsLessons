@@ -1,26 +1,25 @@
 ﻿using ProductStore.Contracts.Model;
+using ProductStore.Domain;
 
 namespace ProductStore.WebApi.Endpoints
 {
-    public class ProductsEndpoint:IEndpoint
+    public class ProductsEndpoint(ILogger<ProductsEndpoint> logger, IProductProvider productProvider):IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
             app.MapGet("/productsmin", () =>
                 {
-                    return new Product { Name = "Bota", Price = 99, Quantity = 2 };
+                    logger.LogDebug($"Get all products");
 
-                    //_logger.LogDebug($"Get product with '{id}' id");
+                    var products = productProvider.GetProductsForCategory("All");
 
-                    //var product = _productProvider.GetProduct(id);
-
-                    //if (product == null)
+                    //if (products == null)
                     //{
-                    //    _logger.LogWarning($"Cannot find product with '{id}' id");
+                    //    logger.LogWarning($"Cannot find products");
                     //    return NotFound();
                     //}
 
-                    //return Ok(product);
+                    return products;
                 }).WithName("GetProductsMinimal")
                 .WithDisplayName("Get Products Minimal API")
                 .WithDescription("this is our get product minimal API endpoint");

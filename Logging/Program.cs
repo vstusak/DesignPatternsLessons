@@ -127,6 +127,8 @@ namespace Logging.Api
     {
         public static IApplicationBuilder MapEndpoints(this WebApplication app)
         {
+            using var scope = app.Services.CreateScope();
+            //TODO: Fix exception
             var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
             foreach (var endpoint in endpoints)
             {
@@ -141,7 +143,7 @@ namespace Logging.Api
             var serviceDescriptors = assembly.DefinedTypes
               .Where(type => type is { IsClass: true, IsAbstract: false, IsInterface: false } &&
                              type.IsAssignableTo(typeof(IEndpoint)))
-              .Select(type => ServiceDescriptor.Singleton(typeof(IEndpoint), type))
+              .Select(type => ServiceDescriptor.Transient(typeof(IEndpoint), type))
               .ToList();
 
             services.TryAddEnumerable(serviceDescriptors);
