@@ -1,9 +1,8 @@
 ﻿using ProductStore.Data;
 using Microsoft.Extensions.Logging;
 using ProductStore.Contracts.Model;
-using ProductStore.Domain;
 
-namespace Logging.Domain
+namespace ProductStore.Domain
 {
     public class ProductProvider : IProductProvider
     {

@@ -1,24 +1,15 @@
 
-using Logging.Api.CommonLoggers;
-using Logging.Domain;
 using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using ProductStore.Data;
 using ProductStore.Domain;
-using ProductStore.WebApi;
-using Serilog;
-using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using ProductStore.Contracts.Model;
 using ProductStore.WebApi.Endpoints;
 
 namespace Logging.Api
 {
     using Hellang.Middleware.ProblemDetails;
     using Microsoft.Extensions.Hosting;
-    using Serilog.Core;
 
     public class Program
     {
@@ -129,7 +120,7 @@ namespace Logging.Api
         {
             using var scope = app.Services.CreateScope();
             //TODO: Fix exception
-            var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
+            var endpoints = scope.ServiceProvider.GetRequiredService<IEnumerable<IEndpoint>>();
             foreach (var endpoint in endpoints)
             {
                 endpoint.MapEndpoint(app);
