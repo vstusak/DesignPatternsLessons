@@ -31,7 +31,7 @@ app.UseHttpsRedirection();
 
 app.UseAntiforgery();
 
-app.UseOutputCache();
+//app.UseOutputCache();
 
 app.MapStaticAssets();
 

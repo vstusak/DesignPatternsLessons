@@ -1,3 +1,5 @@
+using ProductFuriousStore.Contracts.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire client integrations.
@@ -19,31 +21,42 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-//string[] summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
+// TODO add swagger
+// TODO create api for product store try both
+//  1. minimal api (refactoring)
+//  2. controllers
 
-// TODO create api for product store, try both minimal api and controllers, swagger
 
-/*
-//app.MapGet("/weatherforecast", () =>
-//{
-//    var forecast = Enumerable.Range(1, 5).Select(index =>
-//        new WeatherForecast
-//        (
-//            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-//            Random.Shared.Next(-20, 55),
-//            summaries[Random.Shared.Next(summaries.Length)]
-//        ))
-//        .ToArray();
-//    return forecast;
-//})
-//.WithName("GetWeatherForecast");
-*/
+
+app.MapGet("/products", () =>
+    {
+        var products = new List<Product>()
+        {
+            new()
+            {
+                Name = "Product 1",
+                Category = "Category 1",
+                Price = 10
+            },
+            new()
+            {
+                Name = "Product 2",
+                Category = "Category 2",
+                Price = 20
+            },
+            new()
+            {
+                Name = "Product 3",
+                Category = "Category 3",
+                Price = 30
+            }
+
+        };
+    return products;
+})
+.WithName("GetProducts");
+
 
 app.MapDefaultEndpoints();
 
 app.Run();
-
-//record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-//{
-//    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-//}

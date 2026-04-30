@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ProductStore.Contracts\ProductFuriousStore.Contracts.csproj" />
     <ProjectReference Include="..\ProductFuriousStore.ServiceDefaults\ProductFuriousStore.ServiceDefaults.csproj" />
   </ItemGroup>
 
