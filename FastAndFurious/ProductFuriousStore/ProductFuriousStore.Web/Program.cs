@@ -18,6 +18,8 @@ builder.Services.AddRazorComponents()
 //        client.BaseAddress = new("https+http://apiservice");
 //    });
 
+//TODO: continue - create UI for products
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
