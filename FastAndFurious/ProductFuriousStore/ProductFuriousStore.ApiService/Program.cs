@@ -11,6 +11,9 @@ builder.Services.AddProblemDetails();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,17 +21,33 @@ app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
     app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "ProductFuriousStore API v1");
+        options.RoutePrefix = string.Empty;
+    });
 }
 
-// TODO add swagger
-// TODO create api for product store try both
-//  1. minimal api (refactoring)
-//  2. controllers
+//if (app.Environment.IsDevelopment())
+    //{
+    //    app.MapOpenApi();
+    //    app.UseSwaggerUI(options =>
+    //    {
+    //        options.SwaggerEndpoint("/openapi/v1.json", "ProductFuriousStore API v1");
+    //        options.RoutePrefix = string.Empty;
+    //    });
+    //}
+
+
+    // TODO create api for product store try both
+    //  1. minimal api (refactoring)
+    //  2. controllers
 
 
 
-app.MapGet("/products", () =>
+    app.MapGet("/products", () =>
     {
         var products = new List<Product>()
         {
