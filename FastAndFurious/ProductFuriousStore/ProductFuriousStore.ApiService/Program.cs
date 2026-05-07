@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 
 // Add services to the container.
+builder.Services.AddControllers();
 builder.Services.AddProblemDetails();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -43,11 +44,10 @@ if (app.Environment.IsDevelopment())
 
     // TODO create api for product store try both
     //  1. minimal api (refactoring)
-    //  2. controllers
 
 
 
-    app.MapGet("/products", () =>
+app.MapGet("/products", () =>
     {
         var products = new List<Product>()
         {
@@ -75,7 +75,12 @@ if (app.Environment.IsDevelopment())
 })
 .WithName("GetProducts");
 
-
+app.MapControllers();
 app.MapDefaultEndpoints();
 
 app.Run();
+
+/// <summary>
+/// Entry point class exposed for integration testing with WebApplicationFactory.
+/// </summary>
+public partial class Program;

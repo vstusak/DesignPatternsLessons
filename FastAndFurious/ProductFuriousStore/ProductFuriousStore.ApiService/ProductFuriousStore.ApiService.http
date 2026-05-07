@@ -4,3 +4,7 @@ GET {{ApiService_HostAddress}}/products/
 Accept: application/json
 
 ###
+
+GET {{ApiService_HostAddress}}/api/products/
+Accept: application/json
+###
