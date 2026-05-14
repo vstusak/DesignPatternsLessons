@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ProductFuriousStore.ApiService.Client\ProductFuriousStore.ApiService.Client.csproj" />
     <ProjectReference Include="..\ProductFuriousStore.ServiceDefaults\ProductFuriousStore.ServiceDefaults.csproj" />
   </ItemGroup>
 

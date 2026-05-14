@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFuriousStore.Contrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFuriousStore.Logic", "ProductStore.Logic\ProductFuriousStore.Logic.csproj", "{2BB9F7D0-0381-4492-9C21-389C4252FCAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFuriousStore.ApiService.Client", "ProductFuriousStore.ApiService.Client\ProductFuriousStore.ApiService.Client.csproj", "{6234745A-95A4-47DB-A340-A09F84D495F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{2BB9F7D0-0381-4492-9C21-389C4252FCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BB9F7D0-0381-4492-9C21-389C4252FCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BB9F7D0-0381-4492-9C21-389C4252FCAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6234745A-95A4-47DB-A340-A09F84D495F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6234745A-95A4-47DB-A340-A09F84D495F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6234745A-95A4-47DB-A340-A09F84D495F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6234745A-95A4-47DB-A340-A09F84D495F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +118,7 @@ Global
 		{D2975349-D3A3-A196-C2F0-7854DE5C879A} = {90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}
 		{9FC7BBE2-7B4A-468C-B240-E5D0E94F7853} = {90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}
 		{2BB9F7D0-0381-4492-9C21-389C4252FCAE} = {90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}
+		{6234745A-95A4-47DB-A340-A09F84D495F0} = {90D25CF1-9C26-4F5C-9D5A-2A8075ED9084}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E83576C-189C-4F7A-9F44-FB02A75A4C7E}

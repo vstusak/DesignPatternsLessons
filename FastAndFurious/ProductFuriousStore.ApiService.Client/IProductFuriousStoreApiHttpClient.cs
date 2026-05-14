@@ -1,0 +1,9 @@
+﻿using ProductFuriousStore.Contracts.Entities;
+
+namespace ProductFuriousStore.ApiService.Client
+{
+    public interface IProductFuriousStoreApiHttpClient
+    {
+        Task<IList<Product>> GetAllFromController();
+    }
+}
