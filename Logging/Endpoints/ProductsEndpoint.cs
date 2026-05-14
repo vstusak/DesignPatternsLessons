@@ -3,11 +3,11 @@ using ProductStore.Domain;
 
 namespace ProductStore.WebApi.Endpoints
 {
-    public class ProductsEndpoint(ILogger<ProductsEndpoint> logger, IProductProvider productProvider):IEndpoint
+    public class ProductsEndpoint():IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
-            app.MapGet("/productsmin", () =>
+            app.MapGet("/productsmin", (ILogger<ProductsEndpoint> logger, IProductProvider productProvider) =>
                 {
                     logger.LogDebug($"Get all products");
 
