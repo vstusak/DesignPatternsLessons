@@ -21,5 +21,21 @@ namespace ProductFuriousStore.ApiService.Client
                 throw;
             }
         }
+
+        public async Task<IList<Product>> GetAllFromMinimalApi()
+        {
+            var response = await client.GetAsync("/products/");
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<List<Product>>() ?? [];
+            }
+            catch (HttpRequestException ex)
+            {
+                logger.LogError(ex, "request error");
+                throw;
+            }
+        }
     }
 }

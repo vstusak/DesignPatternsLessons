@@ -1,7 +1,48 @@
 ﻿@page "/"
+@using ProductFuriousStore.ApiService.Client
+@using ProductFuriousStore.Contracts.Entities
+@inject IProductFuriousStoreApiHttpClient ApiClient
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Products</h1>
 
-Welcome to your new app.
+@if (_products is null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (_products.Count == 0)
+{
+    <p>No products found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in _products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Category</td>
+                    <td>@product.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<Product>? _products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _products = await ApiClient.GetAllFromMinimalApi();
+    }
+}

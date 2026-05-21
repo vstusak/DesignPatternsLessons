@@ -5,5 +5,6 @@ namespace ProductFuriousStore.ApiService.Client
     public interface IProductFuriousStoreApiHttpClient
     {
         Task<IList<Product>> GetAllFromController();
+        Task<IList<Product>> GetAllFromMinimalApi();
     }
 }
