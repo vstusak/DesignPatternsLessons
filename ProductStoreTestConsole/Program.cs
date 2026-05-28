@@ -9,7 +9,7 @@ namespace ProductStoreTestConsole
         {
             Console.WriteLine("Starting SQL container!");
 
-            await using var sqlContainer = new MsSqlBuilder()
+            await using var sqlContainer = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04")
                 .Build();
 
             await sqlContainer.StartAsync();
@@ -18,6 +18,23 @@ namespace ProductStoreTestConsole
 
             var connectionString = sqlContainer.GetConnectionString();
             var context = await CreateContextAsync(connectionString);
+            await InsertData(context);
+            ReadData(context);
+        }
+
+        private static void ReadData(PersonDBContext context)
+        {
+            foreach (var p in context.People)
+            {
+                Console.WriteLine($"{p.Id}: {p.Name} - {p.Age} yo");
+            }
+        }
+
+        private async static Task InsertData(PersonDBContext context)
+        {
+            await context.People.AddAsync(new Person { Age = 18, Name = "Tomik Fulajtar" });
+            await context.People.AddAsync(new Person { Age = 19, Name = "Milanek Karasek" });
+            await context.SaveChangesAsync();
         }
 
         private static async Task<PersonDBContext> CreateContextAsync(string connectionString)
@@ -47,5 +64,25 @@ namespace ProductStoreTestConsole
         public string Name { get; set; }
         public int Id { get; set; }
         public int Age { get; set; }
+    }
+
+    public class PeopleRepository(PersonDBContext context)
+    {
+        public async Task<List<Person>> GetAllAsync()
+        {
+            return await context.People.ToListAsync();
+        }
+
+        public async Task<Person> GetByIdAsync(int id)
+        {
+            return await context.People.FirstAsync(person => person.Id == id);
+        }
+
+        public async Task<int> InsertAsync(Person person)
+        {
+            var insertResult = await context.People.AddAsync(person);
+            await context.SaveChangesAsync();
+            return insertResult.Entity.Id;
+        }
     }
 }
