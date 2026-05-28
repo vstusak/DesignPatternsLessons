@@ -11,6 +11,7 @@ public class ProductsEndpointTests : IClassFixture<ApiServiceWebApplicationFacto
 
     public ProductsEndpointTests(ApiServiceWebApplicationFactory factory)
     {
+        Products.Reset();
         _client = factory.CreateClient();
     }
 
@@ -25,6 +26,7 @@ public class ProductsEndpointTests : IClassFixture<ApiServiceWebApplicationFacto
 
         Assert.NotNull(products);
         Assert.Equal(3, products.Count);
+        Assert.Equal(new[] { 1, 2, 3 }, products.Select(product => product.Id));
         Assert.All(products, p =>
         {
             Assert.False(string.IsNullOrWhiteSpace(p.Name));
@@ -44,6 +46,7 @@ public class ProductsEndpointTests : IClassFixture<ApiServiceWebApplicationFacto
 
         Assert.NotNull(products);
         Assert.Equal(3, products.Count);
+        Assert.Equal(new[] { 1, 2, 3 }, products.Select(product => product.Id));
         Assert.All(products, p =>
         {
             Assert.False(string.IsNullOrWhiteSpace(p.Name));
@@ -62,6 +65,20 @@ public class ProductsEndpointTests : IClassFixture<ApiServiceWebApplicationFacto
         var value = await response.Content.ReadAsStringAsync();
 
         Assert.Equal("value", value);
+    }
+
+    [Fact]
+    public async Task DeleteProduct_RemovesProductFromStaticCollection()
+    {
+        var response = await _client.DeleteAsync("/products/2");
+
+        Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+
+        var products = await _client.GetFromJsonAsync<List<Product>>("/products");
+
+        Assert.NotNull(products);
+        Assert.Equal(2, products.Count);
+        Assert.DoesNotContain(products, product => product.Id == 2);
     }
 }
 

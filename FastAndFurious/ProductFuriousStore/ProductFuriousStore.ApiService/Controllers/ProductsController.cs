@@ -13,27 +13,8 @@ namespace ProductFuriousStore.ApiService.Controllers
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            return new List<Product>()
-            {
-                new()
-                {
-                    Name = "Product 10",
-                    Category = "Category 10",
-                    Price = 10
-                },
-                new()
-                {
-                    Name = "Product 20",
-                    Category = "Category 20",
-                    Price = 20
-                },
-                new()
-                {
-                    Name = "Product 30",
-                    Category = "Category 30",
-                    Price = 30
-                }
-            };
+            Thread.Sleep(20000);
+            return Products.Collection;
         }
 
         // GET api/<ValuesController>/5

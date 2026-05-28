@@ -7,11 +7,7 @@
 
 <h1>Products</h1>
 
-@if (_products is null)
-{
-    <p><em>Loading...</em></p>
-}
-else if (_products.Count == 0)
+@if (_products.Count == 0)
 {
     <p>No products found.</p>
 }
@@ -39,10 +35,10 @@ else
 }
 
 @code {
-    private IList<Product>? _products;
+    private IList<Product> _products = [];
 
     protected override async Task OnInitializedAsync()
     {
-        _products = await ApiClient.GetAllFromMinimalApi();
+        _products = await ApiClient.GetAllFromController();
     }
 }

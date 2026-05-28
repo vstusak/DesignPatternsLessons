@@ -6,6 +6,21 @@ namespace ProductFuriousStore.ApiService.Client
 {
     public class ProductFuriousStoreApiHttpClient(HttpClient client, ILogger<ProductFuriousStoreApiHttpClient> logger) : IProductFuriousStoreApiHttpClient
     {
+        public async Task DeleteFromMinimalApi(int id)
+        {
+            var response = await client.DeleteAsync($"/products/{id}");
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException ex)
+            {
+                logger.LogError(ex, "request error");
+                throw;
+            }
+        }
+
         public async Task<IList<Product>> GetAllFromController()
         {
             var response = await client.GetAsync("/api/products/");
@@ -24,6 +39,7 @@ namespace ProductFuriousStore.ApiService.Client
 
         public async Task<IList<Product>> GetAllFromMinimalApi()
         {
+            // TODO WTF is Polly
             var response = await client.GetAsync("/products/");
 
             try
