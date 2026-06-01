@@ -13,7 +13,7 @@ namespace ProductFuriousStore.ApiService.Controllers
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            Thread.Sleep(20000);
+           
             return Products.Collection;
         }
 
@@ -36,10 +36,18 @@ namespace ProductFuriousStore.ApiService.Controllers
         //{
         //}
 
-        //// DELETE api/<ValuesController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<ProductsController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var product = Products.Collection.FirstOrDefault(p => p.Id == id);
+            if (product is null)
+            {
+                return NotFound();
+            }
+
+            Products.Collection.Remove(product);
+            return NoContent();
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace ProductFuriousStore.ApiService.Client
         Task<IList<Product>> GetAllFromController();
         Task<IList<Product>> GetAllFromMinimalApi();
         Task DeleteFromMinimalApi(int id);
+        Task DeleteFromController(int id);
     }
 }

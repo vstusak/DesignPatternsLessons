@@ -8,3 +8,7 @@ Accept: application/json
 GET {{ApiService_HostAddress}}/api/products/
 Accept: application/json
 ###
+
+DELETE {{ApiService_HostAddress}}/api/products/1
+Accept: application/json
+###

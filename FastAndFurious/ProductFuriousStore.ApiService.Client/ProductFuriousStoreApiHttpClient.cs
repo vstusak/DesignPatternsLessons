@@ -21,6 +21,21 @@ namespace ProductFuriousStore.ApiService.Client
             }
         }
 
+        public async Task DeleteFromController(int id)
+        {
+            var response = await client.DeleteAsync($"/api/products/{id}");
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException ex)
+            {
+                logger.LogError(ex, "request error");
+                throw;
+            }
+        }
+
         public async Task<IList<Product>> GetAllFromController()
         {
             var response = await client.GetAsync("/api/products/");

@@ -1,7 +1,7 @@
 ﻿@page "/"
 @using ProductFuriousStore.ApiService.Client
 @using ProductFuriousStore.Contracts.Entities
-@inject IProductFuriousStoreApiHttpClient ApiClient
+@inject IProductFuriousStoreApiHttpClient _apiclient
 
 <PageTitle>Home</PageTitle>
 
@@ -19,6 +19,7 @@ else
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@ else
                     <td>@product.Name</td>
                     <td>@product.Category</td>
                     <td>@product.Price</td>
+                    <td><button class="btn btn-danger btn-sm" @onclick="() => DeleteProduct(product.Id)">Delete</button></td>
                 </tr>
             }
         </tbody>
@@ -39,6 +41,12 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        _products = await ApiClient.GetAllFromController();
+        _products = await _apiclient.GetAllFromController();
+    }
+
+    private async Task DeleteProduct(int id)
+    {
+        await _apiclient.DeleteFromController(id);
+        _products = await _apiclient.GetAllFromController();
     }
 }
