@@ -24,17 +24,30 @@ namespace ProductFuriousStore.ApiService.Controllers
             return "value";
         }
 
-        //// POST api/<ValuesController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<ProductsController>
+        [HttpPost]
+        public IActionResult Post([FromBody] Product product)
+        {
+            var newId = Products.Collection.Any() ? Products.Collection.Max(p => p.Id) + 1 : 1;
+            var newProduct = product with { Id = newId };
+            Products.Collection.Add(newProduct);
+            return CreatedAtAction(nameof(Get), new { id = newId }, newProduct);
+        }
 
-        //// PUT api/<ValuesController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        // PUT api/<ProductsController>/5
+        [HttpPut]
+        public IActionResult Put([FromBody] Product product)
+        {
+            var existing = Products.Collection.FirstOrDefault(p => p.Id == product.Id);
+            if (existing is null)
+            {
+                return NotFound();
+            }
+
+            var index = Products.Collection.IndexOf(existing);
+            Products.Collection[index] = product;
+            return NoContent();
+        }
 
         // DELETE api/<ProductsController>/5
         [HttpDelete("{id}")]

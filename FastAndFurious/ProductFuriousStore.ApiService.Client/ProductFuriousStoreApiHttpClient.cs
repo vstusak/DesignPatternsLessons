@@ -68,5 +68,35 @@ namespace ProductFuriousStore.ApiService.Client
                 throw;
             }
         }
+
+        public async Task UpdateFromController(Product product)
+        {
+            var response = await client.PutAsJsonAsync("/api/products", product);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException ex)
+            {
+                logger.LogError(ex, "request error");
+                throw;
+            }
+        }
+
+        public async Task CreateFromController(Product product)
+        {
+            var response = await client.PostAsJsonAsync("/api/products", product);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException ex)
+            {
+                logger.LogError(ex, "request error");
+                throw;
+            }
+        }
     }
 }

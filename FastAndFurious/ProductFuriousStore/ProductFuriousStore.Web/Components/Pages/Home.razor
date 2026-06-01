@@ -7,6 +7,8 @@
 
 <h1>Products</h1>
 
+<button class="btn btn-success mb-3" @onclick="StartCreate">Create New Product</button>
+
 @if (_products.Count == 0)
 {
     <p>No products found.</p>
@@ -23,14 +25,45 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var product in _products)
+            @* // @TODO - move editing and creationg to separated components *@
+            @if (_isCreating)
             {
                 <tr>
-                    <td>@product.Name</td>
-                    <td>@product.Category</td>
-                    <td>@product.Price</td>
-                    <td><button class="btn btn-danger btn-sm" @onclick="() => DeleteProduct(product.Id)">Delete</button></td>
+                    <td><input class="form-control" @bind="_newProduct.Name" /></td>
+                    <td><input class="form-control" @bind="_newProduct.Category" /></td>
+                    <td><input class="form-control" type="number" @bind="_newProduct.Price" /></td>
+                    <td>
+                        <button class="btn btn-success btn-sm" @onclick="CreateProduct">Save</button>
+                        <button class="btn btn-secondary btn-sm" @onclick="CancelCreate">Cancel</button>
+                    </td>
                 </tr>
+            }
+            @foreach (var product in _products)
+            {
+                @if (_editingProductId == product.Id)
+                {
+                    <tr>
+                        <td><input class="form-control" @bind="_editProduct.Name" /></td>
+                        <td><input class="form-control" @bind="_editProduct.Category" /></td>
+                        <td><input class="form-control" type="number" @bind="_editProduct.Price" /></td>
+                        <td>
+                            <button class="btn btn-success btn-sm" @onclick="SaveProduct">Save</button>
+                            <button class="btn btn-secondary btn-sm" @onclick="CancelEdit">Cancel</button>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Category</td>
+                        <td>@product.Price</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" @onclick="() => EditProduct(product)">Edit</button>
+                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteProduct(product.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
@@ -38,15 +71,58 @@ else
 
 @code {
     private IList<Product> _products = [];
+    private int? _editingProductId;
+    private Product _editProduct = new();
+    private bool _isCreating;
+    private Product _newProduct = new();
 
     protected override async Task OnInitializedAsync()
     {
         _products = await _apiclient.GetAllFromController();
     }
 
+    private void EditProduct(Product product)
+    {
+        _editingProductId = product.Id;
+        _editProduct = product with { };
+    }
+
+    private void CancelEdit()
+    {
+        _editingProductId = null;
+    }
+
+    private async Task SaveProduct()
+    {
+        if (_editingProductId is not null)
+        {
+            await _apiclient.UpdateFromController(_editProduct);
+            _products = await _apiclient.GetAllFromController();
+            _editingProductId = null;
+        }
+    }
+
     private async Task DeleteProduct(int id)
     {
         await _apiclient.DeleteFromController(id);
         _products = await _apiclient.GetAllFromController();
+    }
+
+    private void StartCreate()
+    {
+        _isCreating = true;
+        _newProduct = new Product();
+    }
+
+    private void CancelCreate()
+    {
+        _isCreating = false;
+    }
+
+    private async Task CreateProduct()
+    {
+        await _apiclient.CreateFromController(_newProduct);
+        _products = await _apiclient.GetAllFromController();
+        _isCreating = false;
     }
 }
