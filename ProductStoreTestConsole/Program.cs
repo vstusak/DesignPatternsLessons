@@ -50,39 +50,4 @@ namespace ProductStoreTestConsole
             return context;
         }
     }
-
-    public class PersonDBContext : DbContext
-    {
-        public PersonDBContext(DbContextOptions<PersonDBContext> options) : base(options)
-        {
-        }
-        public DbSet<Person> People { get; set; } = null!;
-    }
-
-    public class Person
-    {
-        public string Name { get; set; }
-        public int Id { get; set; }
-        public int Age { get; set; }
-    }
-
-    public class PeopleRepository(PersonDBContext context)
-    {
-        public async Task<List<Person>> GetAllAsync()
-        {
-            return await context.People.ToListAsync();
-        }
-
-        public async Task<Person> GetByIdAsync(int id)
-        {
-            return await context.People.FirstAsync(person => person.Id == id);
-        }
-
-        public async Task<int> InsertAsync(Person person)
-        {
-            var insertResult = await context.People.AddAsync(person);
-            await context.SaveChangesAsync();
-            return insertResult.Entity.Id;
-        }
-    }
 }

@@ -38,5 +38,31 @@ namespace ProductStoreTestConsole
             await _sqlContainer.DisposeAsync();
             await _dbContext.DisposeAsync();
         }
+
+
+        [TestMethod]
+        public async Task TestInsertAsync()
+        {
+            var personName = "Test Person";
+            var person = new Person { Name = personName, Age = 30 }; 
+            var result = await _peopleRepository.InsertAsync(person);
+            Assert.AreNotEqual(0, result.Id);
+            Assert.AreEqual(personName, result.Name);
+            var people = await _peopleRepository.GetAllAsync();
+            Assert.AreEqual(1, people.Count);
+            Assert.AreEqual(personName, people[0].Name);
+        }
+
+        [TestMethod]
+        public async Task TestGetAllAsync()
+        {
+
+        }
+
+        [TestMethod]
+        public async Task TestInsertMoreAsync()
+        {
+
+        }
     }
 }
