@@ -51,20 +51,20 @@ app.MapGet("/products", () =>
     })
 .WithName("GetProducts");
 
-// TODO add delete button to home.razor
-app.MapDelete("/products/{id:int}", (int id) =>
-    {
-        var product = Products.Collection.FirstOrDefault(product => product.Id == id);
+// // TODO add delete button to home.razor
+// app.MapDelete("/products/{id:int}", (int id) =>
+//     {
+//         var product = Products.Collection.FirstOrDefault(product => product.Id == id);
 
-        if (product is null)
-        {
-            return Results.NotFound();
-        }
+//         if (product is null)
+//         {
+//             return Results.NotFound();
+//         }
 
-        Products.Collection.Remove(product);
-        return Results.NoContent();
-    })
-.WithName("DeleteProduct");
+//         Products.Collection.Remove(product);
+//         return Results.NoContent();
+//     })
+// .WithName("DeleteProduct");
 
 app.MapControllers();
 app.MapDefaultEndpoints();
