@@ -1,3 +1,4 @@
+using ProductFuriousStore.ApiService;
 using ProductFuriousStore.Contracts.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +12,9 @@ builder.Services.AddProblemDetails();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddMinimalApiDefaultEndpoints(typeof(Program).Assembly);
 
-
+// @TODO IEndpoint implemented - try if it works
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -31,41 +33,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-//if (app.Environment.IsDevelopment())
-//{
-//    app.MapOpenApi();
-//    app.UseSwaggerUI(options =>
-//    {
-//        options.SwaggerEndpoint("/openapi/v1.json", "ProductFuriousStore API v1");
-//        options.RoutePrefix = string.Empty;
-//    });
-//}
-
-
-// TODO create api for product store try both
-//  1. minimal api (refactoring)
-
-app.MapGet("/products", () =>
-    {
-        return Products.Collection;
-    })
-.WithName("GetProducts");
-
-// // TODO add delete button to home.razor
-// app.MapDelete("/products/{id:int}", (int id) =>
-//     {
-//         var product = Products.Collection.FirstOrDefault(product => product.Id == id);
-
-//         if (product is null)
-//         {
-//             return Results.NotFound();
-//         }
-
-//         Products.Collection.Remove(product);
-//         return Results.NoContent();
-//     })
-// .WithName("DeleteProduct");
-
+app.MapMinimalApiDefaultEndpoints();
 app.MapControllers();
 app.MapDefaultEndpoints();
 
