@@ -12,9 +12,19 @@ public class ProductsGetEndpoint : IEndpoint
     {
         app.MapGet("/products", () =>
             {
-                _logger.LogDebug("Fetching all products");
+                _logger.LogWarning("Fetching all products");
                 return Products.Collection;
             })
             .WithName("GetProducts");
+
+            app.MapGet("/product/{id}", (int id) =>
+            {
+              //  _logger.LogWarning("Fetching product at index {id}", id);
+                return Products.Collection.FirstOrDefault(p => p.Id == id);
+            })
+            .WithName("GetProduct");
     }
 }
+
+// TODO fix GET by ID
+// TODO fix namespace mismatch in swagger for GET all

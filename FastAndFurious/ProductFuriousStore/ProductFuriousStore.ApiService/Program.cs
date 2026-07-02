@@ -46,6 +46,7 @@ public partial class Program;
 
 public static class Products
 {
+    //TODO wrap by a repo, do not use directly from endpoints
     public static List<Product> Collection { get; private set; } = CreateSeed();
 
     public static void Reset()

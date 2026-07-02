@@ -4,6 +4,12 @@ namespace ProductFuriousStore.ApiService;
 
 public class ProductsUpdateEndpoint : IEndpoint
 {
+    private readonly ILogger<ProductsUpdateEndpoint> _logger;
+
+    public ProductsUpdateEndpoint(ILogger<ProductsUpdateEndpoint> logger)
+    {
+        _logger = logger;
+    }
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPut("/products", (Product product) =>
