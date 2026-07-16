@@ -101,7 +101,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.WebApi.Client"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.IntegrationTests", "ProductStore.IntegrationTests\ProductStore.IntegrationTests.csproj", "{F835427B-8792-44CB-B3D4-DC1525EA94F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStoreTestConsole", "ProductStoreTestConsole\ProductStoreTestConsole.csproj", "{8E278980-5854-4E37-B0CD-4C08DDB8B96A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStoreContainerTestPlayground", "ProductStoreTestConsole\ProductStoreContainerTestPlayground.csproj", "{8E278980-5854-4E37-B0CD-4C08DDB8B96A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
