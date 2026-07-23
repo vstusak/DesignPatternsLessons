@@ -1,3 +1,4 @@
+using ProductFuriousStore.ApiService.Data;
 using ProductFuriousStore.Contracts.Entities;
 
 namespace ProductFuriousStore.ApiService;
@@ -6,12 +7,10 @@ public class ProductsCreateEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("/products", (Product product) =>
+        app.MapPost("/products", (Product product, IProductRepo productRepo) =>
             {
-                var newId = Products.Collection.Any() ? Products.Collection.Max(p => p.Id) + 1 : 1;
-                var newProduct = product with { Id = newId };
-                Products.Collection.Add(newProduct);
-                return Results.Created($"/products/{newId}", newProduct);
+                var createdProduct = productRepo.Add(product);
+                return Results.Created($"/products/{createdProduct.Id}", createdProduct);
             })
             .WithName("CreateProduct");
     }
