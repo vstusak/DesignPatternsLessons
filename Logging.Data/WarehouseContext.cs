@@ -55,8 +55,6 @@ namespace ProductStore.Data
         {
             return Products.Any();
         }
-
-      
     }
 
     public class WarehouseContextFactory : IDesignTimeDbContextFactory<WarehouseContext>
