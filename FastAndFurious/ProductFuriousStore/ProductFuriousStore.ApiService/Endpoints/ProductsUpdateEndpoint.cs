@@ -1,5 +1,5 @@
-using ProductFuriousStore.ApiService.Data;
 using ProductFuriousStore.Contracts.Entities;
+using ProductFuriousStore.Logic.Repo;
 
 namespace ProductFuriousStore.ApiService;
 

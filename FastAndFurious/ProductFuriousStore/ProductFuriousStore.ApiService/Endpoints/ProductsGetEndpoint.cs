@@ -1,4 +1,4 @@
-using ProductFuriousStore.ApiService.Data;
+using ProductFuriousStore.Logic.Repo;
 
 namespace ProductFuriousStore.ApiService;
 
@@ -13,12 +13,13 @@ public class ProductsGetEndpoint : IEndpoint
             })
             .WithName("GetProducts");
 
-            app.MapGet("/product/{id}", (int id) =>
-            {
-              //  _logger.LogWarning("Fetching product at index {id}", id);
-                return Products.Collection.FirstOrDefault(p => p.Id == id);
-            })
-            .WithName("GetProduct");
+        app.MapGet("/product/{id}", (ILogger<ProductsGetEndpoint> logger, IProductRepo productRepo, int id) =>
+        {
+            logger.LogWarning("Fetching product with id {id}", id);
+            return productRepo.Get(id);
+
+        })
+        .WithName("GetProduct");
     }
 }
 

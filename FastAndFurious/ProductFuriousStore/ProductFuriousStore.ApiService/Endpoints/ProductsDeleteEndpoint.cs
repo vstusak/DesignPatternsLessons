@@ -1,4 +1,4 @@
-using ProductFuriousStore.ApiService.Data;
+using ProductFuriousStore.Logic.Repo;
 
 namespace ProductFuriousStore.ApiService;
 
