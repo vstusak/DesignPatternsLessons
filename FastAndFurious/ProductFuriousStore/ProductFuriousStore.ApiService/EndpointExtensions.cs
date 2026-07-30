@@ -30,7 +30,7 @@ public static class EndpointExtensions
         
         foreach (var endpointType in endpointTypes)
         {
-            services.AddTransient(typeof(IEndpoint), endpointType);
+            services.AddScoped(typeof(IEndpoint), endpointType);
         }
 
         return services;

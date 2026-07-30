@@ -1,19 +1,15 @@
+using ProductFuriousStore.ApiService.Data;
+
 namespace ProductFuriousStore.ApiService;
 
 public class ProductsGetEndpoint : IEndpoint
 {
-    private readonly ILogger<ProductsGetEndpoint> _logger;
-
-    public ProductsGetEndpoint(ILogger<ProductsGetEndpoint> logger)
-    {
-        _logger = logger;
-    }
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", () =>
+        app.MapGet("/products", (ILogger<ProductsGetEndpoint> logger, IProductRepo productRepo) =>
             {
-                _logger.LogWarning("Fetching all products");
-                return Products.Collection;
+                logger.LogDebug("Fetching all products");
+                return productRepo.GetAll();
             })
             .WithName("GetProducts");
 
