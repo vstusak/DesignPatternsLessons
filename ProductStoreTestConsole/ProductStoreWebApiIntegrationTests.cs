@@ -38,12 +38,12 @@ public class ProductStoreWebApiIntegrationTests
                     var connectionString = _sqlContainer.GetConnectionString().Replace("Database=master", "Database=StoreDbTest1");
                     services.AddDbContext<WarehouseContext>(options =>
                         options.UseSqlServer(connectionString));
-
+                    // following did nto work, must be in Test initialize
                     //ensure the database is created and seeded
-                    var serviceProvider = services.BuildServiceProvider();
-                    using var scope = serviceProvider.CreateScope();
-                    var dbContext = scope.ServiceProvider.GetRequiredService<WarehouseContext>();
-                    await dbContext.Database.EnsureCreatedAsync();
+                    //var serviceProvider = services.BuildServiceProvider();
+                    //using var scope = serviceProvider.CreateScope();
+                    //var dbContext = scope.ServiceProvider.GetRequiredService<WarehouseContext>();
+                    //await dbContext.Database.EnsureCreatedAsync();
                     //Seed(dbContext);
 
                 });
@@ -89,7 +89,6 @@ public class ProductStoreWebApiIntegrationTests
         Assert.IsNotNull(products);
         Assert.AreEqual(4, products.Count);
 
-        //TODO: run this test; debug this test and check what's happening in each step in docker
         //TODO: replace _client with our ProductStoreApiClient
     }
 }

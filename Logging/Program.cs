@@ -3,6 +3,7 @@ using Microsoft.Data.Sqlite;
 using ProductStore.Data;
 using ProductStore.Domain;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using ProductStore.WebApi.Endpoints;
 
@@ -17,7 +18,8 @@ namespace Logging.Api
         {
             var builder = WebApplication.CreateBuilder(args);
             //Following rows must keep this order (AddSqlServerDbContext > AddServiceDefaults)
-            builder.AddSqlServerDbContext<WarehouseContext>("StoreDb");
+            //builder.AddSqlServerDbContext<WarehouseContext>("StoreDb");
+            builder.Services.AddDbContext<WarehouseContext>(options => options.UseSqlServer(""));
             builder.AddServiceDefaults();
 
             //https://learn.microsoft.com/en-us/answers/questions/1377949/logging-in-c-to-a-text-file
