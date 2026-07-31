@@ -5,6 +5,8 @@ using ProductFuriousStore.Logic.Repo;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//builder.AddSqlServerDbContext<ProductStoreContext>("sqlDb");
+
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
 
