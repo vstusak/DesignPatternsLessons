@@ -17,49 +17,64 @@ namespace Logging.Api
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            //Following rows must keep this order (AddSqlServerDbContext > AddServiceDefaults)
-            //builder.AddSqlServerDbContext<WarehouseContext>("StoreDb");
-            builder.Services.AddDbContext<WarehouseContext>(options => options.UseSqlServer(""));
-            builder.AddServiceDefaults();
 
-            //https://learn.microsoft.com/en-us/answers/questions/1377949/logging-in-c-to-a-text-file
-            //var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            //var tracePath = Path.Join(path, $"Log_Products_{DateTime.Now.ToString("yyyyMMdd-HHmm")}.txt");
-            //Trace.Listeners.Add(new TextWriterTraceListener(File.CreateText(tracePath)));
-            //Trace.AutoFlush = true;
+            // is being set in integration tests
+            // ProductStoreContainerTestPlayground.ProductStoreWebApiIntegrationTests.ClassInitialize()
+            var testRunning = false;
+            if (bool.TryParse(Environment.GetEnvironmentVariable("TEST_RUNNING"), out var res))
+            {
+                testRunning = res;
+            }
 
-            //builder.Logging.AddFilter("DataAccessLayer", LogLevel.Information);
+            if(testRunning)
+            {
+                builder.Services.AddDbContext<WarehouseContext>(options => options.UseSqlServer(""));
+            }
+            else
+            {
+                //Following rows must keep this order (AddSqlServerDbContext > AddServiceDefaults)
+                builder.AddSqlServerDbContext<WarehouseContext>("StoreDb");
+                builder.AddServiceDefaults();
+            }
 
-            // Add services to the container.
+                //https://learn.microsoft.com/en-us/answers/questions/1377949/logging-in-c-to-a-text-file
+                //var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                //var tracePath = Path.Join(path, $"Log_Products_{DateTime.Now.ToString("yyyyMMdd-HHmm")}.txt");
+                //Trace.Listeners.Add(new TextWriterTraceListener(File.CreateText(tracePath)));
+                //Trace.AutoFlush = true;
 
-            //builder.Logging.ClearProviders();
+                //builder.Logging.AddFilter("DataAccessLayer", LogLevel.Information);
 
-            //custom file logging, doesn't work very well
-            //builder.Services.AddSingleton<ILoggerProvider, FileLoggerProvider>();
-            //builder.Services.AddSingleton<IFileLoggerStreamWriter, FileLoggerStreamWriter>();
+                // Add services to the container.
 
-            //var serilog = new LoggerConfiguration()
-            //    .WriteTo.Console()
-            //    .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day)
-            //    .CreateLogger();
+                //builder.Logging.ClearProviders();
 
-            //builder.Logging.AddSerilog(serilog);
+                //custom file logging, doesn't work very well
+                //builder.Services.AddSingleton<ILoggerProvider, FileLoggerProvider>();
+                //builder.Services.AddSingleton<IFileLoggerStreamWriter, FileLoggerStreamWriter>();
+
+                //var serilog = new LoggerConfiguration()
+                //    .WriteTo.Console()
+                //    .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day)
+                //    .CreateLogger();
+
+                //builder.Logging.AddSerilog(serilog);
 
 
-            builder.Services.AddProblemDetails(options =>
-                {
-                    options.IncludeExceptionDetails = (ctx, ex) => true;
-                    options.OnBeforeWriteDetails = (ctx, det) =>
+                builder.Services.AddProblemDetails(options =>
                     {
-                        if (det.Status == 500)
+                        options.IncludeExceptionDetails = (ctx, ex) => true;
+                        options.OnBeforeWriteDetails = (ctx, det) =>
                         {
-                            det.Detail = $"API Failed, please contact support w/ TraceId {det.Extensions["traceId"]}.";
-                        }
-                    };
-                    options.Rethrow<SqliteException>(); //TODO: Try w/o Rethrow and fiish the middleware
-                    //options.MapToStatusCode<Exception>(StatusCodes.Status500InternalServerError);
-                }
-            );
+                            if (det.Status == 500)
+                            {
+                                det.Detail = $"API Failed, please contact support w/ TraceId {det.Extensions["traceId"]}.";
+                            }
+                        };
+                        options.Rethrow<SqliteException>(); //TODO: Try w/o Rethrow and fiish the middleware
+                                                            //options.MapToStatusCode<Exception>(StatusCodes.Status500InternalServerError);
+                    }
+                );
 
             //builder.Services.AddDbContext<WarehouseContext>();
 

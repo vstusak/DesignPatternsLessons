@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using ProductStore.Contracts.Model;
 using ProductStore.Data;
+using ProductStore.WebApi.Client;
 using System.Net;
 using System.Net.Http.Json;
 using Testcontainers.MsSql;
@@ -18,6 +19,9 @@ public class ProductStoreWebApiIntegrationTests
     private static MsSqlContainer _sqlContainer;
     private static WebApplicationFactory<Logging.Api.Program> _webApplicationFactory;
     private static HttpClient _client;
+    private ProductStoreApiClient _productStoreApiClient;
+
+    // TODO: update aspire to latest version
 
     [ClassInitialize]
     public static async Task ClassInitialize(TestContext context)
@@ -30,6 +34,7 @@ public class ProductStoreWebApiIntegrationTests
         _webApplicationFactory = new WebApplicationFactory<Logging.Api.Program>()
             .WithWebHostBuilder(builder =>
             {
+                Environment.SetEnvironmentVariable("TEST_RUNNING", "true");
                 builder.ConfigureServices(async services =>
                 {
                     services.RemoveAll(typeof(DbContextOptions<WarehouseContext>));
@@ -45,7 +50,6 @@ public class ProductStoreWebApiIntegrationTests
                     //var dbContext = scope.ServiceProvider.GetRequiredService<WarehouseContext>();
                     //await dbContext.Database.EnsureCreatedAsync();
                     //Seed(dbContext);
-
                 });
             });
         
@@ -55,6 +59,7 @@ public class ProductStoreWebApiIntegrationTests
     public async Task TestInitialize()
     {
         _client = _webApplicationFactory.CreateClient();
+        _productStoreApiClient = new ProductStoreApiClient(_client);
         using var scope = _webApplicationFactory.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<WarehouseContext>();
         await dbContext.Database.EnsureDeletedAsync();
@@ -88,7 +93,16 @@ public class ProductStoreWebApiIntegrationTests
         var products = await responseMin.Content.ReadFromJsonAsync<List<Product>>(TestContext.CancellationToken);
         Assert.IsNotNull(products);
         Assert.AreEqual(4, products.Count);
+    }
 
-        //TODO: replace _client with our ProductStoreApiClient
+    [TestMethod]
+    public async Task GetProducts_ShouldReturnAllProducts_UsingOurProductStoreApiClient()
+    {
+        // Act
+        var products = await _productStoreApiClient.GetFilteredProductsAsync();
+
+        // Assert
+        Assert.IsNotNull(products);
+        Assert.AreEqual(4, products.Count);
     }
 }
