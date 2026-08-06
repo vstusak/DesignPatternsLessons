@@ -4,7 +4,9 @@ using ProductFuriousStore.Contracts.Entities;
 namespace ProductFuriousStore.Logic;
 
 public class ProductStoreContext : DbContext
-
 {
     public DbSet<Product> Products { get; set; }
+
+    public ProductStoreContext(DbContextOptions options) : base(options)
+    {}
 }

@@ -1,12 +1,12 @@
+using Microsoft.EntityFrameworkCore;
 using ProductFuriousStore.ApiService;
-using ProductFuriousStore.Contracts.Entities;
 using ProductFuriousStore.Logic;
 using ProductFuriousStore.Logic.Repo;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.AddSqlServerDbContext<ProductStoreContext>("sqlDb");
-
+// builder.AddSqlServerDbContext<ProductStoreContext>("sqlDb");
+builder.Services.AddDbContext<ProductStoreContext>(options => options.UseSqlServer("sqlDb"));
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
 
@@ -22,6 +22,18 @@ builder.Services.AddMinimalApiDefaultEndpoints(typeof(Program).Assembly);
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ProductStoreContext>();
+
+    context.Database.EnsureCreated();
+
+    // TODO solve:
+    // An unhandled exception of type 'System.ArgumentException' occurred in Microsoft.Data.SqlClient.dll: 
+    // 'Format of the initialization string does not conform to specification starting at index 0.'
+}
 
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();

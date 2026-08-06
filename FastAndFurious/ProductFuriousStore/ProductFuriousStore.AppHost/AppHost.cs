@@ -9,15 +9,15 @@ var sqlServer = builder.AddSqlServer("fastfurioussqlserver", sqlPassword)
     .WithDataVolume()
     .WithLifetime(ContainerLifetime.Persistent)
     .WithContainerName("productStoreSql")
-    .WithEndpoint(name: "ssms", port: 12345, targetPort: 1433);
+    .WithHostPort(12345);
 
 var sqlDb = sqlServer.AddDatabase("productstoredb");
 
 
 var apiService = builder.AddProject<Projects.ProductFuriousStore_ApiService>("apiservice")
-    .WithHttpHealthCheck("/health");
-    //.WithReference(sqlDb)
-    //.WaitForCompletion(sqlDb);
+    .WithHttpHealthCheck("/health")
+    .WithReference(sqlDb)
+    .WaitForCompletion(sqlDb);
 
 builder.AddProject<Projects.ProductFuriousStore_Web>("webfrontend")
     .WithExternalHttpEndpoints()
