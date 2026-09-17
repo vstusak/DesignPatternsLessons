@@ -10,7 +10,8 @@ var sqlPassword = builder.AddParameter("sql-password", "Sup€rS€cret2499");
 var sqlserver = builder.AddSqlServer("sqlserver", password:sqlPassword)
     .WithImageTag("2025-latest")
     .WithDataVolume()
-    .WithEndpoint(port: 12345, targetPort: 1433, name: "SSMS")
+    //.WithEndpoint(port: 12345, targetPort: 1433, name: "SSMS")
+    .WithHostPort(45678)
     .WithContainerName(name: "ProductStoreDBServer")
     .WithLifetime(ContainerLifetime.Persistent);
 
