@@ -22,6 +22,3 @@ public class ProductsGetEndpoint : IEndpoint
         .WithName("GetProduct");
     }
 }
-
-// TODO fix GET by ID
-// TODO fix namespace mismatch in swagger for GET all
