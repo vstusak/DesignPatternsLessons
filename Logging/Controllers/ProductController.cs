@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using Logging.Domain;
 using Microsoft.AspNetCore.Mvc;
 using ProductStore.Contracts.Model;
@@ -12,6 +13,9 @@ namespace Logging.Api.Controllers
         
         private readonly ILogger<ProductController> _logger;
         private readonly IProductProvider _productProvider;
+
+        // Controllers are created per request, so the attempt counters must be static to survive across calls.
+        private static ConcurrentDictionary<int, int> AttemptCountsById { get; } = new();
 
         public ProductController(ILogger<ProductController> logger, IProductProvider productProvider)
         {
@@ -33,6 +37,35 @@ namespace Logging.Api.Controllers
         public IActionResult Get(int id)
         {
             _logger.LogDebug($"Get product with '{id}' id");
+
+            var product = _productProvider.GetProduct(id);
+
+            if (product == null)
+            {
+                _logger.LogWarning($"Cannot find product with '{id}' id");
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
+
+        [HttpGet("FailTwice/{id:int}")]
+        [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetWithTransientFailure(int id)
+        {
+            var attempt = AttemptCountsById.AddOrUpdate(id, 1, (_, current) => current + 1);
+
+            _logger.LogDebug($"Get product with '{id}' id - attempt {attempt}");
+
+            if (attempt < 3)
+            {
+                _logger.LogWarning($"Transient failure for product '{id}' id on attempt {attempt}");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+            AttemptCountsById.TryRemove(id, out _);
 
             var product = _productProvider.GetProduct(id);
 
