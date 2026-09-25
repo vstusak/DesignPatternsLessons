@@ -1,11 +1,12 @@
-﻿using ProductFuriousStore.Contracts.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductFuriousStore.Contracts.Entities;
 
 namespace ProductFuriousStore.Logic.Repo;
 
 
 public class ProductRepo : IProductRepo
 {
-    public Product Get(int id)
+    public Product? Get(int id)
     {
         var product = Products.Collection.FirstOrDefault(product => product.Id == id);
 
@@ -56,4 +57,42 @@ public class ProductRepo : IProductRepo
     }
 
     //TODO: use everywhere the repo instead of the static Products.Collection
+}
+
+// @TODO Apply async
+public class ProductDatabaseRepo : IProductRepo
+{
+    private readonly ProductStoreContext _context;
+
+    public ProductDatabaseRepo(ProductStoreContext context)
+    {
+        _context = context;
+    }
+
+    public Product? Get(int id)
+    {
+        return _context.Products.Find(id);
+    }
+
+    public Product Add(Product product)
+    {
+        var entity = _context.Products.Add(product).Entity;
+        _context.SaveChanges();
+        return entity;
+    }
+
+    public void Delete(int id)
+    {
+        var count = _context.Products.Where(product => product.Id == id).ExecuteDelete();
+    }
+
+    public IEnumerable<Product> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update(Product product)
+    {
+        throw new NotImplementedException();
+    }
 }
