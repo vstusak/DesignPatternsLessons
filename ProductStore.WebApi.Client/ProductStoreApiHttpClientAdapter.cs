@@ -10,6 +10,7 @@ public interface IProductStoreApiClient
     Task<Product?> GetProductByIdAsync(int id);
     Task<Product?> GetProductByIdWithTransientFailureAsync(int id);
     Task<List<Product>> DeleteByIdAndReloadAsync(int id);
+    Task AddNewProductAsync(Product product);
 }
 
 public class ProductStoreApiClient(HttpClient httpClient) : IProductStoreApiClient
@@ -59,5 +60,11 @@ public class ProductStoreApiClient(HttpClient httpClient) : IProductStoreApiClie
 
         var response = await httpClient.GetAsync("Product");
         return await response.Content.ReadFromJsonAsync<List<Product>>() ?? [];
+    }
+
+    public async Task AddNewProductAsync(Product product)
+    {
+        var response = await httpClient.PostAsJsonAsync<Product>("Product/", product);
+        response.EnsureSuccessStatusCode();
     }
 }

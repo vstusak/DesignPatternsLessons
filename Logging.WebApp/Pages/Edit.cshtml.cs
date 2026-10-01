@@ -50,12 +50,8 @@ namespace ProductStore.WebApp.Pages
 
         public async Task OnPost(Product product)
         {
-            //TODO: Dodat do klienta
-            //var apiClient = _httpClientFactory.CreateClient("api");
-            //apiClient.BaseAddress = new Uri("https+http://apiservice");
-            ////var content = New
-            //await apiClient.PostAsJsonAsync<Product>("Product/",product);
-            //Response.Redirect("/");
+            await _productStoreApiClient.AddNewProductAsync(product);
+            Response.Redirect("/");
         }
     }
 }
