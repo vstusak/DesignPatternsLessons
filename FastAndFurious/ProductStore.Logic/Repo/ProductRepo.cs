@@ -88,11 +88,12 @@ public class ProductDatabaseRepo : IProductRepo
 
     public IEnumerable<Product> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Products.ToList();
     }
 
     public void Update(Product product)
     {
-        throw new NotImplementedException();
+        _context.Products.Update(product);
+        _context.SaveChanges();
     }
 }

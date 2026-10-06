@@ -13,12 +13,15 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddProblemDetails();
-builder.Services.AddScoped<IProductRepo, ProductRepo>();
+builder.Services.AddScoped<IProductRepo, ProductDatabaseRepo>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddMinimalApiDefaultEndpoints(typeof(Program).Assembly);
 
 builder.Services.AddSwaggerGen();
+
+//TODO (6/10/26): through Swagger call the endpoints and test them (data should appear in DB)
+//TODO (6/10/26): data seeding
 
 var app = builder.Build();
 
