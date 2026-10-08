@@ -1,7 +1,6 @@
-using Microsoft.Extensions.Hosting;
-using System.Net.Http;
 using ProductStore.WebApi.Client;
-using ProductStore.WebApp;
+using Polly;
+using Microsoft.Extensions.Http.Resilience;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +15,23 @@ builder.Services.AddRazorPages();
 builder.Services.AddHttpClient<IProductStoreApiClient,ProductStoreApiClient>(client =>
 {
     client.BaseAddress = new Uri("https+http://apiservice");
-}); //Do not forget to remove all polly/resilience
+})
+.RemoveAllResilienceHandlers()
+.AddResilienceHandler("standardRetryPipeline", pipeline =>
+{
+    //TODO: test everything
+    pipeline.AddRetry(new HttpRetryStrategyOptions
+    {
+        MaxRetryAttempts = 1, // first standard attempt + retry attempts
+        Delay = TimeSpan.FromSeconds(10),
+        BackoffType = DelayBackoffType.Exponential,
+        UseJitter = true,
+        OnRetry = args => {
+            Console.WriteLine("Message from our custom resilience handler.");
+            return default;
+        }
+    });
+});
 
 var app = builder.Build();
 
