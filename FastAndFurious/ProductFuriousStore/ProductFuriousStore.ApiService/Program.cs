@@ -20,8 +20,7 @@ builder.Services.AddMinimalApiDefaultEndpoints(typeof(Program).Assembly);
 
 builder.Services.AddSwaggerGen();
 
-//TODO (6/10/26): through Swagger call the endpoints and test them (data should appear in DB)
-//TODO (6/10/26): data seeding
+//TODO (8/10/26): data seeding
 
 var app = builder.Build();
 
