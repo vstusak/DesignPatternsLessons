@@ -20,8 +20,6 @@ builder.Services.AddMinimalApiDefaultEndpoints(typeof(Program).Assembly);
 
 builder.Services.AddSwaggerGen();
 
-//TODO (8/10/26): data seeding
-
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -30,6 +28,11 @@ using (var scope = app.Services.CreateScope())
     var context = services.GetRequiredService<ProductStoreContext>();
 
     context.Database.EnsureCreated();
+    if (!context.DataExists())
+    {
+        //@TODO 15/10/2026 insert data
+        context.Seed();
+    }
 }
 
 // Configure the HTTP request pipeline.
