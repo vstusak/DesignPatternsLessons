@@ -30,7 +30,6 @@ using (var scope = app.Services.CreateScope())
     context.Database.EnsureCreated();
     if (!context.DataExists())
     {
-        //@TODO 15/10/2026 insert data
         context.Seed();
     }
 }

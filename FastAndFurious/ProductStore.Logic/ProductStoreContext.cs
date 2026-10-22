@@ -24,6 +24,15 @@ public class ProductStoreContext : DbContext
 
     public void Seed()
     {
-        throw new NotImplementedException();
+        Database.EnsureDeleted();
+        Database.EnsureCreated();
+
+        Products.Add(new Product { Category = "TestCategory", Name = "TestProduct1" , Price = 9 });
+        Products.Add(new Product { Category = "TestCategory", Name = "TestProduct2", Price = 10 });
+        Products.Add(new Product { Category = "Test2Category", Name = "TestProduct3", Price = 15 });
+        Products.Add(new Product { Category = "Test2Category", Name = "TestProduct4", Price = 1 });
+        Products.Add(new Product { Category = "Test3Category", Name = "TestProduct5", Price = 3 });
+
+        SaveChanges();
     }
 }
