@@ -1,6 +1,7 @@
 using ProductStore.WebApi.Client;
 using Polly;
 using Microsoft.Extensions.Http.Resilience;
+using Polly.CircuitBreaker;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,6 @@ builder.Services.AddHttpClient<IProductStoreApiClient,ProductStoreApiClient>(cli
 .RemoveAllResilienceHandlers()
 .AddResilienceHandler("standardRetryPipeline", pipeline =>
 {
-    //TODO: test everything
     pipeline.AddRetry(new HttpRetryStrategyOptions
     {
         MaxRetryAttempts = 1, // first standard attempt + retry attempts
@@ -29,6 +29,14 @@ builder.Services.AddHttpClient<IProductStoreApiClient,ProductStoreApiClient>(cli
         OnRetry = args => {
             Console.WriteLine("Message from our custom resilience handler.");
             return default;
+        }
+    });
+    pipeline.AddCircuitBreaker(new CircuitBreakerStrategyOptions<HttpResponseMessage> { 
+        ShouldHandle = args =>
+        {
+            return ValueTask.FromResult(args is { 
+                Outcome.Result.StatusCode: System.Net.HttpStatusCode.RequestTimeout or System.Net.HttpStatusCode.NotFound 
+            });
         }
     });
 });

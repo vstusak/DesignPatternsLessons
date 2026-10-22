@@ -62,7 +62,7 @@ namespace Logging.Api.Controllers
             if (attempt < 3)
             {
                 _logger.LogWarning($"Transient failure for product '{id}' id on attempt {attempt}");
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return StatusCode(StatusCodes.Status404NotFound);
             }
 
             AttemptCountsById.TryRemove(id, out _);
