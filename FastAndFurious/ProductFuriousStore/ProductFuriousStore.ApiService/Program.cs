@@ -22,6 +22,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+await app.ConfigureDatabaseAsync();
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
