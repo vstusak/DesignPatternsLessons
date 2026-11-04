@@ -45,6 +45,12 @@ namespace Logging.Domain
             _productRepository.AddOrUpdate(product);
         }
 
+        public bool NewBid(int productId, int newBidValue)
+        {
+            _logger.LogInformation($"Adding new bid {newBidValue} for product {productId}.");
+            return _productRepository.NewBid(productId, newBidValue);
+        }
+
         private IEnumerable<Product> GetAllProducts()
         {
             return new List<Product>()

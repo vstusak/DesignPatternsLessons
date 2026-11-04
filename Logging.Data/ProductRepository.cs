@@ -88,5 +88,20 @@ namespace ProductStore.Data
 
             _warehouseContext.SaveChanges();
         }
+
+        public bool NewBid(int productId, int newBidValue)
+        {
+            _databaseLogger.LogInformation($"New bid {newBidValue} for product {productId}.");
+
+            var product = _warehouseContext.Products.Find(productId);
+            if (product == null)
+            {
+                return false;
+            }
+
+            product.Price = newBidValue;
+            _warehouseContext.SaveChanges();
+            return true;
+        }
     }
 }

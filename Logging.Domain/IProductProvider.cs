@@ -8,5 +8,6 @@ namespace ProductStore.Domain
         Product? GetProduct(int productId);
         void DeleteProduct(int id);
         void AddOrUpdateProduct(Product product);
+        bool NewBid(int productId, int newBidValue);
     }
 }

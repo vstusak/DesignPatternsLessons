@@ -2,6 +2,7 @@ using ProductStore.WebApi.Client;
 using Polly;
 using Microsoft.Extensions.Http.Resilience;
 using Polly.CircuitBreaker;
+using ProductStore.WebApp.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,10 @@ builder.Services.AddRazorPages();
 //{
 //    client.BaseAddress = new Uri("https+http://apiservice");
 //});
+
+//SignalR
+builder.Services.AddSignalR(o=> o.EnableDetailedErrors = true);
+
 builder.Services.AddHttpClient<IProductStoreApiClient,ProductStoreApiClient>(client =>
 {
     client.BaseAddress = new Uri("https+http://apiservice");
@@ -60,5 +65,12 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.MapPost("auction/{productId}/newBid",
+    (int productId, int bid, IProductStoreApiClient productStoreApiClient) =>
+    {
+        productStoreApiClient.NewBid(productId, bid);
+    });
+
+app.MapHub<AuctionHub>("/auctionHub");
 
 app.Run();

@@ -8,4 +8,5 @@ public interface IProductRepository
     IEnumerable<Product> GetForCategory(string category);
     void Delete(int id);
     void AddOrUpdate(Product product);
+    bool NewBid(int productId, int newBidValue);
 }

@@ -21,7 +21,7 @@
             <th>#</th>
             <th>Name</th>
             <th>Category</th>
-            <th class="text-end">Price</th>
+            <th class="text-end">Current Price</th>
             <th colspan="2"></th>
         </tr>
         </thead>
@@ -32,7 +32,11 @@
                 <td>@p.ProductId</td>
                 <td>@p.Name</td>
                 <td>@p.Category</td>
-                <td class="text-end">@string.Format("{0:C}", p.Price)</td>
+                <td class="text-end" id="@($"{p.ProductId}-price")">@string.Format("{0:C}", p.Price)</td>
+                <td>
+                    <input type="number" id="@($"{p.ProductId}-input")" value="@(p.Price + 1)"/>
+                    <button type="button" onclick="newBid(@p.ProductId)">New Bid</button>
+                </td>
                 <td><a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@p.ProductId">Edit</a></td>
                 <td>
                     <a asp-page-handler="Delete" asp-route-id="@p.ProductId">Delete</a>
@@ -44,3 +48,7 @@
 
 </div>
 
+@section Scripts
+{
+    <script src="~/js/pages/index.js" asp-append-version="true"></script>    
+}

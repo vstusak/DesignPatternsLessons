@@ -124,7 +124,7 @@ namespace Logging.Api.Controllers
         }
 
         [HttpPost]
-        
+
         public IActionResult Post([FromBody]Product product)
         { 
             //TODO it does not work from Swagger - json parsing
@@ -138,6 +138,28 @@ namespace Logging.Api.Controllers
             catch (Exception e)
             {
                 _logger.LogError("Cannot add/update product.", e);
+            }
+
+            return Ok();
+        }
+
+        [HttpPost("NewBid")]
+        public IActionResult NewBid([FromQuery] int productId, [FromQuery] int newBidValue)
+        {
+            _logger.LogDebug($"Trying to apply new bid '{newBidValue}' for product '{productId}'.");
+
+            try
+            {
+                var updated = _productProvider.NewBid(productId, newBidValue);
+                if (!updated)
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Cannot apply new bid for product '{productId}'.", e);
+                throw;
             }
 
             return Ok();
