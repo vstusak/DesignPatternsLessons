@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using ProductFuriousStore.Contracts.Entities;
@@ -36,3 +37,15 @@ public class ProductStoreContext : DbContext
         SaveChanges();
     }
 }
+
+public class WarehouseContextFactory : IDesignTimeDbContextFactory<ProductStoreContext>
+{
+    public ProductStoreContext CreateDbContext(string[] args)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<ProductStoreContext>();
+        optionsBuilder.UseSqlServer("StoreDb");
+
+        return new ProductStoreContext(optionsBuilder.Options);
+    }
+}
+
