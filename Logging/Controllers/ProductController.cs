@@ -73,6 +73,7 @@ namespace Logging.Api.Controllers
             {
                 _logger.LogWarning($"Cannot find product with '{id}' id");
                 return NotFound();
+                
             }
 
             return Ok(product);

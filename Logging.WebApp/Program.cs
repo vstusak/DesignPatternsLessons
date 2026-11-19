@@ -27,23 +27,27 @@ builder.Services.AddHttpClient<IProductStoreApiClient,ProductStoreApiClient>(cli
 {
     pipeline.AddRetry(new HttpRetryStrategyOptions
     {
-        MaxRetryAttempts = 1, // first standard attempt + retry attempts
-        Delay = TimeSpan.FromSeconds(10),
+        MaxRetryAttempts = 3, // first standard attempt + retry attempts
+        Delay = TimeSpan.FromSeconds(1),
         BackoffType = DelayBackoffType.Exponential,
         UseJitter = true,
+        ShouldHandle = args => ValueTask.FromResult(
+            HttpClientResiliencePredicates.IsTransient(args.Outcome) ||
+            args.Outcome.Result?.StatusCode == System.Net.HttpStatusCode.NotFound),
         OnRetry = args => {
             Console.WriteLine("Message from our custom resilience handler.");
             return default;
         }
     });
-    pipeline.AddCircuitBreaker(new CircuitBreakerStrategyOptions<HttpResponseMessage> { 
+   /* pipeline.AddCircuitBreaker(new CircuitBreakerStrategyOptions<HttpResponseMessage> { 
         ShouldHandle = args =>
         {
             return ValueTask.FromResult(args is { 
-                Outcome.Result.StatusCode: System.Net.HttpStatusCode.RequestTimeout or System.Net.HttpStatusCode.NotFound 
+                Outcome.Result.StatusCode: System.Net.HttpStatusCode.RequestTimeout //or System.Net.HttpStatusCode.NotFound 
             });
         }
     });
+   */
 });
 
 var app = builder.Build();

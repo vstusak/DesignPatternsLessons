@@ -41,8 +41,6 @@ namespace ProductStore.WebApp.Pages
             //    throw new Exception($"Api call failed {response.Content}");
             //}
             
-            //TODO: Zkontrolovat jestli tam je a pripadne vyhodit defaultni resilience
-            
             Product = await _productStoreApiClient.GetProductByIdWithTransientFailureAsync(id) ?? throw new ArgumentException($"{id} id not found");
 
         }
