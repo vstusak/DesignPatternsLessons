@@ -25,7 +25,7 @@ public class ProductStoreContext : DbContext
 
     public void Seed()
     {
-        Database.EnsureDeleted();
+        //Database.EnsureDeleted();
         Database.EnsureCreated();
 
         Products.Add(new Product { Category = "TestCategory", Name = "TestProduct1" , Price = 9 });

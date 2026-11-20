@@ -3,6 +3,8 @@ using ProductFuriousStore.ApiService;
 using ProductFuriousStore.Logic;
 using ProductFuriousStore.Logic.Repo;
 
+// TOOD add test containers
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddSqlServerDbContext<ProductStoreContext>("productstoredb");
@@ -29,7 +31,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<ProductStoreContext>();
 
-    context.Database.EnsureCreated();
+    //context.Database.EnsureCreated();
     if (!context.DataExists())
     {
         context.Seed();
